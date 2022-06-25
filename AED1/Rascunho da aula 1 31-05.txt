@@ -1,0 +1,18 @@
+algoritmos e estruturas de dados
+
+Algoritmo é uma sequência ordenada e finita de passos para resolver um problema.
+
+Um algoritmo será eficiente se o tempo de execução dele é na ordem de n^k, onde n é o tamanho da entrada e k é uma constante.
+
+Temos um problema, essse problema possui várias instâncias, que representam os dados necessários para que o problema específico que desejamos resolver. Um problema é eficiente se existe um algoritmo eficiente para resolvê-lo.
+
+As estruturas de dados ajudam a criar os algoritmos para resolver esses problemas.
+
+Estruturas de dados são formas de organizar os dados em memória(RAM, disco ou qualquer outro meio digital), de forma a otimizar seu uso, de acordo com algumas características desejadas.
+
+Existe um formalismo para os algoritmos:
+1 - para provar que ele é correto: dad uma entrada, a saída é a correta;
+2 - para probar que ele é completo: ele aceita todas as entradas;
+3 - para provar a complexidade: em quanto tempo e espaço o algoritmo precisa para se rexecutado;
+
+Esses formalismos se traduzem em teoremas.

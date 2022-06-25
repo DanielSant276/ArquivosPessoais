@@ -1,0 +1,25 @@
+1 -
+troca(letra, esquerda, direita) {
+  temp = a[esquerda];
+  a[esquerda] = a[direita];
+  a[direita] = temp;
+}
+
+permuta(letra, direito, esquerdo) {
+  if (!direito == esquerdo) {
+    for (i = esquerdo; i <= direito; i++) {
+      troca(letra, esquerdo, i);
+      permuta(letra, esquerod + 1, direito);
+      troca(letra, esquerda, i);
+    }
+  }
+}
+
+
+2 - Exemplo das moedas que sempre tiram o maior valor primeiro. E possível que selecione uma moeda grande e depois várias pequenas, enquanto que a melhor resposta seria com poucas moedas intermediárias.
+
+3 - Eq-Grau-2:  Dados números inteiros a, b e c, decidir se existe um número inteiro x tal que ax² + bx + c = 0. Algoritmo de decisão é uma questão sobre um sistema formal com uma resposta do tipo sim-ou-não.
+
+4 - Para resolver esse problema deve-se possuir uma tabela com a distância em linha reta de S para todo os outros vertices. Após isso, a melhor resolução seria verificar qual vértice está mais próximo do vértice S e ir sempre escolher ele.
+
+6 - Retornar um passo atrás e seguir por um caminho que ainda não foi escolhido.

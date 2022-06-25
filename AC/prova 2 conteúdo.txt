@@ -1,0 +1,46 @@
+Cache:
+	Memória CACHE - https://www.youtube.com/watch?v=ZpGqJ-YsXf4
+
+	Hierarquia de Memória (Parte 1) - Memória Cache L1, L2, L3 e Localidades Espacial e Temporal - https://www.youtube.com/watch?v=1WGq74ptXGw
+
+	Políticas de Escrita em Memória Cache - Write Through e Write Back - https://www.youtube.com/watch?v=o5PIv65Gpv4
+
+	- Memória Cache - Mapeamento Direto vs Associativo - Parte 1 - https://www.youtube.com/watch?v=eojRu_yz24g
+
+	Mapeamento Direto, Mapeamento Associativo, Mapeamento Associativo por Conjunto - Memória Cache - https://www.youtube.com/watch?v=qTvsyk-phEo
+
+	Algoritmos de Substituição de Cache - FIFO, LRU, LFU e Aleatório - https://www.youtube.com/watch?v=f-5-tJlkSXY
+
+Ciclo da Instrução:
+	49. Arquitetura de Computadores: A Busca da Instrução - https://www.youtube.com/watch?v=88CqyoayDbk
+	
+	50. Arquitetura de Computadores: Decodificação e Busca nos Registradores - https://www.youtube.com/watch?v=mZQkMj-miPE
+
+	51. Arquitetura de Computadores: Execução, Acesso à Memória e Escrita nos Registradores - https://www.youtube.com/watch?v=IQKjLvGWjeo
+
+	52. Arquitetura de Computadores: Execução da R-Type - https://www.youtube.com/watch?v=cOHHLBOrbWE
+
+	53. Arquitetura de Computadores: Execução da Load Word - https://www.youtube.com/watch?v=YWJDvsUpnxE
+
+	54. Arquitetura de Computadores: Execução da Store Word - https://www.youtube.com/watch?v=HlURX5DAzrU
+
+	55. Arquitetura de Computadores: Execução do Branch (BEQ) - https://www.youtube.com/watch?v=EETD7DOwP7g
+
+	56. Arquitetura de Computadores: Execução do Jump - https://www.youtube.com/watch?v=d_fJxXPvCA8
+
+	57. Arquitetura de Computadores: Pipeline - https://www.youtube.com/watch?v=-iVeW1Za5KQ
+
+	58. Arquitetura de Computadores: Hazards do Pipeline - https://www.youtube.com/watch?v=Hj-sw1G2_uA
+
+	Arquitetura de Computadores: Aula 14 - Pipelining - Visão Geral - https://www.youtube.com/watch?v=FvI5Kk8jmZQ
+
+CISC X RISC:
+	CISC X RISC - Arquitetura de Computadores - https://www.youtube.com/watch?v=g2cbAlDwY64
+	
+	Organização de Computadores - Aula 06 - Conjunto de Instruções do MIPS - https://www.youtube.com/watch?v=VYSy21RwNIc
+
+	
+
+Assuntos:
+
+UAL, Microarquitetura, Microinstrução horizontal, Microintrução vertical, Memória de Controle, Unidade de controle, Lógica de controle de desvio (2 campos de endereço, campo único de endereço, formato variável), Organização de Computadores, Pipeline, bolhas em pipeline, dependência de dados, adiantamento de dados, operações de memória, barramentos, tipos de ram, Lei de Moore, memória cache.

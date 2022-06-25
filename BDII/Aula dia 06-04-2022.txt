@@ -1,0 +1,41 @@
+Governança de Dados: Orientação e supervisão para atividades e funções de gerenciamento de dados, estabelecendo um sistema de direitos e responsabilidades de decisão por dados. Esses direitos e responsabilidades devem responder às necessidades da empresa como um todo.
+
+
+Engenheiro de Dados: programa pipelines, realiza a limpeza de dados e extração de dados. É uma parte mais operacional.
+Arquitetura de Dados: Define o modelo de como os dados serão gerenciados, alinhando-se à estratégia organizacional e estabelecendo projetos para atender aos requisitos de dados estratégicos.
+
+
+Modelagem e Design de Dados: Processo de descoberta, análise, representação e comunicação de requisitos de dados de uma forma precisa chamada modelo de dados.
+
+
+Armazenamento e Operações de Dados: Design, implementação e suporte de dados armazenados para maximizar seu valor. As operações fornecem suporte durante todo o ciclo de vida dos dados, do planejamento à disposição dos dados.
+
+
+Segurança de dados: garante que a privacidade e a confidencialidade dos dados sejam mantidas, que os dados não sejam violados e que os dados sejam acessados adequadamente.
+
+
+Integração e interoperabilidade de dados: incluem processos relacionados à movimentação e consolidação de dados dentro e entre repositórios de dados e,
+ 
+
+Gerenciamento de documentos e conteúdo: Atividade de planejamento, implementação e controle para gerenciar o ciclo de vida de dados e informações encontrados em uma variedade de mídias não estruturadas, especialmente os documentos necessário para suportar os requisitos de conformidade legal e regulamentar.
+
+
+Gerenciamento de referência e dados mestre: Reconciliação e manutenção contínuas dos principais dados compartilhados críticos para garantir o uso consistente entre os sistemas da versão mais precisa, oportuna e relevante da verdade sobre entidades essenciais de negócios.
+
+
+Data Warehousing e o Business Intelligence: Processos de planejamento, implementação e controle para gerenciar os dados de suporte à decisão e permitir que os profissionais do conhecimento obtenham valor dos dados de suporte à decisão e permitir que os profissionais do conhecimento obtenham valor dos dados por meio de análise e relatório.
+
+
+Gerenciamento de metadados: Atividades de planejamento, implementação e controle para permitir o acesso a metadados integrados de alta qualidade, incluindo definições, modelos, fluxos de dados e outras informações críticas para entender os dados e os sistemas através dos quais são criados, mantidos e acessados.
+
+
+Gerenciamento da qualidade dos dados: Planejamento e a implementação de técnicas de gerenciamento da qualidade para medir, avaliar e melhorar a adequação dos dados para uso em uma organização.
+
+
+DevOps: Desenvolvimento + Controle de qualidade + Operação de sistemas
+DataOps: DevOps + Engenheiro/Cientistas de Dados. O Engenheiro/Cientistas são responsáveis de pegar as informações vindas do DevOps e trabalhar com elas utilizando: BI + DW + DataLake
+
+
+
+
+Recuperação de Dados: 

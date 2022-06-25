@@ -1,0 +1,69 @@
+		Força Bruta (Busca exaustiva) O(n²)
+
+	Um tipo de algoritmo que consiste em enumerar todos os possíveis candidatos de uma solução e verificar se cada um satisfaz o problema. É uma busca cega de todas as possibilidades, útil para pequenos problemas, pois o custo computacional tende a crescer exponencialmente.
+	Método:
+	|--Listar todas as situações possíveis para o problema de forma sistemática testando todas as soluções sem repetir nenhuma;
+	|--Avaliar as soluções uma a uma, armazenando a melhor solução até o momento;
+	|--Finalizar a busca, retornando a melhor solução;
+
+		Backtracking
+
+	É um refinamento do algoritmo de busca por força bruta, no qual boa parte das soluções podem ser eliminadas sem serem explicitamente examinadas. A ideia central é retroceder quando detectar que a solução candidata é inviável.
+	A busca ocorre passo a passo, recursivamente, em todas as direções. Se não existe mais possibilidades, retorna-se ao nível anterior da recursão.
+	Será um método para construir uma solução de forma a não repetir soluções e de alguma forma na medida do possível não gerar tantas soluções inviáveis.
+
+	backtracking(S, k) {
+	  if (!eValida(S, k))
+	    return;
+
+	  if (eSolucao(S, k))
+	    processa(S, k);
+
+	  for(ck+1 in Pk+1){
+	    S' = S + ck+1;
+	    backtracking(S', k+1);
+	  }
+	}
+
+		Método guloso
+
+	Esse método consiste em construir a solução de forma que parece melhor localmente. A abordagem gulosa nem sempre resolve o problema e por vezes é até ruim. Esse método fornece pelo menos um limite.
+
+		Código de Huffman
+
+	É um sistema de compactação baseado na frequência dos símbolos. Uma propriedade do código de Huffman é que nenhum símbolos é prefixo do outro. (Olhar caderno)
+
+		Programação Dinâmica
+
+	É uma técnica de resolução de problemas que consiste em resolver problemas menores, armazenando os resultados em uma tabela e utilizando esses resultados para computar os problemas maiores.
+
+		Algoritmo da mochila (Olhar caderno)
+
+https://www.youtube.com/watch?v=pEH5uuC4nlw
+
+
+		Árvore Geradora
+
+	Seja G um grafo simples, uma árvore geradora de G é um subgrafo de G que é uma árvore e contém todos os vértices de G. Um grafo simples será conexo se, e somente se, possuir uma árvore geradora.
+
+https://www.youtube.com/watch?v=i7pOwScZqWc
+https://www.youtube.com/watch?v=f6DdO_eDzXY
+
+		Complexidade
+
+	Ajuda a compreender quão difícil pode se resolver um problema em tempo computacional.
+	Um problema consiste em um número infinito de instâncias, sendo a instância especificada pela designação de valores numéricos (dados) aos parâmentros do problema.
+	O tamanho de um problema fica definido como a quantidade de informação necessária para representar a instância.
+	Um algoritmo A é dito ser de tempo polinomial para o problema X se fa(k) é O(k^p) para algum p fixo.
+	Seja P a classa de problemas que podem ser resolvido em tempo polinomial. Dessa forma, um problema X está em P se existe um algoritmo de tempo polinomial para resolver X.
+
+Classe P (tempo polinomial):
+	É a classe de problemas (de decisão) que podem ser resolvidos em tempo polinomial. Ex.: algoritmos O(n²), O(n.logn), O(n²³²), ect.
+
+Classe NP (tempo polinomial não deterministico)
+	Problemas de decisão para os quais qualquer resultado sim possui um certificado ("solução") de tamanho polinomial que pode ser checado em tempo polinomial.
+	Você não sabe o algoritmo resolve o problema em tempo polinomial, mas se você tiver a resposta e ela for de tempo polinomial ela se encaixa nessa classe.
+
+Classe NP-completo
+	Um problema A é redutível a um problema B se para qualquer instância dA de A podemos construir uma instância dB de B em tempo polinomial de modo que dA resulta em sim para A se dB resulta em sim para B.
+	Um problema B será NP-completo se (1) B pertence NP; (2) dado qualquer A pertence NP, então A é redutível em B.

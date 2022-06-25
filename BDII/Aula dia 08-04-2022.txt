@@ -1,0 +1,16 @@
+backup: cópia de segurança dos dados. É utilizado juntamente com o processo de restore para resolver problemas de recuperação das informações.
+
+política de backup: define os tipos de backups, a periodicidade e onde será guardado os arquivos de backup.
+
+backup parcial: backup de alguns arquivos.
+
+backup completo: guarda todas as informações e todas as transações realizadas até aquele momento.
+
+backup diferencial: guarda todos os dados que foram alterados desde o último backup.
+
+backup de log: um backup das informações das transações.
+
+O melhor é fazer os backups completos após grandes períodos e o diferencial em períodos menores.
+
+Sempre que é feito um backup é necessário realizar um restore.
+

@@ -1,0 +1,290 @@
+		UML
+
+O que é UML:
+	É uma linguagem unificada que habilita profissionas a modelar e documentar aplicações de software.
+	UML oferece um meio de visualizar a arquitetura de um sistema por meio de diagramas, incluindo atividades, componentes individuais dosistema, a interação desses componente, interfaces, interações com o mundo externo e outros.
+	UML não é um método de desenvolvimento, sendo assim independente de plataforma/linguagem
+	
+Termos importantes:
+	Rational Software: UML nasceu na Rational Software.
+	OMG: A OMG define padrões na área de tecnologia, assim como a ISO. A OMG adotou a UML como linguagem padrão em 1997, e em 2005 foi publicado como um padrão aprovado.
+	Diagrama: Representação gráfica de um modelo.
+
+O que um diagrama representa:
+	Os diagramas representam duas visões distintas de um modelo de sistema:
+	Estática (estrutural): estrutura estática por meio de objetos, operações, relações e atributos.
+	Dinâmica (comportamental): comportamento dinâmico por meio de colaboração entre os objetos e mudanças de seus estados internos.
+
+Diagramas UML
+	Estruturais:
+	|--Classes
+	|--Objetos
+	|--Pacotes
+	|--Componentes
+	|--Implantação
+	|--Estrutura Composta
+	|--Perfil
+	Comportamentais:
+	|--Caso de Uso
+	|--Sequência
+	|--Comunicação
+	|--Máquina de Estados
+	|--Atividade
+	|--Visão Geral de Interação
+	|--Temporização
+
+Diagramas de Classes UML:
+	Um diagrama de classes é usado para desecrever a estrutura estática de classes no sistema, permitindo definir os atributos, operações(métodos) e os relacionamento entre as classes.
+	Apresenta uma visão estática da organização das classes, definindo sua estrutura lógica.
+	É um dos diagramas mais populares, e serve como base para a construção de outros diagramas UML.
+	Basicamente, descrevem o que deve estar presente no sistema modelado.
+
+Classes, Atributos e métodos:
+	Uma classe é a representação de um item na forma de um tipo de dados personalizado.
+	As classes possuem estruturas internas chamadas de Atributos e de Métodos.
+	Atributos são usado par armazenar os dados dos objetos de uma classe.
+	Métodos são as operações, ou funções que a instância de classe pode executar.
+	Uma instância de classe é chamada de Objeto.
+
+Representação de uma Classe:
+	Representamos uma classe usando um diagrama dividido em três compartimentos:
+	1 - Nome: Inclui o nome e o estereótipo da classe (informação sobre a classe);
+	2 - Atributos: Lista de atributos da classe no formato nome:tipo ou nome:tipo=valor;
+	3 - Operações: Lista de métodos da classe no formato método(parâmetros):tipo_retorno;
+
+Visibilidade dos Membros (Atributos/Métodos):
+	Representa a visibilidade dos atributos e das operações:
+	|-- + Público
+	|-- # Protegido
+	|-- - Privado
+	|-- ~ Pacote
+	|-- / Derivado
+
+Representação de uma classe:
+	Ex.: Representado uma classe Pessoa, que contém os atributos nome, sobrenome e dataNasc, além do método calculaIdade:
+	|-------------------------------|
+	|             Pessoa		| nome classe
+	|-------------------------------|
+	| - nome: String		|
+	| - sobrenome: String		| lista atributos
+	| - dataNasc: Date		|
+	|-------------------------------|
+	| + calculaIdade(dataNasc): Int | lista métodosU
+	| + estuda(): void		|
+	|-------------------------------|
+
+Relacionamento entre Classes:
+	Um relacionamento é uma conexão entre itens. Existem vários tipos de relacionamentos possíveis entre classes:
+	|--Dependência
+	|--Associação
+	|--Agragação
+	|--Composição
+	|--Generalização
+	Cada uma dessas tem uma representação gráfica específica.
+
+Relacionamento de dependência:
+	Dependência fraca, ilustra que uma classe usa informações e serviçoes de outra classe em algum momento, dependendo dela.
+	|---------------|	  |---------------|
+	|     Carro	| 	  |      Roda     |
+	|---------------|-------->|---------------|
+	|               |	  |               |
+	|---------------|	  |---------------|
+
+Multiplicidade:
+	A multiplicidade é usada para determina o número mínimo e o número máximo de objetos envolvidos na associação, de cada lado, e também pode especificar o nível de dependência entre objetos
+	Multiplicidade| Significado
+	     0..1     | No mínimo 0 e no máximo 1. indica não obrigatoriedade.
+	     1..1     | Um e somente um. Um objeto da classe se relaciona com um objeto de outra.
+	     0..*     | Mínimo nenhum e no máximo muitos.
+	     1..*     | Mínimo um e no máximo muitos.
+	      *	      | Muitos.
+	     2..7     | Mínimo 2 e no máximo 7.
+
+Relacionamento de Associação:
+	Relacionamento mais forte do que a dependência, indica que a classe mantém uma referência a outra classe ao longo do tempo. As associações podem conectar mais de duas classes. Do tipo "Classe A tem uma Classe B".
+	|---------------|	  |---------------|
+	|     Pessoa	|*	 *|     Revista   |
+	|---------------|________\|---------------|
+	|               | assina /|               |
+	|---------------|	  |---------------|
+	A seta representa a Navegabilidade, que identifica o sentido em que as informações são transmitidas entre os objetos das classes relacionadas (relacionamento unidirecional).
+	Navegabilidade não é obrigatória no diagrama.
+	É possível ocorrer relacionamento de auto relacionamento, que é uma associação entre instâncias da mesma classe, assumindo papéis distintos.
+
+Associação Ternária:
+	Associação que conecta objetos de três calsses. Um losango indica o ponto de convergência (conexão) das classes envolvidas.
+|---------------|	  /\        |---------------|
+|   Professor	|1..*	 /  \   1..*|     Turma     |
+|---------------|_______/    \______|---------------|
+|               |leciona\    /possui|               |
+|---------------|	 \  /       |---------------|
+			  \/
+			  |
+			  |utiliza
+		      1..*|
+		  |---------------|
+		  |     Sala	  |
+		  |---------------|
+		  |               |
+		  |---------------|
+
+Relacionamento de Agregação:
+	Relacionamento mais específico, indica que uma classe é um contêiner ou uma coleção de outras classes. As classes contidas não dependem do contêiner, quando o contêiner é destruido, as classes continuam existindo. Do tipo "Classe A possui uma Classe B".
+	|---------------|	  |---------------|
+	|  Departamento	|1..*	 1|   Instrutor   |
+	|---------------|/\_______|---------------|
+	|               |\/       |               |
+	|---------------|	  |---------------|
+
+Relacionamento de Composição:
+	Variação mais específico da agregação, indica que uma depêndencia de ciclo de vida forte entre as classes, de modo que quando um contêiner é destruído, seu conteúdo também o é. Do tipo "Classe A é parte da classe B".
+	Obs.: O diamante é cheio.
+	|---------------|	  |---------------|
+	|    Janela	|         |  BarraMenus   |
+	|---------------|//\\_____|---------------|
+	|               |\\//     |               |
+	|---------------|	  |---------------|
+
+Relacionamento de Generalização/Especialização:
+	Relacionamento entre itens gerais (superclasses/classe-mãe) e tipos mais específicos desses itens (subclasses/classe-filha). Representa a Herança entre as classes. Do tipo "Classe A é um tipo de Classe B".
+	|---------------|	  |---------------|
+	|     Animal	|         |     Peixe     |
+	|---------------|/|_______|---------------|
+	|               |\|       |               |
+	|---------------|	  |---------------|
+	A classe filha herda propriedades da classe mãe, principalmente atributos e operações, e pode possuir seus próprios.
+
+Classe Associativa:
+	São produzidas quando ocorrem associações com multiplicade muitos (*) em todas as extremidades. No geral, os atributos da associação que não podem ser armazenados em nenhuma das classes envolvidas.
+
+Resumo da notação de Relacionamento
+
+	----------> Dependência
+	__________\ Associação
+		  / 
+	_________/\ Agregação
+	         \/ 
+	_______//\\ Composição
+	       \\// 
+	_________|\ Herança
+		 |/
+
+Boas práticas ao criar diagramas de classe:
+	O nome da classe deve ser significativo;
+	Os relacionamentos devem ser identificados antes de criar o diagrama;
+	Devem ser especificados os atributos e operações de cada classe;
+	Sempre que necessário, acrescente anotações para ajudar a definir aspectos das classes ou seus relacionamentos;
+	
+O que são casos de uso:
+	Sistemas não existem de forma isolada. Há interação com humanos ou máquinas.
+	"Um Caso de Uso especifica o comportamento de um sistema (ou parte), e é uma descrição de um conjunto de sequências de ações para produzir um resultado observável do valor de um ator."
+	Usamos casos de uso para captar o comportamento pretendido de um sistema, sem especificar como esse comportamento é implementado.
+	Representam aspectos do comportamento de uma classe e modelam Requisitos.
+
+Aplicações dos casos de uso:
+	1 - Definir Escopo: Visualizar e entender as funcionalidades presentes no sistema;
+	2 - Identificar Papéis: Identificar quem interage com o sistema e com quais funcionalidades essa interação ocorre.
+
+A importância dos Casos de Uso:
+	Permite que os especialistas do domínio especifiquem sua visão externa;
+	Permitem que os desenvolvedores abordem um elemento e compreendam como ele deve ser utilizado;
+	Servem como base para testar cada elemento;
+
+Assunto:
+	É uma classe descrita por um conjunto de casos de uso.
+	Representa um sistema ou um subsistema;
+	Cada caso de uso modela um comportamento dessa classe, e em conjunto, eles descrevem o comportamento completo do assunto;
+
+Nomes:
+	Identifica e diferencia dos demais casos de uso do sistema;
+	São expressões verbais ativas, que nomeiam um comportamento específico do sistema;
+
+Atores:
+	Representa um conjunto de papéis que os usuário dos casos de uso desempenham ao interagir com eles;
+	Podem ser humanos, organizações ou ainda sistemas automatizados (equipamentos, outros sistemas, etc.), e são elementos externos ao sistema;
+	Eles se conectam a casos de uso por relação de associação, indicando que o ator e o caso de uso se comunicam entre si, com a possibilidade de enviarem e receberem mensagens;
+	O nome de um ator deve sempre informar seu papel, e não quem é representado;
+
+Como identificar Casos de Uso:
+	Quais as funcionalidades pretendidas para o sistema?
+	Elencar as necessidades e os objetivos de cada ator em relação ao sistema;
+	Quais informações o sistema precisa retornar?
+	o sistema precisa realizar ações que se repetem no tempo?
+	Considerando os requisitos funcionais, determinar um ou mais casos de uso que os implementem.
+
+Relacionamentos: 
+	Entre casos de uso e atores: associação;
+	Entre cassos de uso:
+	|--Generalização;
+	|--Extensão/Estentido;
+	|--Inclusão;
+	Entre atores: Generalização
+
+Fluxo de Eventos:
+	Especificamos o comportamento de um caso de uso com o Fluxo de Eventos. Nele incluimos:
+	1 - Quando e como o caso de uso se inicia e termina;
+	2 - Quando ele interage com os atores;
+	3 - Os objetos transferidos;
+	4 - Fluxo básico e fluxos alternativos do comportamento;
+
+Relacionamento entre atores e casos de uso:
+	Um ator se relaciona com um caso de uso por meio de um relacionamento de associação.
+	Ex:
+	Cliente
+	 o	           /-----\
+	 |	          /       \
+	--- _____________/ Efetua  \
+	 |  Associação   \ Pedido  /
+	 /\	          \       /
+		           \-----/
+
+Relacionamento de Inclusão (<<include>>):
+	Um caso de uso inclui de forma incondicional outro caso de uso.
+
+Relacionamento de Extensão (<<extend>>):
+	Um caso de uso pode estender a funcionalidade de um outro caso de uso. Comportamenteo opcional.
+	Também é possível utilizar Pontos de Exntesão e notas explicativas (Ver www.youtube.com/watch?v=K-BaRfFx0mA em 6:30).
+
+Relacionamento de Generalização:
+	A generalização ocorre quando um ator ou caso de uso possui as mesmas características de um elemento base, porém com caracterísitcas específicas.
+
+Relacionamento entre Atores:
+	Atores podem se relacionar entre si por meio de Generalização.
+
+Interação:
+	É uma especificação de como mensages e dados são trocados entre elementos.
+	Esses elementos podem ser humanos, como um cliente ou professor, ou não-humanos, como uma impressora ou um software.
+	Uma interação é composta por uma sequência de mensagens.
+	O envio de uma mensagem pode ser disparado pela ocorrência de certos eventos.
+	
+Diagramas de Interação:
+	Mostram um interação, que inclui um conjunto de objetos e seus relacionamentos, e as mensagens enviadas entre eles.
+	Mostra as interações em ordem sequencial, ou seja, na ordem em que elas ocorrem.
+	Os diagramas de interação são o Diagrama de Sequência, Diagram de Temporização, Diagrama de Visão Geral de Interação e o Diagrama de Comunicação.
+	
+Diagramas de Interação UML:
+	Comportamentais:
+	|--Sequência;
+	|--Comunicação;
+	|--Visão Geral de Interação;
+	|--Temporização;
+
+Aplicações dos Diagramas de Interação:
+	Podem ser empregados para diversos fins, como:
+	|--Representar a interação de um sistema completo com o ambiente;
+	|--Modelar a interação entre partes de um sistema, para mostrar um caso de uso específico;
+	|--Modelar comunicação interprocessos onde os elementos envolvidos devam observar protocolos específicos;
+	|--Obter uma visão abstrata do que acontece quando um programa está em execução;
+
+Diagrama: 
+	Sequencia:
+	|--É um dos diagramas de interação mais utilizados e mais implementados. Exemplo de um desses diagramas: (https://youtu.be/zzAQHa_PyPw?t=220);
+	Comunicação:
+	|--Exemplo de um desses diagramas:(https://youtu.be/zzAQHa_PyPw?t=239);
+	Temporização:
+	|--Mostra passagem do tempo; Exemplo de um desses diagramas: (https://youtu.be/zzAQHa_PyPw?t=248);
+	Visão Geral de Interação:
+	|--Diagrama que mostra uma visão geral da interação entre os elementos; Exemplo de um desses diagramas: (https://youtu.be/zzAQHa_PyPw?t=271);
+
+
+Continuar: https://www.youtube.com/watch?v=tezLX9quOVc&list=PLucm8g_ezqNqCRGHGHoacCo6N1bfN7hXZ&index=6

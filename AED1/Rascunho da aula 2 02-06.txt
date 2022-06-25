@@ -1,0 +1,62 @@
+- Complexidade de Algoritmos
+
+Como medir a eficiência dos algoritmos de uma forma independente de máquina?
+A métrica utiliza é simplesmente contar os passos, isso pode ser feito sem problemas se algoritmos forem sequênciais, ou no máximo, condicionais. Porém, existem estruturas não complexas como repetições e recursões.
+Por via de regra, o tempo de execução do algoritmo é medido em função do tamanho da entrada, esse tamanho é chamado de N que é medido em bits.
+
+Definições
+
+Θ(g(n)) = {f(n): existem constrantes positivas c1, c2, n0 tais que 0 <= c1g(n) <= f(n) <= c2g(n) para todo n >= n0} [a função f(n) cresce mais rápido que a função g(n)]
+
+O(g(n)) = {f(n): existem constrantes positivas c, n0 tais que 0 <= f(n) <= cg(n) para todo n>= n0} [a função f(n) não cresce mais rápido que a função g(n)]
+
+Ω(g(n)) = {f(n): existem constantes positivas c, n0 tais que 0 <= cg(n) <= f(n) para todo n >= n0} [a função f(n) cresce mais devagar que a função g(n)]
+
+Algoritmo de maior elemento:
+Entra lista L com n elementos
+|imaior <- 1			- 1 passo
+|para i de 2 até n faça		- 1 passo
+||se L(i)>L(imaior) então	_ - n passos
+|||imaior <- 1			 |- 1 passo
+||fim se			_|- *
+|fim para			- 1 passo
+|retorna L(imaior)		- 1 passo
+fim algoritmo
+
+* 2n + 2 passos tamanho da lista [O(n)]
+
+total 4 + 2x(n-1) passos
+
+
+N = nlogm
+
+N - tamanho da entrada
+n - quantidade de elementos
+m - grandeza do elemento
+quanto mais espaço/tempo um algoritmo precisa, mais complexo ele é.
+
+1 < logn < (log^(k))n < raiz(n) < n < nlogn < n² < n²logn< n³ < n^k < 2^n < n! < n^n
+
+n é desejável e n^n é intratável
+
+
+Algoritmo Primo
+Entrada um número n
+|primo <- sim				_-
+|para i de 2 até raiz(N) faça		 |raiz(n) - 2
+||se i divide n (n % i = 0) então	_|- 1 passo
+|||primo <- não
+|||sai do laço
+||fim se
+|fim para
+|retorna primo
+fim algoritmo
+
+
+Lei de Moore: a mais ou menos cada 1 ano e meio, a velocidade dos processadores dobra. de 1979 até 2022 os prcessadores ficaram 2^28 vezes mais rapido, aproximadamente, 268 milhões de vezes mais rápido.
+
+Um programa que rodava em 1 semana em 1979, roda em quanto tempo hoje em dia? aproximadamente 0,002 segundos hoje em dia.
+
+Um programa que rodava em 1 bilhão de anos em 1979, roda em quanto tempo hoje em dia? aproximadamente 117.671.641 segundos, ou 1.361 dias.
+
+na prática, como as entradas são diferentes e o algoritmos são sensíveis à entrada, medimos a complexidade em pior caso (inferencia), melhor caso (interesse) e caso médio (difícil de calcular / estatístico).

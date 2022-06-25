@@ -1,0 +1,362 @@
+Grafos são estruturas matemáticas que permitem codificar relacionamentos entre pares de objetos
+
+Os objetos são os vértices (ou nós) do grafo
+
+Os relacionamentos são suas arestas
+
+São representados como um conjunto de nós (vértices) conectados par a par por linhas (arestas)
+
+Para que servem grafos?
+	Modelar conexões em redes sociais;
+	Labirintos;
+	Rotas de metrô;
+
+Conceitos básicos - grafos dirigidos (ou direcionados):
+	As relações representadas pelas arestas têm sentido definido;
+	As arestas só podem ser seguidas em uma única direção;
+	As arestas são pares ordenados de vérticies, saindo de um em direção ao outro;
+	É possível ter arestas que sejam o mesmo vértice (self-loop)
+
+Conceitos básicos - grafos não dirigidos (ou não direcionados):
+	As relações representadas pelas arestas não tem sentido definido, ou seja, as arestas tem sentido duplo. Podendo elas serem seguidas em qualquer direção;
+	As arestas são pares não ordenados de vértices;
+	Self-loops não são permitidos;
+
+Conceitos básicos:
+	Se (u, v) é uma aresta no grafo, então dizemos que "v" é adjacente a "u".
+	(u, v) significa que a aresta sai de "u" e entra em "v".
+	Em grafos não dirigidos, a relação de adjacência é simétrica (u, v) <=> (v, u). Nos grafos dirigidos, não necessariamente há tal simetria.
+
+Grau de um vértice:
+	Em grafos não dirigidos, o grau de um vértice é o número de arestas que incidem nele:
+	Ex:
+			v3
+		       /| \
+                      / |  \
+		     /  |   \
+                   v1---v2   v5---v4
+
+	gr(v1) = gr(v2) = gr(v5) = 2
+	gr(v3) = 3
+	gr(v4) = 1
+
+	Já nos grafos dirigidos, o grau de um vértice é o número de arestas que saem do vértice mais o número de arestas que chegam nele.
+	Porém, nesses grafos, há dois tipos de graus de vértice: grau de saída (número de arestas que saem do vértice) e grau de entrada (número de arestas que chegam no vértice).
+	Ex:
+			v3
+		      /\/\\
+                      / |  \       |---|
+		     /  |   \/	  \/   |
+                   v1-->v2   v5<--v4---| 
+	gr(v1) = gr(v2) = gr(v5) = 2
+	gr(v3) = gr(v4) = 3
+	grS(v5) = 0
+	grS(v2) = grS(v3) = 1
+	grS(v1) = grS(v4) = 2
+	grE(v1) = 0
+	grE(v2) = grE(v4) = 1
+	grE(v4) = grE(v5) = 2
+
+Caminhos de um grafo
+	Um caminho de um vértice "x" a um vértice "y" é uma sequência de vértices em que, para cada vértice do primeiro ao penúltimo, há uma aresta ligando esse vértice ao próximo na sequência.
+	Tomando como base o exemplo já utilizado, temos como caminhos:
+	Ex:
+			v3
+		      /\/\\
+                      / |  \       |---|
+		     /  |   \/	  \/   |
+                   v1-->v2   v5<--v4---| 
+	(v1, v2, v3, v5)
+	(v4, v5)
+	(v1, v2, v3)
+	(v4, v4, v5)
+
+	E cada um desses caminhos tem um comprimento, que é o número de arestas nele:
+	compr(v1, v2, v3, v5) = 3
+	compr(v4, v5) = 1
+	compr(v1, v2, v3) = 2
+	compr(v4, v4, v5) = 2
+
+	Um ciclo acontece quando, a partir de um determinado vértice, pudermos percorrer algum caminho que nos leve a esse mesmo vértice, em grafos dirigidos, o caminho deve conter pelo menos uma aresta.
+	Ex. de ciclos .:
+	(v4, v4), (v1, v2, v3, v1)
+
+	Em grafos não dirigidos, um ciclo deve conter pelo menos 3 arestas.
+	Se grafos possuem pelo menos um ciclo, eles são chamados de cíclicos, grafos sem ciclos são chamados de acíclicos.
+
+Conectividade
+	Um grafo não direcionado é "conexo (ou conectado)" se cada par de vértices nele estiver conectado por um caminho. Um grafo com mais de um pedaço é considerado desconexo.
+	Em grafos dirigidos é "formente conexo" se existir um caminho entre qualquer par de vértices no grafo.
+	Contém um caminho direto de "u" para "v" e um caminho  direto de "v" para "u" para cada par de vértices (u, v).
+	Ex.:
+			v3
+		       //\\
+                      / |  \       
+		    \/  |   \/	  
+                   v1-->v2   v5<--v4
+		        /\         |
+			 |---------|
+	Um grafo dirigido é "conexo" se possuir um caminho de "u" para "v", ou um caminho de "v" para "u", para cada par de vértices (u, v).
+	Um grafo dirigido é fracamente conexo se a substituição de todas as suas arestas por arestas não-direcionadas produz um grafo conexo.
+
+Ponderação de grafos:
+	Grafos podem ser ponderados:
+		Caso em que possuem pesos associados às suas arestas. Esses pesos podem representar custos, distâncias etc.
+	
+Obs.: Ávore é um tipo de grafo acíclico, conexo e não-dirigido
+
+Representação
+	Um grafo pode ser representado como um mapeamento de cada nó à lista de nós aos quais ele está conectado;
+	Ex. grafo não dirigido:
+			v3
+		       /|\
+		      / | \
+                     /  |  \
+                   v1---v2  \
+                        |    \
+                        |     \
+                        v4----v5
+	Nó|Conectado a
+	v1|v2, v3
+        v2|v1, v3, v4
+        v3|v1, v2, v5
+        v4|v2, v5
+        v5|v3, v4
+
+	Ex. grafo dirigido:
+			v3
+		       //\\
+		      / |  \
+                    \/  |   \
+                   v1-->v2   \
+                        /\    \
+                        |     \/
+                   |--->v4<----v5
+		   |	|
+		   |----|
+	Nó|Conectado a
+	v1|v2
+        v2|v3
+        v3|v1, v5
+        v4|v2, v4
+        v5|v4
+
+	No computador, grafos possuem duas maneiras de serem representados: matrizes de adjacência ou listas de adjacência.
+	Uma matriz de adjacências "A" de um grafo com "n" vértices é uma matriz nxn de bits, em que:
+	A[i, j] = 1 se houver uma aresta indo vo vértice i para o vértice j no grafo.
+	Ex. grafo não dirigido:
+			v3
+		       /|\
+		      / | \
+                     /  |  \
+                   v1---v2  \
+                        |    \
+                        |     \
+                        v4----v5
+
+	   v1 v2 v3 v4 v5
+	v1 0  1  1  0  0
+	v2 1  0  1  1  0
+	v3 1  1  0  0  1
+	v4 0  1  0  0  1
+	v5 0  0  1  1  0
+
+	E caso for um grafo ponderado
+	Ex. grafo não dirigido:
+			v3
+		       /|\
+		    12/4| \
+                     /  |  \
+                   v1---v2  \40
+                      2 |3   \
+                        |  8  \
+                        v4----v5
+
+	   v1 v2 v3 v4 v5
+	v1 0  2  12 0  0
+	v2 2  0  4  3  0
+	v3 12 4  0  0  40
+	v4 0  3  0  0  8
+	v5 0  0  40 8  0
+
+	Obs.: Para coordenadas onde não se possui aresta, é necessário definir um padrão para indicar onde não tem aresta
+
+	Para grafos dirigidos, a diferença é só terá valor quando ouver caminho de uma aresta para outra
+	Ex. grafo dirigido:
+			v3
+		       //\\
+		    12/4|  \
+                    \/  |   \
+                   v1-->v2   \40
+                      2/\3    \
+                        |  8  \/
+                        v4<----v5
+
+	   v1 v2 v3 v4 v5
+	v1 0  2  0  0  0
+	v2 0  0  4  0  0
+	v3 12 0  0  0  40
+	v4 0  3  0  0  0
+	v5 0  0  0  8  0
+
+Implementação de um grafo
+	Será uma estrutura que guarda o número de vértices e arestas, e matriz de adjacências (com pesos nas arestas).
+	Ex.:
+	struct grafo:
+	  vertices
+	  arestas
+	  ponderação
+	Nesse tipo de struct, os nós não guardam informação, caso necessário, é necessário fazer um mapeamento entre essa informação e seu nó correspondente na tabela (número da linha).
+
+Lista de adjacências:
+	A segunda maneira de representar um grafo é por meio de uma lista de adjacências
+	Uma lista de adjacências de um grafo com n vértices consiste de um arranjo de n listas ligadas, uma para cada cértice no grafo.
+	Para cada vértice "u", a lista contém todos os vizinhos de "u".
+	Os seja, todos os vértices "vi" para os quais existe uma aresta (u, vi).
+	Ex. grafo não dirigido:
+			v3
+		       /|\
+		      / | \
+                     /  |  \
+                   v1---v2  \
+                        |    \
+                        |     \
+                        v4----v5
+	lista de adjacências:
+	v1 -> v2 -> v3
+	v2 -> v1 -> v3 -> v4
+	v3 -> v1 -> v2 -> v5
+	v4 -> v2 -> v5
+	v5 -> v3 -> v4
+	
+	Ex. grafo não dirigido com peso:
+			v3
+		       /| \
+		    12/4|  \
+                     /  |   \40
+                   v1---v2   \
+                      2 |3    \
+                        |   8  \
+                        v4<----v5
+	lista de adjacências:
+	v1 -> v2,2 -> v3,12
+	v2 -> v1,2 -> v3,4 -> v4,3
+	v3 -> v1,12 -> v2,4 -> v5,40
+	v4 -> v2,3 -> v5,8
+	v5 -> v3,40 -> v4,8
+
+	Ex. grafo dirigido com pesO:
+			v3
+		       //\\
+		    12/4|  \
+                    \/  |   \
+                   v1-->v2   \40
+                      2/\3    \
+                        |  8  \/
+                        v4<----v5
+	lista de adjacências:
+	v1 -> v2,2
+	v2 -> v3,4
+	v3 -> v1,12 -> v5,40
+	v4 -> v2,3
+	v5 -> v4,8
+
+Implementação para essa representação
+	struct adjacencia:
+	  vertice
+	  ponderação
+	  ADJACENCIA próximo
+
+	struct vertice:
+	  ADJACENCIA cabeçaDaListaDeAdjacências
+
+	struct grafo:
+	  vertices
+	  arestas
+	  VERTICE
+
+Quando usar matriz ou adjacência no grafo?
+	Se o gráfico for denso (muitas arestas em relação ao número de vértices) ou esparso (com poucas arestas).
+	Com grafos densos, a lista de adjacência ocupa mais memória, então é recomendado utilizar matriz.
+	Com grafos esparsos, é mais indicado lista de adjacências.
+	Busca são mais rápidas com listas de adjacências.
+	Verificar a existência de arestas entre ois vértices é mais rápido com matrizes de adjacência.
+	Encontrar os precedessores é mais rápido com matrizes.
+
+Resumo:
+	Matriz de adjacência:
+	|--Grafos densos;
+	|--Operações como teste de arestas;
+	|--Identificação de predecessores;
+
+	Listas de adjacência:
+	|--Grafos esparsos;
+	|--Operações que tenham como base um caminho de um vértice a outro (Ex.: busca);
+
+Busca em profundidade:
+	A busca em profundidade (Depth-first search ou DFS) é buscar mais fundo no grafo sempre que possível.
+	A busca para quando encontramos o que queríamos ou visitamos todos os vértices.
+	Na busca em profundidade, as arestas são exploradas a partir do vértice "v" mais recentemente descoberto que ainda tem arestas não exploradas saindo dele.
+	Quando todas as arestas de "v" são exploradas, a busca volta ao vértice anterior a "v" (backtraking), para seguir arestas ainda não exploradas.
+	O processo continua até que tenhamos descoberto todos os vértices que são atingíveis a partir do vértice inicial.
+	Um vértice "v" é atingível a parteir de um vértice "u" se houver um caminho de "u" a "v" no grafo.
+	Se restarem ainda vértices não visitados, um é selecionado e reiniciamos a busca a partir dele.
+
+Funcionamento:
+	Defina um nó inicial;
+	Enquanto este não for um nó final ou um nó objetivo:
+	  Escolha um de seus adjacentes ainda não visitados;
+	  Visite-o;
+	Se nó final não objetivo:
+	  Volte ao pai deste;
+	  Se houver pai, repita. Se não escolha outro nó inicial;
+
+Implementação:
+	Nessa implementação, iremos "colorir" os vértices durante a busca, indicando seu estado;
+	Será branco quando não visto ainda, amarelo quando descoberto na busca e vermelhor quando for finalizado (quando sua lista de adjacentes for completamente terminada).
+	A implementação ficará a seguinte:
+	define branco 0
+	define amarelo 1
+	define vermelho 2
+
+	struct adjacencia:
+	  vertice
+	  ponderação
+	  ADJACENCIA próximo
+
+	struct vertice:
+	  ADJACENCIA cabeçaDaListaDeAdjacencias
+
+	struct grafo:
+	  vertices
+	  arestas
+	  VERTICE
+
+	profundidade(GRAFO g):
+	  cor[g.vertices]
+	  u = 0
+	  enquanto u < g.vertices então
+	    cor[u] = branco
+	    u++
+	  Fim enquanto
+	  u = 0
+	  enquanto u < g.vertices então
+	    Se cor[u] == branco então
+	      visitaProfundidade(g, u, cor);
+	    Fim se
+	    u++
+	  Fim enquanto
+
+	visitaProfundidade(GRAFO g, u, cor):
+	  //adiciona aqui o que será retornado
+	  //caso esse seja o nó encontrado;
+	  cor[u] = amarelo
+	  ADJACENCIA v = g.adjacencia[u].cabeçaDaListaDeAdjacencias
+	  Enquanto v então:
+	    Se cor[v.vertice] == branco então
+	      visitaProfundidade(g, v.vertice, cor)
+	    Fim se
+	    v = v.proximo
+	  Fim enquanto
+	  cor[u] = vermelho
+

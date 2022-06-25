@@ -1,0 +1,257 @@
+Árvore Binária:
+	É composta por um no raiz que pode ter nenhum a 2 filhos, onde cada filho também é uma árvore binária.
+
+Árvore Binária de Busca:
+	É uma árvore binária que segue uma regra especial para organizar seus elementos.
+	Regra para insersão de um novo elemento:
+		1 - Se ainda não há nó raiz, então o novo elmento será o próprio nó raiz;
+		2 - Se há nó raiz, então compare o novo elemento com o nó raiz:
+			2.1 - Caso o elemento seja menor que o elemento do nó raiz, então o novo elemento é inserido na sub-árvore da esquerda;
+			2.2 - Caso o novo elemento seja maior que o elemento do nó raiz, então o novo elemento é inserido na sub-árvore da direta;
+
+Buscar N na arvore:
+Busca(raiz, N):
+  Se raiz != N então
+    Se N > raiz então
+      Busca(raiz.direita, N)
+    Se não
+      Busca(raiz.esquerda, N)
+    Fim Se
+  Se não
+    escrever ("Encontrado N")
+  Fim Se
+
+Inserir N na arvore:
+Inserir (raiz, N):
+  Se raiz != nulo então
+    Se N < raiz então
+      Se raiz.esquerda == nulo
+        raiz.esquerda = N
+      Se não
+        Inserir (raiz.esquerda, N)
+      Fim Se
+    Se não
+      Se raiz.direita == nulo
+        raiz.direita = N
+      Se não
+        Inserir (raiz.direita, N)
+      Fim Se
+    Fim Se
+  Se não
+    raiz = N
+  Fim Se
+
+Para Deletar são 3 casos:
+	1 - Se o nó não tem filhos, remova
+	2 - Se o nó possui apenas um único filho, remova o nó e coloque o filho no lugar
+	3 - Se o nó possui dois fihos, duas opções:
+	|--3.1-- Susbtituir pelo maior nó da sub-árvore da esquerda
+	|--3.2-- Substituir pelo menor nó da sub-árvore da direita, depois deletar o nó usado na substituição usando caso 1 ou caso 2
+
+Ávore AVL: Relações e Balanceamento em Árvores Binárias de Busca
+	As operaçãoes básicas, como busca, inserção, remoção, levam um tempo proporcional ao número de níveis da árvore binária de busca.
+	Portanto deseja-se manter a árvore sempre com a menor quatidade de nível.
+	Para verificar o equilíbrio são realizados dois passos:
+		1 - Detectar o desequilíbrio:
+		|---- O equilíbrio de uma árvore binária de busca é medido subtraindo o número de níveis na sub-árvore da esquerda do número de níveis na sub-árvore da direita. Para cada valor maior que 1 e menor que -1 considera a árvore como desequilibrada.
+		2 - Corrigir o desequilíbrio:
+		|---- O desequilíbrio é resolvido através das rotações.
+
+Rotação de árvores:
+	Existem 4 tipos de rotações:
+		1 - Rotação à esquerda;
+		2 - Rotação à direita;
+		3 - Rotação dupla à esquerda;
+		4 - Rotação dupla à direita;
+
+Rotação à esquerda:
+	Consiste em mover os nós que estão na sub-árvore da direita para a esquerda da árvore.
+	Filho da direita vira nova raiz, A raiz original vira filho da esquerda da nova raiz.
+	Ex.:
+		1
+		 \
+		  2      =>         2
+		   \		   / \
+		    3		  1   3
+
+	E caso o filho da direita já tem um filho da esquerda?
+	Ex:
+		1		    2
+		 \		   / \
+		  2      =>       1   3
+		 / \		   \
+		x   3		    x
+	Ou seja, o filho da esquerda do filho da direita vira filho da direita do filho da esquerda.
+
+Resumindo rotação à esquerda:
+		A		    B
+		 \		   / \
+		  B      =>       A   D
+		 / \		   \
+		C   D		    C
+	1 - B é a nova raiz;
+	2 - O filho da esquerda de B vira filho da direita de A;
+	3 - A vira filho da direita de B;
+
+Rotação à direita:
+		C		  B
+	       /		 / \
+	      B		=>	A   C
+	     / \		   /
+	    A   D		  D
+	1 - B é a nova raiz;
+	2 - O filho da direita de B vira filho da esquerda de C;
+	3 - C vira filho da direita de B;
+
+Rotação dupla à esquerda:
+	Consistem em, realizar uma rotação a direita na sub-árvore da direita e depois um rotação à esquerda na árvore original:
+	Ex.:
+		A	   A
+		 \	    \	       B
+		  C	=>   B	=>    / \
+		 /	      \      A   C
+		B	       D     
+
+Rotação dupla à direita:
+	Consistem em, realizar uma rotação à esquerda na sub-árvore da esquerda e depois um rotação à direita na árvore original:
+	Ex.:
+
+		  C		C
+		 /	       /	 B
+		A 	=>    B	   =>   / \
+		 \	     /	       A   C
+		  B	    A
+
+Como decidir as Rotações
+	Através da utilização a fórmula: Q = R - L, onde:
+	Q: Fator de equiíbrio;
+	R: Número de níveis a direita;
+	L: Número de níveis a esquerda;
+
+	Se -1 <= Q <= 1 -> Árvore Equilibrada
+	|---Se Q > 1:
+	    |----Se a sub-árvore da direita tem Q < 0
+	         |----Rotação dupla à esquerda
+	    |----Se não:
+	         |----Rotação à esquerda
+	|---Se Não:
+	    |----Se a sub-árvore da esquerda tem Q > 0
+		 |-----Rotaçã dupla à direita
+	    |----Se não:
+	         |----Rotação à direita
+
+RotaçãoDireita(Nó y):
+  Nó x, temp
+  x = y.esquerda
+  temp = x.direita
+  x.direita = y
+  y.esquerda = temp
+  y = x
+
+RotaçãoEsquerda(Nó y):
+  Nó x, temp
+  x = y.direita
+  temp = x.esquerda
+  x.esquerda = y
+  y.direita = temp
+  y = x
+
+RotaçãoDuplaDireita(Nó y):
+  RotaçãoEsquerda(y.esquerda)
+  RotaçãoDireita(y):  
+
+RotaçãoDuplaEsquerda(Nó y)
+  RotaçãoDireita(y.direita)
+  RotaçãoEsquerda(y)
+
+Árvore Rubro-Negra:
+	É uma árvore de busca binária com os atributos cor e pai.
+	A coloração é utilizada para fazer o balanceamento da árvore.
+	Necessita seguir as seguintes condições:
+	1 - Todo nó é rubro ou negro;
+	2 - A raíz da árvore é sempre negra;
+	3 - Todo nó nulo tem cor negra;
+	4 - O pai de um nó rubro é sempre negro;
+	5 - Qualquer caminho de um nó até um nó nulo tem sempre o mesmo número de nós negros.
+
+Comparação entre as duas binária de busca e rubro-negra
+	Ambas apresentam complexidade logarítmica;
+	Na AVL a altura de duas subárvores irmãs diferem no máximo em 1;
+	Na rubro-negra a altura de uma subárvore pode ser até o dobro da altura da sua irmã;
+	Na rubro-negra o fator de balanceamento é definido pelas cores dos nós;
+
+Inserção da Rubro-negra:
+	Cada novo nó inserido, por definição é rubro;
+	A inserção é exatamente igual em uma ABB;
+	Após a inserção, verifique se as propriedade da rubro-negra ainda se mantêm;
+	Lembrando:
+		A raiz da árvore é sempre Negra;
+		Se o pai do novo nó inserido for negro, todas as propriedades se mantêm;
+		Se o pai do novo nó inserido for rubro, é necessário fazer rotações ou alterações de cor;
+
+Caso 1 - o pai e o tio do novo nó são rubros:
+
+	57N	      57N	    57V		  57N
+       /   \    =>   /   \    =>   /   \    =>   /   \
+     35V   70V	   35V   70V	 35N   70N     35N   70N
+			 /	       /	     /
+		       61V	     61V	   61V
+
+	Nesse caso, Pai e Tio ficam negros e avô fica rubro (se não for a raiz da árvore);
+	Atenção:
+		Se o pai do avô for rubro, inicia novamente o processo de verificação dos casos;
+	
+Caso 2: O pai é rubro e o tio é negro:
+	Existem duas possibilidades: quando é necessário uma ou duas rotações
+
+Rotação simples:
+	57N	      57N	    35P
+       /   \    =>   /   \    =>   /   \
+     35V  null	   35V  null	 24V   57V
+		   /	 	       	 \
+		 24V    	        null
+	Nesse caso, pai fica Negro, avô fica rubro; rotaciona o avô para a direita
+
+Rotação dupla:
+	57N	      57N	    57P		    40P
+       /   \    =>   /   \    =>   /   \     =>    /   \
+     35V  null	   35V  null	 40V  null       35V   57V
+		     \	 	 /			 \
+		     40V       35V			null
+	Nesse caso, rotaciona o pai para a esquerda, novo ó = filho esquerodo do novo no, pai fica negro, avô fica rubro e rotaciona o avô para a direita.
+
+Tentei fazer uma árvore rubro-negra com o meu nome.
+https://docs.google.com/spreadsheets/d/1lyWvcubJS3BxFgUxbrGIbrQhIWiFvxXol0sY6SvT6P8/edit#gid=0
+
+Continuar vendo daqui
+https://www.youtube.com/channel/UC_I7-EDfvo0OB7Nx3Poj02w
+
+struct nó:
+  t info
+  esquerda, direita, pai
+  cor
+
+verificaBalanceamento(nó x):
+  enquanto x.cor == rubro e x.pai != nulo e x.pai.cor == rubro
+    se x.pai é filho direito então
+      tio é filho direito
+      se tio.cor == rubro
+        x.pai.cor = tio.cor = negro
+        avo.cor = rubro
+        x = avo
+      se não
+        se x é fiho direito
+          RotaçãoEsquerda(avo)
+          x = x.esquerda
+        fim se
+        RotaçãoDireita(avo)
+        avo.cor = rubro
+        x.pai.cor = negro
+        x = no.pai
+      fim se
+    se não
+      //aqui implementa o caso em que 
+      //o pai de x é filho direito
+    fim se
+    raiz.cor = negro
+  fim enquanto

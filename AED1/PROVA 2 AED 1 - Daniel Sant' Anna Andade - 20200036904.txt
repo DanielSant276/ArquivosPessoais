@@ -1,0 +1,35 @@
+1) Uma tabela hash é um vetor na qual cada um dos espaços com uma capacidade "m" armazena uma quantidade de chaves "n". Na tabela, a posição de uma chave é uma função da chave onde "n" não pode ser maior que "m" se não ocorre colisão, duas chaves apontando para o mesmo endereço. A principal utilização da tabela hash é em alocar grandes quantidades de dados em uma estrutura pequena.
+
+2) A blockchain é uma forma de registrar dados criada para ser distribuída virtualmente e que seja impossível de ser violada. Inicialmente ela foi criada para ser utilizada com o Bitcoin, mas hoje em dia possui diversas formas de utilização, como jogos e registro de posse, gerando os NFTs (token não fungíveis).
+O ID de um bloco da blockchain é um hash (SHA256) da junção de sua informação, do nonce e do ID do bloco anterior a esse. Dessa forma, caso seja alterada a informação de qualquer bloco, sua ID será alterada e irá entrar em conflito com o próximo bloco, pois ele apontará para uma ID diferente sendo necessário modificar todos os blocos seguintes ao bloco fraudado. Assim, para alterar a informação de um bloco na blockchain é preciso que apenas um usuário tenha mais de 51% da potência computacional de toda a blockchain, pois um bloco se torna válido quando todos os usuários da rede validam o mesmo. Se tornando quase impossível que alguém fraude uma sequência de informação.
+Sabendo de tudo isso, é de fácil entendimento que a blockchain é promissora por ser capaz de não só registrar transações financeiras, como é feita em sua maioria hoje em dia, mas também de registrar quase qualquer transação, desde escrituras de casas a validação de processos judiciais e até mesmo de acontecimentos mundiais, evitando fraudes de manipulação de informação.
+
+3) [5, 2, 6, 1, 3, 4, 7];
+
+     5
+   /   \
+  2    6
+ /\    /\
+1  3  4  7
+
+4) Uma árvores binária, é uma árvore em que cada nó possui no máximo 2 filhos (que são chamados de sub-árvore esquerda e sub-árvore direita), podendo ser uma árvore completa (apenas no último e no penúltimo nível ocorre nós sem filhos) ou cheia (apenas no último nível há nós sem filhos). Já uma árvore binária de busca, é uma árvore onde cada nó x está associado a uma chave Sxe e Sxd, onde Sxe é um valor menor que x e Sxd é um valor maior do que x.
+
+5) Pois devido a utilização de pilha para guardar a sequência de informação de um algoritmo recursivo, sequências Fibonacci muito grandes terão o problema de gerar uma pilha muito grande, podendo acarretar em estouro de pilha. Além de demorar muito para o cálculo final, pois cada função irá abrir 2 novas estruturas recursivas, calculando muitas vezes o mesmo valor diversas vezes. Como por exemplo no esquema abaixo, para calcular a fibonacci do 5º termo a função fibonacci do 2º termo será executada 3 vezes e a função função fibonacci do 1º e 3º termo será executado 2 vezes, gerando assim execuções desnecessárias.
+
+	             fib(5)
+	      /	   	       \
+          fib(4)	    fib(3)
+        /        \        /        \
+     fib(3)    fib(2)   fib(2)   fib(1)
+     /    \  
+fib(2)fib(1)
+
+6)
+function multi(num1, num2) {
+  if (num2 == 1) {
+    return num1;
+  }
+  return num1 + multi(num1, num2 - 1);
+}
+
+A função recebe os dois números e retorna o primeiro caso o segundo seja igual a 1, se o primeiro for maior que um ela retorna a soma do primeiro número mais a função recursiva novamente, porém agora entre o primeiro número e o segundo menos 1. Dessa forma, o primeiro número será o valor principal e o segundo número será a quantidade de vezes em que a função irá ocorrer.

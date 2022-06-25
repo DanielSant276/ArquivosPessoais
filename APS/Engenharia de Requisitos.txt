@@ -1,0 +1,16 @@
+O que é Engenharia de Requisitos // Engenharia de Software #01 ---- https://www.youtube.com/watch?v=i5WR9xFKg70
+
+Engenharia de Requisitos:
+	Área dentro da engenharia de software que trata do levantamento de requisitos com o cliente.
+
+Definições segundo o IEEE:
+	1 - Um condição ou capacidade necessário para um usuário resolver um problema ou alcançar um objetivo;
+	2 - Um condição ou capacidade que deve ser alcançada ou estar presente em um sistema ou componente de sistema para satisfazer um contrato, norma, especificação ou outro documento formalmente imposto;
+	3 - Uma representação documentada de uma condição ou capacidade como em (1) e (2);
+
+Stakeholder:
+	É uma pessoa ou uma organização que tem uma influência (direto ou indireta) nos requisitos de um sistema. São as pessoas ou sistemas que terão o uso direto ou indireto ao sistema.
+
+Inportâncias na engenharia de Requisitos:
+	Conhecer os requisitos relevantes, estabelecer um consenso entre os stakeholders a respeito de tias requisitos, documentar os requisitos de acordo com determinados padrões e gerenciar os requisitos de forma sistemática.
+	Compreender e documentar as expectativas e necessidades dos stakeholders, especifidar e gerenciar os requisitos para minimizar o risco de entregar um sistema que não atenda às suas expectativas e necessidades.

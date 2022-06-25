@@ -1,0 +1,78 @@
+O trabalho principal de um gerente de projetos é
+
+Cumprimento de prazos - Fazer cumprimir o cronograma estipulado para a produção.
+
+Controle da verba - Tentar manter os gastos dentro do estipulado.
+
+Entrega dentro da qualidade estabelecida - Verificar se o produto atende as necessidades estabelecidas pelo cliente.
+
+Qualidade de vida da equipe de produção
+
+
+
+
+Já um engenheiro de softwares
+
+Possui um produtointangível - Dificil ver o processo de produção do projeto simplesmente olhando par ele, necessidade de outros defenirem o que foi realizado e quanto falta
+
+projetos únicos - Devido a grande mudança de tecnologia, um gerente de softwares precisa sempre estar renovando seu conhecimento e ganhando nova experiência para não se tornar obsoleto
+
+Processos variam de empresa para empresa - apesar da padronização os processos variam de organização para organização.
+
+
+
+
+responsabilidade - apesar da grande variação, alguns tópicos são padrões como:
+
+
+Planejamento de projeto - os gerenes surpevisionam o trabalho para garantir que seja realizado como exigido, criando planejamentos e cronogramas. cancelamento de projeto
+
+Geração de relatórios - Registro do andamento do projeto para os clientes e para os outros gerentes.
+
+Gerenciamento de riscos - avaliam as situações que podem impactar o projeto, controlando esses riscos e contornando os problemas.
+
+Gerenciamento de pessoas - escolhem as pessoas da sua equipe de forma que crie um ambiente de trabalho eficaz para todos
+
+Elaboração de propostas - define os objetivos do projeto e como será sua realização, incluindo estimativas de custos, cronograma de produção e motivo da escolha da equipe.
+
+
+
+riscos
+
+Riscos de projeto - Riscos que afetam o cronograma ou os recursos de projeto
+
+Riscos de produto - Riscos que afetam a qualidade e o desempenho do software
+
+Riscos de negócio - Os riscos que afetam a organização que desenvolve ou adquire o software. carro que explode
+
+Identificação de riscos. Você deve identificar possíveis riscos de projeto, de produto e de negócios.
+
+Análise de riscos. Você deve avaliar a probabilidade e as consequências desses riscos.
+
+Planejamento de riscos. Você deve planejar para enfrentar o risco, evitando ou minimizando seus potenciais impactos sobre o projeto.
+
+Monitoramento de riscos. Você deve avaliar  egularmente os riscos e seus planos para mitigação de riscos e atualizá-los quando souber mais sobre os riscos.
+
+
+
+Falar de criatividade, que os funcionários da equipe são extremamente importantes para o funcionamento projeto.
+
+Consistência - Um gerente deve receonhcer de forma igualitária todos os membros da equipe
+
+Respeito - Todos os membros da equipe devem ter oportunidades de contribuir, respeitando as diferenças e individualidades de cada um. 
+
+Inclusão - Pessoas contribuem efetivamente quando sentem que são ouvidas por outras pessoas e que suas propostas são levadas em consideração. É importante desenvolver um ambiente de trabalho em que todas as visões são consideradas
+
+Honestidade -  Transparência sobre o que está indo bem e mal na equipe e sempre estar disposto a submeter-se a algum membro da equipe com mais conhecimento, quando necessário.
+
+
+
+Trabalho de equipe - Em grandes projetos, terá sempre uma quantidade muito grande de pessoas trabalhando, mas para menter uma fluidez, as pessoas são divididas em pequenas equipes, com não mais que 10 pessoas para reduzir problemas operacionais e de comunicação. Retraido por medo em equipes grandes
+
+Estabelece seus próprios padrões de qualidade - são estabelecidos por consenso de todos os participantes da equipe com base na visão da sua parte do projeto.
+
+Mentalidade de grupo e não individual - os participantes se auxiliam encorajando a aprendizagem mútua.
+
+Conhecimento compartilhado - mesmo que um membro do grupo saia, os outros membros tem capacidade de assumir sua resposabilidade.
+
+Incentivo de refatoração contínua - o grupo trabalha para gerar alta qualidade nos resultados e são incentivados a corrigir problemas encontrados.

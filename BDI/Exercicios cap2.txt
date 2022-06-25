@@ -1,0 +1,15 @@
+4: Considere o relacionamento CASAMENTO que aparece no DER da Figura 2.7. Segundo este DER o banco de dados poderia conter um casamento em que uma pessoa está casada consigo mesma? O DER permite que a mesma pessoa apareça em dois casamentos diferentes, uma vez como marido e outra vez com esposa? Caso uma destas situações possa ocorrer, como deveria ser modificado o DER para impedi-las?
+
+7: Mostre como o modelo ER da Figura 2.11 pode ser representado sem uso de relacionamentos ternários, apenas usando relacionamentos binários.
+
+10: Considere o DER da Figura 2.12. Para que a restrição de cardinalidade mínima seja obedecida, que ocorrências de entidade devem existir no banco de dados, quando for incluída uma ocorrência de EMPREGADO? E quando for incluída uma ocorrência de MESA?
+
+11: Construa um DER que modela a mesma realidade que a mostrada no DER da Figura 2.16, usando apenas relacionamentos 1:n.
+
+12: Considere o relacionamento EMPREGADO-DEPENDENTE que aparece na Figura 2.20. Considere que um dependente de um empregado possa ser também empregado. Como o modelo deveria ser modificado para evitar o armazenamento redundante das informações das pessoas que são tanto dependentes quanto empregados?
+
+18: A Figura 2.36 apresenta um modelo de dados para uma farmácia. Descreva em português tudo o que está representado neste diagrama.
+
+22: Em princípio, uma venda deve envolver ao menos um produto. Entretanto, isso não é exigido pelas cardinalidades mínimas dos relacionamentos entre VENDA e MEDICAMENTO e entre VENDA e PERFUMARIA no DER da Figura 2.36. Explique porque.
+
+25: A Figura 2.37 apresenta um DER de parte de um sistema de recursos humanos em uma organização. Descreva em português tudo que está representado neste diagrama.

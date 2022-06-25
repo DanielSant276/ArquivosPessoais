@@ -1,0 +1,10 @@
+instrução de load só fica pronto no final da memória;
+quando há uma dependência lógica aritmética, se passa do final de um executa para outro;
+quando não faz adiantamento e existe dependência de dados, o decodifica só será realizado junto do write back da instrução anterior;
+
+
+em cache se possui índice é endereçamento direto. Se tiver vários endereçamentos diretos quer dizer que é associativo por conjunto.
+
+LRU aproximado é: utilizar um contador pequeno para ver quais informações na cache estão sendo mais utilizadas, retirando as que menos forem utilizadas.
+
+7+5+16=28

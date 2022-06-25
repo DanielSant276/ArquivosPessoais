@@ -1,0 +1,47 @@
+1- Descreva a diferença entre pilhas e filas:
+R= As pilhas funcionam no sistema LIFO (last in first out), ou seja, o último elemento a ser adicionado será o primeiro a ser retirado. Já as filas funcionam no sistema FIFO (first in first out), ou seja, o primeiro elemento a ser adicionado será o primeiro elemento a ser retirado. Ainda existem os deques, que possuem as duas funcionalidades.
+
+2- Mostre porque a complexidade de buscas em listas lineares pode ser
+significativamente diferente dependendo se a lista estiver ou não ordenada.
+R= Caso a busca seja feita utilizando como parâmetro valores maiores ou menores é mais fácil identificar o valor escolhido, pois não será necessário percorrer toda a lista para identificar o valor escolhido. Caso não exista a ordenação, é necessário verificar todos os elementos da lista para se encontrar o valor esscolhido.
+
+3- Qual a importância da ordenação em algoritmos em geral? Dê um
+exemplo onde a ordenação pode influenciar na eficiência de um algoritmo.
+R= A ordenação permite ter uma noção mais geral dos valores que estão sendo utilizados. Caso seja necessário utilizar uma média ou o menor valor possível ou o maior valor possível. Com os valores ordenados se torna mais rápida a utilização dos mesmos, pois não vai ser necessário comparar valor com valor para se obter o desejado.
+Um exemplo seria um algoritmo que dobra todos os valores maiores que x, basta encontrar x e dobrar todos os valores que venham depois dele.
+
+6- Surpreenda com um algoritmo para inlcusão e remoção em seu tipo
+favorito de lista encadeada. Explique o algoritmo:
+R=
+inclusao(x, lista) {
+|Se lista == NULO então
+||lista <- criaNo()
+||lista.chave <- x
+||lista.prox <- NULO
+|Se não
+||aux <- criaNo()
+||aux.chave <- x
+||aux.prox <- lista
+||lista <- aux
+|Fim Se
+}
+
+remover(x, lista) {
+|Se lista.chave == x então
+||aux <- lista
+||lista <-lista.prox
+||libera(aux)??????????
+|Se não
+||aux <- lista
+||enquanto aux.prox != NULO
+|||Se aux.prox.chave == x então
+||||aux2 <- aux.prox
+||||aux <- aux2.prox
+||||libera(aux2)?????????????????
+||||retorna
+|||Se não
+||||aux <- aux.prox
+|||Fim se
+||Fim enquanto
+|Fim se
+}

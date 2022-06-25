@@ -1,0 +1,39 @@
+PROVA 1 – ALGORITMOS E ESTRUTURAS DE DADOS I
+
+Aluno: Daniel Sant’ Anna Andrade
+Matrícula: 20200036904
+
+1) R= As pilhas funcionam no sistema LIFO (last in first out), ou seja, o último elemento a ser adicionado será o primeiro a ser retirado. Nas pilhas se adicionam elementos usando o push e se retiram os elementos usando o pop. Já as filas funcionam no sistema FIFO (first in first out), ou seja, o primeiro elemento a ser adicionado será o primeiro elemento a ser retirado, cada novo elemento a ser adicionado é colocado atrás do último inserido. Isso poe ser ruim, pois em algum momento pode ser capaz da lista estar cheia no final mas vazia no início. Ainda existem os deques, que possuem as duas funcionalidades sendo mais dinâmico de se utilizar, evitando o problema de gerar espaços vazios na lista.
+
+2) R= Listas encadeadas ou vetores auxiliam a organizar vários elementos do mesmo tipo. É mais simples ter uma lista/vetor de vários números do que várias variáveis com cada uma representando um número. Utilizando as listas/vetor é possível ordenar esses números com mais facilidade da forma que quiser, tanto crescente como decrescente, facilitando assim buscas de determinados valores.
+A diferença entre um vetor e uma lista encadeada, é que o vetor é linear e sequencial, ocupando uma faixa de memória específica. Já a lista encadeada, é ordenada em formato de nó, onde cada nó tem uma chave, um valor e um ponteiro que indica o próximo nó da lista, criando uma sequência de nós onde cada um aponta para o próximo. Existe também a lista duplamente encadeada que além de apontar para o próximo, ela aponta para o nó anterior.
+
+3) R= O(n log n) Quicksort = No Quicksort é escolhido um valor (pivô) da lista e com esse valor essa lista será separada em duas outras listas. Uma das listas terá todos os valores menores que o pivô e a outra lista terá o pivô e todo os valores maiores que ele. Para cada uma dessas duas listas criadas irá se repetir, de forma recursiva, essa seleção e separação até que a lista esteja totalmente ordenada. Essa eficiência O(n log n) só é  para os melhores casos e casos médios. O Quicksort pode ser O(n²) caso sempre seja escolhido os maiores ou menores valores de cada lista, gerando assim o pior caso.
+
+O(n²) Bubblesort = No Bubblesort é realizada uma comparação de elemento por elemento, fazendo a troca de posição de cada elemento caso um seja maior que o outro. Como existe essa comparação de elemento por elemento a eficiência se torna O(n²) no pior caso e no caso médio, porém no melhor caso (onde a lista está parcialmente já ordenada) a eficiência é de O(n). 
+
+4) R= A complexidade tem a ver com o quanto de tempo um algoritmo precisa para executar independente da entrada que ele recebe. Geralmente um algoritmo pode ter 3 formas de funcionamento: pior caso, caso médio e melhor caso. Dependendo de como o algoritmo se comporta, é possível que ele tenha um nível de complexidade para cada um desses casos. Porém, o mais comum é que o melhor caso e caso médio tenham um tempo semelhante, ou então que o pior caso e o caso médio tenham um tempo semelhante. Saber esses níveis de complexidade auxiliam ao escolher qual algoritmo utilizar dependendo do que você precisa fazer e de como os parâmetros passado a ele estejam organizados.
+
+5) R= 
+class Node {
+ constructor(val) {
+  this.valor = val;
+  this.prox = null;
+  }
+}
+
+function deleteNode(key) {
+ var temp = primeiro, ant = null;
+
+ if (temp != null && temp.valor == key) {
+  primeiro = temp.prox;
+  return;
+ }
+
+ while (temp != null && temp.valor != key) {
+  ant = temp;
+  temp = temp.prox;
+ }
+
+ ant.prox = temp.prox;
+}
