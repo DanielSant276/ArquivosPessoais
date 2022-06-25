@@ -1,0 +1,97 @@
+NÍVEIS EM UMA EMPRESA
+	estratégico: visão da empresa como um todo. decisões estratégicas de longo prazo. objetivos estratégicos são definidos.
+	tático: visão por unidade ou departamento. decisões de médio prazo. definição e controle de ações para alcançar os objetivos estratégicos.
+	operacional: visão por tarefas. foco no curto prazo. definição de objetivos específicos.
+
+PROCESSO DE TOMADA DE DECISÃO
+	inteligência -> identificar o problema
+	    |
+	    v
+	planejamento -> identifica as soluções
+	    |
+	    v
+	escolha -> escolher soluções
+	    |
+	    v
+	implementação -> avaliação da solução
+
+PRINCIPAIS TIPOS DE SISTEMA
+	sistemas de processamento de transação (tps)
+	sistema de informação gerencial (mis)
+	sistema de suporte a decisão (dss)
+	sistema de suporte executivo (ess)
+	[[[[[gestão de relacionamento com o cliente (crm)]]]]
+	sistema integrado de gestão empresarial (erp)
+
+SISTEMAS DE PROCESSAMENTO DE TRANSAÇÃO (TPS)
+	gerentes operacionais necessitam de sistemas para acompanhar as atividades importantes e transações da empresa. ex.: vendas, receitas, depósitos, folha de pagamento, fluxo de material em uma fábrica.
+	o TPS executa e registra as transações de rotina necessárias para conduzir a empresa. ex.: pedidos, reservas, folha de pagamento, gestão de dados dos funcionários.
+	responder questões de rotina e rastrear o fluxo de transações. ex.: o que aconteceu com o pagamento do funcionário? quantos itens há no inventário?
+	egstores necessitam do tps para monitorar o estado interno das operações da empresa e seu relacionamento com o ambiente externo.
+
+SISTEMA DE INFORMAÇÃO GERENCIAL (MIS)
+	serve ao nível tático.
+	fornece aos gerentes de nível médio relatórios sobre o desempenho da empresa. esta informação serve para monitorar e controlar a performance da empresa
+	sumariza e relata as operações básicas da empresa com dados disponibilizados pelo sistema de processamento de transações (tps). esses dados são compactados e apresentados em relatórios. utilizam rotinas simples, baseadas no resumo e comparações. ex.: comparação do número total de venda anual de um produto com a meta estabelecida.
+
+SISTEMA DE SUPORTE A DECISÃO (DSS)
+	foco em problemas que são únicos e mudam rapidamente, na qual não há procedimento para ser definida uma solução com antecedência.
+	comstumam utiliza informações internas do TPS e MIS, como também de fontes externas como preços atuais de ações ou de produtos de concorrentes.
+	são utilizados por gerentes e analistas de negócios que desejam usar análises e modelos sofisticados para examinar dados.
+	
+SISTEMA DE SUPORTE EXECUTIVO (ESS)
+	eles dão apoio a tomada de decisão por gestores do nível estratégico (executivos).
+	abordam decisões não rotineiras que requerem julgamento, avaliação e insight, pois não há um procedimento pactuado para chegar a uma solução.
+	apresenta gráficos e dados de muitas fontes por meio de uma interface que é fácil para os executivos usarem.
+	normalmente, a informação é entregue por meio de um dashboard.
+	TEM MAIS COISA AQUI
+
+GESTÃO DE RELACIONAMENTO COM O CLIENTE (CRM)
+	utilizado para gerenciar o relacionamento da empresa com seus clientes.
+	fornece informações para coordenar os processos de negócio que lidam com o cliente. ex.: vendas, marketing, satisfação do cliente e retenção de clientes.
+	TEM MAIS COISA AQUI
+
+SISTEMA INTEGRADP DE GESTÃO EMPRESARIAL (ERP)
+	como as organização conseguem gerenciar as informações de tantos sistemas diferentes.
+		qual o custo para mante os sistemas?
+		como esses sistemas compatilham informações
+		como os executivos, gestores e funcionários conseguem coordenar seus trabalhos?
+	os erps tentam fazer com que todos os diferentes sistemas trabalhem juntos. abrangem áreas funcionais, com foco na execução de processos de negócio na organização como um todo, incluindo todos os níveis de gestão.
+	informações que estavam dispersas em diferentes sistemas são armazenados em um único banco de dados, onde podem ser utilizadas por partes distintas do negócio.
+	é um instrumento par a amelhoria de processos e das informações online em tempo real.
+	permite que os gestores das empresas visualizem as transações efetuadas e o impacto delas em cada área da empresa.
+	TEM MAIS COISA AQUI
+	soluções ERP no mercado: Infor LN, RAMCO, Oracle Cloud ERP, Lynx, TOTVS, SAP (líder no mercado de soluções ERP).
+	escolha de um ERP:
+		a escolha do ERP está mais relacionada com a quantidade de informações que precisam ser sistematizadas do que com o porte da empresa.
+		empresas maiores tendem a solicitar ERO sob encomenda (possuem preços mais caros, porém, promovem maior atendimento as necessidades da empresa).
+		as empresas menores aceitam pacores ERP já prontos que possuem custo reduzido, as vezes precisando de uma daptação da empresa ao ERP.
+	fases típicas de um projeto de implantação de ERP:
+		raio-x: RESUMIR ESSA PARTE DEPOIS
+		desenvolvimento: RESUMIR ESSA PARTE DEPOIS
+		teste: RESUMIR ESSA PARTE DEPOIS
+		treinamento: RESUMIR ESSA PARTE DEPOIS
+		avaliação: RESUMIR ESSA PARTE DEPOIS
+	motivos que levam as empresas a adotar um ERP:
+		maior competitividade no mercado
+		melhorar a produtividade
+		melhorar a qualidade
+		melhorar os serviços prestados aos clientes
+		redução de custos
+		melhorar o planejamento e alocação de recursos
+		entre outros
+	componentes típicos de um ERP
+		finanças
+		contabilidade
+		planehamento e controle
+		recursos humanos
+		custos
+		vendas
+		marketing
+	problemas mais comuns em projetos de implantação de ERP
+		impacto na cultura da empresa, provocando mudanças
+		um sistema ERP sozinho não resolverá os problemas da organização
+		os problemas mais comuns na adoção de um ERP são: falta de apoio da gerência, problemas no gerenciamento de mudança, treinamento insuficiente
+		
+	
+		

@@ -1,0 +1,281 @@
+Exercício 1
+
+Linguagem Natural
+1- Início da Função
+2- Colocar dois parâmetros, um para número de caracteres e outro para a cadeia utilizada
+3- Declarar um contador para ser usado no loop dentro da cadeia
+4- Faça um loop que irá verificar item por item na cadeia até que um dos valores da cadeia seja \0
+	4.1- Sempre que for encontrado um caracter que não seja \0, irá adicionar 1 tanto no contador quando no parâmetro número de caracteres
+5- Quando o loop acabar, retorne o parametro número de caracteres
+6- Fim da Função
+
+Fluxograma (Feito)
+
+Algoritmo Estruturado
+1- FUNÇÃO numContagem
+2- PARAMETROS: cadeia tipo CADEIA
+3- DECLARE numCaracter = 0
+4- ENQUANTO cadeia[numCaracter] != '\0' FAÇA
+	4.1- CALCULE numCaracter <- numCaracter + 1
+5- FIM FAÇA
+6- RETORNE numCaracter
+7- FIM numContagem
+
+
+Exercício 2
+
+Linguagem Natural
+1- Início da Função
+2- Colocar dois parametros, um para a cadeia a ser vizualizada, e outro para receber um valor booleano
+3- O primeiro valor da cadeia é vazio?
+	3.1- Se sim, coloque o valor de vazio como verdadeiro
+	3.2- Se não, coloque o valor de vazio como falso
+4- Retorne o valor de vazio
+5- Fim da Função
+
+Fluxograma (Feito)
+
+Algoritmo Estruturado
+1- FUNÇÃO cadeiaVazia
+2- PARAMETROS: cadeia tipo CADEIA, vazio tipo BOOLEANO
+3- SE cadeia[0] == ''
+	3.1- DECLARE vazio = verdadeiro
+4- SE NÃO
+	4.1- DECLARE vazio = falso
+5- FIM SE
+6- RETORNE vazio
+7- FIM cadeiaVazia
+
+
+Exercício 3
+
+Linguagem Natural
+1- Início da Função
+2-
+- Fim da Função
+
+Fluxograma (Não Feito)
+
+Algoritmo Estruturado (NÃO ESTÁ FEITO AINDA)
+1- INÍCIO
+2- DECLARE s1, s2, posição
+3- LEIA s1, s2
+4- posição <- valorPosição(s1, s2)
+5- MOSTRE posição
+6- FIM
+
+posição(s1, s2)
+1- DECLARE i = 0
+2- DECLARE j = 0
+3- FENQUANTO i != s2[totalDeCaracteres + 1] FAÇA
+	3.1- SE s1[i] == s2[j]
+	3.2- CALCULE i <- i + 1
+	3.3- SE NÃO
+	3.4- 
+
+
+Exercício 4
+
+Linguagem Natural
+1- Início da Função
+2- Coloque 3 parametros, um para ser a cadeia principal, um para ser a cadeia invertida e o ultimo para ser o total de caracters da cadeia principal
+3- Declare duas variáveis, uma para ser um contador começando em 0 e outra para receber o valor do total de caracteres da cadeia principal menos 1
+4- Crie um loop que termine quando o valor da variável que contém o total de caracteres da cadeia principal seja menor ou igual a 0
+	4.1- Dentro do loop, pegue o valor da cadeia principal[total de caracteres da cadeia principal] e passe para a cadeia invertida[contador]
+	4.2- Some 1 no contador e diminua um do total de caracteres da cadeia principal
+5- Retorne a cadeia invertida
+6- Fim da Função
+
+Fluxograma (Feito)
+
+Algoritmo Estruturado
+1- FUNÇÃO inversor
+2- PARAMETROS: cadeia1, cadeia2 tipo CADEIA, cadeia1NumCaract tipo INTEIRO
+3- DECLARE i = 0
+4- DEClARE j = cadeia1NumCaract - 1
+5- ENQUANTO j >= 0 FAÇA
+	5.1- CALCULE cadeia2[i] <- cadeia1[j]
+	5.2- CALCULE i <- i + 1
+	5.3- CALCULE j <- j - 1
+6- RETORNE cadeia2
+7- FIM inversor
+
+
+Exercício 5
+
+Linguagem Natural
+1- Início da Função
+2- Coloque 3 parametros, um para ser a cadeia principal, um para ser a cadeia invertida e o ultimo para ser o total de caracters da cadeia principal
+3- Declare duas variáveis, uma para ser um contador começando em 0 e outra para receber o valor do total de caracteres da cadeia principal menos 1
+4- Crie um loop que termine quando o valor da variável que contém o total de caracteres da cadeia principal seja menor ou igual a 0
+	4.1- Dentro do loop, pegue o valor da cadeia principal[total de caracteres da cadeia principal] e passe para a cadeia invertida[contador]
+	4.2- Some 1 no contador e diminua um do total de caracteres da cadeia principal
+5- A cadeia principal é igual a cadeia invertida
+	5.1- Se sim, retorne verdadeiro
+	5.2- Se não, retorne falso
+6- Fim da Função
+
+Fluxograma (Feito)
+
+Algoritmo Estruturado
+1- FUNÇÃO palindromo
+2- PARAMETROS: cadeia1, cadeia2 tipo CADEIA, cadeia1NumCaract tipo INTEIRO
+1- DECLARE i = 0
+2- DEClARE J = cadeia1NumCaract - 1
+5- ENQUANTO j >= 0 FAÇA
+	2.1- cadeia2[i] <- cadeia1[j]
+	2.2- CALCULE i <- i + 1
+	2.3- CALCULE j <- j - 1
+3- SE cadeia1 == cadeia2
+	3.1- RETORNE verdadeiro
+4- SE NÃO
+	4.1- RETORNE falso
+5- FIM SE
+7- FIM palindromo
+
+Exercício 6
+1 dia - 86.400
+1 mês (29 dias) - 2.505.600 
+1 mês (30 dias) - 2.592.000
+1 mês (31 dias) - 2.678.400
+1 ano (normal) - 31.536.000
+1 ano (bissexto) - 31.622.400
+4 meses com 30 dias, 7 meses com 31 dias e 1 mes com 28 dias (ano normal)
+4 meses com 30 dias, 7 meses com 31 dias e 1 mes com 29 dias (ano bissexto)
+
+CALCULE dia <- segundos / 86400
+CALCULE mes <- dia / 30
+CALCULE ano <- mes / 12
+
+ENQUANTO dia >= 30 FAÇA
+	CALCULE dia <- dia - 30
+ENQUANTO mes >= 12 FAÇA
+	CALCULE mes <- mes - 12
+CALCULE ano <- ano + 1970
+
+Linguagem Natural
+1- Início da Função
+2-
+- Fim da Função
+
+Fluxograma (Não Feito)
+
+Algoritmo Estruturado
+1- INÍCIO
+2- 
+- FIM
+
+Exercício 7
+
+Linguagem Natural
+1- Início da Função
+2- Coloque um parametros na função, o valor da temperatura em fahrenheit
+3- Declare uma variavel chamada celsius, que recebe o valor de (5/9)*(F-32)
+4- Retorne o valor de celsius
+5- Fim da Função
+
+Fluxograma (Feito)
+
+Algoritmo Estruturado
+1- FUNÇÃO conversor
+2- PARAMETROS: F TIPO inteiro
+3- DECLARE celsius <- (5/9)*(F-32)
+4- RETORNE celsius
+5- FIM conversor
+
+
+Exercício 8
+
+Linguagem Natural
+1- Início da Função
+2- Coloque dois parâmetros, um que dirá a quantidade de notas de cada valor e um que dirá a quantidade de moedas de cada valor
+3- Declare dois vetores, um de moedas que recebe todos os tipos de moedas e um de notas que recebe todos os tipos de notas
+4- Declare uma variável para receber o total do dinheiro
+5- Declare dois contadores, um para as moedas, valendo 6 e outro para as notas valendo 5
+6- Crie um loop que irá terminar quando o valor do contador de moedas for menor que 0
+	6.1- Multiplique cada quantidade de moedas[contador de moedas], com o valor de cada moeda[contador de moedas] e depois some com o total obtido até então
+	6.2- Diminua 1 do contador de moedas
+7- Crie um loop que irá terminar quando o valor do contador de notas for menor que 0
+	7.1- Multiplique cada quantidade de notas[contador de notas], com o valor de cada nota[contador de notas] e depois some com o total obtido até então
+	7.2- Diminua 1 do contador de notas
+8- Retorne o valor do total obtido
+9- Fim da Função
+
+Fluxograma (Feito)
+
+Algoritmo Estruturado
+1- FUNÇÃO contabilidade
+2- PARAMETROS: qMoedas, qNotas TIPO vetor
+3- DECLARE moeda <- {0.01, 0.05, 0.10, 0.25, 0.50, 1}
+4- DECLARE notas <- {2, 5, 10, 20, 50, 100, 200}
+5- DECLARE soma = 0
+6- DECLARE i = 5
+7- DECLARE j = 6
+8- ENQUANTO i >= 0 FAÇA
+	8.1- CALCULE soma <- soma + qMoedas[i] * moeda[i]
+	8.2- CALCULE i <- i - 1
+9- FIM FAÇA
+10- ENQUANTO j >= 0 FAÇA
+	10.1- CALCULE soma <- soma + qNotas[j] * notas[j]
+	10.2- CALCULE j <- j - 1
+11- FIM FAÇA
+12- RETORNE soma
+13- FIM contabilidade
+
+
+Exercício 9
+
+Linguagem Natural
+1- Início da Função
+2- Coloque um parametro para receber a quantidade de segundos inserido
+3- Declare a variável de minutos que é igual a quantidade de segundos dividido por 60
+4- Declare a variável de dias que é igual a quantidade de minutos dividido por 24
+5- Declare a variável de meses que é igual a quantidade de dias dividido por 30
+6- Declare a variável de anos que é igual a quantidade de dias dividido por 365
+7- Enquanto o valor de minutos for maior ou igual a 60, diminua o valor dos minutos por 60 e coloque ele na variável de minutos
+8- Enquanto o valor de dias for maior que 30, diminua o valor dos dias por 30 e coloque ele na variável de dias
+9- Enquanto o valor de meses for maior que 12, diminua o valor dos meses por 12 e coloque ele na variável de meses
+10- Declare a variável de tempo igual a minutos, dias, meses e anos
+11- Retorne a variável tempo
+12- Fim da Função
+
+Fluxograma (Feito)
+
+Algoritmo Estruturado
+1- FUNÇÃO contatempo
+2- PARAMETROS: segundos TIPO inteiro
+3- DECLARE minutos = segundos / 60
+4- DECLARE dias = minutos / 1440
+5- DECLARE meses = dias / 30
+6- DECLARE anos = dias / 365
+7- ENQUANTO minutos >= 60 FAÇA
+	7.1- CALCULE minutos <- minutos - 60
+8- FIM FAÇA
+9- ENQUANTO dias > 30 FAÇA
+	9.1- CALCULE dias <- dias - 30
+10- FIM FAÇA
+11- ENQUANTO meses > 12 FAÇA
+	11.1- CALCULE meses <- meses - 12
+12- FIM FAÇA
+13- DECLARE tempo = minutos + " " +  dias + "/" + meses + "/" + anos
+14- RETORNE tempo
+15- FIM contaTempo
+
+
+Exercício 10
+
+Linguagem Natural
+1- Início da Função
+2- Coloque dois parametros do tipo vetor, um para o valor do primeiro ponto e um para o valor do segundo ponto
+3- Declare distância de dois pontos para receber a fórmula de distância de dois pontos que e igual a (((segundo ponto[0] - primeiro ponto[0])^2) + ((segundo ponto[1] - primeiro ponto[1])^2))^(1/2)
+4- Retorne o valor de distância de dois pontos
+5- Fim da Função
+
+Fluxograma (Feito)
+
+Algoritmo Estruturado
+1- FUNÇÃO distância2Pontos
+2- PARAMETROS: ponto1, ponto2 TIPO vetor
+3- DECLARE d = (((ponto2[0]-ponto1[0])^2) + ((ponto2[1]-ponto1[1])^2))^(1/2)
+4- RETORNE d
+5- FIM distância2Pontos

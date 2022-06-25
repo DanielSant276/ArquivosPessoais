@@ -1,0 +1,80 @@
+1) Faça um algoritmo para pedir o nome e a altura de uma pessoa emostre como resultado uma das seguintes frases:se a altura for inferior ou igual a 1,20m → VOCÊ PROVAVELMENTE ÉUMA CRIANÇASe   a   altura   entre   1,20m   e   1,70m   →   VOCÊ   PROVAVELMENTE   É   UMADOLESCENTE.Se a altura estive acima de 1,70m → VOCÊ JÁ PENSOU EM JOGARBASQUETE OU VOLEI?
+
+Descrição Narrativa
+1-Início
+2-Solicitar nome e altura do usuário
+3-A altura do usuário é menor ou igual a 1,20m?
+3.1-Mostrar a mensagem na tela "VOCÊ PROVAVELMENTE É UMA CRIANÇA."
+3.2-Pular para o passao 6
+4-A altura do usuário é maior que 1,20m e menor que 1,70?
+4.1-Mostrar a mensagem na tela "VOCÊ PROVAVELMENTE É UM ADOLESCENTE."
+4.2-Pular para o passao 6
+5-A altura do usuário é maior que 1,70m?
+5.1-Mostrar a mensagem na tela "VOCÊ JÁ PENSOU EM JOGAR BASQUETE OU VÔLEI?"
+6-Fim
+
+
+Linguagem Algorítmica Estruturada
+1-INÍCIO
+2-DECLARE nome, altura
+3-LEIA nome, altura
+4-SE altura <= 1.20m ENTÃO
+  4.1-MOSTRE → VOCÊ PROVAVELMENTE É UMA CRIANÇA
+5-FIM SE
+6-SE altura < 1.70m ENTÃO
+  5.1-MOSTRE → VOCÊ PROVAVELMENTE É UM ADOLESCENTE!
+7-FIM SE
+8-SE altura > 1.70m ENTÃO
+  6.1-MOSTRE → VOCÊ JÁ PENSOU EM JOGAR BASQUETE OU VÔLEI?
+8-FIM SE
+9-SE NÃO
+10-FIM
+
+
+
+2) Faça um algoritmo para calcular o valor de juros entre uma compra a prazo e a vista do mesmo produto
+
+Descrição Narrativa
+1-Início
+2-Solicitar que o usuário insira o valor inicial do produto e o valor final do produto
+3-Calcular o juros, que será valor do produto final menos o valor do produto inicial vezes cem dividido pelo valor inicial do produto
+4-Mostre o valor de juros
+5-Fim
+
+
+Linguagem Algorítmica Estruturada
+1-INÍCIO
+2-DECLARE Vi, Vf, J
+3-LEIA Vi, Vf
+4-CALCULE J ← (Vf-Vi)*100/Vi
+5-MOSTRE J
+6-FIM
+
+
+
+3) Faça um algoritmo para a área de um retângulo ou de um triângulo retângulo. A pessoa tem que escolher entre o cálculo de uma ou outra figura.
+
+Descrição Narrativa
+1-Início
+2-Solicitar que o usuário informe a medida da base, a medida da altura e se a figura utilizada será um retângulo ou um triângulo retângulo
+3-Caso a figura informada seja um retângulo
+3.1-Calcular a área, que será o produto da base pela altura
+3.2-Pular para o passo 5
+4-Caso a figura informada seja um retângulo
+4.1-Calcular a área, que será o produto da altura pela altura dividido por dois
+5-Informar a área obtida, juntamente com a figura selecionada
+6-Fim
+
+
+Linguagem Algorítmica Estruturada
+1-INÍCIO
+2-DECLARE base, altura, figura
+3-LEIA base, altura, figura
+4-SE figura == retângulo
+  4.1-CALCULE área ← base * altura
+5-FIM SE
+6-SE figura == triângulo retângulo
+  6.1-CALCULE área ← (base * altura) / 2
+7-FIM SE
+8-MOSTRE área
+9-FIM

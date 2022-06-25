@@ -1,0 +1,47 @@
+HIERARQUIA DE DADOS
+	um registro descreve uma entidade, podendo ser pessoa, lugar, objeto ou qualquer outra coisa
+	cada característica ou qualidade descrevendo uma entidade particular é chamada de atributo
+
+PROBLEMAS COM O SISTEMA DE ARQUIVOS TRADICIONAL
+	no ambiente organizacional cada sistema evoluia de forma independente, sem uma estratégia para a empresa inteira. cada sistema necessita dos seus próprios arquivos e softwares para operar.
+	esse processos criavam diversos sistemas de arquivos, que eram mantidos e operados por diferentes departamentos ou grupos.
+	isso levava com que a organização ficasse sobrecarregada com centenas de programas, ficando difícil de mantes e gerenciar.
+	os problemas dessa abordagem são as redundâncias e inconsistência, falta de flexibilidade, dependência dados-programa, segurança de dados ruim e a incapacidade de compartilhar dados entre sistemas.
+	a redundância é caracterizada pela presença de dados duplicados em vários arquivos, ou seja, o mesmo dado é armazenado em mais de um lugar. 
+	TEM MAIS COISA AQUI
+
+	dependência dados-programa: é comum uma mudança no programa ter impacto nos arquivos e causar uma incosistência com os demais programas que os utilizam
+	falta de flexibilidade: é difícil responder às necessidades que não foram previstas e permitir a geração de relatórios customizados, com informações relevantes para açõqes que não foram antecipadas
+	segurança ruim: a ausência do reneciamento de dados normalmente tem como consequência um baixo controle sobre os acessos aos dados
+	incapacidade de compartilhar dados: cada grupo possui seus próprios sistemas, e armazena os dados em seus próprios arquivos
+
+ABORDAGEM PARA GERENCIAMEnTO DE DADOS
+	o uso de banco de dados permite eliminar muitos dos problemas relatados
+		um banco de dados é uma coleção de dados organizados para servir a muitos aplicativos, de forma eficiente, centralizando os dados e conrolando dados redundantes
+		em vez de armazenar os dados em arquivos separados para cada aplicativo, estes aparecem para os usuários como sendo armazenados em um único lugar
+
+ABORDAGENS PARA GERENCIAMENTO DE DADOS
+	sistemas gerenciadores de banco de dados
+		ajuda a contrlar a redundância e inconsistência
+		minimiza o isolamento de arquivos
+		desacopla programas de dados
+		amplia o acesso e disponibilidade dos dados
+		permitre o gerenciamento centralizado de dados
+		incluem as ferramentas para organizar, gerenciar e acessar os dados armazenados no banco
+			permite especificar a estrutura do conteúdo do banco de dados, que é utilizada para criação de tabelas TEM MAIS COISA AQUI
+
+SGDBs RELACIONAIS
+	são os mais utilizados atualmente
+	representam os dados como tableas bidimensionais
+	cada tabela contém dados sobre uma entidade
+	cada tablea possui uma coluna que é um identificador único para todas as informações de uma linha, chamada de chave primária
+	uma tabela pode possuir uma relação com outras tabelas. este relacionamento é possível através das chaves primárias e estrangeira
+
+UTILIZANDO BANCO DE DADOS PARA MELHORAR O DESEMPENHO DO NEGÓCIO E A TOMADA DE DECISÕES
+	as empresas usam bancos de dados para rastrear transações básicas, como: pagamentos a fornecedores, processamento de pedidos, controle de clientes e pagamento de funcionários
+	bancos de dados são necessário também para fornecer informações, TEM MAIS COISA AQUI
+
+BIG DATA
+	nos últimos anos houve um aumento expressivo na geração de dados
+	esses dados podem ser não-estruturados ou semiestruturados e, portanto, não são adequados SGDBs relacionais, que orfanizam dados na forma de colunas e linhas.
+	o termo big data é utilizado para descrever esses conjuntos de dados com volumes tão grandes que estão além da capacidade de um DBMS típico de capturar, armazenar e analisar

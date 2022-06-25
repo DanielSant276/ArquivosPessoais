@@ -1,0 +1,230 @@
+		Aula 1
+1-
+a) quantitativa discreta;
+b) quantitativa discreta;
+c) qualitativa nominal
+d) quantitativa contínua;
+e) quantitativa contínua;
+f) quantitativa contínua;
+g) quantitativa discreta;
+h) quantitativa discreta;
+i) quantitativa contínua;
+j) qualitativa nominal;
+l) quantitativa contínua;
+m) qualitativa ordinal;
+n) qualitativa nominal;
+
+2-c)
+
+3-
+ N°: quantitativa discreta
+ EC: qualitativa nominal
+ NF: quantitativa discreta
+ GI: qualitativa ordinal
+ F : qualitativa nominal
+ A : quantitativa contínua
+ P : quantitativa contínua
+ RP: qualitativa nominal
+
+
+		Aula 02
+1-
+a)
+números: 
+49 50 50 50 51 51 53 54 55 55
+57 60 61 61 61 62 62 63 63 63
+63 64 65 67 68 68 70 70 70 71
+72 72 73 75 75 75 78 83 83 84
+
+ n = 40
+ k = raiz(40) =~ 6
+ AT = 84 - 49 = 35
+ AC = AT/k => 35/6 =~ 6
+
+b)
+números:
+2.1 2.1 2.4 2.4 2.5 2.5 2.8 2.8 3.0 3.0
+3.0 3.0 3.1 3.1 3.1 3.2 3.2 3.2 3.2 3.2
+3.2 3.5 3.5 3.5 3.5 3.7 3.7 3.7 3.8 3.8
+
+ n = 30
+ k = raiz(30) =~ 5
+ AT = 3.8 - 2.1 = 1.7
+ AC = AT/k => 17/5 =~ 0,3
+
+c)
+3.0 3.0 3.5 3.5 3.5 4.0 4.0 4.0 4.5 4.5
+4.5 5.0 5.5 5.5 6.0 6.0 6.0 6.0 6.0 6.5
+6.5 7.0 7.0 7.0 7.5 7.5 7.5 8.0 8.5 9.0
+9.0 9.0 9.5 9.5 9.5 10.0
+
+ n = 36
+ k = raiz(36) =~ 6
+ AT = 10 - 3 = 70
+ AC = AT/k => 7/6 =~ 1,5
+
+ FACi -> Frequência Acumulada: somatório das frequências anteriores;
+ FRi -> Frequência relativa: razões entre as frequências absolutas e a frequência total;
+ xi -> Ponto que divide a classe em duas partes iguais;
+
+Tabelas
+https://docs.google.com/spreadsheets/d/1iqMLyF4xUAbXJ6Npg5wB__ceJ_7yJTBlS2hhAqUWTfY/edit#gid=0
+
+2-
+Gráficos
+https://docs.google.com/spreadsheets/d/1iqMLyF4xUAbXJ6Npg5wB__ceJ_7yJTBlS2hhAqUWTfY/edit#gid=0
+
+3-
+Tabelas
+https://docs.google.com/spreadsheets/d/1iqMLyF4xUAbXJ6Npg5wB__ceJ_7yJTBlS2hhAqUWTfY/edit#gid=0
+
+
+		Aula 3
+1-
+1, 1, 2, 2, 3, 4, 6, 6, 6, 7
+
+Média:
+\bar{X} = 38/10 => \bar{X} = 3,8
+
+Mediana:
+Me = n/2 = 10/2 = 5
+   = n+2/2 = 12/2 = 6
+Me = (3 + 4)/ 2 = 3,5
+
+Moda:
+Mo = 6
+
+2- 
+Tabelas: https://docs.google.com/spreadsheets/d/1j3wvHQtlYkUivM_A7iZcJ_Psn7WXoLZzkTtQL_vdcfM/edit#gid=0
+
+a)
+Média:
+somatorio(x_i.f_i)/somatorio(f_i)
+\bar{X} = 15446 / 89 = 173,5
+
+Mediana:
+n = 89
+n / 2 => 89 / 2 = 44,5
+classe mediana = 172|-176
+Me = L_i + (a/f_i)((n/2) - fac_(i - 1))
+L_i =  172
+a = 4
+f_i = 22
+n /2 = 44,5
+fac_(i - 1) = 32
+Me = 172 + (4/22)(44,5 - 32)
+   = 172 + 2,27
+Me = 174,27
+
+Moda:
+Mo = L_i + (a(f_i - f_(i-1)))/(2f_i - (f_(i+1) + f_(i-1)))
+L_i =  172
+a = 4
+f_i = 22
+f_(i-1) = 15
+f_(i-1) = 25
+Mo = 172 + (4(22 - 15))/(2 x 22 - (15 + 25))
+   = 172 + 28/4
+Mo = 179
+
+1° Quartil:
+a = 4
+k = 1
+n = 89
+kn/4 = 1.89 / 4 => kn/4 = 22,25
+L_i = 168
+Q_k = L_i + (a/f_i)((kn/4) - fac_(i-1))
+Q1 = 168 + (4/15)(22,25 - 17)
+   = 168 + (0,26 x 5,25)
+Q1 = 169,365
+
+3° Quartil:
+a = 4
+k = 3
+n = 89
+kn/4 = 3.89 / 4 => kn/4 = 66,75
+L_i = 176
+Q_k = L_i + (a/f_i)((kn/4) - fac_(i-1))
+Q1 = 176 + (4/25)(66,75 - 54)
+   = 176 + (0,16 x 12,75)
+Q1 = 178,04
+
+4° Decil:
+a = 4
+k = 4
+n = 89
+kn/10 = 4.89 / 10 => kn/10 = 35,6
+L_i = 172
+D_k = L_i + (a/f_i)((kn/10) - fac_(i-1))
+D4 = 172 + (4/22)(35,6 - 32)
+   = 172 + (0,18 x 3,6)
+D4 = 172,65
+
+68° Percentil:
+a = 4
+k = 68
+n = 89
+kn/100 = 68.89 / 100 => kn/100 = 60,52
+L_i = 176
+P_k = L_i + (a/f_i)((kn/100) - fac_(i-1))
+P68 = 176 + (4/25)(60,52 - 54)
+    = 176 + (0,16 x 6,52)
+p68 = 177,04
+
+Curva de Assimetria:
+Média	173,5505618
+Mediana	174,27
+Moda	179
+Logo: Mo > Me > \bar{X} => Curva assimétrica negativa
+
+Curtose:
+Q_k = L_i + (a/f_i)((kn/4) - fac_(i-1))
+
+a = 4
+k = 1
+n = 89
+kn/4 = 1.89 / 4 => kn/4 = 22,25
+L_i = 168
+Q_k = L_i + (a/f_i)((kn/4) - fac_(i-1))
+Q1 = 168 + (4/15)(22,25 - 17)
+   = 168 + (0,26 x 5,25)
+Q1 = 169,365
+
+a = 4
+k = 3
+n = 89
+kn/4 = 3.89 / 4 => kn/4 = 66,75
+L_i = 176
+Q_k = L_i + (a/f_i)((kn/4) - fac_(i-1))
+Q3 = 176 + (4/25)(66,75 - 54)
+   = 176 + (0,16 x 12,75)
+Q3 = 178,04
+
+a = 4
+k = 90
+n = 89
+kn/100 = 90.89 / 100 => kn/100 = 80,1
+L_i = 180
+P_k = L_i + (a/f_i)((kn/100) - fac_(i-1))
+P90 = 180 + (4/10)(80,1 - 79)
+    = 180 + (0,4 x 1,1)
+p90 = 180,44
+
+a = 4
+k = 10
+n = 89
+kn/100 = 10.89 / 100 => kn/100 = 8,9
+L_i = 164
+P_k = L_i + (a/f_i)((kn/100) - fac_(i-1))
+P10 = 164 + (4/11)(8,9 - 6)
+    = 164 + (0,36 x 2,9)
+p10 = 165,05
+
+C = (Q3 - Q1)/2(P90 - P10)
+  = (178,04 - 169,365)/2(180,44 - 165,05)
+  = 8,675/(2 x 15,39)
+  = 8,675/30,78
+C = 0,281
+Como C > 0,263 => A curva é platicúrtica
+
+2-b) e 2-c) Repetir o que foi feito anteriormente

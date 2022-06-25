@@ -1,0 +1,27 @@
+Pesquisar ações baseadas em data mining (mineração de texto, web etc.) que foram utilizadas por organizações para tomada de decisões.
+
+Relate pelo menos duas ações encontradas na pesquisa. O seu relato deve conter qual a abordagem adotada pela organização e quais os benefícios gerados a partir da tomada de decisão fundamentada pelas informações obtidas.
+
+Algumas abordagens para extração de informações a partir de banco de dados incluem associações, sequências, classificações, clusters e previsão.
+
+
+A Secretaria da Fazenda de Pernambuco, utilizou um sistema que classifica e identifica perfis de empresas com grandes potenciais de comportamento irregular no pagamento de impostos. Através da utilização da base de dados deles, foi criado um algoritmo que é capaz de classificar e identificar as empresas com a utilização de tarefas de classificação e clusterização. Na mineração de dados, foi utilizada a biblioteca Scikit-learn, para utilizar os métodos de classificação rede neural MLP, Random Forest, SVM e ensemble. Após os dados obtidos pela classificação, foi utilizado algoritmos de clusterização para identificar os níveis de nocividades das empresas analisadas. Os resultados encontrados pela Secretaria da Fazenda de Pernambuco mostrou dados satisfatórios para o que eles buscavam, com a técnica Random Forest tendo um total de 90,7% de acerto na classificação das empresas. Com a utilização de clusters, se determinou o nível de nocividade entre as empresas analisadas, criando uma margem de 3 a 7 níveis de nocividade. 
+
+Referência: NASCIMENTO, Rafaella Leandra Souza et al. Mineração de dados na identificação de empresas irregulares quanto ao pagamento de impostos. Revista de Engenharia e Pesquisa Aplicada, v. 3, n. 3, 2018.
+
+
+
+
+
+
+
+Método de mineração de dados para identificação de câncer de mama baseado na seleção de variáveis
+
+Foi criado um método que atráves da análise de amostras de célula da mama de pacientes, classifica as variáveis obtidas em duas classes, benigno e maligo. As varíaveis eram formalizadas através de 4 passos operacionais:
+	dividir o banco de dados orginial em uma parte de treino e outra de teste, aplicando a análise de componentes principais na parte de teste.
+	gerar índices de importância utilizando os parâmetros da análise de componentes principais
+	classificar a porção de treino utilizando os métodos de classificaçaõ k-vizinhos mais próximos e análise discriminante, eliminando as variáveis menos importantes
+	por fim, selecionar o melhor subgrupo de variáveis, classificando a porção de teste com as variáveis selecionadas
+Através desses 4 passos, com base no Wisconsin Breast Cancer Database, foi possível obter uma classificação de 97,77% de acerto das amostras analisadas.
+
+Referência: HOLSBACH, Nicole; FOGLIATTO, Flávio Sanson; ANZANELLO, Michel Jose. Método de mineração de dados para identificação de câncer de mama baseado na seleção de variáveis. Ciência & Saúde Coletiva, v. 19, p. 1295-1304, 2014. 

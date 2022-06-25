@@ -1,0 +1,72 @@
+ENTENDENDO A RELAÇÃO ENTRE QUESTÕES ÉTICAS E SOCIAIS COM SISTEMAS DE INFORMAÇÃO
+	a ética se refere a princípios de certo e errado que indivíduos utilizam para guiar seu comportamento.
+	sistemas de informação levantam questões éticas para indivíduos, pois criam oportunidades para grandes mudanças sociais e ameaçam distribuição de poder, dinheiro, direito e obrigações.
+	a TI pode ser utilizada para alcançar o progresso social, mas também pode ser utilizada para cometer crimes e ameaçar valores sociais importantes.
+	questões éticas em SI se tornaram mais urgentes com o surgimento e uso da internet
+	surgem novas preocupaçoes sobre o uso apropriado das informações dos dos clientes, proteção da privacidade e proteção de propriedade intelectual
+	
+UM MODELO PARA PENSAR SOBRE QUESTÕES ÉTICAS, SOCIAIS E POLÍTICAS
+	questões éticas, sociais e políticas estão interrelacionadas.
+	surgem novas questões éticas sociais e políticas que devem ser tratadas nos níveis individual, social e político
+	estas questões tem as 5 dimensões morais: responsabilidade e controole, direitos e obrigações sobre informações, direito e obrigações de propriedade, qualidade do sistema, qualidade de vida
+	
+TENDÊNCIAS TECNOLÓGICAS QUE LEVANTAM QUESTÕES ÉTICAS
+	poder computacional dobra a cada 18 meses. impacto - organizações dependem de sistemas de computador para operações críticas.
+	o custo de armazenamento de dados diminuiu rapidamente. impacto - é mais fácil para as organizações manterem bases de dados com informações detalhadas sobre os indivíduos.
+	avanços na análise de dados (ia). impacto - grandes quantidades de dados podem ser analisadas para o desenvolvimento de perfis detalhados de comportamentos de indivíduos.
+	avanço em redes (5g, por exemplo). impacto - transferir dado de um local para o oturo e acessar dados remotamente é muito mais fácil.
+	impacto do crescimento de dispositivos móveis. impacto - smartfones podem gerar um conjunto de dados sem o consentimento do usuário.
+
+ÉTICA NA SOCIEDADE DA INFORMAÇÃO
+	escolhas éticas são decisões tomadas por indivíduos que são responsáveis pelas consequências de suas ações
+	conceitos básicos:
+		responsabilidade: elemento chave da ética, significa que você aceita os porenciais custos, deveres e obrigações pelas decisões que você toma.
+		prestação de contas: característica de sistemas e instituições que possuem mecanismos para determinar quem executou a ção e quem é o responsável.
+		responsabilidade legal: estende o conceito de responsabilidade para a área legal. é uma característica de sistemas políticos em que existe um conjunto de leis que permite os indivíduos recuperar os danos causados a eles por outros atores, sistemas ou organizações.
+		devido processo: é uma característica das sociedades governadas por leis e é um processo em que as leis são conhecidas e compreendidas, há uma capacidade de apelar a autoridades superiores para garantir que as leis sejam aplicadas corretamente.
+	esses conceitos básicos formam a base de uma nálise ética de sistemas de informação e daqueles que os gerenciam e suas consequências são:
+		sistemas não têm impactos por sí próprio. impactos dos sistemas de informação existentes são produtos de ações e comportamentos institucionais, organizadionais e individuais.
+		a responsabilidade pelas consequências da tecnologia recais claramente sobre as instituições, organizações e gestores individuais que optam por usar a tecnologia. usando a tecnologia da informações de forma socialmente responsável significa que você pode e será responsabilizado pelas consequências de sua ação.
+		em uma sociedade ética e política, os indivíduos e outros podem se recuperar de danos causados a eles por meio de um conjunto de leis caracterizados pelo devido processo
+
+ANÁLISE ÉTICA
+	o processo a seguir auxilia na análise ética:
+		identificar e descrever os fatos claramente
+		definir o conflito ou dilema e identificar os valores envolvidos
+		identificar os interessados
+		identificar as opções que você pode tomar
+		identificar as potenciais consequências de suas opções
+
+PRINCÍPIOS ÉTICOS
+	VER SLIDE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

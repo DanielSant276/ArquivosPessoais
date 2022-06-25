@@ -1,0 +1,359 @@
+Exercício 1
+
+Linguagem Natural
+1- Início
+2- Peça ao usuário para declarar os coeficientes a, b e c
+3- Utilize a fórmula de delta (b²-4.a.c) para calcular o delta
+4- Realize a fórmula de bhaskara para calcular o x1, utilizando o valor positivo da raiz (-b+√delta)/2a e, calcular o x2, utilizando o valor negativo da raiz (-b-√delta)/2a
+5- Informar os valores de x1 e x2
+6- Fim
+
+Fluxograma (Feito)
+
+Linguagem Estruturada
+1- INICIO
+2- DECLARE a, b, c
+3- LEIA a, b, c
+4- DECLARE delta <- (b^2) - (4*a*c)
+5- DECLARE x1 <- (-b + (delta^(1/2)))/(2*a)
+6- DECLARE x2 <- (-b - (delta^(1/2)))/(2*a)
+7- MOSTRE x1, x2
+8- FIM
+
+Teste de Mesa
+
+
+Exercício 2
+
+Linguagem Natural
+1- Início
+2- Definir o valor da altura da copa entre 3 e 21, e um símbolo para desenhar a arvore
+3- O ponto mais alto terá apenas um simbolo, a cada andar a baixo, aumentar um simbolo para a esquerda e um simbolo para a direita a cada nível
+4- Ao terminar a copa, colocar 2 simbolos no meio, sendo um em cada nova linha para fazer o tronco
+5- Terminar com a base, tendo 1 símbolo no meio, depois para a direita e dois para a esquerda
+6- Fim
+
+Fluxograma (Feito)
+
+
+Linguagem Estruturada (ainda ta muito estranho, tenho que pegar a medida do meio e printar lá e nas outras eu somo um e diminuo um, e vai aumentando esse valor para cada linha subsequente)
+1- INICIO
+2- DECLARE caractere, altura, copa
+3- DECLARE linha <- 0
+4- DECLARE horizontal <- 0
+5- DECLARE horizontalLinha <- 1
+6- DECLARE contador <- 0
+7- LEIA caractere, altura
+8- ENQUANTO altura > 24 ou altura < 6 FAÇA
+	8.1- LEIA altura
+9- FIM FAÇA
+10- CALCULE copa <- altura - 3
+11- ENQUANTO contador < copa
+	11.1- ENQUANTO horizontal < horizontalLinha FAÇA
+		11.1.1- MOSTRENALINHA caractere
+		11.1.2- CALCULE linha <- linha + 1
+		11.1.3- CALCULE horizontal <- horizontal + 1
+	11.2- FIM FAÇA
+	11.3- CALCULE linha <- 0
+	11.4- CALCULE horizontal <- 0
+	11.5- CALCULE horizontalLinha <- horizontalLinha + 2
+	11.6- CALCULE contador <- contador + 1
+12- FIM FAÇA
+13- MOSTRE caractere
+14- MOSTRE caractere
+15- ENQUANTO linha <= 5 FAÇA
+	15.1- MOSTRENALINHA caractere
+	15.2- CALCULE linha <- linha + 1
+16- FIM FAÇA
+17- FIM
+
+Teste de Mesa
+
+
+Exercício 3
+
+Linguagem Natural
+1- Início
+2- Escolha quantas opções quiser para a função e determine a quantidade de opções
+3- Monte um menu, informando o valor da opção, em ordem crescente, e o nome da opção, os dois separados com um traço ("-")
+4- Quando acabar as opções, incluir uma nova opção com o nome de "Sair" e com a letra "S" para determiná-la
+5- Fim
+
+Fluxograma (Feito)
+
+
+Linguagem Estruturada
+1- FUNÇÃO menu 
+2- PARAMETROS opçoes TIPO vetor, quantidade TIPO inteiro
+3- DECLARE contador <- 0
+4- ENQUANTO contador < quantidade FAÇA
+	4.1- MOSTRE (contador + 1) + "-" + opçoes[contador]
+	4.2- CALCULE contador <- contador + 1
+5- FIM FAÇA
+6- MOSTRE "S - Sair"
+7- FIM menu
+
+
+Teste de Mesa
+
+
+Exercício 4
+
+Linguagem Natural
+1- Início
+2- Pedir o valor de km e a quantidade de litros no tanque
+3- O km é positivo?
+	3.1- Se sim, calcular a media de consumo
+	3.2- Se não, voltar ao passo 2
+4- Mostrar o valor da media
+5- Fim
+
+Fluxograma (Feito)
+
+
+Linguagem Estruturada
+1- INICIO
+2- DECLARE tanque, media
+3- DECLARE km <- 0
+4- ENQUANTO km >= 0 FAÇA
+	4.1- LEIA km
+	4.2- SE km >= 0 
+		4.2.1- LEIA tanque
+		4.2.2- CALCULE media <- km / tanque
+		4.2.3- MOSTRE media
+	4.3- FIM SE
+5- FIM FAÇA
+6- FIM
+
+Teste de Mesa
+
+
+Exercício 5
+
+Linguagem Natural
+1- Início
+2- Defina a frase a ser criptografada e quantos saltos serão utilizados para criptografar a frase
+3- Para cada letra da frase, aumentar o valor da letra a quantidade de números inseridos no salto. Exemplo: letra "a", salto 5, a letra "a" agora será a letra "f"
+4- Mostrar a frase criptografada
+5- Fim
+
+Fluxograma (Feito)
+
+
+Linguagem Estruturada
+1- INICIO
+2- DECLARE salto, criptografia, frase, tamanhoFrase
+3- DECLARE alfabeto <- “abcdefghijklmnopqrstuwvxyz”
+4- DECLARE contador <- 0
+5- LEIA salto, frase, tamanhoFrase
+6- ENQUANTO contador < tamanhoFrase FAÇA
+	6.1- SE frase[contador] != " "
+		6.1.1- DECLARE contadorAlfa <- 0
+		6.1.2- ENQUANTO frase[contador] != alfabeto[contadorAlfa]
+			6.1.2.1- CALCULE contadorAlfa <- contadorAlfa + 1
+		6.1.3- FIM FAÇA
+		6.1.4- CALCULE criptografia[contador] <- alfabeto[contadorAlfa + salto]
+	6.2- FIM SE
+	6.3- CALCULE contador <- contador + 1
+7- FIM FAÇA
+8- MOSTRE criptografia
+9- FIM
+
+Teste de Mesa
+
+
+Exercício 6
+
+Linguagem Natural
+1- Início
+2- Escolha um número para passar para binário
+3- Divida esse número por 2, o resto da divisão é anotado e contine a fazer divisões subsequentes até que o valor da divisão de 0
+4- Inverta a ordem dos restos obtidos para ter o valor certo do binário
+5- Fim
+
+Fluxograma (Feito)
+
+
+Linguagem Estruturada
+1- INICIO
+2- DECLARE numero
+3- DECLARE binario <- 00000000
+4- DECLARE contador <- 7
+5- LEIA numero
+6- SE numero == 0
+7- SE NÃO
+	7.1- ENQUANTO numero > 0 FAÇA
+		7.1.1- CALCULE binario[contador] <- numero % 2
+		7.1.2- CALCULE contador <- contador - 1
+		7.1.3- CALCULE numero <- numero / 2
+	7.2- FIM FAÇA
+8- FIM SE
+9- MOSTRE binario
+10- FIM
+
+Teste de Mesa
+
+
+Exercício 7
+
+Linguagem Natural
+1- Inicio
+2- Declare um valor em binário e uma variável para receber o número
+3- Realize o processo da direita para a esquerda
+4- A cada casa, faça a multiplicação de (2 ^ posição da casa) * valor do bit, depois disso some o valor obtido pela variável número
+5- Repita o passo 4 até que se terminem todas as casas
+6- Mostre o número obtido
+7- Fim
+
+Fluxograma (Feito)
+
+
+Linguagem Estruturada
+1- INICIO
+2- DECLARE binario
+3- DECLARE numero <- 0
+4- DECLARE contador <- 0
+5- DECLARE expoente <- 7
+6- LEIA binario
+7- ENQUANTO contador < 8 FAÇA
+	7.1- SE binario[contador] == 1
+		7.1.1- CALCULE numero <- numero + 2 ^ expoente
+	7.2- FIM SE
+	7.3- CALCULE contador <- contador + 1
+	7.4- CALCULE expoente <- expoente - 1
+8- FIM FAÇA
+9- MOSTRE numero
+10- FIM
+
+
+Teste de Mesa
+
+
+Exercício 8
+
+Linguagem Natural
+1- Início
+2- Declare dois vetores de números inteiros com a mesma quantidade de elementos
+3- Pegue o primeiro numero de cada vetor, some os dois e passe para um "vetor soma"
+4- Some os dois proximos e assim sucessivamente, até que tenha sido utilizado todos os numeros de cada cadeia
+5- Mostre o valor do vetor de soma
+6- Fim
+
+Fluxograma (Feito)
+
+
+Linguagem Estruturada
+1- INICIO
+2- DECLARE vetor1, vetor2, vetorTamanho, vetor2Tamanho, vetorSoma
+3- LEIA vetor1, vetor2, vetorTamanho, vetor2Tamanho
+4- ENQUANTO vetorTamanho != vetor2Tamanho FAÇA
+	4.1- LEIA vetor1, vetor2, vetorTamanho, vetor2Tamanho
+5- FIM FAÇA
+6- ENQUANTO vetorTamanho > 0 FAÇA
+	6.1- CALCULE vetorTamanho <- vetorTamanho - 1
+	6.2- CALCULE vetorSoma[vetorTamanho] <- vetor1[vetorTamanho] + vetor2[vetorTamanho]
+7- FIM FAÇA
+8- MOSTRE vetorSoma
+9- FIM
+
+Teste de Mesa
+
+
+Exercício 9
+
+Linguagem Natural
+1- Início
+2- Receba o valor do salário
+3- Dependendo do valor do salário, irá receber um reajuste:
+	3.1- Se o valor for menor ou igual a 2000, receber 50% a mais do que deveria
+	3.2- Se o valor for menor ou igual a 5000, receber 40% a mais do que deveria
+	3.3- Se o valor for menor ou igual a 7000, receber 20% a mais do que deveria
+	3.4- Se o valor for maior que 7000, receber 10% a mais do que deveria
+4- Mostrar o salário que será recebido
+5- Fim
+
+Fluxograma (Feito)
+
+
+Linguagem Estruturada
+1- INICIO
+2- DECLARE salario
+3- LEIA salario
+4- SE salario <= 2000
+	4.1- CALCULE salario <- salario + salario * 0.1
+5- SE NÃO
+	5.1- SE salario <= 5000
+		5.1.1- CALCULE salario <- salario + salario * 0.2
+	5.2- SE NÃO
+		5.2.1- SE salario <= 7000
+			5.2.1.1- CALCULE salario <- salario + salario * 0.4
+		5.2.2- SE NÃO
+			5.2.2.1- CALCULE salario <- salario + salario * 0.5
+		5.2.3- FIM SE
+	5.3- FIM SE
+6- FIM SE
+7- MOSTRE salario
+8- FIM
+
+Teste de Mesa
+
+
+Exercício 10
+
+Linguagem Natural
+1- Início
+2- Definir uma variável para receber o valor total gasto
+3- Inserir o código do produto escolhido e a quantidade
+	3.1- Se o código inserido for negativo, ir para o passo 7
+4- Multiplicar o preço do produto escolhido pela quantidade e somar esse valor ao valor total gasto
+5- Anotar a produto escolhido e sua quantidade em uma lista
+6- Retornar ao passo 3
+7- Mostrar a lista que foi feita no passo 5 e o valor total gasto
+8- Fim
+
+Fluxograma (Feito)
+
+
+Linguagem Estruturada
+1- INICIO
+2- DECLARE codigo, quantidade, listaQuantidade, listaProduto
+3- DECLARE listaItens <- 0
+4- DECLARE total <- 0
+5- DECLARE posiçao <- 0
+6- LEIA codigo
+7- ENQUANTO codigo > 0 FAÇA
+	7.1- LEIA quantidade
+	7.2- SE quantidade > 0 
+		7.2.1- SE codigo == 100
+			7.2.1.1- CALCULE total <- total + quantidade * 4.5
+			7.2.1.2- CALCULE listaProduto[posiçao] <-  "Misto Quente"
+			7.2.1.3- CALCULE listaQuantidade[posiçao] <- quantidade
+		7.2.2- SE NÃO
+			7.2.2.1- SE codigo == 101
+				7.2.2.1.1- CALCULE total <- total + quantidade * 5
+				7.2.2.1.2- CALCULE listaProduto[posiçao] <-  "Refrigerante"
+				7.2.2.1.3- CALCULE listaQuantidade[posiçao] <- quantidade
+			7.2.2.2- SE NÃO
+				7.2.2.2.1-SE codigo == 102
+					7.2.2.2.1.1- CALCULE total <- total + quantidade * 2
+					7.2.2.2.1.2- CALCULE listaProduto[posiçao] <-  "Pão de queijo"
+					7.2.2.2.1.3- CALCULE listaQuantidade[posiçao] <- quantidade
+				7.2.2.2.2- SE NÃO
+					7.2.2.2.2.1- CALCULE total <- total + quantidade * 6
+					7.2.2.2.2.2- CALCULE listaProduto[posiçao] <-  "Suco"
+					7.2.2.2.2.3- CALCULE listaQuantidade[posiçao] <- quantidade
+				7.2.2.2.3- FIM SE
+			7.2.2.3- FIM SE
+		7.2.3- FIM SE
+	7.3- CALCULE posiçao <- posiçao + 1
+	7.4- FIM SE
+	7.5- LEIA codigo
+8- FIM FAÇA
+9- ENQUANTO listaItens <= posiçao
+	9.1- MOSTRE listaProduto[listaItens] + " " + listaQuantidade[listaItens]
+	9.2- CALCULE listaItens <- listaItens + 1
+10- FIM FAÇA
+11- MOSTRE "Valor total: " + total
+12- FIM
+
+Teste de Mesa

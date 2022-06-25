@@ -1,0 +1,6 @@
+{
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "c:\\Users\\danie\\Desktop\\processing-4.0b2-windows64\\processing\\core\\library\\core.jar"
+  ]
+}

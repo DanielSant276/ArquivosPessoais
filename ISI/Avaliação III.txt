@@ -1,0 +1,33 @@
+WannaCry 2017
+
+Em abril de 2017 a Microsft precisou fazer uma correção crítica do windows para corrigir a vulnerabilidade EternalBlue/DoublePulsar, que permitia a execução de um código remoto. Os computadores com versões desatualizadas do windows como: Windows 8, 7, Vista e anteriores, ficavam vulneráveis ao ransownware WannaCry que se propagava através de anexos em email ou para computadores que compartilhavam a mesma rede.
+
+Por conta da vulnerabilidade, era possível entrar nos servidores Windows do computador através da porta 445, após o acesso, os dados eram criptografados com uma chave e só eram liberados após o pagamento de 300 dólares em bitcoin em um prazo máximo de 3 dias, com a ameaça de deletar todos os dados caso não fosse pago.
+
+Essa falha no sistema, foi descoberta por conta de sistemas não atualizados. Qualquer computador atualizado na época, ficava livre da contaminação por esse ransownware. Empresas que foram afetadas pelo WannaCry, necessitavam manter seus sistemas atualizados. Manter todos os softwares atualizados é o mínimo que deve ser feito para afastar problemas com segurança de informação.
+
+fonte: https://pt.wikipedia.org/wiki/WannaCry
+https://computerworld.com.br/seguranca/10-grandes-falhas-da-tecnologia-nos-ultimos-anos/
+
+
+
+Nest 2016
+
+O termostato inteligente da empresa Nest após uma atualização gerou um bug no sistema na qual zerava rapidamente as baterias. Diversos americanos foram pegos de surpresa no meio do inverno com o termostato desligando sem motivos aparentes. O coofundador e vice presidente da Nest informou que o bug na atualização só foi aparecer após duas semanas do lançamento da mesma.
+
+Diferente da falaha no windows retratada anteriormente, essa falha de software ocorreu devido a poucos testes na atualização desenvolvida. A atualização deveria ter sido testada por mais tempo antes de ter sido disponibilizada aos aparelhos.
+
+fonte:https://nakedsecurity.sophos.com/2016/01/18/nest-smart-thermostat-glitch-leaves-cold-feet-and-steaming-mad-customers/
+https://computerworld.com.br/seguranca/10-grandes-falhas-da-tecnologia-nos-ultimos-anos/
+
+
+Erro no software de crédito do sistema carcerario 2015
+
+Uma falha de desenvolvimento de um sistema de bom comportamento utilizado em Washington fez com que mais de 3200 prisioneiros fossem liberados mais cedo do que deveriam, alguns deles acabaram tendo que voltar para a prisão depois de descoberta a falha.
+
+O erro foi Inserido em uma modificação do sistema de crédito "good time". Esse sistema, através do bom comportamento durante a prisão, reduziria alguns dias da pena. Lá em Washington, as sentenças são divididas em duas partes: a regular e a "aprimorada" o problema que ocorria, era que o "good time" só deveria ser inserido na sentença regular, mas por um erro do desenvolvimento, ela estava sendo aplicada as duas.
+
+Essa falha de atualização, poderia ter sido facilmente identificada com a realização de testes antes de seu lançamento.
+
+fonte:https://arstechnica.com/tech-policy/2015/12/software-bug-granted-early-release-to-more-than-3200-us-prisoners/
+https://computerworld.com.br/seguranca/10-grandes-falhas-da-tecnologia-nos-ultimos-anos/

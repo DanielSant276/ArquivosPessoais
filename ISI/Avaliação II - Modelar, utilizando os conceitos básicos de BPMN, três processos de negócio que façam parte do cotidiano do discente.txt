@@ -1,0 +1,53 @@
+Avaliação II - Modelar, utilizando os conceitos básicos de BPMN, três processos de negócio que façam parte do cotidiano do discente
+
+Modelar, utilizando os conceitos básicos de BPMN, três processos de negócio que façam parte do cotidiano do discente.
+
+Descrever, de forma sucinta, se a compreensão do processo mudou após a modelagem. Comentar sobre as mudanças possíveis para melhorar o processo do ponto de vista do discente.
+
+
+fazer trabalho
+
+inicio
+ler sobre o assunto
+procurar exemplos sobre o assunto
+procurar artigos sobre o assunto
+o artigo foi útil para a realização do trabalho?
+	sim, escrever o trabalho
+	não, procurar outro
+é possível terminar esse trabalho com apenas esse artigo?
+	sim, terminar o trabalho
+	não, procurar outro
+enviar o trabalho na plataforma
+fim
+
+
+estudar 
+
+inicio
+identificar o que será estudado
+Procurar informações sobre o assunto
+Anotar as informações em um caderno de forma direta e resumida
+Foi possível compreender o assunto?
+	sim, próximo ponto
+	não, pesquisar mais e anotar as novidades
+realizar exercícios ou projetar praticas envolvendo o assunto
+ainda há dúvidas sobre o assunto?
+	sim, pesquisar mais e anotar as novidades
+	não, terminar o estudo
+fim
+
+
+assistir aulas ead
+
+inicio
+saber o horário da aula
+preparar o computador/celular/tablet
+entrar na sala com 5 minutos de antecedência do horário previsto
+assistir a aula, fazer anotações dos assuntos abordados
+alguma dúvida quanto ao assunto?
+	se sim, perguntar ao professor
+	se não, continuar assistindo a aula e fazendo anotações
+após o termino da aula, visualizar o slide da aula
+alguma dúvida ao conferir o slide?
+	se sim, postar a dúvida no fórum do sigaa ou entrar em contato com o professor
+	se não, terminar o estudo

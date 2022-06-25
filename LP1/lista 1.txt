@@ -1,0 +1,419 @@
+Exercício 1
+
+Linguagem Natural
+1- Início
+2- Declarar uma variável S para receber as somas
+3- Digite um número e coloque o valor dele na variável S
+4- Digite outro número
+5- Esse número digitado é impar?
+	5.1- Se sim, somar com o valor de S e salvar o valor da soma em S
+	5.2- Se não, voltar ao passo 2
+6- Repetir do passo 4 ao 5 até que tenham sido feitas n somas
+7- Fim
+
+Fluxograma (Feito)
+
+Algoritmo Estruturado
+1- INÍCIO
+2- DECLARE número, N, limite
+3- DECLARE contador = 0
+4- LEIA número, limite
+5- FAÇA ATÉ QUE N == número
+	5.1 SE número % 2 == 0
+		5.1.1- LEIA número
+	5.2 SE NÃO
+		5.2.1- CALCULE N <- número
+	5.3 FIM SE
+6- FIM FAÇA
+7- FAÇA ATÉ QUE contador == limite
+	7.1- LEIA número
+	7.2- SE número % 2 != 0
+		7.3.1- CALCULE N <- N + número
+		7.3.2- CALCULE contador <- contador + 1
+	7.4- SE NÃO
+	7.5- FIM SE
+8- FIM FAÇA
+9- MOSTRE N
+9- FIM	
+
+
+Exercício 2
+
+Loop 1
+Linguagem Natural
+1- Início
+2- Declare um número e um valor limite
+3- Adicione 1 ao número até que ele alcance o valor limite
+4- Mostre o valor do número
+5- Fim
+
+Fluxograma (Feito)
+
+Algoritmo Estruturado
+1- INÍCIO
+2- DECLARE N, limite
+3- LEIA N, limite
+4- FAÇA N até limite
+	4.1- CALCULE N <- N + 1
+5- FIM FAÇA
+6- MOSTRE N
+7- FIM
+
+Loop 2
+Linguagem Natural
+1- Início
+2- Declare um número e um valor limite
+3- Enquanto ele for menor que o valor limite, adicione 1 ao número
+4- Mostre o valor do número
+5- Fim
+
+Fluxograma (Feito)
+
+Algoritmo Estruturado
+1- INÍCIO
+2- DECLARE N, limite
+3- LEIA N, limite
+4- ENQUANTO N < limite FAÇA
+	4.1- CALCULE N <- N + 1
+5- MOSTRE N
+6- FIM
+
+Loop 3
+Linguagem Natural
+1- Início
+2- Declare um número e um número limite
+3- Adicione 1 ao número enquanto ele for diferente do número limite
+4- Mostre o valor do número
+5- Fim
+
+Fluxograma (Feito)
+
+Algoritmo Estruturado
+1- INÍCIO
+2- DECLARE N, limite
+3- LEIA N, limite
+4- FAÇA ENQUANTO N != limite
+	4.1- CALCULE N <- N + 1
+5- MOSTRE N
+6- FIM
+
+
+Exercício 3
+
+Linguagem Natural
+1- Início
+2- Declare o número1 como 0
+3- Declare o termo1 como 1
+4- Declare o número2 como 1
+5- Declare o termo2 como 2
+6- Passe o valor de (número1 + número2) para número1
+7- Some 2 ao termo1
+8- Passe o valor de (número1 + número2) para número2
+9- Some 2 ao termo2
+10- Repita o passo 6 até que termo1 ou termo2 seja igual a N
+11- Se termo1 igual a N
+	11.1- Informe o valor de número1
+12- Se o termo2 igual a N
+	12.1- Informe o valor de número2
+13- Fim
+
+Fluxograma (Não Feito)
+
+Algoritmo Estruturado
+1- INÍCIO
+2- DECLARE N
+3- DECLARE F1 = 0
+4- DECLARE T1 = 1
+5- DECLARE F2 = 1
+6- DECLAREN T2 = 2
+7- LEIA N
+8- FAÇA ATÉ QUE T1 == N OU T2 == N
+	8.1- CALCULE F1 <- F1 + F2
+	8.2- CALCULE T1 <- T1 + 2
+	8.3- CALCULE F2 <- F1 + F2
+	8.4- CALCULE T2 <- T2 + 2
+9- FIM FAÇA
+10- SE T1 == N
+	10.1- MOSTRE F1
+11- SE NÃO
+	11.1- MOSTRE F2
+12- FIM SE
+13- FIM
+
+
+Exercício 4
+
+Linguagem Natural 
+1- Início
+2- Escreva a função x = 2^N + 5
+3- Declare um contador começando em 1, um valor para N e um limite da sequência
+4- O valor do contador é igual ao número limite?
+	4.1- Se sim, passe para o passo 5
+	4.2- Se não, some 1 no N e 1 no contador e retorne para o passo 4
+5- Faça o cálculo de x com o novo valor de N
+6- Fim
+
+Fluxograma (Feito)
+
+Algoritmo Estruturado
+1- INÍCIO
+2- DECLARE contador = 1
+3- DECLARE N, limite
+4- LEIA N, limite
+5- DECLARE X = 2^N + 5
+6- FAÇA ATÉ QUE contador == limite
+	6.1- CALCULE N <- N + 1
+	6.2- CALCULE contador <- contador + 1
+7- FIM FAÇA
+8- MOSTRE X 
+9- FIM
+
+
+Exercício 5
+
+Linguagem Natural
+1- Início
+2- Declare um número
+	2.1- Se esse número for negativo, não é possível fazer o fatorial
+	2.2- Se esse número for igual a 1 ou a 0, o fatorial dele é 1
+	2.3- Se nenhum do dois anteriores:
+ 		2.3.1- Pegue esse número e multiplique pelo valor inicial dele - 1
+		2.3.2- Pegue o resultado e continue assim até que o valor do número inicial sejá igual a 2
+3- Informe o valor do fatorial obtido
+4- Fim
+
+Fluxograma (Feito)
+
+Algoritmo Estruturado
+1- INÍCIO
+2- DECLARE F, F2
+3- LEIA F
+4- CALCULE F2 <- F
+5- SE F2 == 0 OU F2 == 1
+	5.1- CALCULE F <- 1
+6- SE NÃO
+	6.1 - SE F2 > 0
+		6.1.1- FAÇA ATÉ QUE F2 < 2
+			6.1.1.1- CALCULE F2 <- F2 - 1
+			6.1.1.2- CALCULE F <- F * F2
+		6.2- FIM FAÇA
+	6.2- SE NÃO
+		6.2.1- MOSTRE -> Não é possível calcular o fatorial de F
+	6.3- FIM SE
+7- FIM SE
+8- MOSTRE F
+9- FIM
+
+
+Exercício 6
+
+Linguagem Natural
+1- Início
+2- Escolha um número
+3- Indique qual número vêm antes do número escolhido
+4- Indique qual número vêm depois do número escolhido
+5- Fim
+
+Fluxograma (Feito)
+
+Algoritmo Estruturado
+1- INÍCIO
+2- DECLARE X
+3- LEIA X
+4- CALCULE X <- X - 1
+5- MOSTRE X
+6- CALCULE X <- X + 2
+7- MOSTRE X
+8- FIM
+
+
+Exercício 7
+
+Linguagem Natural
+1- Início
+2- Declare 2 valores n1 e n2
+3- Diga que o valor de n2 será o valor de n1 - n2
+4- Diga que o valor de n1 será o valor de n1 - n2
+5- Diga que o valor de n2 será o valor de n1 + n2
+6- Informe o valor de n1 e n2
+7- Fim
+
+Fluxograma (Feito)
+
+Algoritmo Estruturado
+1- INÍCIO
+2- DECLARE N1, N2
+3- LEIA N1, N2
+4- MOSTRE N1
+5- MOSTRE N2
+6- CALCULE N2 <- N1 - N2
+7- CALCULE N1 <- N1 - N2
+8- CALCULE N2 <- N1 + N2
+9- MOSTRE N1
+10- MOSTRE N2
+11- FIM
+
+
+Exercício 8
+
+Linguagem Natural
+1- Início
+2- Digite uma palavra e coloque a primeira letra como maiúscula
+3- Repita o processo de digitar uma palavra e colocar a primeira letra maiuscula até que seja digitado um ponto
+4- Fim
+
+Algoritmo Estruturado
+1- INICIO
+2- DECLARE caracter
+3- DECLARE invalido = verdadeiro
+4- DECLARE i = 0
+5- DECLARE j = 1
+6- LEIA caracter
+7- ENQUANTO invalido == verdadeiro FAÇA
+	7.1- SE (caracter[i] < 65 ou caracter[i] > 122) ou (caracter[i] > 91 e caracter[i] < 97)
+		7.1.1- SE caracter[i] == 46
+			7.1.1.1- DECLARE invalido = falso
+		7.1.2- SE NÃO
+			7.1.2.1- DECLARE i = 0
+			7.1.2.2- LEIA caracter
+		7.1.3- FIM SE
+	7.2- SE NÃO
+		7.2.2.1- CALCULE i <- i + 1
+	7.3- FIM SE
+8- FIM FAÇA
+9- SE caracter[0] >= 97
+	9.1- CALCULE caracter[0] <- caracter[0] - 32
+10- SE NÃO
+11- FIM SE
+12- ENQUANTO caracter[j] != . FAÇA
+	12.1- SE caracter[j] < 97
+		12.1.1- CALCULE caracter[j] <- caracter[j] + 32
+		12.1.2- CALCULE j <- j + 1
+	12.2- SE NÃO
+		12.2.1- CALCULE j <- j + 1
+	12.3- FIM SE
+13- FIM FAÇA
+14- FIM
+
+
+Exercício 9
+
+Linguagem Natural
+1- Início
+2- Indique quanto foi comprado de cada material
+3- Veja na tabela o preço de cada material dependendo da quantidade comprada
+4- Calcule o preço gasto em cada material
+5- Calcule o preço total gasto
+6- Indique quanto foi comprado de cada material, o quanto foi pago em cada material e o preço total pago
+7- Fim
+
+Fluxograma (Feito)
+
+Algoritmo Estruturado
+1- INÍCIO
+2- DECLARE quantidadeDeParafuso, quantidadeDePorca, quantidadeDePrego, preçoParafuso, preçoPorca, preçoPrego, preçoTotal
+3- LEIA quantidadeDeParafuso, quantidadeDePorca, quantidadeDePrego, preçoParafuso, preçoPorca, preçoPrego
+4- SE quantidadeDeParafuso > 500
+	4.1- CALCULE preçoParafuso <- 6.5
+5- SE NÃO
+	5.1- SE quantidadeDeParafuso > 100
+        5.1.1- CALCULE preçoParafuso <- 8
+    5.2- SE NÃO
+        5.2.1- CALCULE preçoParafuso <- quantidadeDeParafuso * 0.1
+    5.3- FIM SE
+6- FIM SE
+7- SE quantidadeDePorca > 500
+	7.1- CALCULE preçoPorca <- 4
+8- SE NÃO
+	8.1- SE quantidadeDePorca > 100
+        8.1.1- CALCULE preçoPorca <- 4.5
+    8.2- SE NÃO
+        8.2.1- CALCULE preçoPorca <- quantidadeDePorca * 0.05
+    8.3- FIM SE
+9- FIM SE
+10- SE quantidadeDePrego > 500
+	10.1- CALCULE preçoPrego <- 8
+11- SE NÃO
+	11.1- SE quantidadeDePrego > 100
+        11.1.1- CALCULE preçoPrego <- 9
+    11.2- SE NÃO
+        11.2.1- CALCULE preçoPrego <- quantidadeDePrego * 0.1
+    11.3- FIM SE
+12- FIM SE
+13- CALCULE preçoTotal <- preçoParafuso + preçoPorca + preçoPrego
+14- MOSTRE quantidadeDeParafuso, preçoParafuso, quantidadeDePorca, preçoPorca, quantidadeDePrego, preçoPrego, preçoTotal
+15- FIM
+
+
+Exercício 10
+
+Linguagem Natural
+1- Início
+2- Declare os números e o sinal da equação
+3- Faça o cálculo utilizando o sinal definido
+4- Insira o símbolo de igual
+5- Mostre o resultado do cálculo
+6- Fim
+
+Fluxograma (Feito)
+
+Algoritmo Estruturado
+1- INÍCIO
+2- DECLARE N1, sinal, N2, igual
+3- LEIA N1, sinal, N2, igual
+4- SE sinal == +
+	4.1- CALCULE N1 <- N1 + N2
+5- SE NÃO
+	5.1- SE sinal == -
+		5.1.1- CALCULE N1 <- N1 - N2
+	5.2- SE NÃO
+		5.2.1- SE sinal == *
+			5.2.1.1- CALCULE N1 <- N1 * N2
+		5.2.2- SE NÃO
+			5.2.2.1- CALCULE N1 <- N1 / N2
+		5.2.3- FIM SE
+	5.3- FIM SE
+6- FIM SE
+7- MOSTRE N1
+8- FIM
+
+
+Exercício 11
+
+Linguagem Natural
+1- Início
+2- Diga 2 valores
+3- Um dos valores é igual a 0?
+	3.1- Se for
+		3.1.1- Pule para o passo 4
+	3.2- Se não for
+		3.2.1- Compare o valor 1 com o valor 2 e mostre o maior valor
+		3.2.2- Mantenha o maior valor, apague o menor valor e insira um novo valor
+		3.2.3- Volte ao passo 3
+4- Diga qual é o maior valor
+5- Fim
+
+Fluxograma (Feito)
+
+Algoritmo Estruturado
+1- INÍCIO
+2- DECLARE N1, N2
+3- LEIA N1, N2
+4- FAÇA ATÉ QUE N1 == 0 OU N2 == 0
+	4.1- SE N1 > N2
+		4.1.1 MOSTRE N1
+		4.1.2 LEIA N2
+	4.2- SE NÃO
+		4.2.1 MOSTRE N2
+		4.2.2 LEIA N1
+	4.3- FIM SE
+5- FIM FAÇA
+6- SE N1 > N2
+	6.1- MOSTRE N1
+7- SE NÃO
+	7.1- MOSTRE N2
+8- FIM SE
+9- FIM
+
+
+17,9k - 31,4k

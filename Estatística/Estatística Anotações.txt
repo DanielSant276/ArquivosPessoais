@@ -1,0 +1,257 @@
+	Aula 01
+
+Fornece métodos para: coletar, organizar, descrever, analisar e interpretar dados.
+
+Estatística descritica: coleta, organiza e descreve os dados. Normalmente utilizando uma amostra da população em estudo.
+
+Estatística Inferencial: analisa, interpreta e faz a generalização de conclusões para uma população, com base em uma amostra.
+
+Probabilidade: Estuda as incertezas da ocorrência de algum fenômeno aleatório.
+
+Onde aplicar?
+	- Estudo de programação de dietas;
+	- Análise de problemas de tráfego;
+	- Estudo dos efeitos de remédios;
+	- Desempenho de motores elétricos;
+	- Nível de produtividade rura;
+	- Avaliação de risco no mercado financeiro;
+	- Etc, etc, etc...
+
+Termos importante:
+	- População: conjunto de elementos portadores de pelo menos uma característica comum;
+	- Amostra: subconjunto de uma população;
+	- Censo: coleção de dados relativos a todos os elementos de uma população;
+	- Parâmetro: é uma medida numérica que descreve uma carasterística de uma amostra.
+
+Naturezas das variáves:
+	- Qualitativas: características não numéricas do elemento em estudo.
+	|-->1 - Nominal: Cor de pele, Sexo;
+	|-->2 - Ordinal: Grau de instrução;
+
+	- Quantitativas: valores numéricos. 
+	|-->1 - Discretas: Nº de carteiras em sala de aula, nº de alunos de uma turma.
+	|-->2 - Contínuas: Velocidade, pressão, temperatura.
+
+
+		Aula 02 - Tabelas e gráficos
+
+Tabelas precisam ser auto explicativas, e devem possuir título, cabeçalho, corpor e rodapé.
+	- Normas: IBGE e ABNT;
+	- Título precisa responder: O que está sendo apresentado, quando e onde foram coletadas as informaçãoes;
+	- Cabeçalho: indica o conteúdo das colunas;
+	- Corpo: onde será incluido as informações obtidas;
+	- Rodapé: origem dos dados, e notas referentes aos dados das tabelas;
+
+As tableas podem ser:
+	- Série Geografica: dados em função de local;
+	- Série Temporal: dados em função de tempo;
+	- Série Categórica: dados em função de categorias;
+	- Tabelas Mistas (tabelas de contingência): terão duas ou mais séries estatísticas diferentes;
+
+Gráficos: ajuda a visualizar amis rápido as informações contidas nas tabelas.
+Os gráficos também precisam ser auto explicativas, e devem possuir título, cabeçalho, corpor, rodapé e legenda;
+
+Os gráficos podem ser:
+	- Gráfico de linhas: Este gráfico representa apenas séries temporais utilizando linhas poligonais;
+	- Gráfico de setores: Este gráfico representa a série estatística categórica e a geográfica. Este gráfico é contruido com vase em um círculo. É empregado sempre que se deseja ressaltar a participação, em percentual, de um determinado dado em relação ao total. Cada setor é obtido por meio de uma regra de três simples e direta, lembrando que o total da série corresponde a 360°;
+	- Gráfico de colunas: Este gráfico podem ser utilizados par arepresentar todas as séries estatísticas, por meio de retângulos dispostos verticalmente;
+	
+
+		Aula 3
+
+Distribuição de Frequência (fi), são tabelas que demonstram a quantidade que determinada coisa ocorre.
+
+Componentes da distribuição de frequência:
+	1 - Classes: k = 1 + 3,3 log n => Regra de Sturges
+		    k = raiz(n), onde n = tamanho da amostra
+	2 - Amplitude Total de Distribuição: A_T = X_max - X_min
+	3 - Amplitude de classe: A_C = A_T/K
+	4 - Ponto médio da classe: x_i = (LS_i - LI_i)/2
+				   LS_i = Limite Superior classe i
+				   LI_i = Limite Inferior classe i
+	5 - Frequência absoluta (f_i): Número de observações de cada classe i
+	6 - Frequência relativa (fr_i): fr_i = f_i / somatório(f_i). Obs.: o valor do total tem que ser 100, não podendo passar e nem ficar antes.
+	7 - Frequência acumulada (fac_i): fac_i = somatório(f_j) (que é f1+f2+f3+...+fi)
+
+Histograma e polígono de frequências:
+	Histograma: é formado por retângulos justapostos, feitos sobre as classes da variável quantitativa em estudo no eixo x e as frequências absolutas f_i ou frequências relativas f(r_u)i ou densidades d_i.
+	Polígono de Frequências: é formado por linhas que unem os pares ordenados (x_i, f_i) ou (x_i, fr_i) ou (x_i, d_i) formados pelos pontos médios x_i e as frequências absolutas f_i ou as frequências relativas fr_i ou densidades d_i das classes.
+
+Ramo-e-folha:
+	Técnica alternativa para resumir um conjunto de dados.
+	Objetivo: obter uma idéia da forma de sua disstribuição.
+	Vantagem: em relação ao histograma é que não perdemos (ou se perde pouca) informação sobre os dados.
+
+
+
+		Aula 4
+
+Média:
+	1 - Média Aritmética (\bar{X}): é o quociente da soma dos valores de uma sequência x_1, x_2, ..., x_n pelo número total n de elementos.
+		\bar{X} = somatorio(x_i)/n
+	2 - Média: Dados agrupados em distribuição de frequências.
+		\bar{X} = somatorio((x_i)(f_i))/somatorio(fi)
+		n é o número de elementos da sequência
+		x_i são valores da sequências
+
+Considere o exemplo abaixo:
+	Seja uma sequência de pesos de um grupo com 5 pessoas: x = {52, 64, 65, 68, 249} => Média = 99,6 kg
+	Com esse exemplo, percebe-se que a média recebe influência de valores extremos ou mínimos.
+
+Mediana (Me):
+	É o valor que divide um conjunto de dados ORDENADOS em duas partes iguais, com o mesmo número de elementos de cada lado.
+	Seja n o número de elementos da sequência ORDENADAS o valor mediano ocupará a posição:
+	n par => Calula-se a média dos valores que ocupam as n/2 e (n+2)/2 posições.
+	n impar => (n+1)/2 posição.
+
+Exemplo:
+	S = {4, 5, 7, 8, 11, 12, 15}, n = 7.
+	Temos (n + 1)/2 = 8/2 = 4 posição => Me = 8
+
+	S = {5, 6, 9, 12, 13, 17}, n = 6
+	Temos n/2 = 6/2 = 3 e (n + 2)/2 = 8/2 = 4 posições
+	Me = (9 + 12)/2 = 10,5
+
+Mediana - dados agrupados em classes
+	1 - Identificar a classe mediana: Calcula-se n/2 e toma-se a frequência acumulada imediatamente superior ao valor encontrado.
+	2 - utiliza-se a fórmula:
+	|--Me = L_i + (a/f_i)((n/2) - fac_(i - 1)),
+	|--L_i: limite inferior da classe mediana;
+	|--a: amplitude da classe mediana
+	|--f_i: frequência absoluta da classe mediana;
+	|--fac_(i-1): frequência acumulada da classe anterior à classe mediana
+
+Moda (Mo):
+	1 - Moda (Mo): valor que ocorre com maior frequência na sequência de valores em estudo; Ex.: X = {2, 2, 2, 3, 4, 4, 4, 4, 5, 5, 6} => Mo = 4 (Elemento com maior frequência).
+	2 - Moda para dados agrupados em distribuição de frequências:
+	|--Mo = L_i + (a(f_i - f_(i-1)))/(2f_i - (f_(i+1) + f_(i-1)))
+	|--L_i: limite inferior da classe modal;
+	|--a: amplitude da classe modal;
+	|--f_i: frequência absoluta da classe modal;
+	|--f_(i + 1): frequência absoluta da classe posterior à classe modal;
+	|--f_(i - 1): frequência absoluta da classe anterior à classe modal;
+
+Assimetria e Simetria:
+	Assimetria é o grau de afastamento da distribuição em relação à unidade de simetria.
+	Se \bra{X} = Me = Mo => Curva simétrica (quando iguais ou muito próximos)
+	Se Mo < Me < \bra{X} => Curva assimétrica positiva
+	Se Mo > Me > \bra{X} => Curva assimétrica negativa
+	Ob.: A Me sempre estará no meio nas assimetrias, quando não, alguma coisa está errada.
+
+
+
+		Aula 5
+
+Quantis ou Separatrizes:
+	Temos 3 Quantis:
+		1 - Qartil (Q_k, k = 1, 2, 3)
+		2 - Decil (D_k, k = 1, 2, ..., 9)
+		3 - Percentil (P_k, k = 1, 2, ..., 99)
+
+Cálulo de Quantis para dados agrupados:
+	As fórmulas dos quantis devem ser parecidas com a fórmula da mediana:
+		Me = L_i + (a/f_i)((n/2) - fac_(i-1))
+	Onde: n/2 = kn/4 ou kn/10 ou kn/100
+
+Quartil:
+	1 - Identificar a classe k-quartil:
+	|-- kn/4 => frequência acumulada imediatamente superior.
+	2 - Aplicar a fórmula: Q_k = L_i + (a/f_i)((kn/4) - fac_(i-1))
+
+Decil:
+	1 - Identificar a classe k-decil:
+	|-- kn/10 => frequência acumulada imediatamente superior.
+	2 - Aplicar a fórmula: D_k = L_i + (a/f_i)((kn/10) - fac_(i-1))
+
+Percentil:
+	1 - Identificar a classe k-percentil:
+	|-- kn/100 => frequência acumulada imediatamente superior.
+	2 - Aplicar a fórmula: P_k = L_i + (a/f_i)((kn/100) - fac_(i-1))
+
+Atenção: SEMPRE VERIFIQUE SE O VALOR OBTIDO ESTÁ CONTIDO NA CLASSE ENCONTRADA
+
+Curtose:
+	Medida que indica o grau de achatamento de uma distribuição em relação à distribuição padrão (distribuição normal).
+	1 - mesocurtica: retângulos perto da curva padrão;
+	2 - platicúrtica: retângulos abaixo da curva padrão (em relação a média terá uma variabilidade maior, indica que terá um distânciamento maior do conjunto de dados em relação a média);
+	3 - leptocúrtica: retângulos acima da curva padrão (indica que terá um distânciamento menor do conjunto de dados em relação a média);
+
+Coeficiente de curtose:
+		C = (Q3 - Q1)/2(P90 - P10)
+	Se C = 0,263 => a curva será mesocúrtica;
+	Se C < 0,263 => a curva será leptocúrtica
+	Se C > 0,263 => a curva será platicúrtica;
+
+Box-Plot:
+	É um gráfico que apresenta uma ideia da posição, dispersão, assimetria e pontos discrepantes de um conjunto de dados.
+	Para construir um Box-Plot é necessário:
+	1 - Limite inferior: L_I = Q1 - (3/2)d_q
+	2 - Limite Superior: L_S = Q3 + (3/2)d_q
+	3 - Mediana: Me
+	4 - 1° Quartil: Q1
+	5 - 3° Quartil: Q3
+	Onde: d_q = Q3 - Q1
+
+Forma & Box-Plot
+	Se Me estiver mais próximo de Q1 = Assimetria negativa;
+	Se Me estiver no meio = Simétrico;
+	Se Me estiver mais próximo de Q3 = Assimetria positiva;
+
+Obs.: Outlier são valores muito fora do normal
+
+
+
+		Aula 6
+
+Medidas de Dispersão
+	1 - Desvio Médio;
+	2 - Varivância;
+	3 - Desvio Padrão;
+	4 - Coeficiente de Variação
+
+Desvio Médio (DM):
+	É a diferença de cada elemento da amostra em relação a média obtida:
+		d_i = x_i - \bar{X}
+	Ex.:
+	S = {3, 3, 5, 5, 9}, \bar{X} = 5
+	d_1 = x_1 - \bar{X} = 3 - 5 = -2
+	d_2 = x_2 - \bar{X} = 3 - 5 = -2
+	d_3 = x_3 - \bar{X} = 5 - 5 = 0
+	d_4 = x_4 - \bar{X} = 5 - 5 = 0
+	d_5 = x_5 - \bar{X} = 9 - 5 = 4
+
+	somatório(d_i) = 0
+
+		DM = |somatório(d_i)|/n
+
+	Mas caso o conjunto de número for para dados agrupados, a fórmula fica:
+		DM = somatório(d_i|f_i)/n
+
+Variância (S^2)
+	Medida de dispersão um pouco mais eficaz. Existem 2 formulas para variância:
+	Amostra:
+	S^2 = (somatório(x_i - \bar{X})^2)/(n - 1)
+				ou
+	S^2 = ((somatório(x_i - \bar{X})^2).f_i)/(n - 1)
+	População:
+	S^2 = (somatório(x_i - \bar{X})^2)/n
+				ou
+	S^2 = ((somatório(x_i - \bar{X})^2).f_i)/n
+
+	Outra forma de fazer sem utilizar a média aritmética:
+	S^2 = (1/(n-1)) [somatório(x^2_i . f_i) - (somatorio(x_i . f_i)^2)/n]
+				ou
+	S^2 = (1/n) [somatório(x^2_i . f_i) - (somatorio(x_i . f_i)^2)/n] 
+
+Desvio-Padão (S):
+	É obtido extraindo a raiz quadrada da variância
+		S = raiz(S^2)
+
+Coeficiente de variância (CV):
+	Explica se o desvio-padrão calculado é grande ou pequeno;
+	O coeficiente de variação é uma medida relativa, útil para comparação de grau de concentração dos dados em torno da média.
+	Obs.: Toda medida relativa é medida em porcentagem
+		CV = (S/\bar{X}) . 100
+	1 - Quanto menor o CV mais homogêneo é o conjunto de dados;
+	2 - Usualmente expresso em porcentagem (%);
+	3 - Sua grande utilidade é permitir a comparação das variabilidades de diferentes conjuntos de dados;

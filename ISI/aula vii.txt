@@ -1,0 +1,52 @@
+MODELAGEM DE SISTEMAS 
+	Os modelos de sistemas são utilizados quando queremos testar diferentes relações e seus efeitos.
+
+INTRODUÇÃO A MODELAGEM
+	modelos são:
+		abstrações que permitem focar nos fundamentos do sistema, omitindo detalhes não essenciais
+		aperesentam simplificações que ajudam no entendimento de sistemas grandes e complexos
+		auxiliam na resolução de problemas sem a necessidade de construir os artefatos concretos
+		fornecem uma linguagem comum de descrição, permitindo que a complexidade do sistema seja comunicada a outros
+		nos permitem explorar e entender melhor situações do mundo real
+
+POR QUE UTILIZAR MODELOS?
+	a modelagem:
+		auxilia a preservar o conhecimento e memória corporativa
+		permite o uso de partes de informação ou conhecimento existente em novos projetos, economizando tempo e dinheiro
+		facilita a automação dos processos de negócios da organização
+
+MODELAGEM DE SISTEMAS DE INFORMAÇÃO
+	sistemas de informação possuem diversos aspectos distintos que precisam ser modelados (hardware, software, informação)
+	cada aspecto de um SI é modelado individualmente, proporcionando diferentes perspectivas do sistema
+	dispor de um conjunto de visões auxilia a redução da complexidade e ajuda os desenvolvedores a identificar e resolver problemas nos estágios iniciais da construção
+
+EXEMPLOS DE MODELOS EM SI
+	os modelos em SI estão relacionadas as diferentes fases TEM MAIS AQUI
+
+MODELOS ESTÁTICOS E DINÂMICOS
+	os modelos precisam representar elementos estáticos e dinâmicos de um sistema
+	elementos estáticos são aqueles que não se alteram com o passar do tempo
+	elementos dinâmicos são aqueles que mudam conforme o sistema é utilizado
+
+TIPOS DE MODELO
+	os principais tipos de modelos são:
+		narrativo: baseia-se na descrição através de palavras
+		físico: representação tangível da realidade
+		esquemático: representação gráfica da realidade
+		matemático: representação aritmética da realidade
+
+LINGUAGENS DE MODELAGEM
+	definem o conjunto de regras para a criação dos modelos
+	são indispensáveis para garantir o entendimento comum do que está representado
+	uma linguagem de modelagem gráfica consiste em uma série de símbolos, representando objetos, processos e relacionamentos em sistemas de informação
+	linguagens de modelagem são projetadas para serem: calras e expressivas, sem ambiguidade, universais, fáceis de utilizar, suportadas por ferramentas
+
+PROCESSOS DE NEGÓCIO
+	é uma coleção de atividades que recebe um ou mais tipos de entrada e cria uma saída que é valiosa para o cliente/organização
+	exemplos: processamento d epedido, checagem de crédito, agendamento de reunião, pagamento dos funcionários, contratação de novos funcionários, matrícula do estudante na universidade, matrícula do estudante em disciplinas.
+
+BPMN
+	a BPMN (business process modeling notation) é uma linguagem gráfica de modelagem padrão para representação de processos de negócio
+	seu intuito é proporcionar uma linguagem básica de representação de processo através de um fluxo de informações (fluxograma)
+
+	

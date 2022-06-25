@@ -1,0 +1,165 @@
+Questão 1, 2 e 4)
+public abstract class Animal {
+  public String nome;
+  private String cor;
+  private int qtdPatas;
+  private int idade;
+
+  public Animal(String nome, String cor, int qtdPatas, int idade) {
+    this.nome = nome;
+    this.cor = cor;
+    this.qtdPatas = qtdPatas;
+    this.idade = idade;
+  }
+
+  public String getNome() {
+    return this.nome;
+  }
+
+  public String getCor() {
+    return this.cor;
+  }
+
+  public int getQtdPatas() {
+    return this.qtdPatas;
+  }
+
+  public int getIdade() {
+    return this.idade;
+  }
+
+  public void acao(){
+    System.out.println("Corre");
+  }
+
+  public void come(){
+    System.out.println("Caça");
+  }
+
+  public void dorme() {
+    System.out.println("O animal procura um lugar sussegado para dormir");
+  }
+}
+
+
+
+public class Cachorro extends Animal implements Dono{
+  private String raca;
+
+  public Cachorro(String nome, String cor, int qtdPatas, int idade, String raça) {
+    super(nome, cor, qtdPatas, idade);
+    this.raca = raça;
+  }
+
+  public void trocarRaca(String raça) {
+    this.raca = raça;
+  }
+
+  public String getRaca() {
+    return raca;
+  }
+
+  @Override
+  public void come(){
+    System.out.println("Come ração.");
+  }
+
+  @Override
+  public void dorme() {
+    System.out.println(this.nome + " dorme no seu cantinho da casa.");
+  }
+
+  public void vigia() {
+    System.out.println("Dorme no seu canto da casa");
+  }
+
+  public void brincar() {
+    System.out.println("O dono brinca com o seu animal de pegar bola.");
+  };
+
+  public void daComida() {
+    System.out.println("O dono coloca comida no pote do seu animal");
+  }
+}
+
+
+
+
+public interface Dono {
+  public void brincar();
+  public void daComida();
+}
+
+
+
+
+public class start {
+  public static void main(String[] args) {
+    // Apenas para exemplicar, não é possível fazer isso pois a classe animal foi definida como abstract, não podendo ser instanciada.
+    // Animal meuAnimal = new Animal("lobo", "branco", 4, 10);
+
+    // Criando um objeto da classe Cachorro
+    Cachorro meuCachorro = new Cachorro("Luna", "Preta", 4, 7, "vira-lata");
+
+    // Método criado na classe mãe animal
+    meuCachorro.acao();
+    // Métodos da classe cachorro sobrescritos na classe animal
+    meuCachorro.come();
+    meuCachorro.dorme();
+    // Método criado na classe Cachorro
+    meuCachorro.vigia();
+
+    // Como a variável não é definida como private, é possível modificá-la
+    System.out.println(meuCachorro.getNome());
+    meuCachorro.nome = "Benjamin";
+    System.out.println(meuCachorro.getNome());
+    
+    // Não pode ser realizado pois raça é privado
+    //System.out.println(meuCachorro.raca);
+
+    // Apesar da variável ser privado, é possível modificá-la através de um método
+    System.out.println(meuCachorro.getRaca());
+    meuCachorro.trocarRaca("Yorkshire");
+    System.out.println(meuCachorro.getRaca());
+
+    // Utilizando o Método da interface Dono implementada na classe Cachorro
+    meuCachorro.brincar();
+    meuCachorro.daComida();
+  }
+}
+
+
+
+Questão 3)
+
+Método estático é um método que pode ser chamado sem a necessidade de instanciar uma classe. Um método estático pode acessar uma tipo de dado estático e alterá-lo. Métodos estáticos pertencem a uma classe e não a um objeto de uma classe.
+
+public class Soma {
+  static int somar(int numberOne, int numberTwo) {
+    return numberOne + numberTwo;
+  }
+
+  public static void main(String args[]){  
+    int resultado = somar(2, 5);
+    System.out.println(resultado);
+  }
+}
+
+
+Questão 5)
+O try and catch é uma excessão que, caso ele não consiga executar o código dentro do bloco de try, ele realiza o tratamento do erro gerado no bloco de catch.
+public class DividirPorZero {
+  public static void main(String args[]){  
+    int numero = 10;
+    int zero = 0;
+
+    try {
+      //Tentativa de divisão, caso não consiga realizar a dividisão ele irá para a parte de catch, onde o erro irá ser mostrado
+      System.out.println(numero/zero);
+    }
+    catch (Exception erro) {
+      // Identificação no console de qual erro ocorreu
+      System.out.println(erro.getMessage());
+    }
+  }
+}
