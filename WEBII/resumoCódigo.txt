@@ -1,0 +1,23 @@
+forma de conseguir receber um parâmetro:
+String name = request.getParameter("nome");
+
+forma de conseguir receber um contexto:
+ServletContext ctx = getServletContext();
+String validUser = ctx.getInitParameter("nome");
+
+forma de iniciar uma sessão e adicionar um atributo nela:
+HttpSession sessao = request.getSession();
+sessao.setAttribute("nomeDaSessao", name);
+
+forma de redirecionar uma sessão:
+response.sendRedirect("welcome.jsp");
+
+forma de remover uma sessão e deletála
+sessao.removeAttribute("nomeDaSessao");
+sessao.invalidate();
+
+forma de definir um servletContext
+<context-param>
+  <param-name>nome</param-name>
+  <param-value>daniel</param-value>
+</context-param>

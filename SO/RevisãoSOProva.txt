@@ -1,0 +1,109 @@
+	Multiplexação: compartilhamento de recursos de duas maneiras diferentes: no tempo (diferentes programas ou usuários se revezam, usando-o em instantes diferentes) e no espaço (em vez dos clientes se revezarem, cada um tem direito a uma parte do recurso).
+	
+	Multiprogramação: Alternação da CPU entre interromper um processo e executar um novo processo, ela tem o objetivo de tornar mais eficiente o aproveitamento dos recursos de computadores e a execução "simultânea" de vários programas. Quando um processo é suspenso temporariamente, todas as informações referentes a ele deverão ser salvas para que ele volte a ser executado posteriormente
+
+	Tabela de processos: Armazena informações sobre o estado de cada processo sendo seus valores de: execução ou não, contador de programa, ponteiro de pilha, conteúdo dos seus registradores, ponteiros para arquivos abertos, alocação da memória, escalonamento, e todas as informações necessárias que precisarão ser salvas quando passar do estado de em execução para o estado de bloqueado.
+	
+	Chamadas de Sistemas: Forma de um programa em modo usuário receber uma funcionalidade do SO, através da utilização de uma instrução TRAP (Interrupção síncrona, que ocorre em conseguência da instrução que foi executada). A chama de sistema então chaveia entre o modo usuário para o modo núcleo. Após a obtenção do serviço ela retorna para o programa do usuário, do ponto onde parou.
+
+	!!!!Espaço de endereçamento!!!!: Permite que múltiplos programas estejam carregados na memória ao mesmo tempo. O SO cria uma abstração da memória, onde o processo só irá ver a parte em que ele foi carregado.
+
+	Chamada de sistema READ:
+	1,2,3. Armazena parâmetros na pilha;
+	4. Chama rotina;
+	5. Coloca nº da chamada de sistema em um registrador;
+	6. TRAP, que contém um índice para uma tabela que indica o tipo de chamada;
+	7. SO verifica o nº de chamada do sistema e desvia (despacha) para a rotina correta;
+	8. Executa rotina de tratamento;
+	9. Retorna o controle para a rotina de biblioteca no espaço do usuário;
+	10. Retorna controle ao programa do usuário;
+	11. Programa do usuário limpa a pilha;
+	Ver imagem do slide 2 - pag 24;
+
+	!!!!Processo!!!!:
+	Um processo é um programa em execução, ele possui PC (point counter), Registradores e variáveis de estado.
+	Cada processo possui sua própri "CPU virtual", o seu próprio espaço de endereçamento e podem ser criados e terminados dinamicamente.
+
+	Modelo de Processos:
+	|--Multiprogramação: alternação da CPU entre interromper um processo e executar um novo processo;
+	|--Fluxo de controle: Somente um programa está ativo a cada momento;
+	|--Somente um processo é executado a cada instante;
+
+	!!!!Estados de Processos!!!!:Processos são independentes mas as vezes, precisam interagir entre si.
+	Um processo pode bloquear em duas situações:
+	1 - Não pode prosseguir, ao esperar por uma entrada que não está disponível;
+	2 - Está pronto para executar mas a CPU é alocada para outro processo.
+	
+	Três estados nos quais um processo pode se encontrar:
+	1 - Em execução: usando a CPU naquele instante;
+	2 - Pronto: Executável, temporariamente parado para deixar outro processo ser executado;
+	3 - Bloqueado: incapaz de ser executado até que algum evento externo aconteça;
+	
+	Possíveis transições de estados:
+	1. SO descobre que o processo não pode 
+	2. Escalonador decide trocar o processo em execução.
+	3. Escalonador decide que chegou a hora do processo executar (os outros já ocuparam tempo suficiente de CPU).
+	4. Entrada ou evento externo, pelo qual o processo estava esperando, acontece.
+
+	!!!!Modelando a multiprogramação!!!!:
+	U = 1 - P^n
+	Onde:
+	n – número de processos na memória;
+	P – probabilidade do processo estar esperando por uma E/S;
+	P^n − probabilidade dos n processos estarem esperando por uma E/S ao mesmo tempo;
+	U − utilização da CPU;
+
+	Thread: Parte do código que pode ser executada independentemente do programa principal, onde um thread pode estar esperando/executando uma parte separadamente enquanto o programa se preocupa em executar outras tarefas. O uso de thread garante maior simplicidade ao decompor uma aplicação em múltiplos threads sequenciais que executam em "quase-paralelo".
+	EXEMPLO: Um processador de texto com três threads:
+	1. interativo (teclado e mouse);
+	2. reformata o texto;
+	3. grava periodicamente no disco;
+
+	Existem três maneiras de construir um servidor:
+	1. Vários threads: facilidade de implementação e melhora no desempenho;
+	2. Único thread: mantém simplicidade mas piora desempenho;
+	3. Read não bloqueante: programação mais difícil, mas melhora o desempenho;
+	
+	!!!!Thread usuário X thread núcleo!!!!: As threads podem ser divididas em threads de usuário, as quais são executadas dentro de um processo e correspondem às tarefas executadas, e threads de núcleo, que correspondem à fluxos de execução reconhecidos e gerenciados pelo núcleo do sistema, ou também chamadas de kernel threads. Para o SO as threads de usuário são entendidas como monothreads, mesmo não sendo.
+
+	Implementações Híbridas de threads:
+	O núcleo trata apenas das threads de núcleo e os escalona, algumas dessas threads podem ser o resultado da multiplexação de diversos threads de usuário que desejam o mesmo serviço do núcleo. Os threads do usuário são criados, destruídos e  escalonados no espaço do usuário. Cada thread do núcleo atende a algum conjunto de threads de usuário que aguarda sua vez para usá-lo.
+
+	!!!!Escalonador!!!!: Responsável por determinar qual processo será executado e por quanto tempo. Através dos métodos FIFO (First-in-first-out), Prioridade (maior prioridade executado primeiro), Round-Robin (Cada processo recebe um tempo de execução chamado de quantum. No final desse tempo, o processo é suspenso e outro processo é colocado em execução, caso o processo não esteja finalizado, ele volta para o final da fila.), Shortest-Job-First (Executa os processos de menor tempo primeiro) e Processo mais curto em seguida (utilização de aging, aplicável a muitas situações onde uma previsão precisa ser feita baseada nos valores anteriores).
+
+	Escalonamento em sistemas de tempo real: utiliza a fórmula: somatório(Ci/Pi) <= 1, onde: se há m eventos periódicos e o evento i ocorre com o período Pi e exige Ci segundos de tempo da CPU para lidar com cada evento. Se ele atende a esse critério que ele é escalonável.
+
+	Gerenciamento de Memória: mantem o controle de quais partes da memória estão em uso e quais não estão, 
+aloca e libera memória aos/dos processos, trata da hierarquia de memórias.
+	Em sistemas de grade porte antigos, o SO fica na RAM. Em sistemas embarcados ele fica na ROM.
+
+	Monoprogramação sem Troca de Processos ou Paginação: para cada commando do teclado o SO copia o programa equivalente ao comando do disco para a  memória. Para um novo commando, um novo programa é  carregado, sobrescrevendo o programa anterior;
+
+	Troca de Processos (Swapping): Processos são criados com tamanho fixo, é feita uma alocação só alocando exatamente o que é necessário, porém terá um problema quando um processo tentar crescer.
+	Caso haja espaço adjacente ao processo ele pode crescer naquele espaço.
+	Se existe um processo adjacente a outro existem 3 opções:
+	1 - Ser movido para onde haja espaço suficiente para ele;
+	2 - Um ou mais processos são trocados para criar um espaço suficiente.
+	3 - Se processo não pode crescer (área de swap no disco cheia), ele é suspenso até que algum espaço seja liberado (ou, na pior das hipóteses, ser morto).
+
+	Algoritmos para alocação de memória c/ listas encadeadas: First Fit (procura o primeiro segmento disponível cujo tamanho é suficiente para alocar o processo desejado), Next Fit (semelhante ao anterior, com a diferença de que a procura é feita a partir do último segmento alocado), Best Fit (pesquisa toda a lista e escolhe o menor segmento no qual se encaixa o processo) e Worst Fit (escolhe o maior segmento de memória disponível).
+
+	!!!!Memória Virtual / Paginação!!!!:
+	Cada programa tem seu espaço de endereçamento virtual dividido em blocos denominados páginas. Porém, nem todas as páginas precisam estar na memória física.
+	Memória virtual: é um espaço que o sistema reserva no HD para salvar as informações armazenadas na RAM e liberar memória para novos aplicativos.
+	Paginação: um esquema de gerenciamento de memória pelo qual um computador armazena e recupera dados de um armazenamento secundário para uso na memória principal.
+	Funciona bem em sistemas de multiprogramação, com partes de muitos programas na memória  simultaneamente. Enquanto um programa está esperando que partes de si mesmo sejam lidas (páginas que estão no disco), a CPU pode ser dada para outro processo.
+	
+	TLB (Translation Lookaside Buffer): Dispositivo de hardware que mapeia endereços virtuais em endereços físicos sem ter de passar pela tabela de páginas.
+
+	Tabela de páginas: mapear as páginas virtuais em quadros de páginas. Para descobrir a página e seu deslocamento, O valor fica como um par ordenado: (página virtual, deslocamento), onde página
+virtual é ((endereços virtuais)/página) e deslocamento, ou offset, é (endereços virtuais%página).
+
+	Algoritmos de Substituição de Páginas:
+	1 - Ótimo: Substitui a página que será necessária depois que se passar o maior número de instruções. Cada página teria um rótulo com essa informação, removendo a página de maior rótulo.
+	2 - NRU(Não Usada Recentemente): Cada página tem os bits Referenciada (R) e Modificada (M). Bit R é colocado em 1 quando a página é referenciada (lida ou escrita) e o bit M quando é modificada (escrita). Em cada interrupção de relógio o bit R é limpo (colocado em ‘0’). A cada processo iniciado, os bits de todas as páginas são colocados em ‘0’.
+	3 - FIFO: Mantém uma lista encadeada de todas as páginas, onde a página mais antiga fica cabeça da lista e a página que chegou por último na memória no final da lista. Na ocorrência de falta de página a página na cabeça da lista é removida e a nova página adicionada no final da lista.
+	4 - Segunda Chance (SC): lista encadeada de páginas em ordem FIFO. Se o bit R da página A é 1 ele é colocado em 0 e B é examinado. É transformado em FIFO se todas as páginas estiverem com bit R = 1. Se R = 0, se retira a página, se R = 1, vira 0 e avança o ponteiro.
+	5 - Menos Recentemente Usada (LRU): Retira da memória a página que há mais tempo não é usada. É mantido uma lista encadeada de páginas, sendo a página mais recentemente usada no início da lista e a menos usada no final da lista.
+
+	Algoritmo de envelhecimento (aging) (utilizado em páginas): ver desenho do slide 6 - página 14.

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>WebI</title>
+  <link href="./webI-1-script.js">
+</head>
+
+<body>
+  <img src='./bulboff.png' onClick='changeBulb()' />
+
+  <script>
+    function changeBulb() {
+      //forma que eu fiz
+      /*var fullPath = document.querySelector('img').src;
+      var index = fullPath.lastIndexOf("/");
+      var filename = fullPath;
+      if (index !== -1) {
+        filename = fullPath.substring(index + 1, fullPath.length);
+      }
+
+      if (filename == 'bulboff.png') {
+        document.querySelector('img').src = './bulbon.png';
+      } 
+      else {
+        document.querySelector('img').src = './bulboff.png';
+      }*/
+
+      //forma que o professor fez
+      let image = document.querySelector('img');
+
+      if (image.src.match('bulbon')) {
+        image.src = 'bulboff.png';
+      }
+      else {
+        image.src = 'bulbon.png';
+      }
+    }
+  </script>
+</body>
+
+</html>

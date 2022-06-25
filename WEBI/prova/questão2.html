@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Questão 2</title>
+  <style>
+    #tela {
+      display: flex; 
+      width: 100%; 
+      height: 100vh; 
+      align-items: center; 
+      justify-content: center; 
+      flex-direction: column;
+    }
+
+    #pai {
+      height: 200px; 
+      width:50%; 
+      background-color: #909000;
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      flex-direction: column;
+    }
+    </style>
+</head>
+
+<body>
+  <main>
+    <div id="tela">
+      <div id="pai">
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let pai = document.getElementById("pai")
+
+    document.getElementById("pai").onmouseover = () => {
+      if (pai.contains(document.getElementById("input-filho"))) {
+        document.getElementById("input-filho").remove();
+      }
+      else {
+        let inputFilho = document.createElement("input");
+        inputFilho.id = "input-filho";
+        pai.appendChild(inputFilho);
+      }
+    };
+
+    document.getElementById("pai").onclick = () => {
+      if (!pai.contains(document.getElementById("img-filho"))) {
+        let imgFilho = document.createElement("img");
+        imgFilho.id = "img-filho";
+        imgFilho.src = "https://thumbs.dreamstime.com/b/cão-golpista-engraçado-com-patinho-recém-nascido-na-cabeça-golden-retriever-em-cima-da-206504408.jpg"
+        imgFilho.width = "150";
+        imgFilho.height = "70";
+        imgFilho.alt = "Golden com pato";
+        pai.appendChild(imgFilho);
+      }
+    }
+  </script>
+</body>
+
+</html>

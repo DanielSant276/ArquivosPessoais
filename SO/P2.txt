@@ -1,0 +1,273 @@
+		Sistemas de arquivos
+
+Estrutura de arquivos:
+	1 - Sequência não estruturada de bytes:
+	|--Para o SO são apenas conjuntos de bytes, ele não se importa com o conteúdo do arquivo, as aplicações que irão interagir com esses arquivos.
+	   |--vantagem: gera uma flexibilidade pois os usuários organizam da forma que quiser e o nomeiam como quiser.
+	2 - Sequência de registros de tamanho fixo:
+	|--Cada um tem uma estrutura interna fixa, eram utilizados pelos mainframes.
+	3 - Árvores de registros:
+	|--Cada parte do arquivo possui um campo chave com uma posição fixa, na árvore. O SO decide onde colocar novos registros, não o usuário. É utilizado nos mainframes atuais.
+
+Atributos de arquivos:
+	Além do nome e dos dados, todo arquivo possui outras informações sobre ele, como os atributos (metadados).
+
+Diretórios ou pasta:
+	É uma estrutura utilizada para organizar arquivos em um computador ou um arquivo que contém referências a outros arquivos. Eles podem ser organizados de 3 maneiras: nível único (um diretório com vários arquivos dentro, são simples e rápidos na localização do arquivo), dois níveis e hierarquicos (um diretório raiz possui diretórios de usuário que podem possuir arquivos ou outros diretórios dentro dele).
+	links permitem que um arquivo apareçam em mais de um diretório, eles podem ser:
+	|--hard link: incrementa o contador de links no i-node e nenhum arquivo é realmente removido enquanto seu contador não for 0.
+	   |--unlink: remove uma entrada no diretório, decrementando o contador de links do arquivo. Se após isso o contador for 0, o arquivo é removido do sistema.
+	|--soft link: ponteiro para um arquivo em outro diretório, não incrementa contador nenhum.
+	   |--vantagem: não precisa copiar o mesmo arquivo para outro local, ocupando menos espaço.
+	   |--desvantagem: se remover o arquivo original o link fica perdido.
+
+Implementação do Sistema de Arquivo:
+	Cada disco pode ser dividido em várias partições, com um sistema de arquivos independente para cada partição;
+	O primeiro setor (setor 0) do disco é o MBR (Master Boot Record) – registro mestre de inicialização;
+	No fim do MBR existe a tabela de partição, com os endereços iniciais e finais de cada partição (uma partição marcada como ativa);
+	Na inicialização do computador:
+	|--BIOS lê e executa o MBR;
+	|--MBR localiza a partição ativa;
+	|--MBR lê e executa o primeiro bloco da partição (de inicialização);
+	|--Programa no primeiro bloco carrega o SO contido na partição;
+
+	Uma partição pode ter:
+	|--Bloco de inicialização: realiza o boot do SO que se encontra na partição;
+	|--Superbloco: contém os principais parâmetros do Sistema de Arquivos (nº de blocos, id do sistema de arquivos e outros campos), ele é lido na memória quando o computador é iniciado ou quando o Sistema de Arquivos é usado pela primeira vez;
+	|--Informações sobre blocos livres: Mapa de bits (tabela onde cada um dos blocos é informado se está livre ou ocupados) e/ou lista de ponteiros dos blocos livres (ponteiro para cada próximo bloco/arquivo);
+	|--I-nodes: arranjo de estruturas de dados com infos sobre cada um arquivo (atributos, proprietário, criador, útlima autualização, backup ou não);
+	|--Diretório-raiz (topo da árvore do sistema de arquivos);
+	|--Outros arquivos e diretórios que se encontram na partição;
+
+Implementação de arquivos: 
+	Alocação contígua:
+	|--Vantagens:
+	   |--Simples de implementar: endereço do primeiro bloco e número de
+blocos do arquivo;
+	   |--Desempenho excelente: basta um única procura;
+	|--Desvantagem
+	   |--Fragmentação do disco;
+	Alocação por lista encadeada:
+	|--Implementação: A primeira palavra de cada bloco é usada como ponteiro para localizar o próximo bloco. O restante do bloco é usado para os dados.
+	|--Vantagens:
+	   |--Nenhum espaço é perdido na fragmentação;
+	   |--Basta armazenar a entrada do primeiro bloco;
+	|--Desvantagens:
+	   |--Acesso aleatório lento ( 1 → 2 → 3 → …… → n-1 → n → …);
+	   |--Quantidade de dados de um bloco não é mais uma potência de dois pois os ponteiros ocupam alguns bytes do bloco!!! Alguns programas lêem e escrevem em tamanhos de blocos;
+	Lista encadeada usando uma tabela na memória:
+	|--Implementação: As palavras dos ponteiros de cada bloco são colocadas em uma tabela na memória (FAT – file allocation table - tabela que localiza a posição dos blocos dos arquivos.);
+	|--Vantagens:
+	   |--Acesso aleatório mais rápido (encadeamento está todo na memória, apesar de seguir o mesmo princípio);
+	   |--Todo bloco fica disponível para dados;
+	|--Desvantagem:
+	   |--Toda a tabela deve estar na memória o tempo todo (tamanho pode chegar a 3 GB): Ex: com um disco de 1 TB e blocos de 1 KB  1 G blocos e cada entrada da tabela ocupando, no mínimo, 3 bytes;
+	I-nodes:
+	|--Implementação: Utilizado no Unix e Linux, cada arquivo com uma estrutura chamada I-node, que contém: atributos, endereços no disco dos blocos do arquivo. Com o I-node de um arquivo é possível encontrar todos os blocos desse arquivo.
+	|--Vantagens:
+	   |--O I-node só é carregado na memória quando o arquivo é aberto, economizando espaço na memória principal. A principal diferença dele para a FAT é que no I-node, os arquivos na memória serão proporcionais pela quantidade de arquivos abertos ao mesmo tempo, enquanto que na FAT, é proporcional ao tamanho do disco. Se cada I-node ocupa n bytes e é possível abrir um máximo de k arquivos, o total de memória ocupada será de kn bytes.
+	|--Desvantagens:
+	   |--Cada I-node tem um espaço fixo de endereços de disco enquanto o tamanho do arquivo pode aumentar além desse limite. A solução para isso é reservar o último para blocos mais livres.
+
+Questão: onde os atributos dos arquivos (data, dono, proteção) devem ser armazenados?
+R= 	Sistema Windows: Eles são armazenados na entrada do diretório onde: diretório será a lista de entradas de tamanho fixo, onde cada entrada possui:
+	|--nome;
+	|--atributos;
+	|--um ou mais endereços de disco para os blocos de cada arquivo;
+	Sistema Unix/Linux: Atributos dos arquivos são armazenados nos próprios i-nodes ao invés de serem armazenados na entrada do diretório onde: Cada entrada do diretório = nome do arquivo + nº do i-node;
+
+Desvantagem da implementação de diretórios:
+	Como cada campo reservado para o nome de um arquivos tem tamanho fixo, ocorre um grande desperdício de espaço no diretório, pois, normalmente, os nomes são muito menores do que 255 caracteres (que é o espaço reservado para isso);
+	Para resolver isso, existem duas possibilidades:
+	|--Usar tamanho da entrada + dados sobre o arquivo, num formato fixo.
+	   |--Desvantagem: Quando o arquivo for removido fica uma lacuna de tamanho variável no diretório e se a entrada do diretório for grande, pode ocorrer uma falta de página durante a leitura de um nome do arquivo;
+	|--Os nomes dos arquivos ficam juntos em uma área temporária separada da entrada do diretório, denominada HEAP.
+	   |--Vantagem: Quando um arquivo for removido, o próximo a entrar sempre caberá, pois possui exatamente a mesma estrutura e não há necessidade de que os nomes de arquivos comecem
+alinhados por palavras e, portanto, não é preciso completar com caracteres em branco o nome dos arquivos.
+
+Busca linear:
+	Usar uma tabela de espalhamento (tabela HASH) para cada diretório, aplicando uma função ao nome do arquivo de forma que, as n entradas da tabela sejam mapeadas entre os valores 0 e n-1. Caso a entrada da tabela já estiver sendo usada, constrói-se uma lista
+encadeada a partir daquela entrada da tabela, unindo todas as entradas com mesmo valor de espalhamento.
+	 As entradas da tabela contêm um ponteiro para a entrada do arquivo. Utilização da busca:
+	nomedoarquivo → função → entrada da tabela → verica-se todas as entradas da lista encadeada. (Se o nome não constar na lista, o arquivo não estará presente).
+	|--Vantagen: busca mais rápida;
+	|--Desvantagem: gerenciamento mais complexo;
+
+Sistema de Arquivos do MS-DOS:
+	Apesar de antigo, tornaram-se muito utilizados em sistemas embarcados: câmeras digitais, MP3 players, iPod;
+	Funcionamento:
+	|--Para ler um arquivo, o MS-DOS faz uma chamada de sistema open para abri-lo. Esta chamada especifica um caminho até o diretório de trabalho (absoluto ou relativo);
+	|--Caminho é procurado até o diretório final ser encontrado e carregado na memória;
+	|--Diretório é vasculhado até o arquivo ser encontrado e, finalmente, ser aberto;
+
+Tamanho máximo de uma partição:
+	nº de entradas (endereços) possíveis * tamanho do bloco de dados.
+	Ex: FAT-16 com tam. Máximo de bloco de 32 KB = 64K end * 32 KB = 2 GB
+	MS-DOS suporta, no máximo, 4 partições por disco de 8 GB de tamanho;
+	Em Aplicações multimídia: 2 GB ≅ 9 minutos de video, sendo o maior vídeo capaz de ser armazenado = 36 minutos, assim, no Windows 95: FAT-32 – 28 bits
+	Limite teórico para o tamanho da partição: 2^28 * 2^15 (32KB) = 8 TB, porém, o limite é de 2 TB pois, internamente o sistema monitora o tamanho da partição com blocos de 512 bytes e endereços de 32 bits: 2^32 * 2^9 = 2 TB
+
+
+		Entrada/Saída
+
+São dispositivos limitados que são compartilhados pelos processos do SO. O SO possui comando para:
+	|--Enviar instruções (read, write, etc.);
+	|--Intercepar interrupções nesses dispositivos;
+	|--Tratar erros provenientes das leituras;
+Ele possui uma interface única para todos os dispositivos, boa parte do kernel do SO será utilizada para os drivers, e a maior parte do tempo de execução de uma tarefa será gasta com os dispositivos de E/S (overheads).
+	
+Tipos de E/S:
+	Tipos de conexão:
+	|--Serial: possui uma única linha de conexão;
+	   |--Vantagens: é mais barata, porém mais lenta, mas é extremamente confiável. É comumente utilizada em dispositivos mais baratos e lentos como impressoras e terminais.
+	|--Paralela: possui várias linhas de conexões;
+	   |--Vantagens: é mais complexa, porém mais cara e mais rápida. É altamente confiável e utilizada em dispositivos que precisam de uma resposta muito rápida, como os discos;
+	Tipos de transferência:
+	|--Dispostivos de bloco: possui blocos de tamanho fixo com endenreços específicos para cada um e tamanho variando de 128 a 1024 bytes. Utilizada a referência de localidade, pois caso você queira um bloco específico, a chance de querer os próximos blocos referentes a essa consulta são altas. Essa estratégia de referência de localidade otimizado o tempo do dispostivo de E/S. É utilizado por HD, CD-ROM, Deive USB.
+	|--Dispostivos de caracter: utilizam fluxos de caractéres ao invês de bloco. Esses caractéres não são indereçáveis e nem possuem acesso aleatório. São utilizados em impressoras, interfaces de rede e mouses.
+	Compartilhamento de conexões:
+	|--Ponto a Ponto: utiliza uma conexão mais simples, pois possuiu uma linha direta para cada periférico. É mais confiável e possui uma alta taxa de paralelismo. Utiliza os protocolos RTS/CTS;
+	|--Multiponto: compartilha várias linhas entre diversos periféricos, possui uma maior escalabilidade que a de ponto a ponto, porém não permite paralelismo. É usada para armazenamento. Exemplos: IDE, SCSI, USB, etc.
+
+As unidades de E/S possuiem componente mecânicos (braços dos drivers, carrinho de tinta da impressora, etc) e controladora de dispositivos (Parte programável, componentes eletrônicos, entre outras);
+
+A conexão do SO com os dispositivos de E/S se faz por parte das controladoras, o SO não trata diretamente com o dispositivo e sim com a controladora que passa as informações para o dispositivo e devolve a resposta. A comunicação dos dois é feita através de barramentos.
+
+Cada controladora possui registradores (que possui o controle pela CPU, e para ler/escrever no dispositivo);
+	O SO pode comandar o dispositivo, escrevendo comandos e seus parâmetros e depois de escrever esses comandos, a CPU executa outra tarefa usando os registradores;
+	Fomas de comunicação CPU x controladora:
+	Mapeando na memória:
+	|-- Está dentro do espaço da memória, utilizando um conjunto de endereços reservados.
+	|-- Os registradores são tratados como posições de memórias, mapeando todos os registradores no espaço de memória, geralmente no topo do espaço de endereços;
+	Mapeada em E/S:
+	|-- Contoladora recebe um número de portas de E/S que são acessadas via instruções especiais e são usadas apenas pelo SO. Espaços de endereços diferentes são usados para a memória e E/S.
+	Híbrido:
+	|-- Os registradores de comunicação de dados e controle se encontram tanto na memória principal como nas portas de E/S;
+
+Modos de Operação de E/S:
+	E/S programada:
+	|--Forma mais simples (tudo é feito pela CPU), os dados são trocados entre a CPU e o módulo de E/S. A CPU executa um programa que: verifica o estado do módulo -> envia o comando de operação -> aguarda o resultado -> efetua a transferência para registrador da CPU;
+	   |--Desvantagens: a CPU é ocupada o tempo inteiro, pois ela realiza toda a operação.
+	E/S via interrupções:
+	|--CPU requisita uma leitura no disco -> controladora lê os dados enquanto a CPU faz outras tarefas -> controladora envia uma interrupção à CPU -> CPU solicita os dados -> controladora envia os dados. As interrupções são identificadas por números, sendo o menor número o que tem maior prioridade.
+	E/S via acesso direto à memória:
+	|--É um dispostivo que é dedica a E/S chamado de DMA (Direct Memory Access), ela necessita de uma controladora de DMA que faz a E/S programada, ao invés da CPU.
+	|--A E/S através da DMA é realizada utilizando um conjunto de parâmetros como: endereço de memória (comunica a CPU para onde irá os dados lidos), quantidade de bytes (que será lido ou escrito), a parta de E/S que será utilizada, a direção da transferência (dispositivo -> memória principal ou ao contrário) e unidade de transferência (por byte ou palavra).
+	|--Vantagem: DMA executa a E/S programada. A controladora de DMA faz todo o trabalho liberando a CPU para outras finalidades;
+	|--Desvantagem: se a CPU for mais rápida que a DMA, isso será um problema, pois a CPU poderia utilizar o tempo ocioso ao invés de esperar a DMA. Arquitetura mais barata;
+
+Princípio de camadas:
+	Utiliza um conjunto de camadas para organizar a execução das E/S.
+	Nas camadas mais baixas ficam os detalhes de hardware e os drivers e manipuladores de interrupção.
+	Nas camadas mais altas ficam a interface do usuário, as aplicações de usuário e as chamadas de sistemas.
+
+Princípios de software:
+	Fornece uma interface uniforme, onde cada dispositivo fornece um driver com funções padronizando as funções. O SO define que funções o driver deve fornecer.
+
+Driver:
+	Os drivers ficam dentro do kernel do sistema operacional. Eles fornecem as particularidade dos dispositivos (código específico para controlar a E/S).
+	Eles serão escritos pelo fabricante do dispositivo, fazem o acesso total a todo o dispositivo. Porém, como estão dentro do kernel, é possível que eles causem problemas ao SO.
+	Eles podem aceitar pedidos de leitura/escrita do software, o pedido independe do dispositivo, cuida para que tudo seja executado. Ele faz um check-up no início, incializa o dispositivo (caso precise), gerencia as necessidades energéticas do dispositivo, e cria um log com os eventos.
+
+Disco:
+	Possui um eixo (cilíndro) com vários discos, que contém trilhas e setores. Um cilíndro é um conjunto de trilhas. As trilhas são compastas de vários setores (512B a 32Kb).
+	O tamanho do disco será (valor em bytes) = nº de faces * trilhas * nº stores * tamanho do setor.
+	A leitura dos discos é feita por uma cabeça de leitura.
+
+Geometria do disco:
+	Em discos mais antigos o número de setores/trilhas era igual, porém hoje em dias, existem mais setores nas zonas externas do que nas internas.
+
+A controladora mapeia a leitura de x cilindros, y cabeças e z setores por trilhas.
+
+Formatação de baixo nível:
+	Trilhas com o mesmo número de setores, com espaços pequenos entre os setores. O setor é formatado da seguinte maneira:
+	|--Preâmbulo - bits para início, id setor, id cilindro;
+	|--Payload (os dados do setor);
+	|--ECC = código de correção de erros;
+
+Entrelaçamento na formatação:
+	O conteúdo lido é transferido para um buffer da controladora, caso o buffer esteja cheio, o próximo dado pode acabar passando, sendo necessário esperar por uma próxima rotação.
+	Uma técnica para evitar essa perda de informação utilizando entrelaçamento. Existem 3 tipos: sem entrelaçamento, com entrelaçamento simples e com entrelaçamento duplo.
+	Isso não ocorre nas controladoras mais modernas, pois o buffer é grande o suficiente.
+
+Escalonamento do braço:
+	FCFS (FIFO): olha requisição por requisição, conforme a ordem que elas entrarem na fila.
+	SSF: verifica o conjunto de requisições e atende as requisições mais próximas. Esse modelo geralmente fica mais pelo centro do disco e as extremidades podem acabar sofrendo inanição.
+	Elevador: segue uma direção e depois volta ao atingir o último cilindro.
+
+RAID(Redundant Array of Inexpensive Disk):
+	É um conjunto de discos onde são armazenados as informações e caso se perca um disco, apenas uma parte da informação é perdida e não ela por inteiro. Dividindo a informação em vários discos diferentes aumentando a confiabilidade.
+	Armazena grandes quantidades de dados (big data).
+	Combina discos rígidos em uma estrutura lógica. Podendo ser implementado por: hardware (controladora), software (dentro do SO). De qualquer forma, o SO só irá ver como um disco. Ele pode ser implentado em vários níveis diferentes.
+
+Clocks (timers):
+	Pode ser de dois tipos:	
+	|--Hardware: Dispositivo que gera pulso síncronos, localizado na CPU ou na placa-mãe. Esse sinal é utilizado para a execução de instruções, presente em qualquer sistema multiprogramado. A frequência será o número de vezes que o pulso se repete por segundo (Hz).
+	|--Software: O hardware só gera pulsos em certos momentos, todo o resto depende do driver de clock. Funções do driver de clock: manter a hora do dia, contabilizar o tempo total do processo, verificar o uso da CPU (timeslice),  cuidar da chamada de sistema alarm/settimer, fazer monitoração e estatísticas.
+	
+	
+		Impasses
+
+Porque os impasses ocorrem:
+	Porque pode acontecer casos em que um processo A esteja esperando um recurso que está alocado em um processo B e esse mesmo processo B está esperando um recurso que está alocado no processo A, assim nenhum dos dois processos conseguem dar sequência na sua execução.
+
+Condições de ocorrer um impasse:
+	Não-preempção: recursos já alocados a processos não podem ser tomados à força. Eles precisam ser liberados pelo processo que possui a sua posse;
+	‌Exclusividade mútua: cada recurso ou está alocado a um processo ou está disponível;
+	Posse-e-espera: cada processo pode solicitar um recurso, ter esse recurso alocado para si e ficar bloqueado, esperando por um outro recurso;
+	Espera circular: deve existir uma cadeia circular de dois ou mais processos, cada um dos quais esperando por um recurso que está com o próximo integrante da cadeia.
+
+Recursos preemptivel e não-preemptivel:
+	Preemptível: é aquele que pode ser retirado do processo
+proprietário sem nenhum prejuízo. Ex: memória.
+	Não-preemptível: não pode ser retirado do atual processo sem que cause prejuízos aos processos, causando
+falha na computação. Ex: gravador de CD.
+
+Estratégias para lidar com impasses:
+	Ignorar o problema (não é boa ideia!);
+	Detecção e recuperação. Deixe os impasses ocorrerem,
+detecte-os e recupere-se deles;
+	Evitar, dinamicamente, que eles ocorram, por meio de
+alocação cuidadosa de recursos;
+	Prevenção, fazendo com que uma das quatro condições
+necessárias para o impasse não ocorram;
+
+Estratégias de detecção de impasse:
+Detecção com um recurso de cada tipo:
+	|--Utiliza um grafo para localizar loops na execução;
+	Detecção com vários recursos de cada tipo:
+	|--Para esse algoritmo, o sistema, geralmente, procura periodicamente por deadlocks, utilizando 2 matrizes para definir recursos alocados e necessário para cada processo, e 2 listas com os recursos máximos e disponíveis.
+
+Estratégias de recuperação de impasse:	
+	Recuperação por meio de preempção:
+	|--possibilidade de retirar temporariamente um recurso de seu atual dono e entregá-lo a outro processo;
+	Recuperação por meio de rollback (volta ao passado):
+	|--recursos alocados a um processo são armazenados em arquivos de verificação (checkpoint files); quando ocorre um deadlock, os processos voltam ao estado no qual estavam antes do deadlock;
+	Recuperação por meio de eliminação de processos:
+	|--processos que estão no ciclo com deadlock são retirados do ciclo; Melhor solução para processos que não causam algum efeito negativo ao sistema;
+
+Algoritmo do banqueiro:
+	Quando um processo requisita um recurso deve esperar por este recurso;
+	Quando um processo detém todos os recursos, deve devolver dentro de um tempo finito. O Banqueiro pode ser implementado com um tipo de recurso com várias instâncias ou vários recursos com várias instâncias;
+	Considera cada requisição no momento em que ela ocorre verificando se essa requisição leva a um estado seguro; Se sim, a requisição é atendida;
+	Senão, o atendimento é adiado para um outro momento;
+
+Prevenção de impasse:
+	Posse e Espera: Exigir que todos os processos requisitem os recursos antes de iniciarem. Porém  podem não saber quantos e quais recursos vão precisar no início da execução – e também retêm recursos que outros processos poderiam estar usando. Com isso o processo deve desistir de todos os recursos – para então requisitar todos os que são imediatamente necessários.
+	Não Preempção: Prevenção de Deadlock Atacando a Condição de Não Preempção. Esta é uma opção inviável. O problema é que alguns recursos devem ser não-preemptivos, para evitar erros de computação. Exemplo: impressora.
+	Espera Circular: A condição de espera circular pode ser evitada se um processo somente puder usar um recurso em um dado intervalo de tempo. ordenação numérica dos recursos.
+	Evitar alocar um recurso quando ele não for absolutamente necessário - tentar assegurar que o menor número possível de processos possa de fato requisitar o recurso.
+
+Livelock:
+	Risco de ocorrer em algoritmos que detectam e se recuperam de um conflito, caso um processo execute uma ação, o algoritmo de detecção de deadlock poderá ser acionado repetidamente.
+	Na maioria dos sistemas operacionais, livelocks são apenas ignorados,  presumindo que a maioria dos usuários preferiria um livelock ocasional a uma restrição de todos os usuários a um processo;
+
+Inanição:
+	Algumas políticas para prevenir impasses e decidir quem recebe um determinado recurso, e quando, podem prejudicar algum
+processo, que nunca é atendido em sua requisição, mesmo que
+não exista impasse;
+	Exemplo da impressora que executa o SJF, arquivos grandes podem nunca ser executados, melhor solução seria utilizar o FIFO;
+
+Impasse de comunicação:
+	O processo A enviar uma mensagem de solicitação ao processo B, e é bloqueado até B enviar de volta uma mensagem de resposta. Se a mensagem de solicitação se perder. A está bloqueado esperando pela resposta e B está também bloqueado esperando por uma solicitação pedindo a ele para fazer algo.
+	Este, no entanto, não é o impasse clássico pois A e B não possuem recursos, porém trata-se de um impasse de acordo com a definição formal, pois existe um conjunto de processos, com cada um bloqueado esperando por um evento que somente o outro pode causar.

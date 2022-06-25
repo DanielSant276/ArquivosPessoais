@@ -1,0 +1,155 @@
+Resumão optativa sistemas operacionais
+
+
+2.1 - Processos
+2.2.1 - utilização de threads
+2.2.4 - implementando threads no espaço do usuário
+2.2.5 - implementando threads no núcleo
+2.4.1 - Introdu~çao ao escalonamento
+2.4.6 - Escalonamento de threads
+
+
+Processos
+
+Frequentemente, vemos em computadores modernos à computadores pessoais
+a realização de várias tarefas ao mesmo tempo. Os processos são na verdade
+um metódo pelo qual se modela e controla a concorrência entre as solicitações de acesso
+ ao disco, uso da CPU, etc.
+
+Em sistemas multiprogramaveis,isto é, qualquer sistema de multiprogramação a CPU
+muda de um processo para o outro rapidamente (não simultaneamente mais rapidamente)
+dando a ilusão de paralelismo.
+
+
+	* Utilização de Threads
+
+A principal razão para se ter threads é que em muitas aplicações
+multiplas atividades estão ocorrendo simultaneamente, e algumas delas
+podem bloquear de tempos em tempos. Ao decompormos uma aplicação
+dessas em multiplos threads sequenciais que são executados quase em paralelo
+o modelo de programação se torna mais simples.
+
+Com os thread acrescentamnos um elemento: capacidade para as entidades
+em paralelo compartilharem um espaço de endereçamento e todos os 
+seus dados entre si
+
+Essa capacidade é essencial para determinadas aplicações, razão pela
+qual ter multiplos processos não funcionará.
+
+
+Um segundo argumento: são mais leves que processos, são mais fáceis para
+criar e destruir processos.
+
+
+Terceira razãp: Desempenho. De fato, o uso não resulta em um ganho de desempenho
+quando todos eles são limitados pela CPU mas quando há uma computação dusbtancial
+ e também E/S substancial.
+
+
+
+
+	*Implementando threads no espaço do usuário
+
+Há dois lugares possíveis de implementar thread: no espaço do usuário
+e no núcleo.
+
+- Pacotes de threads no espaço do usuário:  A primeira vantagem:
+pode ser implementado em um sistema operacional que não dá suporte
+aos threads (implementado por uma biblioteca)
+
+-Quando são implementados no espaço do usuário, cada processo precisa
+da sua prórpria tabela de threads para controlá-los naquele processo.
+(analogo a tabela de processos do núcleo, exceto por controlar
+apenas as propriedades de cada thread ).
+
+Essa tabela de threads é gerenciada pelo sistema de tempo de execução
+(Quando um thread vai de um estado pronto ou bloqueado, a informação
+necessária para reincializa-lo é armazenada na tabela de threads)
+
+quando um thread faz algo que possa bloquea-lo localmente, (esperar que
+outro thread em seu processo termine um trabalho) ele chama uma rotina do sistema
+de tempo de execução. Essa rotina verifica se o thread precisa ser
+cooloca em estado de bloqueado. Caso necessário armazena nos registradoresdo thread,
+procura um thread pronto a ser executado, recarrega os registradores da maquina.
+
+
+Existe outra vantagem:
+Thread no espaço do usuário permitem que cada processo tenha seu p´roprio
+algoritmo de escalonamento customizada.
+
+
+1 problema :Como chamdas de sistema bloqueantes são implementadas
+
+2 - faltas de oágina, se o programa nao está na memoria principal ecom isso
+chama ou salta para uma insturção que não está na memoria, ocorre uma falta de página
+isto é]: o processo é bloqueado enquanto as intruções necessárias
+estao sendo localizadas e lidas.
+
+Se um thread no espaço do usuário causa uma falta de página, o nucleo
+que desconhece a existencia dos thread naturalmente bloqueia
+o processo inteiro. 
+
+3 - Se um thread começa a ser executado nenhum outro naquele processo
+será executado a não ser que o primeiro voluntariamente abra mao da CPU
+(sem chance para o escalonador)
+
+
+---
+
+Implementando threads no núcleo:
+
+
+1 - Não é necessario um sistema de tempo de execução em cada um,
+também não há uma tabela de thread como em threads implementadas
+no espaço do usuário, ao inves disso, o núcleo tem uma tabela que controla
+todos os threads no sistema.
+Quando um thread quer criar um novo ou destruir um existente ele
+faz uma chamada de nucleo (atualizando a tabela 0
+
+-----
+||*d ESCALONAMENTO 
+
+1 - Escolher o processo certo a ser executado
+2 - Fazer uso edificente da CPU, pois o chaveamento de processos
+é algo custoso.
+
+	* Escalonamento de threads:
+
+
+Processos que tem multiplos thread
+2 niveis de paralelismo
+
+PROCESSO E THREADS.
+
+
+Thread de usuario:
+Escolhe processo A dando controle A ao quantum
+o escalonador dentro de A decide qual thread executar, A1
+Nao havendo interrupções de relogio para multiprogramar threads
+esse thread pode continuar a ser executado por quanto tempo quiser
+
+Quando o processo A executar novamente o thread A1 retomará a execução
+Ele continuará a consumir todo o tempo de A até que termine
+Isso nao afetara outros processos, eles receberão o que o escalonador considere
+sua fração apropriada independentemente do que estiver ocorrendo dentro do processo A
+
+
+
+Thread no nucleo:
+
+O nucleo escolhe um thread em particular para executar.
+Ele nao precisa levar em conta qual processo o thread pertence
+O thread recebe um quantum e é suspenso compulsoriamente se o exceder.
+Com um quantum de 50 ms,  mas threads que são bloqueados após 5 ms
+ a ordem do thread por algum predio de 30 ms pode ser
+A1,B1,A2,B2,A3,B3 algo que nao épossível com esses parametros e threads de usuario
+
+
+
+NO fim, uma diferenã importante entre threads de usuáro e nucleo é o desempenho
+realizar um chaveamento de thread com thread de usuario exige muitas
+intruções de maquina. Com threads em núcleo é necessário um chaveamentp
+de contexto completo, o que significa mudança no mapa de memoria,
+invalidar cache, o que representa uma demora de magnitude varias ordens maior.
+Por outro lado, com threads no nucleo ter um bloqueio de tread na E/S
+nao suspende todo o processo como ocorre com threads de usuario

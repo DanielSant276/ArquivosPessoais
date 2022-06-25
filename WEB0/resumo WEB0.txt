@@ -1,0 +1,41 @@
+http -> modelo de conexão servidor/cliente
+
+O usuário se conecta diretamente ao servidor, é uma conexão direta entre as duas partes. É diferente de um torrent, na qual você recebe de vários servidores.
+
+O cliente envia a requisição para o servidor e o servidor devolve a informação.
+
+https criptografa toda a informação ao fazer a requisição das informações, apenas as duas partes da conexão consegue ver o tráfego da informação.
+
+Protocolo TCP garante que a informação será entregue, é possível acontecer perda, porém ele garante a entrega. Protocolo UDP entrega por partes a informação podendo gerar perda por não recebimento de todos os pacotes.
+
+TLS/SSL são protocolos que servem como camada de segurança.
+
+A conexão TCP é fechada, pois ela inicia quando o cliente entra em contato com o servidor e o servidor responde e a conexão termina apenas quando o usuário termina a conexão com o servidor.
+
+HTTP persistente - mantém a conexão entre servidor e cliente.
+HTTP não persistente - para cada ação é gerada uma nova conexão entre servidor e cliente.
+
+Ver RTT (tempo para enviar um pequeno pacote que vai do cliente para o servidor e retorna).
+
+Pipelining (o cliente envia requisições assim que encontra um objeto referenciado).
+
+Tipos de métodos - 
+GET:requisita objeto 
+POST:fornece dados de entrada para localizar página
+HEAD:pede para o servidor deixar o objeto requisitado fora da resposta
+PUT: envia o arquivo no corpo da entidade para o caminho especificado no campo de URL
+DELETE:apaga o arquivos especificado no campo de URL
+
+Códigos de Retorno -
+1XX - informativo
+2XX - sucesso
+3XX - redireção
+4XX - erro do cliente
+5XX - erro do servidor
+
+Proxy faz o intermédio das informações entre o cliente e o servidor. Ele guarda alguas informações em cache para que não haja sempre o acesso ao servidor.
+
+Existem proxys hierárquicos onde caso a informação não esteja em um proxy ele envia para o próximo e próximo e próximo até achar a informação e devolve para o usuário.
+
+Web caching reduz o tráfego de informação, o tempo de resposta.
+

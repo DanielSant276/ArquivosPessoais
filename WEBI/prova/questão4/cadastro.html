@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro</title>
+  <style>
+    #tela {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    #caixa {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 30%;
+      border: 1px solid #000000;
+      padding: 10px 0;
+    }
+
+    #formulario {
+      display: flex;
+      flex-direction: column;
+    }
+
+    button {
+      width: 30%;
+      align-self: center;
+      margin-top: 40px;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div id="tela">
+      <div id="caixa">
+        <form id="formulario">
+          <!-- enctype="multipart/form-data" -->
+          <div>
+            <p class="margem">Insira seu nome</p>
+            <input id="nome" type="text" name="nome" />
+          </div>
+
+          <div>
+            <p class="margem">Insira seu email</p>
+            <input id="email" type="text" name="email" />
+          </div>
+
+          <div>
+            <p class="margem">Insira sua senha</p>
+            <input id="senha" type="password" name="senha" />
+          </div>
+
+          <div>
+            <p class="margem">Insira sua foto</p>
+            <input id="foto" type="file" name="arquivo" />
+          </div>
+        </form>
+
+        <button onclick="entrar()">Cadastrar</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function entrar() {
+      let nome = document.getElementById("nome").value;
+      let email = document.getElementById("email").value;
+      let senha = document.getElementById("senha").value;
+      let foto = document.getElementById("foto").value;
+
+      console.log(nome);
+      console.log(email);
+      console.log(senha);
+      console.log(foto);
+
+      location.href = './principal.html'
+    }
+  </script>
+</body>
+
+</html>

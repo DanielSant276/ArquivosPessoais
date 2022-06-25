@@ -1,0 +1,135 @@
+1.1 -
+R=	MVC é um padrão de arquitetura de software que organiza a troca de informações entre a interface do usuário aos dados no banco, fazendo com que as respostas sejam mais rápidas e dinâmicas além de criar um processo mais seguro onde o usuário não tem acesso direto ao banco de dados.
+
+1.2 -
+R=
+
+5 -
+R=	O mapeamento objeto-relacional é uma técnica utilizada para converter dados entre bancos relacionais e linguagens orientadas a objeto. As linguagens de programação geralmente utilizam programação orientada a objetos enquanto os SGBDs utilizam modelo relacional, onde existem  tabelas ao invés de classes. Para isso o mapeamento objeto-relacional serve para guardar instâncias de objestos em registros de tabelas.
+	 Entity Framework é um framework de mapeamento objeto-relacional para .NET criado pela Microsoft. Ele auxilia os desenvolvedores a trabalhar com dados usando objetos sem depender do banco de dados.
+
+6 - 
+R= 	O Entity Manager é o serviço para realizar ações de persistência. O Entity Manager administra o objeto relacional e o mapea entre uma classe de entidade e uma fonte de dados. O Entity Manager usa APIs para realizar consultas, buscar objetos, sincronizá-los e inserir suas informações no banco de dados.
+
+7 -
+R=	É uma tecnologia utilizada para a implementação da interação do banco de dados. JDBC (Java EE Database Connectivity) é uma API de nível de chamada, ou seja, as instruções SQL são transmitidas como sequências para a API que se encarrega de executá-las no banco de dados relacional. Consequentemente, o valor dessas sequências pode ser alterado no tempo de execução, tornando o JDBC dinâmico. Apesar sejam executados mais lentamente do que seus equivalentes SQLJ, uma vantagem dessa abordagem é um conceito conhecido como Escreva uma vez, chame em qualquer lugar. Isso significa que, como nenhuma interação é necessária até o tempo de execução, um programa JDBC é bastante móvel e pode ser levado entre diferentes sistemas, com gastos mínimos.
+
+8 -
+Responsável
+@OneToMany
+private Set<Atividade> atividades;
+
+----------------------------------
+Cordenacao
+@OneToMany
+private Set<Atividade> atividades;
+@OneToMany
+private Set<Relatorio> relatorios;
+----------------------------------
+
+Aluno
+@ManyToMany
+private Set<Atividade> atividades;
+@OneToMany
+private Set<Relatorio> relatorios;
+----------------------------------
+
+Relatorio
+@ManyToOne
+private Coordenacao coordencacao;
+@ManyToOne
+private Aluno aluno;
+@ManyToOne
+private Atividade atividade;
+----------------------------------
+
+Atividade
+@ManyToOne
+private Responsavel responsavel;
+@OneToMany
+private Set<Relatorio> relatorios;
+@ManyToMany
+private Set<Aluno> alunos;
+@ManyToOne
+private Coordenacao coordenacao;
+
+9 -
+R= É um padrão para aplicações que utilizam persistência de dados, onde existe uma separação entre as regras de negócio e as regras de acesso a banco de dados. Ela é utilizada com linguagens de programação orientadas a objetos e arquitetura MVC, onde todas as funcionalidades de bancos de dados, tais como obter conexões, mapear objetos para tipos de dados SQL ou executar comandos SQL, devem ser feitas por classes DAO.
+
+
+
+
+		Texto
+
+Classes:
+Aluno
+ - nome : String
+ - matricula : String
+
+ResponsavelExtensao
+ - nome : String
+ - id : String
+
+Atividade
+ - id : String
+ - nomeResponsavel : String
+ - titulo : String
+ - alunos : Lista<String>
+ - cargaHoraria : Integer
+ - atribuicao : String
+ - local : String
+ --------------------------
+ + desvincularAluno() : String
+ + validarRelatorio() : String
+
+Relatorio
+ - idRelatorio : String
+ - idAtividade : String
+ - matriculaAluno : String
+
+Coordenacao
+ - idCoordenacao : String
+ ------------------------
+ + validaRelatorio() : String
+ + orientaAluno() : void
+ + verificaRelatorio() : String
+
+
+
+
+	Pastas
+
+src
+|---main
+    |---java
+        |---Controller
+            |---Atividade.java
+            |---Coordenacao.java
+            |---Login.java
+            |---Relatorio.java
+        |---Model
+            |---DAOAluno.java
+            |---DAOAtividade.java
+            |---DAOCoordenacao.java
+            |---DAORelatorio.java
+            |---DAOResponsavelExtensao.java
+            |---JavaBeans.java
+        |---View
+            |---Aluno.java
+            |---Atividade.java
+            |---Coordenacao.java
+            |---Relatorio.java
+            |---ResponsavelExtensao.java
+    |---webapp
+        |---META-INF
+            |---MANIFEST.MF
+        |---WEB-INF
+            |---Atividade.jsp
+            |---AtividadesCadastradas.jsp
+            |---ComprovanteParticipacao.jsp
+            |---CoordenacaoControle.jsp
+            |---Login.html
+            |---MatriculaEmAtividade.html
+            |---RegistraAtividade.html
+            |---RegistraRelatorio.html
+            |---ValidaRelatorio.jsp

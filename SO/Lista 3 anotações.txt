@@ -1,0 +1,36 @@
+Q1.
+O valor fica como um par ordenado: (página virtual, deslocamento), onde página virtual é ((endereços virtuais)/página) e deslocamento, ou offset, é (endereço virtuais%página). Então para um tamanho de página de 4KB são (4, 3616), (8, 0) e (14, 2656). Para um tamanho de página de 8kb são (2, 3616), (4, 0) e (7, 2656);
+
+
+Q2.
+4kb, 7kb, 9kb, 10kb, 12kb, 15kb, 20kb, 18kb
+10 KB, 4 KB, 20 KB,18 KB, 7 KB, 9 KB, 12 KB e 15 KB
+
+12kb, 10kb e 9kb
+
+First fit toma 20 KB, 10 KB, 18KB. 
+Best fit toma 12 KB, 10 KB,e 9 KB. 
+Worst fit toma 20 KB, 18KB, e 15 KB. 
+Next fit toma 20KB, 18 KB, e 9KB
+
+FF primeiro que couber, BF o melhor que couber, WF o maior disponível, NF continua vendo a lista de valores após a última busca.
+
+FF 20kb, 10kb, 18kb;
+BF 12kb, 10kb, 9kb;
+WF 20kb, 18kb, 15kb;
+NF 20kb, 18kb, 9kb;
+
+Q3.
+Um campo de 9 bits para a página de nível 1
+Um campo de 11 bits para a página de nível 2
+Um deslocamento;
+
+2^9 = 512
+2^11 = 2048
+
+512 * 2048 = 1M
+
+O número de páginas é de 1M.
+O tamanho da página é de 
+
+As   molduras   de   página   paraFIFO   são   as   seguintes:x0172333300     xx017222233xxx01777722     xxxx0111177As   molduras   de   página  paraLRU   são   as   seguintes:x0172327103     xx017232710xxx01773271     xxxx0111327FIFO   rende   seis   falhas   depágina; LRU rende 7.

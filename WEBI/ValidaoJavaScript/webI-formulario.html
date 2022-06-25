@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>WebI - Formulário</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="./webI-formulario.css">
+</head>
+
+<body class="column">
+  <form id='form' class="column">
+    <div class="row">
+      <div class="column whidth-30">
+        <div class="column">
+          <p>Insira o Nome</p>
+          <span id='invalid-name'></span>
+        </div>
+        <input id='name-form' type="text" name="nome"
+          onkeypress="return(event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"
+          placeholder="Insira o nome" />
+      </div>
+
+      <div class="column whidth-30">
+        <div class="column">
+          <p>Insira o Endereço</p>
+          <span id='invalid-address'></span>
+        </div>
+        <input id='address-form' type="text" name="endereço" placeholder="Insira o endereço">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column whidth-30">
+        <div class="column">
+          <p>Insira o CEP</p>
+          <span id='invalid-cep'></span>
+        </div>
+        <input maxlength="9" id='cep-form' type="text" name="cep"
+          onkeypress="{mask(this, '#####-###'); return(event.charCode > 47 && event.charCode < 58)}"
+          placeholder="Insira o cep">
+      </div>
+
+      <div class="column whidth-30">
+        <div class="column">
+          <p>Insira a data de nascimento</p>
+          <span id='invalid-birth-date'></span>
+          <span id='birth-date' class='black-text'></span>
+        </div>
+        <input maxlength="10" id='birth-date-form' type="text" name="data-nascimento"
+          onkeypress="{mask(this, '##/##/####'); return(event.charCode > 47 && event.charCode < 58);}"
+          placeholder="Insira a data de nascimento">
+      </div>
+    </div>
+
+    <div class="column whidth-30">
+      <div class="column">
+        <p>Insira o cpf</p>
+        <span id='invalid-cpf'></span>
+      </div>
+      <input maxlength="14" id='cpf-form' type="text" name="cpf"
+        onkeypress="{mask(this, '###.###.###-##'); return(event.charCode > 47 && event.charCode < 58);}"
+        placeholder="Insira o cpf">
+    </div>
+  </form>
+  <br />
+  <br />
+  <br />
+  <br />
+  
+  <button onclick="validateForm()">Enviar</button>
+
+  <script src="webI-formulario.js"></script>
+</body>
+
+</html>

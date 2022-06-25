@@ -1,0 +1,615 @@
+		Aula 1
+
+Sistema computacional:
+  	1 - Um ou mais processadores;
+  	2 - Memória principal;
+  	3 - periféricos de entrada e saída;
+   	Programas lidam com todos esses elementos.
+
+Importância do SO:
+ 	É considerado um software básico pois ele tem a funcionalidade de prover um suporte para as aplicações. Ele irá prover uma interface para o usuário que traduz a conexão  entre os periféricos de entrada e saída e o hardware.
+ 	A aplicação não precisa programar as funcionalidades básicas para funcionar, pois o SO dará esse suporte. 
+	Uma aplicação sem SO terá maior tempo de programação, pois terá que programar toda a interação entre hardware e periférico, terá um aumento da dificuldade de utilização e o usuário precisará estar atento com detalhes do hardware.
+	Já um aplicação com SO terá uma maior racionalidade, já que a funcionalidade da aplicação estará incorporada na aplicação, e as particularidades de cada dispositivo estará sendo feiro pelo sistema operacional, permitindo que a aplicação seja mais portátil entre dispositivos diferentes. E ela terá também uma dedicação maior aos problemas de alto nível.
+
+Definição de SO
+	Um SO é um programa, ou conjunto de programas, interrelacionados cuja finalidade é agir como:
+	1 - Intermediário (ou interface) entre o usuário e o hardware;
+	2 - Gerenciador de recurso, que administra os recursos de hardware, de impressora, dos arquivos, da memória;
+	Objetivos Contraditórios:
+	1 - Conveniência;
+	2 - Eficiência;
+	3 - Facilidade de evolução;
+
+Vantagens do SO:
+	1 - Apresenta uma máquina mais flexível;
+	2 - Permitir o uso eficiente e controlado dos componentes de hardware;
+	3 - Permitir o uso compartilihado e protegido dos diversos componentes de hardware e software, por diversos usuários.
+
+Interação com o SO:
+	O usuário pode interagir com o SO através de uma linguagem de comunicação chamada de linguagem de comando.
+	Essa interação pode ocorrer na forma textual ou na forma gráfica (utilizando janelas).
+	Os programas dos usuários utilizam serviços do SO por meio das chamadas ao sistema operacional e recebem um retorno com a informação necessária.
+	Chamadas de Sistema (system call): Permite um controle mais eficiente sobre as operaçãoes do sistema, são instruções que permitem a utilização dos recursos.
+
+Formas de Processamento do SO
+	Serial (Monoprogramação): Recursos alocados a um único programa, apenas uma única aplicação funciona dentro do computador.
+	Concorrente (Multiprogramação): Recursos dinamicamente reassociados entre uma coleção de programas em diferentes estágios.
+
+Histórico:
+	1ª geração:
+		1 - compuadores a válvula;
+		2 - ausência de um SO;
+		3 - programação em linguagem de máquina;
+	2º geração:
+		1 - Invenção de transistores;
+		2 - uso de assembly e fortran;
+		3 - SOs do tipo lote (batch), programas que executam um atrás do outro;
+	3º geração:
+		1 - circuitos integrados;
+		2 - multiprogramação;
+ 		3 - Time-sharing, o sistema de computação é compartilhado com vários programas ao mesmo tempo;
+		4 - Sistema OS/260 (IBM);
+	4º geração:
+		1 - circuitos integrados com alta escala de integração;
+		2 - SO para micros (MS-DOS e Windows);
+		3 - Difusão da Internet;
+	5º geração:
+		1 - Difusão da Internet;
+		2 - SO com suporte para TCP/IP;
+		3 - Cliente (quem faz a requisição)/servidor (quem recebe a requisição do cliente);
+		4 - Sistemas de Tempo-real (possui um deadline que envia uma informação dentre de um intervalo de tempo crítico);
+		5 - Computação Ubíqua;
+		6 - Internet das coisas (conexão geral de diversos componentes através da internet);
+		7 - CPS, etc.;
+
+
+
+		Aula 2
+
+Tipos de SOs:
+	Classificação quanto ao compartilhamente de hardware:
+		1 - SO Monoprogramados ou Monotarefa:
+		|------Só permietem um programa ativo em um dado período, o qual permanece na RAM até seu fim (Ex.: MS-DOS);
+		2 - SO Multiprogramados ou Multitarefa:
+		|------Mantêm mais de um programa na memória, para permitir o compartilhamento do tempo de CPU e demais recursos (Ex.: UNIX, Windows);
+
+SOs Monoprogramáveis ou Monotarefa:
+	1 - Caracterizam-se por permitir que o processaor, a memória e os periféricos permaneçam exclusivamente dedicados à execução de um único programa;
+	2 - Recursos mal utilizados (componentes que não estão sendo utilizados ficam ociosos), entretanto, são implementados com facilidade;
+	3 - Pode-se pensar que o processo estará em um desses estados: nova ----inicia a execução----> executando ----termina a execução----> terminada;
+	4 - São utilizados geralmente em sensores ou sistemas embarcados;
+	5 - São mais simples do que um SO multiprogramável.
+
+SOs Multiprogramáveis ou Multitarefa:
+	1 - A ideia é manter vários programas em memória ao mesmo tempo.
+	2 - Há várias tarefas simultâneas (por possuir vários núcleos de execução, com cada programa sendo executado em um núcleo), em um único processador: enquanto uma espera, a outra roda.
+	3 - Demandam mecanismo de trocas rápidas de processos.
+
+SOs Multiprogramáveis ou Multitarefa:
+	Podem ser classificados quanto à interação permitida com as aplicações:
+	- Sistemas batch;
+	- Sistemas de Tempo Compartilhado (time-sharing);
+	- Sistema de Tempo Real;
+
+SO Multitarefa em Batch:
+	1 - Sistema Batch (lote) consiste em submete ao computador um lote (batch) de programas de uma só vez.
+	2 - Os jobs (scripts com lote de programas, são conjuntos de tarefas que serão executados) dos usuários são submetidos em ordem sequencial para a execução;
+	3 - Não existe interação entre o usuário e o jobo durante sua execução.
+	O sistema em lote submete um conjunto de tarefas que serão executados pela cpu. O usuário apenas submete o job o resto é tudo feito pelo computador, não podendo o usuário interagir durante o processamento.
+
+SO Multitarefa Interativo:
+	1 - O sistema permite que os usuário interajam com suas computalções na forma de diálogo; 
+	2 - Pode ser projetado como sistema monousuário ou multiusuário (usando conceitos de multiprogramação e time sharing);
+	O computador mainframe faz interação com vários terminais e o cliente faz a interação com o computador mainframe através dos terminais.
+
+Estrutura de SOs:
+	SOs são normalmente grandes e complexas coleções de rotinas de software.
+	Projetistas devem dar grande ênfase à sua organização interna e estrutura:
+	1 - Monolítica;
+	2 - Micronúcleo;
+	3 - Camadas;
+	4 - Máquina virtual;
+
+Estrutura Monolítica:
+	SO é um único módulo.
+	Consiste de um conjunto de programas que executam sobre o hardware, como se fosse um único programa.
+	Os programas de usuário invocam rotinas do SO.
+	O SO tem só dois módulos: o módulo núcleo (SO) e o módulo do usuário. No módulo núcleo, tudo é feito dentro do SO tendo uma velocidade rápida de resposta pois tudo é feito em um mesmo bloco.
+
+Estrutura Microkernel:
+	Busca tornar o núcleo do SO o menor possível.
+	A principal função do núcleo é gerenciar a comunicação entre esses processos.
+	Núcleo fornece serviços de alocação de CPU e de comunicação aos processos (IPC).
+	Diminui o tamanho do núcleo, para ter um módulo pequeno capaz de apenas gerenciar a comunicação entre processos. Os outros módulos do SO ficam no módulo do usuário.
+
+Estrutura de Camadas:
+	A ideia é criar um SO:
+	1 - Modular: divisão de um programa complexo em módulos de menor complexidade.
+	2 - Hierárquico: a cada nível, os detalhes de operação dos níveis inferiores podem ser ignorados.
+	As interfaces são definidas para facilitar a interação entre os módulos hierárquicos.
+	Divide o SO em diversos módulos com cada um com uma funcionalidade, com cada nível dependendo dos níveis abaixos, e com uma interface bem definida para que cada nível conversa com as camadas inferiores e superiores.
+
+Estrutura de Máquina Virtual:
+	Essa estrutura cira um nível intermediário entre o hardware e o SO, denominado Gerência de VM.
+	Esse nível cria diversas VMs independentes.
+	Cada VM oferece uma cópia virtual do hardware, incluindo modos de acesso, interrupções, dispositivos de E/S, etc.
+
+Estrutura de Máquina Virtual
+	Em outro exemplo de utilização dessa estrutura ocorre na linguagem Java.
+	Para executar um programa Java é necessário uma Java VIrtual Machine.
+	Aplicação <---> Máquina Virtual Java --> SO ---> Hardware
+	Essa troca de nível acarreta em uma queda de performace.
+
+
+
+		Aula 03
+
+Chamadas de Sistemas:
+	Se uma aplicação precisa realizar alguma instrução privilegiada (imprimir um arquivo), ela realiza uma chamada de sistema, que altera do modo usuário para o modo kernal;
+	Ex.: ler um arquivo;
+	Chamadas de sistemas são a porta de entrada par ao modo kernel;
+
+Como elas são realizadas?
+	1 - As chamadas de sistemas são realizadas através de instruçõe Traps;
+	2 - Traps são conhecidos como interrupções de software;
+	3 - Após o término da chamada (ex.: ler um arquivo), a execução continua após a chamada de sistema;
+
+   programa do usuário --> salva contexto dos registradores
+	    /\			      |
+	    |			      \/
+	    |	altera modo do processador para kernel
+	    |			      |
+	    |			      \/
+	    |			rotina do sistema
+	    |			      |
+	    |			      \/
+	    |	altera modo do processador para usuário
+	    |			      |
+	    |			      \/
+	reataura o contexto dos registradores
+
+Quando o programa do usuário faz um systema call, ela para sua execução para continuar posteriormente do ponto onde ela parou. Nisso ela salva o contexto dos registradores, altera o modo do processador de modo usuário para o modo kernel, e identifica a chamada que foi realizada pelo programa. Depois disso ele altera o modo de processador de modo usuário para modo kernel, restaura o contexto dos registradores previamente salvo e continua com a execução do programa de onde tinha parado.
+
+Passos para a chamada de Sistema:
+	- Aplicativo faz a chamada ao sistema (Trap);
+	- Através de uma tabela, o SO determina o endereço da rotina;
+	- Rotina de Serviço é acionada (rotina compartilhada);
+	- Serviço solicitado é executado e o controle retorna ao aplicativo;
+
+Interfaces das SysCalls:
+	1 - Interface para esconder a complexidade das syscalls;
+	2 - Interface de programação fornecida pelo SO;
+	3 - Geralmente escrita em linguagem de alto nível (C, C++ ou Java);
+	4 - Normalmente as aplicações utilizam uma Application Program Interface (API);
+	5 - Interfae que encapsula o acesso direto às chamadas ao sistema;
+
+Interfaces das SysCalls:
+	Interface das chamadas de sistema (Wrappers) mais utilizadas:
+	1 - Win32 API para Windows;
+	2 - POSIX API para praticamente todas as versões de UNIX;
+	3 - Java API para Java Virtual Machine (JVM);
+	Motivos para utilizar APIs em vez das chamadas ao sistema diretamente:
+	1 - Portabilidade: independência da plataforma;
+	2 - Esconder complexidade inerente às chamadas ao sistema;
+	3 - Acréscimo de funcionalidades que otimizam o desempenho;
+
+Exemplo de Uso com printf():
+	Programa em C que invoca a função de biblioteca printf(), que por sua vez chama o system call write().
+	A chamada printf() ocasiona a chamada write() e exit().
+
+printf() --modo usuário--> standard C library --modo kernel--> system call write() --modo kernel--> standard C library --modo usuário--> printf()
+
+Interrupções:
+	Vimos que um software pode interromper seu próprio processo (ao fazer uma chamada ao sistema):
+	1 - Usando traps (Interrupções de software ou Exceções);
+	2 - Para isso, a aplicação tem que estar rodando;
+	Mas ocorrem interrupções que não são causadas por aplicações em execução:
+	1 - Interrupções de hardware (eventos externos);
+	2 - Um sinal elétrico no hardware;
+	3 - Causa: dispositivos de E/S ou o clock;
+
+   programa do usuário --> salva conteúdo dos registradores
+            /\                  na pilha de controle
+	    |			      |
+	    |			      \/
+	    |		identifica a origem do evento
+	    |			      |
+	    |			      \/
+	    |	  obtém o endereço da rotina de tratamento
+	    |			      |
+	    |			      \/
+	    |		   rotina de tratamento
+	    |			      |
+	    |			      \/
+	reataura o contexto dos registradores
+
+Interrupção vs Traps:
+	Interrupção (evento externo/interrupção de hardware):
+	|--- Evento Externo ao processador;
+	|--- Gerado por dispositivos que precisam da atenção do SO;
+	|--- Pode não estar relacionada ao processo que está rodando;
+	Traps (evento interno/interrupção de software):
+	|--- Evento inesperado vindo de dentro do processador.
+	|--- Causados pelo processo corrente no processador (seja por chamada ao SO, seja por instrução ilegal);
+
+
+
+		Aula 4
+
+Um processo é caracterizado por um programa em execução;
+
+Diferença entre processo e programa?
+	Um processo é uma instância de um programa e possui dados de entrada (dados temporários), dados de saída e um estado (executando, bloqueado, pronto);
+
+Programa vs Processo:
+	Programa:	
+	|--- Um programa pode ter várias instâncias em execução (em diferente processos);
+	|--- Algoritmo codificado;
+	|--- Forma como o programador vê a tarefa a ser executada;
+	Processo:
+	|--- Um processo é único;
+	|--- Código acompanhado de dados e estado;
+	|--- Forma pela qual o SO vê um programa e possibilita sua execução;
+
+Processo em Primeiro Plano:
+	1 - Interage com o usuário;
+	Exemplos:
+	|--- Ler arquivos;
+	|--- acessar um browser de internet;
+	|--- Iniciar um programa (linha de comando ou duplo clique do mouse);
+
+Processo em Segundo Plano (ou background):
+	Processos com funções específicas que independem de usuário - daemons:
+	Exemplos:	
+	|--- Recepção e envio de emails;
+	|--- Serviços de impressão;
+
+Cada Processo Possui:
+	1 - Conjunto de instruções;
+	2 - Espaço de endereçamento (espaço reservado para  que o processo possa ler e escrever - 0 até max.);
+	3 - Contexto de hardware (valores nos registradores, como PC, ponteiro de pilha, e reg. de prop. gerais);
+	4 - Contexto de software (atributos em geral, como lista de arquivos abertos, variáveis, etc.);
+
+Espaço de Endereçamento:
+	1 - Texto: código executável do programa;
+	2 - Dados: variáveis;
+	3 - Pilha de Execução:
+		|--- Controla a execução do processo;
+		|--- Empilhando chamadas e procedimentos, seus parâmetros e variáveis locais, etc;
+
+Tabela de Processos:
+	1 - Também chamada de BCP (Bloco Controle de Processo);
+	2 - Contém informações de contexto de cada processo (ex. ponteiros de arquivos abertos, posição do próximo byte a ser lido em cada arquivo, etc);
+	3 - Contém informações necessárias para trazer o processo de volta, caso o SO tenha que tirá-lo de execução;
+	4 - Contém estados de um processo em um determinado tempo;
+	O BCP só não guarda o conteúdo do espaço de endereçamento do processo;
+	Assim,um processo é constituído de seu espaço de endereçamento e BCp (com os registradores, etc.), representando uma entrada na tabela de processos;
+
+Características de Processo:
+	1 - Processos CPU-bound (orientados à CPU):
+	|--- Processos que utilizam muito o processador;
+	|--- Tempo de execução é definido pelos ciclos de processador;
+	2 - Processos I/O-bound (orientados à E/S):
+	|--- processos que realizam muito E/S;
+	|--- tempo de execução é definido pela duração das operações de E/S;
+	IDEAL: existir um balanceamento entre processos CPU-bound e I/O-bound;
+
+Situação Ideal:
+	Processos de surto curto preenchem as lacunas de uso da CPU deixadas por processos mais longos;
+
+Criação de Processos:
+	1 - Inicialização do sistema;	
+	2 - Execução de uma chamada de sistema para criação de processo, realizada por algum processo em execução;
+	3 - Requisição de usuário para criar um novo processo (duplo clique do mouse, etc.);
+	4 - Inicialização de um processo em batch (em sistemas mainsframes com proc. em batch);
+
+Processos criando outros processos:
+	1 - No UNIX com a função fork():
+	|--- Cria clone do processo Pai: cópias exatas na memória, mas com identificadores diferentes;
+	2 - No Windows com CreateProcess:
+	|--- Cria processo Filho, já carregando novo programa nele;
+
+Finalizando Processos:
+	1 - Término normal (voluntário):
+	|--a--> A tarefa a ser executada é finalizada;
+	|--b--> Ao terminar, o processo executa uma chamada (comunicando ao SO que terminou): exit(UNIX) e EXitProcess(Windows);
+	2 - Término por erro (voluntário):
+	|--a--> O processo sendo executando não pode ser finalizado. Ex: gcc filiname.c; o arquivo filename.c não existe.	
+	3 - Término com erro fatal (involuntário):
+	|--a--> Erro causado por algum erro no programa (bug); Ex.: Divisão por 0 (zero); Referência à memória inexistente; Execução de uma instrução ilegal;
+	4 - Término (involuntário) causado por algum outro processo, via chamada a:
+	|--a--> kill (UNIX);
+	|--b--> TerminateProcess (Windows);
+
+Estados de Processos:
+	1 - Executando: realmente usando a CPU naquele momento;
+	2 - Bloqueado: incapaz de executar enquanto um evento externo não ocorrer;
+	3 - Pronto: em memória, pronto para executar (ou para continuar sua execução), apenas aguardando a disponibilidade do processador;
+
+Transições entre Estados:
+			Execução (CPU)
+		        /    3/\
+		     1 /       |
+                      \/   4  \/2
+               Bloqueado  ->  Pronto
+	1 - O processo bloqueia aguardando uma entrada;
+	2 - O escalonador seleciona outro processo;
+	3 - O escalonador seleciona esse processo;
+	4 - A entrada torna-se disponível;
+
+
+
+		Aula 5
+
+O que é Escalonador?
+	Um módulo do SO que seleciona o próximo processo que irá utilizar o processador.
+	A troca de processos é feita pelo Escalonador de PRocessos.
+	Escalonador é o processo que escolhe qual será o próximo processo a ser executado.
+	Existem diversas técnicas/algoritmos para escalonamento de processos.
+	Nível mais baixo do SO.
+
+Mudança de Contexto:
+	A mudança de contexto leva a um overhead de tempo (tarefa cara, pois precisa guardar todos os dados temporários na memória principal para posteriormente devolver esses dados ao processador quando continuar a execução desse processo):
+	a - é preciso salvar as informações do processo que está deixando/entrando a/na CPU em seu BCP;
+	b - Salvar o conteúdo dos registradores;
+
+Componentes Envolvidos no Escalonamento:
+	1 - Despachante (Dispatcher):
+	|--a-- Armazena e recupera o contexto (guardar os dados do processador na memória principal e depois carregar da memória principal para o processador);
+	|--b-- Atualiza as informações no BCP;
+	|--c-- Processo relativamente rápido (0,1ms);
+	2 - Escalonador (Scheduler):
+	|--a-- Escolhe a próxima tarefa a receber o processador (cria a fila de processos e a sua manutenção);
+	|--b-- Parte mais demorada;
+
+Quando o Escalonador é chamado?
+	1 - Um novo processo é criado;
+	2 - Quando um processo cria outro, qual executar? Pai ou filho:
+	3 - Um processo chegou ao fim e um processo pronto deve ser executado;
+	4 - Quando um processo é bloqueado (dependência de E/S), outro deve ser executado;
+
+Quando E/S ocorre, o Escalonador deve:
+	1 - Executar o processo que estava esperando esse evento;
+	OU
+	2 - Continuar executando o processo que já estava sendo executado;
+	OU
+	3 - Executar um terceiro processo que esteja pronto para ser executado;
+
+Categorias do Escalonador:
+	1 - Preemptivo:
+	|--a-- Quando um processo pode, por algum motivo, perder seu uso da CPU;
+	|--b-- Provoca uma interrupção forçada de um processo para que outro possa usar a CPU;
+	2 - Não preemptivo:
+	|--a-- Permite que o processo sendo executado continue executando;
+
+Condições de parada do Não preemptivo:
+	1 - termine de executar;
+	2 - solicite uma operação de entrada/saída;
+	3 - libere explicitamente o processador, voltando à fila de prontos;
+
+Algoritmo de Escalonamento:
+	1 - Sistemas batch (lote);
+	2 - Sistemas Interativos;
+	3 - Sistemas de Tempo Real;
+
+1 - Escalonamento em Batch:
+	1 - FIFO;
+	|--a-- Não preemptivo;
+	|--b-- Processo são executados na CPU seguindo a ordem de requisição;
+	|--c-- Fácil de entender e programar;
+	|---- Desvantagem: Ineficiente quando há processos que demoram na sua execução;
+	|----EX:
+	      |--1-- Há uma fila de prontos;
+	      |--2-- O processo 0 sendo executado na CPU;
+	      |--3-- Processo só é interrompido por E/S, ou quando é finalizado;
+	2 - Shortest Job First(SJF)(Escolhe as tarefas mais curtas):
+	|--a-- Não preemptivo;
+	|--b-- Deve-se prever o tempo de execução do processo;
+	|--c-- Menor processo da lista é executado primeiro;
+	|--d-- Menor turnaround(médio) (turnaroundTime = tempo necessário de execução que vai desde a sua submissão até o final do seu resultado, contando também com o tempo de espera até ele ser executado);
+	|----- Desvantagem:
+	       |--a-- Todos os jobs precisam ser conhecidos de antemão (precisa saber o tempo necessário que cada um irá terminar);
+	       |--b-- Se jobs curtos começarem a chegar, os longos podem demorar a ser executados;
+	3 - Shortest Remaining Time Next (Lote) (Possui um Quantum de tempo que ao ser ultrapassado ele pode ser tirado de execução e passar para o processador um outro processo que está no topo da fila):
+	|--a-- Preemptivo;
+	|--b-- Versão preemptiva do Shortest Job First;
+	|--c-- Processos com menor tempo de execução são executados primeiro;
+	|--d-- Se um processo novo chega a seu tempo de execução é menor do que o do processo corrente na CPU, a CPU suspende o processo corrente e executa o processo que acabou de chegar;
+	|----- Desvantagem:
+	       |--a-- Processos que consomem mais tempo podem demorar muito para serem finalizados se muitos processos pequenos chegarem (inanição ou starvation);
+	       |--b-- Exceto que, pela preempção no Shortest Remaining Time Next, o processo, mesmo rodando, seja interrompido;
+	       |--c-- No Shortest Job First, se der a sorte de começar a rodar, vai até o fim;
+
+
+
+		Aula 6
+
+Escalonamento em Sistemas Interativos:
+	1 - Round-Robin;
+	2 - Prioridade;
+	3 - Múltiplas Filas;
+	4 - Shortest Process Next;
+	5 - Garantido;
+	6 - Lottery;
+	7 - Fair-Share;
+
+Round-Robin:
+	Parecido com o FIFO, é um algoritmo mais antigo, mais simples e mais utilizado.
+	Cada processo recebe um tempo de execução chamado de quantum. No final desse tempo, o processo é suspenso e outro processo é colocado em execução, caso o processo não esteja finalizado, ele volta para o final da fila.
+	Escalonador mantém um fila de processos prontos.
+	Problema:
+	|--Tempo de chaveamento de processos;
+	Quantum:
+	|--Se for pequeno, ocorrem muitas trocas diminuindo, assim, a eficiência da CPU;
+	|--Se for muito longo, o tempo de resposta é comprometido; 
+	Tempo de uso de CPU é: ((contexto Switch)/(tempo do quantum))*100
+
+Prioridade:
+	Cada processo possui uma prioridade. Processos com maior prioridade são executados primeiro.
+	Pode ser retirado do processador depois do termino do quantum.
+	Aplicações do sistema possui uma prioridade mais alta enquanto as aplicações do usuário possuem uma prioridade mais baixa.
+	Pode ocorrer dos processos menos prioritários nunca rodarem.
+
+Múltiplas-filas:
+	Sempre que um processo executado é suspenso, ele recebe mais tempo para execução, dessa forma, a redução de trocas de processos com o passar do tempo é menor e os processos mais curtos são terminados logo.
+
+Shortest Process Next:
+	Os tempos necessários para a execução são desconhecidos, precisando estimar a sua execução. Verificasse o comportamento passado do processo e se estima o tempo.
+
+Garantido:
+	Aloca um tempo para os processos dos usuário, de forma que todos os usuário tenham um tempo semelhante para a execução.
+
+Loteria:
+	Cada processo recebe um bilhete que lhe garante um direito a recurso dos sistemas. No momento da realização do escalonamento, é escolhido aleatóriamente um bilhete. Processos mais importantes recebem um bilhete. Processos podem doar bilhetes para outros.
+	Esse sistema precisa garantir que todos terão sua vez, dessa forma se mantém 2 filas, uma para bilhetes já sorteados e outra de bilhetes não sorteados. Quando a lista de não sorteados se esvazia, os bilhetes da lista de sorteados são devolvidos para ela, reiniciando o processo.
+
+Fair-Share:
+	O tempo de uso da CPU é distribuido para cada usuário, com base na quantidade de processos que cada usuário possui.
+
+Tempo-Real:
+	Utilizado em sistemas críticos (sistemas que não podem dar problema na execução).
+	O computador deve reagir apropriadamente dentro de um intervalo fixo de tempo.
+	Tipos de TR:
+	|--Hard Real Time: atrasos não são tolerados;
+	|--Soft Real Time: atrasos ocasionais são tolerados;
+	Para o comportamento de tempo real, os programas são divididos em vários processos, facilitando a definicação do tempo final de cada processo.
+	Quando um evento é detectado, o escalonador deve arrumar os processos de modo que todos os prazos sejam cumpridos.
+	Os eventos podem ser:
+	|--Periódicos: ocorrem em intervalos regulares de tempo.
+	|--Aperiódicos: ocorrem em intervalos irregulares de tempo.
+	Também podem ser classificados em:
+	|--Estáticos: decisões são feitas antes do escalonamento ser realizado.
+	|--Dinâmicos: decisões são feitas em tempo de execução.
+
+
+
+		Aula 7
+
+O modelo de Processo
+	1 - Utilizado para agrupar recursos;
+	2 - Um espaço de endereço (0 até algum endereço máximo do processo) e uma única linha de execução (Thread);
+	3 - Agrupamento de recursos (espaço de endereço com texto e dados do programa, arquivos abertos, processos filhos, tratadores de sinais, alarmes pendentes, etc.);
+	Uma thread é uma linha de execução que está dentro de um processo. As linhas de execução de uma thread compõe a execução de um processo. Um processo obrigatoriamente deve possuir uma ou mais threads.
+
+Modelo da Thread
+	1 - Um espaço de endereço e múltiplas linhas de controle;
+	2 - Conjunto de threads compõe as linhas de execuções de um processo;
+	3 - Threads compartilham um mesmo espaço de endereço (sendo menos independentes que processos);
+	4 - Possuem recursos particulares (PC, registradores, pilha);
+
+Diferença básica entre processo e thread:
+	Uma thread tem um espaço de endereçamento diferente de um processo.
+	Um processo não compartilha espaço de endereçamento com outros processos.
+
+Threads - Vantagens:
+	1 - Em muitas aplicações há múltiplas atividades ao mesmo tempo;
+	2 - Podemos decompô-las em atividades paralelas;
+	3 - Algumas tarefas precisam do compartilhamento do espaço de endereçamento;
+	4 - CPU-bound e I/O-bound podem se sobrepor, acelerando a aplicação;
+	6 - São mais rápidas de criar e destruir que processos;
+	7 - Em algumas ocasiões, até 100 vezes mais rápidas;
+	8 - Úteis em sistemas com múltiplas CPUs -> paralelismo real;
+
+Threads - Exemplos:
+	1 - Processador de texto;
+	2 - Processos separados não funcionam - o documento tem que estar compartilhado;
+	3 - Threads para: Indetação, fonte, correção, mudança de linha, etc;
+
+Threads - Exemplo: Servidor Web:
+	1 - O despachante (i) lê as requisições de trabalho que chegam, (ii) escolhe uma thread operário ociosa e (iii) entrega a requisição. A thread operário (iv) lê a cache e, caso não encontre a informação, (v) inicializa uma leitura de disco;
+
+Problemas com as Threads:
+	1 - Como cada thread pode ter acesso a qualquer endereço de memória dentro do espaço de endereçamento do processo:
+	|--a-- uma thread pode ler, escrever ou apagar a pilha ou as variáveis globais de outra thread;
+	|--b-- exemplo: a= b + c; x = a + y;
+	2 - Necessidade de sincronizar a execução (assunto das próximas aulas);
+
+Estados de Threads:
+	1 - Estado de pronto: Estado em que apenas o processador é necessário;
+	2 - Executando: Quando ela possui a CPU;
+	3 - Bloqueado: Quando ela espera uma leitura de entrada e saída, ou acabou o tempo, ou uma outra thread precisou colocá-la em estado de espera;
+
+Tipos de threads:
+	1 - No modo Usuário:
+	|--1-- Implementadas totalmente no espaço do usuário;
+	|--2-- Por meio de uma biblioteca (criação, exclusão, execução, etc, não necessariamente gerenciamento);
+	|--3-- Criação e escalonamento são realizados sem o conhecimento do kernel;
+	|--4-- Para o kernel, é como se rodasse um programa monothread;
+	|--5-- Gerenciadas como processos no kernel;
+	|--6-- Cada processo possui sua própria tabela de threads;
+	|--7-- Como uma tabela de processos, gerenciada pelo runtime;
+	|--8-- Controla apenas as propriedades da thread (PC, ponteiro da pilha, registradores, estado, etc);
+	|--9-- Escalonamento:
+		|--1-- O núcleo escolhe um processo e passa o controle a ele, que escolhe uma thread;
+		|--2-- A gerência da thread fica no espaço do usuário e o núcleo só escalona em nível de processo;
+	2 - No modo Núcleo:
+	|--1-- Suportadas diretamente pelo SO;
+	|--2-- Criação, escalonamento e gerenciamento são feitos pelo kernel;
+	|--3-- O núcleo possui tabela de threads (com todas as threads do sistema) e tabela de processos separadas;
+	|--4-- As tabelas de threads estão agora no kernel;
+	|--5-- Os alogritmos mais usados são Round-Robin e Prioridade;
+	|--6-- Agora, as tabelas de threads estão no núcleo;
+	|--7-- Gerenciar threads em modo kernel é mais caro devido à alternância entre modo usuário e modo kernel;
+	|--8-- Mudança de contexto pode envolver threads;
+	|--9-- Criar e destruir threads no núcleo é mais caro;
+	|--10- Exemplo: Linux, Windows, OS/2, Solaris 9 (mapeia 1 thread usuário para 1 de kernel);
+	|--11- Escalonamento:
+		|--1-- O núcleo escolhe a thread diretamente;
+		|--2-- A thread é quem recebe o quantum, sendo suspensa se excedê-lo;
+		|--3-- Thread bloqueada por E/S não bloqueia o processo;
+		|--4-- Permite múltiplas threads em paralelo;
+	3 - No modo Híbrido:
+	|--1-- Seguem o modelo N para M;
+	|--2-- N threads de usuário são mapeadas em M <= N threads de núcleo;
+
+
+
+		Aula 17
+
+Tarefa do Gerenciador de Memória:
+	Gerenciar a hierarquia de memória:
+	|--Gerencia espaços livres/ocupados;
+	|--Alocar e localizar processos/dados na memória;
+	Controlar partes que estão em uso, e as que não, para:
+	|--Alocar memória aos processos, quando precisar;
+	|--Liberar memória quando um processo termina;
+	|--Tratar do problema de swapping (chaveamento entre a memória principal e o disco e memória principal e memória cache);
+
+Monoprogramação:
+	Um único processo sendo executado.
+	Era usado nos mainframes antigos, onde o SO era colocado direto na RAM;
+
+Multiprogramação:
+	Como armazenar n processos na memória? A memória é dividida em n partições, de tamanho fixo, mas não necessáriamente iguais. Quando chega um job, ela é colocada na fila para execução.
+	São utilizados 2 registradores 1 para armazenar a base e o outro para armazenar o limite. A CPU adiciona o valor base ao endereço, vereficando se o endereço é maior ou igual ao limite. Esse processo se tornou obsoleto.
+
+MMU:
+	Memory Management Unity. Dispositivo de hardware que transforma endereços virtuais em endereços físicos.
+	Endereço lógico: endereço que é obtido em relação ao programa em execução.
+	Endereço Físico: endereço de onde o processo foi carregado na memória principal.
+	O valor no registro de realocação é adicionado a todo o endereço lógico. O programa manipula endereços lógicos, ele nunca toca no endereço físico real.
+
+Memória Particionada:
+	Partições fixas: Tamanho e número de partições são fixos, tendendo a desperdiçar memória.
+	Partições variáveis: Tamanho e número de partições variam. Otimiza a utilização da memória, mas complica a alocação e liberação, as partições são alocadas dinamicamente. Gera fragmentação interna e externa.
+
+Gerenciamento de espaço na Memória:
+	Pode ser realizado através de Mapa de Bits e de Lista Encadeada.
+	Mapa de Bits:
+	|--A memória é dividida em unidades de alocação, podendo conter vários KB. Cada unidade corresponde a um bit no bitmap (onde, 0 é livre e 1 é ocupado);
+	Lista Encadeada:
+	|--Mantem uma lista de segmentos de memória livres e alocados;
+
+Algorimos de Alocação:
+	Primeira escolha (First Fit): Percorre a lista até encontrar o primeiro que caiba;
+	Melhor escolha (Best Fit): Busca a lista inteira e toma a menor partição;
+	Pior escolha (Worst Fit): Busca a lista inteira para a maior partição;
+
+
+
+		Aula 18
+
+Memória Virtual:
+	É uma técnica que usa a memória secundário como uma "cache" para partes do espaço dos processos.
+	

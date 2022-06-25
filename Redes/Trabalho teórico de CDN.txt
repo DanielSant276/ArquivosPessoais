@@ -1,0 +1,10 @@
+Descreva como funciona a infraestrutura de rede privada e de servidores CDN da Google, a saber:
+  1 - tipos/tamanho/quantidade de servidores
+  2 - onde estão localizados
+  3 - função de cada tipo de servidor
+  4 - filosofia de localização (Enter Deep ou Bring Home)
+  5 - o que acontece quando um usuário faz uma solicitação de busca
+
+
+1) 
+R=

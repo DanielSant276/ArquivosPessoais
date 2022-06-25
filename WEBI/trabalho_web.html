@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <script src="trabalho.js"></script>
+        <title>ALERTA SERASA</title>
+        <t1>Alerta Serasa</t1>
+    </head>
+<body>
+<form>
+<br> nome: <span id="erro_nome">Nome Inválido</span> <br><input required type="text" id="nome" onkeypress="removeChar(event)">
+<br> endereço: <span id="erro_endereco">Campo Inválido</span> <br><input required type="text" id="endereco">
+<br> cep: <br><input required type="text" id="cep" onkeypress="{mask(this, '#####-###'); return(event.charCode > 47 && event.charCode < 58)}" maxlength="9" > 
+<br> data de nascimento: <br><input required type="date" id="nascimento">
+<br> cpf: <br><input required type="number" id="cpf">
+<input type="button" onclick="validacao()">
+</form>
+
+<style>
+    .erro{border-color: firebrick;} 
+    #erro_nome{display: none; color: firebrick;}
+    #erro_endereco{display: none;color: firebrick;}
+</style>
+
+</body>
+
+
+</html>
+

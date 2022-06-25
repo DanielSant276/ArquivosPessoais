@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Questão 1</title>
+  <style>
+    #tela {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    #caixa {
+      height: 200px;
+      width: 40%;
+      background-color: #909000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+      padding: 0 5%;
+    }
+
+    #bastao-um,
+    #bastao-dois,
+    #bastao-tres {
+      width: 15px;
+      height: 165px;
+      background-color: #000000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      cursor: pointer;
+    }
+
+    #bloco-pequeno {
+      width: 25px;
+      height: 50px;
+      background-color: #900000;
+    }
+
+    #bloco-medio {
+      width: 50px;
+      height: 50px;
+      background-color: #009000;
+    }
+
+    #bloco-grande {
+      width: 75px;
+      height: 50px;
+      background-color: #000090;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100px;
+    }
+
+    p {
+      display: none;
+      color: #FF0000;
+      font-size: 25px;
+      margin-top: -54px;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div id="tela">
+      <p id="erro">Jogada Inválida</p>
+      <div id="caixa">
+        <div id="bastao-um"></div>
+        <div id="bastao-dois"></div>
+        <div id="bastao-tres"></div>
+      </div>
+      <button id="iniciar">Iniciar</button>
+    </div>
+  </main>
+
+  <script>
+    let clickedElement = "";
+    let getFrom = "";
+    let click = false;
+
+    document.getElementById("bastao-um").onclick = () => {
+      bastaoClicado("bastao-um");
+    }
+
+    document.getElementById("bastao-dois").onclick = () => {
+      bastaoClicado("bastao-dois");
+    }
+
+    document.getElementById("bastao-tres").onclick = () => {
+      bastaoClicado("bastao-tres");
+    }
+
+    document.getElementById("iniciar").onclick = () => {
+      if (!click) {
+        createBlocks();
+
+        document.getElementById("iniciar").innerHTML = "Reinicar"
+
+        click = true;
+      }
+      else {
+        try {
+          document.getElementById("bloco-pequeno").remove();
+        } catch (err) { }
+        try {
+          document.getElementById("bloco-medio").remove();
+        } catch (err) { }
+        try {
+          document.getElementById("bloco-grande").remove();
+        } catch (err) { }
+        clickedElement = "";
+
+        createBlocks();
+      }
+    }
+
+    function bastaoClicado(id) {
+      let bastao = document.getElementById(id);
+      if (clickedElement == "") {
+        let topBlock = bastao.firstElementChild;
+        clickedElement = topBlock.id;
+        // getFrom = id;
+        topBlock.remove();
+      }
+      else {
+        let nodesCounter = bastao.childNodes.length;
+        if (nodesCounter == 0) {
+          let putBlock = document.createElement("div");
+          putBlock.id = clickedElement;
+          bastao.prepend(putBlock);
+          clickedElement = "";
+          // getFrom = "";
+        }
+        else {
+          let nextBlock = bastao.firstElementChild.id;
+          if ((clickedElement == "bloco-pequeno" && (nextBlock == "bloco-medio" || nextBlock == "bloco-grande")) ||
+            (clickedElement == "bloco-medio" && (nextBlock == "bloco-grande"))) {
+            let putBlock = document.createElement("div");
+            putBlock.id = clickedElement;
+            bastao.prepend(putBlock);
+            clickedElement = "";
+            // getFrom = "";
+          }
+          else {
+            errorMessage();
+          }
+        }
+      }
+    }
+
+    function createBlocks() {
+      let bastaoUm = document.getElementById("bastao-um");
+      let putBlock = document.createElement("div");
+      putBlock.id = "bloco-pequeno";
+      bastaoUm.append(putBlock);
+
+      putBlock = document.createElement("div");
+      putBlock.id = "bloco-medio";
+      bastaoUm.append(putBlock);
+
+      putBlock = document.createElement("div");
+      putBlock.id = "bloco-grande";
+      bastaoUm.append(putBlock);
+    }
+
+    async function errorMessage() {
+      const timer = ms => new Promise(res => setTimeout(res, ms));
+
+      document.querySelector('p').style.display = "flex";
+      await timer(1500);
+      document.querySelector('p').style.display = "none";
+    }
+  </script>
+</body>
+
+</html>

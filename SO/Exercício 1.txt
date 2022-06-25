@@ -1,0 +1,31 @@
+1.
+  R= Processos são instâncias de um programa sendo executados em um computador. Multiprogramação é a execução de mais de um processo em um mesmo computador.
+
+2-
+  R= A, C e D.
+
+3.
+  R= 250 milhões de instruções
+
+4.
+  R= TRAP é um sinal de interrupção enviado ao computador para que ele interrompa a execução de um processo par apoder executar outro. O processo interrompido dessa forma tem seus dados armazenados na memória para que seja executado quando necessário.
+     TRAPs são executadas síncronamente enquanto interrupções são executadas assincronamente. TRAPs advem do próprio programa, enquanto interrupções podem ser causadas por eventos externos.
+
+5.
+  R= A tabela de processos possue a função de armazenar informações sobre o processo executado, seu contador, seu ponteiro, seu ponteiro de pilha, alocação de memória, arquivos abertos, e todas as informações necessárias para quando o processo passar por um estado de bloqueio.
+     Como a tabela de processos guarda todas essas informações, ela se torna muito útil em um sistema de tempo compartilhado, onde muitos usuários estaram utilizando um mesmo computador, conseguindo guardar as informações importante de cada processo executado por cada usuário.
+
+6.
+  R= Chamadas de sistemas são utilizados pelos aplicativos para solicitar a execução de algum serviço ao kernel do sistema operacional. Elas possuem maior prioridade do que outras instruções. Elas permitem a criação e finalização de processos.
+
+7.
+  R= Sim, caso um final de arquivo for encontrado antes, ou o arquivo não puder ser lido.
+
+8.
+  R= Arquivos especiais de bloco são usados para modelar dispositivos que forneçam endereçamento aleatório, como discos. Já os arquivos especiais de caracteres são usados para modelar dispositivos que utilizem acesso serial aos dados, como modens e impressoras.
+
+9.
+  R= Não. A chamada ao sistema é mais importante que a chamada da biblioteca, visto que, sem a chamada do sistema nenhuma biblioteca pode fazer a chamada, o que não é verdade para o contrário. O programa pode sim fazer uma chamada direta ao sistema.
+
+10.
+  R= Quando possue separação entre mecanismo e políticas em sistemas operacionais baseados em micronúcleos, permite que os designers implementem um conjunto básico  de  blocos  de  construção  primitivos  no  núcleo. Esses  blocos  são  praticamente independentes da política e isso ajuda na implementação de mecanismos e políticas mais avançadas para que estas sejam adicionadas por meio de módulos de kernel criados pelo usuário ou por meio dos próprios programas de usuário.

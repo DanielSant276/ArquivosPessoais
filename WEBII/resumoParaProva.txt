@@ -1,0 +1,85 @@
+https://www.youtube.com/watch?v=7VgWAxEkv_U
+
+Através de uma URL através de um protocolo http ou https o cliente faz uma solicitação ao servidor, que disponibiliza uma cópia dos arquivos html, css e javascript solicitado. O navegador recebe e interpreta essas informações renderizando a página. Esse processamento de arquivos é feito no cliente (navegador de internet).
+
+Um servidor Java é um servidor que além de hospedar os arquivos do site os arquivos do site é capaz de executar aplicações que usam a linguagem java. Assim, parte do processamento é realizado no servidor. A requisição que chega ao servidor java chega a um container que cria dois objetos chamados requisição e resposta, que são encaminhados ao servlet que trata a requisição e envia de volta uma resposta.
+
+Um servlet é uma classe java capaz de executar a linguaguem java e também gerar código html formando páginas dinâmicas. É também comum o servidores java estarem associados a um banco de dados.
+
+Java Entreprise Edition (J2EE): conjunto de especificações para implementação de uma aplicação Java na web. Além do servlet é possível desenvolver aplicações web com a linguagem Java usando Java Server Pages (JSP).
+
+
+
+https://www.youtube.com/watch?v=dIKMwVNqS-I
+
+A resposta do servidor de aplicativo Java é sempre um conteúdo que o cliente possa interpretar (normalmente uma página html gerada dinamicamente).
+
+Pacotes em Java são utilizados para organizar conteúdos do projeto.
+
+
+
+https://www.youtube.com/watch?v=mrWxOAIEDx4
+
+Páginas JSP (Java Server Pages) foram criadas para contornar algumas limitações no desenvollvimento com servlets referente a formatação do documento html. A página JSP é um documento HTML que permite a execução de um código Java através de uma tag chamada Scriplet. Uma página JSP é automaticamente transformada em Servlet pelo servidor Tomcat.
+
+ServletxJSP é a mesma coisa, no final o servidor sempre tranformara a páginas JSP em Servlet. Uma susgestão é usar JSP para a interface com o usuário e o Servlet para a lógica do sistema.
+
+O Scriplet é usado para escrever o código Java dentro do documento HTML.
+
+
+https://www.youtube.com/watch?v=v4FzuUxBZm4
+
+MVC (Model View Controller) é um padrão de arquitetura de software, que separa a aplicação em 3 camadas melhorando o desempenho e a segurança do sistema. Ele também utiliza reutilização do código e organiza o projeto para equipes trabalharem simultaneamente em diferentes partes. 
+O processamento mais pesado fica na camada model, que é a responsável para se comunicar com o bando de dados. 
+A camada view é responsável pela interface com o usuário. 
+O controller faz a conexão do model com a view e cordena/controla o fluxo de dados, trabalhando com requisições e responstas.
+
+A camada View possui os arquivos JSP, HTML, CSS e JS.
+A camada Controller possui os arquivos do Servlet.
+A camada Model possui a classe JavaBeans (segurança dos dados) e DAO (conexão e acesso ao banco de dados).
+
+
+https://www.youtube.com/watch?v=bnrXEkvOqQ0
+
+JavaBeans é uma classe java que segue um conjunto de especificações e tem como objetivo principal a segurança isolando e encapsulando os dados. Ele permite que o usuário use a classe em um determinado momento e possa salvar seu estado para uso posterior partindo do mesmo ponto.
+
+
+https://www.youtube.com/watch?v=A6YN8DoaARs
+
+DAO (Data Access Object) padrão de projeto que encapsula os mecanismos de acesso aos dados escondendo os detalhes de execução. É a única capaz de desenvolver o acesso ao banco de dados.
+
+
+https://www.youtube.com/watch?v=PVq75p0GJ8I
+
+Quando o cliente acessa o servidor Java, a página index.html é acessada. Ao clicar no botão "acessar" uma requisição é enviada ao Servlet. O Servlet trabalha a requisição e redireciona ao documento "agenda.jsp".
+
+O Servlet faz esse intermédio pois ele precisa fazer uma consulta a camada model e obter a listagem de contatos antes de encaminhar a requisição ao documento "agenda.jsp".
+
+
+https://www.youtube.com/watch?v=EYVDz7PGhYQ
+
+O banco de dados é independente do aplicativo JavaWeb. As informações podem ser inseridas manualmente no banco ou através de um formulário. Para insesrir arquivos no banco de dados é utilizado o CRUD (Create Read Update Delete)
+
+https://www.youtube.com/watch?v=IYJF_MC-_PY
+
+Servidor de aplicação: é um software que implementa as especificações pelo J2EE.
+
+Servlet Container implementa parte das especificações do J2EE. São indicado para servidores que apenas precisam de algumas funcionalidades do J2EE deixando o servidor mais leve. Ex.: Tomcat.
+
+Servlets: Classes Java que ficam hospedadas no servidor web.
+
+Request: objeto que tem todas as informações das requisições http enviada para o servidor, apenas dura o instante de uma requisição.
+
+Response: objeto que contem todas as informações de resposta enviada para o cliente.
+
+Sessão: são dados associados a um client armazenados no lado do servidor que dura até que o cliente desconecte.
+
+Cookies: são pequenos dados textuais armazenados no lado do client (no browser).
+
+Contexto: dura até que a aplicação seja retirada da memória.
+
+Requisição: apenas disponível para o servlet em questão.
+
+Servlet context: fica visível em toda a aplicação.
+
+Servlet config: passa parâmetros para o servlet. Ele especifica informações que podem ser acessador com ServletContext.

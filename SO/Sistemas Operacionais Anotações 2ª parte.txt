@@ -1,0 +1,102 @@
+		Aula 21 - https://www.youtube.com/watch?v=E0HHKJPIwmg
+
+	Os dispositivos de entrada e saída são recursos limitados e precisam ser compartilhados entre os processos de forma concorrentemente.
+	Os sistemas operacionais emitem comandos para:
+	|-- Emitir instruções de read, write, etc;
+	|-- Interceptar interrupções;
+	|-- Tratar erros;
+	O sistema de E/S possui uma interface única (API) de forma que o SO possa prover um conjunto de operações que possam ser fornecidas ao usuário/drivers de forma que permita o controle para todos os dispositivos de E/S.
+	Boa parcela do SO corresponde aos drivers, sendo a maior parte do tempo de execução em dispositivos de E/S.
+
+	Tipos de E/S:
+	|-- Tipo de conexão;
+	|-- Tipo de transferência de dados;
+	|-- Tipo de compartilhamento de conexões;
+
+	1- Tipo de conexão:
+	|-- Natureza da conexão entre: Módulo de E/S x periférico;
+	|-- Serial x Paralela;
+	Conexão serial:
+	Única linha de conexão;
+	Vantagens:
+	|-- Mais barata que a paralela;
+	|-- Mais lenta que a paralela;
+	|-- Relativamente confiável;
+	|-- Usada em dispositivos mais baratos e lentos (impressoras e terminais);
+
+	Conexão paralela:
+	Várias linhas e bits de dados;
+	Características principais:
+	|-- Mais complexa que a serial;
+	|-- Mais cara;
+	|-- Mais rápida;
+	|-- Altamente confiável;
+	|-- Usada em dispositivos mais velozes (disco);
+
+	2- Tipo de transferência:
+	Dispositivos de bloco:
+	|-- Blocos de tamanho fixo, cada um com endereço de 128 a 1024 bytes;
+	|-- Tranferências com um ou mais blocos;
+	|-- Transferência de localidade;
+	|-- Referência de localidade (lê a página necessária e as próximas pois muitas vezes também serão necessárias);
+	|-- Mais otimizados;
+	|-- E/S toma tempo (lendo várias de uma vez e mais rápido do que ler uma página de cada vez);
+	|-- Exemplos: HD, CD-Rom, Drive USB;
+	Dispositivos de caracter:
+	|-- Acessa um fluxo de caracteres;
+	|-- Não consideram bloco;
+	|-- Não são endereçáveis;
+	|-- Não possuem acesso aleatório;
+	|-- Exemplo: Impressoras, interfaces de rede, mouses;
+
+	3- Compartilhamento de conexões:
+	Ponto a ponto:
+	|-- É a conexão mais simples;
+	|-- Linha dedicada para a ligação;
+	|-- Entre o módulo de E/S e periférico;
+	|-- Oferece maior confiabilidade;
+	|-- Paralelismo;
+	|-- Protocolos RTS/CTS;
+	Multiponto:
+	|-- Compartilha um conjunto de linhas;
+	|-- Entre diversos periféricos;
+	|-- Maior escalabilidade que a ponto a ponto;
+	|-- Não permite paralelismo;
+	|-- Usada para armazenamento;
+	|-- Interfaces de rede: crossbar;
+	|-- Exemplos: IDE, SCSI, USB, etc;
+
+	Princípios de hardware:
+	As unidades de E/S:
+	|-- Componente mecânico (o dispositivo em si);
+	Controladora de dispostivo:
+	|-- Componente eletrônico do dispositivo;
+	|-- Parte programável;
+	|-- Nos PCs existe um Circuito integrado que realiza isso;
+	|-- Há controladores para dispositivos idênticos;
+	|-- Órgão de padronização: IEEE, ISO, ANSI, etc;
+	O SO trata com a controladora (parte que conhece o funcionamento de cada dispositivo);
+	Não lida com os dispotivos em si;
+	Comunicação SO e controladoras, usa barramentos comuns (alto nível);
+	Comunicação entre controladora e dispositivos (baixo nível);
+	
+	Exemplo de uma controladora de disco:
+	Recebe um fluxo de bits com:
+	|-- Preâmbulo (indica um comportamento de caractêres);
+	|-- Os bits do setor;
+	|-- Checksum (mecanismo de correção de erros);
+	Do dispositivo:
+	|-- Monta os bytes em bloco;
+	|-- Coloca-os em um buffer interno;
+	|-- Após verificar o checksum;
+	|-- Copia o bloco na RAM;
+	Cada controladora possui registradores (que possui o controle pela CPU, e para ler/escrever no dispositivo);
+	O SO pode comandar o dispositivo, escrevendo comandos e seus parâmetros e depois de escrever esses comandos, a CPU executa outra tarefa usando os registradores;
+	Fomas de comunicação CPU x controladora:
+	Mapeando na memória:
+	|-- Está dentro do espaço da memória, utilizando um conjunto de endereços reservados.
+	|-- Os registradores são tratados como posições de memórias, mapeando todos os registradores no espaço de memória, geralmente no topo do espaço de endereços;
+	Mapeada em E/S:
+	|-- Contoladora recebe um número de portas de E/S que são acessadas via instruções especiais e são usadas apenas pelo SO. Espaços de endereços diferentes são usados para a memória e E/S.
+	Híbrido:
+	|-- Os registradores de comunicação de dados e controle se encontram tanto na memória principal como nas portas de E/S;

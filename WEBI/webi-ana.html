@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>WebI - Ana</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="./webi-ana.css">
+</head>
+
+<body>
+  <div>
+    <p>insira seu endereço</p>
+    <p id="endereco-erro" class="erro"></p>
+    <input id='endereco' type="text" placeholder="coloque seu endereço" />
+    <br />
+    <br />
+    <br />
+    <p>insira seu nome</p>
+    <p id="nome-erro" class="erro"></p>
+    <input id='nome' type="text" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" placeholder="coloque seu nome" />
+    <br />
+    <br />
+    <br />
+    <button onclick="validaForm()">enviar</button>
+  </div>
+
+  <script src="webi-ana.js"></script>
+</body>
+
+</html>

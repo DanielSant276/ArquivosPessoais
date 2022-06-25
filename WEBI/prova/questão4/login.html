@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    #tela {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    #caixa {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: 15%;
+      border: 1px solid #000000;
+      padding: 10px 7%;
+    }
+
+    #botao {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      text-align: center;
+      margin-block-start: 0em;
+      margin-block-end: 0em;
+    }
+
+    .margem {
+      margin: 10px 0;
+    }
+
+    .link {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+
+<body>
+  <main>
+    <div id="tela">
+      <div id="caixa">
+        <form>
+          <p class="margem">Insira seu login</p>
+          <input id="login" type="text" />
+          <p class="margem">Insira sua senha</p>
+          <input id="senha" type="password" />
+        </form>
+        <button id="botao" onclick="entrar()">Entrar</button>
+
+        <p>Seu primeiro login?</p>
+        <a class="link" href="/cadastro">Clique aqui para criar a conta</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('botao').onclick = () => {
+      let login = document.getElementById("login").value;
+      let senha = document.getElementById("senha").value;
+
+      console.log(login);
+      console.log(senha);
+
+      if (login != '' && senha != '') {
+        location.href = './principal.html'
+      }
+      else {
+        console.log('campos inválidos');
+      }
+    }
+  </script>
+</body>
+
+</html>
+</body>
+
+</html>

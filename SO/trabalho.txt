@@ -1,0 +1,46 @@
+Condição de corrida
+	São quando dois ou mais processos estão lendo ou escrevendo dados compartilhados e o resultado depende de quem executa sua parte precisamente, isso pode levar a um processo ficar esperando uma entrada ou saída que nunca irá acontecer. Por quando do aumento na quantidade de núcleos em um processador, está se tornado mais comum as condições de corrida.
+
+Regiões críticas
+	São partes de um programa onde um processo pode acessar uma memória ou arquivo compartilhado ou então realizar tarefas críticas, que podem levar a condição de corrida anteriormente explicado. Para isso as regiões críticas determinam condições para que se realize a tarefa sem que ocorra a condição de corrida, sendo elas:
+Dois processos jamais podem entrar em regiões críticas.
+Nenhuma suposição pode ser feito a respeito de velocidades ou número de CPUs.
+Nenhum processo executando fora de sua região crítica pode bloquear qualquer processo.
+Nenhum processo deve ser obrigado a esperar eternamente para entrar em sua região crítica.
+
+Exclusão mútua com espera ocupada
+
+Desabilitando interrupções 
+	Em sistemas que utilizem um único processador, é melhor que cada processo desabilite as interrupções até que o mesmo saia de sua região crítica, só as ligando novamente, ao sair da região.
+	O problema dessa abordagem é caso um processo desligue uma interrupção, pode acontecer dele nunca mais a ligar novamente. No geral, desabilitar as interrupções é uma boa abordagem dentro do SO, mas não como um mecanismo de exclusão mútua para processos de usuário. Mesmo desligando as interrupção, ainda é possível acontecer exclusão mútua com processadores multinúcleos. Nesses processadores, desligar o sistema de interrupções não evita que os outros núcleos interfiram com as operações que a primeira está realizando.
+
+Variáveis do tipo trava
+	É definido uma variável para travar a entrada na região crítica, que inicialmente será 0 para não travado e 1 para travado.
+	Quando um processo entra na região crítica, ele verifica a variável de trava, caso ela seja 0, o processo a define para 1 e entra na região crítica. Ao sair da região crítica, ele a configura para 0 e sai. Caso um processo tente entrar na região e veja que a trava está como 1, ele aguarda até que ela fique 0, para poder fazer o seu processo.
+	O problema dessa técnica é caso dois processos verifiquem simultâneamente que a trava está como 0 e os dois entrem na região crítica ao mesmo tempo.
+
+Alternância explícita
+	Essa solução se cria uma variável do tipo inteiro turn que controla quem tem a vez para se entrar em na região crítica.
+	Para um processo é definido como 0 seu momento para entrar na zona crítica e par ao outro é definido 1, e os dois se alternam trocando o valor de turn quando saem da zona crítica.
+	O problema dessa solução é que quando um processo é muito lento e o outro é muito rápido, terá casos onde os dois processos estarão fora de suas zonas críticas. Terá vezes na qual o processo mais rápido tenha que esperar o processo lento terminar sua execução fora da zona crítica para então entrar na execução da zona crítica e só depois que terminar sua execução, alterar o turn para que o processo mais rápido faça a sua execução de zona crítica.
+
+Solução de Peterson
+	É um algoritmo que consiste em duas rotinas escritas em ANSI C. Antes de usar variáveis compartilhadas, cada processo chama enter_region com o seu número de processo como parâmetro. Essa chamada fará que ele espere até que seja seguro entrar. Após terminar com as variáveis compartilhadas, o processo chama leave_region para indicar que terminou.
+	Essa solução funciona caso dois processos chamem enter_region simultâneamente, apenas o último a armazenar na variável que importa, pois o primeiro será sobrescrito e perdido. Assim não ocorrerá de dois processos acessarem a região crítica.
+
+A instrução TSL
+	Nessa método, se utiliza a instrução TSL (Test ans Set Lock) e uma variável compartilhada, lock para dizer quem pode acessar a memória compartilhada. Quando lock é 0, qualquer processo que precisar utilizar a região crítica pode configurá-lo para 1 usando a instrução TSL. Ao terminar ele configura lock novamente para 0 utilizando uma instrução move.
+	Essa instrução TSL tem uma sub-rotina de quatro instruções. A primeira copia o valor antigo de lock para o registrador e configura lock para 1. A segunda compara o valor antigo a 0. Caso não seja 0, o programa volta para o início e testa novamente. Quando ela virar 0, ele continua com a sua execução normal.
+
+Dormir e acordar
+	É muito custoso manter um processo testando por um longo tempo se é permitido acessar uma região crítica, logo, bloquar um processo durante esse período, auxilia a não desperdiçar tempo da CPU. Um modo simples é utilizar o par sleep e wakeup que são chamadas de sistema que suspendem um processo e que desperte um processo, respectivamente.
+
+o problema do produtor-consumidor
+	Esse problema acontece quando dois processos compartilham de um buffer de tamanho fixo com uma variável count para controlar o máximo de itens do buffer. Um dos processos que compartilham o buffer é chamado de produtor, ele insere informações no buffer. O outro processo é chamado de consumidor, ele retira informações do buffer.
+	Quando o produtor quer colocar um novo item no buffer e ele está lotado, a solução é colocar o produtor em estado de sleep até que o consumidor retire alguns itens do buffer. Ou o inverso, caso o buffer esteja vazio e o consumidor quer retirar um item dele, ele é posto para dormir até que o produtor coloque um ou mais itens nele.
+	Essa abordagem pode levar a ocorrer um problema semelhante ao de variáveis do tipo trava, mas com algumas particularidades. Esse erro irá ocorrer por que o acesso a counter não é restrito, ou seja, mais de um processo pode utilizá-lo ao mesmo tempo, ocorrendo a seguinte situação. O buffer está vazio e o consumidor le o valor de count para ver se é 0, nesse momento o escalonador para de executar o consumidor temporariamente e executa o produtor, incrementando o valor de count, que agora é 1, e chama wakeup para o consumidor que não estava dormindo. Ao voltar a executar o consumidor, a leitura recebida anteriormente para count é 0 e ele executa a chamada sleep até que o produtor o acorde. Com o passar do tempo o produtor entrará em sleep também pois o buffer estará cheio e os dois processos estarão bloqueados. O inverso pode ocorrer também.
+	
+Semáfaros
+	Para evitar o problema anterior de se perder o sinal para acordar o processo que deveria estar dormindo, foi proposta a utilização de semáfaro. Um semáfaro tem duas operações down e up. 
+	A operação down confere se o valor é maior do que 0, se ela for, ele decrementa, gastando um sinal de acordar armazenado, e continua o processo, se o valor for 0, o processo é colocado para dormir. Conferir o valor, modificá-lo e dormir são feitos como uma única ação atômica, garantindo que uma vez que a operação de semáforo tenha iniciado, nenhum outro processo pode acessar o semáforo até que a operação tenha sido concluída ou bloqueada.
+	A operação up incrementa o valor de um processo caso ou um mais processos estiverem dormindo naquele semáfaro.

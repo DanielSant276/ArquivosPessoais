@@ -1,0 +1,1 @@
+onclick="toFahrenheit(document.getElementById("nomeElemento").value);"
