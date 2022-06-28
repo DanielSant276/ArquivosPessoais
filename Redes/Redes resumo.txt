@@ -1,0 +1,280 @@
+		Aula 1
+O que são rede de computador?
+	R= Um aglomerado de software e hardware que permite a comunicação de diversos computadores, smartphones, roteadores e afins... que permite o compartilhamento de dados entre esses componentes.
+	Uma rede é um sistema constituido pela interligação de dois ou mais computadores e seus periféricos, com o objetivo de comunicação, compartilhamento e intercâmbio de dados.
+	Componentes:
+	|--Hardware: computadores, smartphones, roteadores, switches, servidores, etc.
+	|--Software: TCP/IP, OpenFlow, HTTP, Email, Browsers, etc.
+	Uma rede é uma junção de hardware e software.
+
+Internet:
+	A internet é uma implementação de uma rede. Elementos de computação interligados através de enlaces de comunicação, que podem ser: fibra, rádio, satélite, etc.
+	
+	!!!!!!Abstração: redes é uma classe, internet é um objeto.!!!!!!
+
+Protocolo:
+	Protocolos definem regras que estabelecem os formatos e a ordem das mensagens, assim como as ações a serem tomadas na transmissão e recepção das mensagens.
+	Protocolos de redes, são essas mensagens sendo utilizadas por máquinas ao invés de humanos. Toda a atividade de comunicação na internet é gorvernada por protocolos.
+
+Estrutura da Rede:
+	|--Borda da rede: aplicações e hospedeiros;
+		|-- Tipos de serviço:
+			|-- Orientado a conexão: a conexão deve ser criada antes de comunicar. Ex.: TCP;
+			|-- Sem conexão: não há necessidade de estabelecer uma conexão: UDP;
+		|-- Aplicações com TCP: HTTP, FTP (transferência de arquivo), SMTP (email).
+		|-- Aplicações com UDP: streaming media, teleconferência, telefonia IP.
+	|--Núcleo da rede: roteadores e rede de redes. 
+		|-- Formas de tranferir dados:
+			|-- Comutação de circuitos: usa um canal dedicado para cada conexão. Antes de realizar uma conexão, ela verifica qual é a rota menos congestionada.
+			|-- Comutação de pacotes: dados são enviados em "blocos" discretos. Cada fluxo de dados é dividido em pacotes.
+
+Roteamento:
+	Tem o objetivo de mover pacotes entre roteadores da origem ao destino.
+	Pode ser:
+	|-- Redes datagrama: Endereço de destino determina o próximo salto, as rotas podem mudar durante uma sessão.
+	|-- Redes de circuitos virtuais: Cada pacote leva um número (virtual circuit ID), esse número determina o próximo salto. O caminho é fixo, porém é escolhido no instante de estabelecimento da conexão, permanecendo fixo durante toda a conexão.
+
+
+		Aula 2
+
+Perdas e atrasos:
+	Na internet existem filas de pacotes em buffers de roteadores que podem gerar atrasos, outra forma de gerar atrasos é atravês das filas de pacotes ao gerar um enfileiramento.
+	Já relacionado a perdas, a taxa de chegada de pacotes ao link pode ultrapassar a capacidade do link de saída.
+
+Fontes de atrasos de pacotes:
+	1- Processamento nos nós: verificação de erros de bit e determinação de qual será o link de saída, irá levar um certo tempo, podendo gearar atrasos;
+	2- Enfileiramento: tempo de espera no link de saída para transmissão;
+	3- Atraso de transmissão: Tempo para enviar bits ao link = L/R, onde R é a largura de banda do link (bps) e L é o tamanho do pacote (bits).
+	4- Atraso de propagação: Atraso de propagação = d/s, onde d é o comprimento do link físico e s é a velocidade de propagação no meio (~2x10^8 m/s).
+	Assim, a fonte de atraso de pacotes é: dno = dproc + dfila + dtrans + dprop
+	|-- dproc = atraso de processamento - poucos microssegundos ou menos;
+	|-- dfila = atraso de fila - depende do congestionamento;
+	|-- dtrans = atraso de tramissão - atraso significante para links de baixa velocidade;
+	|-- dprop = atraso de propagação;
+
+Camadas de Protocolos:
+	Uma abordagem de cadamas é modularizar a rede de computadores em um conjunto de camadas, onde cada uma dessas camadas irão desempenhar uma função. Como segue uma abordagem de "dividir e conquistar", o trabalho é divididos em partes pequenas, que transmitem a informação para a próxima etapa até que o dado seja transmitido. Cada etapa depende da anterior, mas não é necessário saber como a etapa anterior foi realizada.
+	Esse sistema de camadas também permite a retirada de um módulo e sua substituição por outro.
+
+Modelo ISO/OSI:
+	É um padrão seguido em redes na qual estipula sete camadas:
+	|-- camada de aplicação;
+	|-- camada de apresentação;
+	|-- camada de sessão;
+	|-- camada de transporte;
+	|-- camada de rede, camada de enlace, camada física.
+	Esse modelo também é utilizado em redes como: Bluetooth, ZigBee e Internet.
+
+Encapsulamento de dados:
+	Consiste em pegar os dados de uma camada e colocar diretamente na próxima mensagem, indo de camada em camada até chegar a camada física onde os dados são transformados em bits e são transmitidos do remetente até o destinatário.
+
+OSI: Camada Física:
+	Trasmissão trasparente de sequências de bits pelo meio físico. Trata padrões mecânicos, funcionais, elétricos e procedimentos para acesso ao meio físico. Mantém a conexão física entre sistemas.
+	Tipos de conexão:
+	|-- ponto-a-ponto ou multiponto;
+	|-- full ou half-duplex;
+	|-- serial ou paralela;
+
+OSI: Camada de Enlace:
+	Determina o tamanho máximo do pacotes.
+	Organiza sequências de bits em conjuntos de bits chamados frames. Reconhece início e fim de frames, detecta perdas de frames e requisita retransmissão.
+	Funções típicas:
+	|-- delimitação de quadro;
+	|-- detecção de erros (confiabilidade);
+	|-- recuperação de erros;
+
+OSI: Camada de Rede
+	Determina como os pacotes são roteados da origem ao destino.
+	As rotas podem ser:
+	|-- fixas;
+	|-- criadas no momento da conexão;
+	|-- dinâmicas;
+
+OSI: Camada de Transoirte:
+	Assegura a conexão confiável entre origem e destino da comunicação.
+	Primeira camada que estabelece comunicação origem-destino (fim-a-fim).
+
+OSI: Camada de Sessão:
+	Gerencia sessões de comunicação. Uma sessão é uma comunicação que necessita armazenar estados. Estados são armazenados para permitir reestabelecimento da comunicação em casa de queda da comunicação.
+
+OSI: Camada de Aplicação:
+	Trata de vários protocolos que suportam as diferentes aplicações, como:
+	|-- correio eletrônico;
+	|-- navegação na web;
+	|-- transferência de arquivos;
+	|-- terminal virtual;
+	|-- gerência de redes;
+
+Modelo TCP/IP (Internet)
+	O modelo ISO/OSI é o modelo que abstratamente se parece com uma classe, possuindo todas as camadas mostradas anteriormente. Já o modelo TCP/IP, seria um objeto do modelo/classe ISO/OSI. Ele possui apenas as camadas. Camda de aplicação, camada de transporte, camada de rede, camada de acesso ao meio.
+	Nesse modelo, apesar de ter menos camadas que o ISO/OSI, ele irá incorporar as camadas que faltam:
+	|-- camada de aplicação: suporta as aplicações de rede - FTP, SMTP, HTTP. Ela irá incorporar o funcionamento das camadas: aplicação, apresentação e sessão;
+	|-- camada de transporte: transferência de dados processo a processo - TCP e UDP. 
+	|-- camada de rede: roteamento de datagramas da origem ao destino - IP, protocolos de roteamento. Ela irá incorporar o funcionamento das camadas: de rede e enlace.
+	|-- camada de enlace: transferência de dados entre elementos vizinhos - Wi-fi, Ethernet, IEEE 802.15.4. Ela irá incorporar o funcionamento das camadas: enlace e física.
+
+
+
+		Aula 3
+
+Arquiteturas de aplicação:
+	|-- Cliente-servidor:
+		|-- Servidor: Possui endereço IP permanente, ele é executado em um hospedeiro;
+		|-- Cliente: Pode ser móvel com IP dinâmico, ele inicia a sessão com o servidor;
+	|-- Peer-to-peer (P2P): Nem sempre no servidor, hospedeiros se comunicam entre eles, todos oferecendo serviçõscom auto escalabilidade. Possui endereços IP intermitentes e dinâmicos. O gerenciamento desse tipo de serviço é complexo. Ex.: BitTorrent, Skype, etc.
+	|-- Híbrida de cliente-servidor e P2P: arquiteturas de instant messaging (bate-papo entre dois usuário é P2P). Utiliza detecção/localização centralizada de presença, o usuário registra seu endereço IP com o servidor central quando fica on-line, o usuário contata o servidor central para encontrar endereços IP dos vizinhos.
+	|-- Arquitetura da aplicação é diferente de arquitetura de rede!
+	
+Porta de Saída das aplicações: Sockets:
+	São as portas de comunicação. Os socket são mecanismos de comunicação entre processos onde cada um dos processos existe um número. Para enviar uma mensagem, o processo empurra a mensagem para fora da porta, o confiando na infraestrutura de transporte no outro lado porta. Ex.: servidor HTTP é porta 80, servidor de correio SMTP é porta 25.
+
+Protocolos de Camada de Aplicação:
+	O protocolo é uma parte da aplicação. Ele pode ser de dois tipos:
+	|-- Domínio público: definidos nas RFCs (Request for comments). São recomendados para interoperabilidade: HTTP e SMTP;
+	|-- Proprietários: Skype;
+	
+Quais serviços uma aplicação precisa?
+	Transferência confiável de dados: Tolera perdas?
+	|-- sim: áudio e vídeo (ao vivo);
+	|-- não: transferência de arquivos, conteúdo em geral;
+	Temporização: Aplicações exigem baixos atrasos?
+	|-- Quanto maior largura de banda melhor (FTP). São necessárias em telefonia via Internet e jogos interativos. 
+
+Web e HTTP:
+	Página Web consiste de objetos, podendo ser: arquivo HTML, imagem JPEG, Java applet, arquivo de áudio, entre outros. A página Web consiste de arquivo-HTML base, que inclui vários objetos referenciados, com um endereçamento por uma URL.
+
+HTTP visão geral:
+	Protocolo de modelo cliente/servidor onde existe uma requisição e uma resposta, com os dois tento um papel bem definido:
+	|-- Cliente: browser que solicita, recebe e apresenta objetos da Web.
+	|-- Servidor: envia objetos em resposta a pedidos.
+
+Tipos de conexões HTTP:
+	|-- Não persistente: um objeto é enviado sobre uma conexão TCP, utilizado em HTTP/1.0.
+	|-- Persistente: múltiplos objetos podem ser enviados sobre uma conexão, TCP entre o cliente e o servidor, utilizado em HTTP/1.1.
+
+HTTP persistente:
+	|-- Persistente sem paralelismo: cliente emite novas requisições apenas quando a resposta anterior for recebida.
+	|-- Persistente com paralelismo: padrão no HTTP/1.1, cliente envia a requisição assim que encontra um objeto referenciado.
+
+Tipos de Mensagens HTTP:
+	|-- Request (Requisição): Requisita uma página HTTP passando a URL.
+		|--GET / HTTP/1.1
+		|--host: www.uol.com.br
+	|-- Respose (Resposta): Responde a requisição com a página solicitada, podendo possuir vários tipos de respostas diferentes.
+
+Cookies:
+	Artefatos que os servidores implementam quando eles não possuem informação de estado. O uso de cookeis permite que o usuário seja monitorado, incluindo: autorização, cartão de compra, recomendação, etc.
+	Cookies possuem problemas com segurança do usuário.
+
+Caches Web:
+	São providos através de um servidor proxy, eles servem para ficar entre o servidor local e o servidor global, servindo para fazer interface com o servidor origem. Ele basicamente salva informações muito usadas para que possam ser utilizadas recorrentemente sem ter que ir buscar sempre na fonte principal. Esses objetos salvos, serão objetos que não são modificados com frequência.
+
+GET condicional:
+	|-- Cliente: especifica data da versão armazenada no pedido HTTP: if-modified-since: <date>
+	|-- Servidor: resposta não contém objeto se a cópia é atualizada: HTTP/1.0 304 Not Modified
+
+
+		Aula 4
+
+Transferência de arquivo: FTP (File Transfere Protocol):
+	FTP transporta arquivos entre sistemas de arquivo local e remoto.
+	Existem 2 conexões TCP: uma conexão (porta 21) informa o nome do arquivo, login, senha e comando (qual tarefa estará sendo executada); a outra conexão (porta 20) transporta o arquivo, como suas informações.
+
+Camadas e respostas FTP:
+	Alguns dos comandos mais comuns:
+	|-- USER username: informa o usuário para autenticar.
+	|-- PASS password: senha do usuário.
+	|-- LIST: lita o conteúdo do diretório.
+	|-- RETR filename: copia o arquivo remoto para o atual.
+	|-- STOR filename: fazer upload no diretório remoto.
+	Algumas respostas típicas e suas possíveis mensagens:
+	|-- 331: Nome de usuário OK, senha requisitada.
+	|-- 125: Conexão de dados já aberta; iniciando transferência.
+	|-- 452: Erro ao escrever o arquivo.
+
+Correio eletrônico na Internet: Componentes:
+	|-- Agentes de usuário: software de usuário para fazer a interface do email.
+	|-- Servidores: servidores que armazenam o conteúdo dos emails.
+	|-- Protocolos SMTP, POP, IMAP e HTTP: servem para acessar os emails que chegam no servidor de email.
+
+O protocolo SMTP:
+	Protocolo de transfêrencia de mensagem, utiliza o protocolo TCP (conexão garantida na qual todos os pacotes enviados serão entregues). Utiliza a porta 25. Utiliza conexão persistente (conexão aberta onde os objetos são transferidos em uma única vez). Transferência direta: servidor que envia para o servidor que recebe. Agentes de usuário usam o SMTP para enviar mensagens para o seu servidor.
+	O SMTP envia mensagens de servidores de correio remetentes para servidores de correio destinatários. Alice envia uma mensagem a BOB:
+	Agente de alice -> Servidor de correio de Alice -> Fila de mensagem (dentro do servidor de correio de Alice) -> SMTP -> Servidor de correio de Bob -> Fila de mensagem (dentro do servidor de correio de Bob) -> Agente de Bob
+
+Formatos de mensagem de correio:
+	Um cabeçalho de mensagem típico é semelhante a:
+	|-- From: alice@crep.fr
+	|-- To: bob@crep.edu
+	|-- Subject: XXXXXXXXXXX
+	Após o cabeçalho da mensagem, vem um linha em branco e, em seguida, o corpo da mensagem (em ASCII). Utilize o comando telnet serverName 25 para teste.
+
+DNS: Diretório da Internet:
+	É o responsável por transformar o endereço do site (www.xxxx.xx) para um endereço IP.
+	O DNS é um banco de dados distribuído executado em uma hierarquia de servidores de DNS, e um protocolo de camada de aplicação que permite que hospedeiros consultem o banco de dados distribuído.
+	Além disso, o DNS provê outros serviços, como:
+	|-- Apelidos de hospedeiro (aliasing);
+	|-- Apelidos de servidor de correio;
+	|-- Distribuição de carga;
+
+Hierarquia de Servidores DNS:
+	Nenhum servidor DNS isolado tem todos os mapeamentos para todos os hospedeiros da Internet. Ao invês disso, os mapeamentos são distribuídos pelos servidores DNS.
+
+DNS: Diretório da Internet:
+	Servidores DNS raiz em 2012 (nome, organização, localização).
+	O acesso pode ser realizado de duas formas:
+	|-- Forma interativa: uma mensagem vai primeiro ao servidor do DNS local, depois pro servidor de DNS raiz, retorna a mensagem para o servidor de DNS local, vai para o servidor de DNS TLD e também retorna a mensagem para o servidor de DNS local, e por último vai para o servidor DNS autoritativo e retorna por fim o endereço do site buscado para o servidor DNS local e depois para o computador requisitante.
+	|-- Forma recursiva: A consulta é recursiva, um servidor envia a consulta ao próximo que saiba, o que sabe o mapeamento para o endereço deseja retorna a resposta para o que perguntou.
+
+Registros e mensagens DNS:
+	Um registro de recurso é uma tupla de quatro elementos que contém os seguintes campos:
+	|-- nome: www.xxx.com
+	|-- valor: endereço ip
+	|-- tipo: ex.: servidor
+	|-- TTL (time to leave): tempo na qual esse registro estará disponível
+
+Aplicações P2P:
+	Distribuição de arquivos P2P:
+	|-- Cada par pode servir como cliente,  podendo redistribuir qualquer parte do arquivo, auciliando o servidor no processo de distribuição. O BitTorrent é um protocolo P2P popular para distribuição de arquivos.
+	|-- Esse tipo de aplicação diminui o tempo em escala exponencial para distribuição de arquivos.
+	
+DHTs (Distributed Hash Tables):
+	É um banco de dados distribuído que guarda os pares (chave, valor) dos pares P2P.
+	No sistema P2P, cada par só manterá um pequeno subconjunto da totalidade (chave, calor).
+	Permitindo que qualquer par consulte este banco de dados com uma chave em particular.
+	Cria uma topologia com todos os pares que possuem o arquivo desejado disponível.
+
+
+		Aula 5
+
+Camada de transporte:
+	Conexão lógica entre processos. Realiza a comunicação entre dois clientes para que eles possam se comunicar e transferir informações.
+	|-- Camada de Rede: conexão lógica de hosts.
+	|-- Pacotes: são chamados de segmentos.
+
+Camada de transporte e de rede:
+	Uma rede de computadores pode disponibilizar vários protocolos de transporte (ex.: TCP e UDP, que são os protocolos mais utilizados nessa camada).
+	Serviços de confiabilidade, detecção de erros, agregar datagramas para formar segmentos.
+
+!!!!!!!Relembrando UDP e TCP!!!!!!!
+	TCP: Confiabilidade e conconexão (e necessário primeiro conectar os dois lados para depois poder transmitir os dados).
+	UDP: Sem conexão e sem necessidade de possuir confiabilidade.
+
+Visão geral na Internet:
+	A "ampliação" (detalhamento) da entrega hospedeiro a hospedeiro para entrega processo a processo (chamado de multiplexação/demultiplexação). O UDP e o TCP, também realizarão a verificação de integridade dos campos de detecção de erros nos cabeçalhos.
+
+Multiplexação:
+	Processo para reunir dados de diferentes sockets. Encapsula cada parte de dados (payload) com informações de cabeçalho para criar segmentos. Esses segmentos serão passados para a camada de rede. Se trata de um mecanismo de vários-para-um processos, pois existem vário protocolos, que vão diminuindo até ser transmitido para o servidor.
+
+Demultiplexação:
+	Segue o processo inverso da Multiplexação, sendo um mecanismo de um-para-vários processos. Onde o servidor envia uma informação que vai sendo dividida em vários protocolos.
+	Este processo irá envolver (na parte do receptor): recebimento de datagramas da camada de rede, ler o número da porta do pacote, entregar os dados para os respectivos sockets, e por fim, parar o processo que pertence ao determinado socket (entregando a informação na porta correta).
+
+Multiplexação e Demultiplexação:
+	Possui campos de número de porta de origem e de destino em um segmento de camada de transporte
+
+Transferência sobre um canal perfeitamente confiável: rdt1.0 - rdt (reliable data transferer):
+	Um protocolo para um canal completamente confiável. Nesse caso não existe perda de pacote pois o envio é confiável.
+	!!!!!!!!!!Ver melhor essa parte depois!!!!!!!!!!
+
+	 

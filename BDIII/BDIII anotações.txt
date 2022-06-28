@@ -1,0 +1,47 @@
+fragmentação vertical possui duas estratégias, que precisam ser feitas verificações anteriores para poder ser realizado. É necessário ter afinidade de atributos e os valores dos atributos devem obdecer uma lei de formação qualquer.
+
+Todo banco de dados vai ter um catalogo global (gc) e catalogo local (lc). Para fazer integração de dados, é necessário fazer o shcema mediado, onde o catalogo global reflete os catalogos locais.
+
+
+
+integração física: retirar a informação do banco de dados e salvar em backup. 
+
+integração lógica: schema global é virtual e não materializado. de tempos em tempos são feitos pequenos backups do que é necessário.
+
+
+
+databerg: os dados visíveis são apenas 10~20% dos dados. O resto são dados não tratados e dados antigos.
+
+
+
+schema translation: 
+
+schema generation: 
+
+heterogeneidade de schema:
+
+heterogeneidade de semantica:
+
+
+
+
+
+
+
+
+visão materializada: cria uma tabela com uma informação específica, por exemplo um select muito usado. Facilita a velocidade no acesso, não precisando ficar realizando uma requisição recorrente o tempo inteiro.
+
+replicação: uma cópia de uma visão materializada. A replicação pode ser total ou parcial, ou seja, ou ela envia totalmente a visão materializada ou apenas o que foi alterado dela.
+
+relação diferencial: caso uma view seja alterada, a relação diferencial pode ser considerada R'+ ou R'- (com mais ou menos tuplas, respectivamente).
+
+tecnicas de manutenção de visão: é necessário manter a expressividade, ou seja, o R' precisa manter as informações da identificação, da quantificação e manter da origem da view.
+
+proteção de dados: evita que os dados sejam acessados por pessoas não autorizadas. Geralmente o banco de dados estará criptografado, evitando o entendimento de um terceiro que posso ter acesso.
+
+
+
+
+
+
+

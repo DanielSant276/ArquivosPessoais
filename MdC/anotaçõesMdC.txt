@@ -1,0 +1,9 @@
+Resenha Crítica:
+  - Título
+  - Assunto Principal
+  - Objetivo(s) principal(is)
+  - Argumentos principais
+  - Conclusão geral
+  - Parecer crítico
+
+Escolher uma área, diminuir para uma sub area dessa area, pensar em um problema que possa ser respondido por essa area menor e por fim pensar em uma pergunta que pode ser respondido com esse problema./

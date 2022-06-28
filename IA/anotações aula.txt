@@ -1,0 +1,49 @@
+Paradigma simbolista
+	Centrado na ideia de usar simbolos. Simulam o raciocínio lógico dos seres humanos. São utilizadas árvores, tabelas, árvores de decisão. Todos são métodos heurísticos (não gera o melhor resultado, é sempre um resultado aproximado).
+	Tenta reproduzir um processo de decisão de um especialista. É necessário modelar o problema e dar dadods para poder aplicar uma inteligência sobre ele.
+Paradigma Conexionista
+	Tenta reproduzir o conhecimento humano. São capazes de aprender através de generalização, e possuem aprendizado autônomo (recente). Treina o algoritmo para uma determinada tarefa e depois faz análises ou tenta resolver outros problemas.
+
+	O objetivo da IA é tentar imitar o cérebro humano. O raciocínio humano é composto em várias partes, a IA tenta fazer algo semelhante.
+
+	Aprendizado de reforço.
+
+	Sistemas inteligentes tentam busca uma solução através de um conjunto de regras.
+
+Redes Neurais Artificiais
+	Utiliza um sistema que possui um circuito que simula o cérebro humano.
+
+Algoritmos Genéticos
+	Centraod na teori de darwin, reproduz uma reprodução de espécies da teoria da evolução genética.
+
+Busca em paradigma simbolista:
+	De maneira geral, um problema de busca pode ser formalizado através da definição dos seguintes elementos:
+	|-- um conjunto de descrições chamado espaço de estados, onde cada elemento descreve uma situação possível do problema.
+	|-- um estado inicial que descreve uma situação do inicial do problema.
+	|-- um ou mais estados finais (as situações que desejam se alcançar)
+	|-- um conjunto de operadores, isto é, procedimentos que, dada a descrição de um estado, determinam todos os estados que podem ser alcançados a partir do estado dado.
+
+Problema:
+	|-- formular objetivo
+	|-- formular problema
+	|-- estados
+	|-- operadores
+	|-- achar solução
+	|-- custo
+
+Esses problemas podem ser resolvidos utilizando duas estruturas: árvores e grafos.
+
+Um algoritmo de busca constrói uma Árvore de Busca, onde a raiz é o estado inicial e os nós filhos os movimentos para achar a solução do problema.
+
+sistemas de controle: começa a selecionar os passos através de um conjunto de regras que a satisfaça. Assim, você não seleciona os próximos passos aleatoriamente. Para que o sistema de controle possa decidir pela melhor regra, é necessário utilizar um conjunto de heurísticas.
+
+Algoritmos de busca:
+	|-- não informados: usam somente definição do problema, não fornece informações adicionais sobre o problema. Geralmente são algoritmos de força bruta.
+	|-- informados: usam conhecimento sobre o domínio para encontrar as etapas para a solução, o conhecimento é na forma de heurísticas.
+
+busca em profundidade: busca o que deseja utilizando arvore de busca e backtracking. quando uma solução não é encontrada, ele precisa retornar um passo e depois segue o caminho por outro caminho ainda não testado.
+
+busca em largura: procura por nível. ao invés de olhar um ramo da árvore até o final, ele olha todos os filhos do nível, caso não encontre o filho desejado, ele passa para o próximo nível.
+
+busca informada: busca gulosa ou busca A*. existe algum tipo de conhecimento do problema e é criado uma estratégia (heuristica de estimativa) para achar a solução.
+
