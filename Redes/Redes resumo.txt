@@ -275,6 +275,54 @@ Multiplexação e Demultiplexação:
 
 Transferência sobre um canal perfeitamente confiável: rdt1.0 - rdt (reliable data transferer):
 	Um protocolo para um canal completamente confiável. Nesse caso não existe perda de pacote pois o envio é confiável.
-	!!!!!!!!!!Ver melhor essa parte depois!!!!!!!!!!
+	
+Transferência sobre um canal com erros de bits: rdt2.0:
+	Envio de confirmação de pacotes. Pacotes ACKs (reconhecimento de pacote) e NACKs (não reconhecimento de pacote).
+	No destinatário, se o pacote não se encontra corrompido, se envia um ACK reconhecendo o recebimento do pacote.
 
-	 
+rdt2.1:
+	Incida o pacote que está sendo enviado e/ou está sendo aguardado.
+	Destinatário deve verificar o número do pacote sendo reconhecido, usando has_seq1 ou has_seq0.
+
+rdt2.2: Remetente:
+	O destinatária tem que incluir o número do ACK do pacote reconhecido com ACK0 ou ACK1. O remetente deve verificar o número do pacote sendo reconhecido.
+
+rdt2.2: Destinatário:
+	O remetente deve verificar o número do pacote sendo reconhecido usando isACK.
+
+rdt3.0 com temporizador:
+	Se o destinatário não acusar o recebimento do pacote enviado dentro de um tempo determinado, o remetente envia novamente o pacote.
+	
+
+		Aula 6
+
+Transporte não orientado para conexão: UDP:
+	Define um protocolo de interesse geral. Não provê uma garantia para as camadas superiores.
+	O UDP não verifica se o destinatário pode ou não receber o pacote, ele não faz uma conexão formal, ele envia diretamente os pacotes.
+	À parte de sua função de multiplexação/demultiplexação  e de alguma verificação de erros simples (checksum opcional), ele nada adiciona ao IP. Se a aplicação usa UDP, ela está se comunicando diretamente com o IP.
+	O UDP só tem segurança (informação de que o destinatário receber o pacote) quando aplicado, na camada de aplicação.
+
+Estrutura do segmento UDP:
+	16 bits para porta de origem e 16 para porta de destino, sendo a porta de origem opcional, pois nem sempre se necessita uma resposta de volta. O checksum também é opcional.
+
+Soma de verificação (checksum) UDP:
+	 Se soma os pacotes enviados com a própria soma, caso o valor seja 1111, isso quer dizer que o envio está correto. !!!!!!!!!!!!!!!verificar!!!!!!!!!!!!!!!
+	
+Transporte orientado para conexão:
+	Resumo de mecanismos de tranferência confiável:
+	|-- soma de verificação: usado par adetectar erros de bits.
+	|-- temporizador: controla a temporização/retransmissão de um pacote e trata o pacote perdido dentro do canal.
+	|-- número de sequência: usado para numeração sequencial de pacotes, permitindo o paralelismo no envio de pacotes, suportando o envio sem esperar o ACK individualmente.
+
+Serviços da Camada de Transporte:
+	|-- reconhecimento: avisa que ao remetente que um pacote chegou, notifica que um conjunto de pacotes chegou, utilização de ACK(n), acumulativo ou seletivo.
+	|-- reconhecimento negativo: avisa que um pacote não foi recebido corretamente NACK(n).
+	|-- janela/paralelismo: tem o objetivo de não "afogar" o destinatário, porém o remetente pode ficar restrito (enviar somente pacotes dentro de um janela ou então dentro de uma faixa do número de sequência).
+
+Conexão TCP:
+	Conexão que provê um serviço full-duplex (envio bi direcional em ambos os sentidos). É processo a processo. Quando estabelece uma conexão TCP, os dois processos podem enviar dados de um para o outro. 
+	O TCP combina cada porção de dados do cliente com um cabeçalho TCP, formando assim segmentos TCP.
+
+Números de sequência (SEQ) e números de reconhecimento (ACK):
+	O SEQ é o número do primeiro byte do segmento. O ACK que o hospedeiro A atribui a seu segmento é o SEQ do próximo byte que ele estiver aguardando do hospedeiro B.
+	Como o TCP somente reconhece bytes até o primeiro byte que estiver faltando na cadeia, dizemos que TCP provê reconhecimentos cumulativos.

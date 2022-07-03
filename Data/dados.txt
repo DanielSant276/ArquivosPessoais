@@ -1,0 +1,10 @@
+Gráfico de barras (pag. 47):
+  - É utilizado para mostrar como quantidades variam em um conjunto de itens. Pode ser também uma boa opção para mostrar
+  um histograma de valores agrupados e representar distribuição de valores.
+  - plt.bar(x, y, z) -> plota as barras com coordenadas x e tamanho y e largura z.
+  - plt.axis([-x, x, -y, y]) -> determina o eixo para x e para y.
+  - plt.title(x) -> adiciona um título x.
+  - plt.xticks(x, y) -> rotula as coordenadas x com os nomes da lista y, se y estiver vazio ele coloca os valores numéricos.
+  - plt.ylabel(x) -> rotula o eixo y.
+  - plt.show() -> mostra o gráfico.
+

@@ -1,0 +1,17 @@
+iniciar variáveis como:
+tamanho do cromossomo;
+probabilidade de cruzamento;
+probabilidade de mutação;
+número de gerações;
+tamanho da população;
+
+1º passo é gerar a geração aleatória da população inicial.
+
+2º passo é criar as variáveis do algoritmo genético.
+
+3º passo é iniciar o algoritmo genético.
+
+ind = np.zeros(tamCromossomo)
+individuo = np.zero(tamPopulacao)
+aptidao = np.zeros(tamPopulacao)
+
