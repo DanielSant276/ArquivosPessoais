@@ -1,0 +1,478 @@
+Internet:
+	A internet é uma implementação de uma rede. Elementos de computação interligados através de enlaces de comunicação, que podem ser: fibra, rádio, satélite, etc.
+
+
+
+
+
+
+Protocolo:
+	Protocolos definem regras que estabelecem os formatos e a ordem das mensagens, assim como as ações a serem tomadas na transmissão e recepção das mensagens.
+	Protocolos de redes, são essas mensagens sendo utilizadas por máquinas ao invés de humanos. Toda a atividade de comunicação na internet é gorvernada por protocolos.
+
+Perdas e atrasos:
+	Na internet existem filas de pacotes em buffers de roteadores que podem gerar atrasos, outra forma de gerar atrasos é atravês das filas de pacotes ao gerar um enfileiramento.
+	Já relacionado a perdas, a taxa de chegada de pacotes ao link pode ultrapassar a capacidade do link de saída.
+
+
+
+
+
+
+Fontes de atrasos de pacotes:
+	1- Processamento nos nós: verificação de erros de bit e determinação de qual será o link de saída, irá levar um certo tempo, podendo gearar atrasos;
+	2- Enfileiramento: tempo de espera no link de saída para transmissão;
+	3- Atraso de transmissão: Tempo para enviar bits ao link = L/R, onde R é a largura de banda do link (bps) e L é o tamanho do pacote (bits).
+	4- Atraso de propagação: Atraso de propagação = d/s, onde d é o comprimento do link físico e s é a velocidade de propagação no meio (~2x10^8 m/s).
+	Assim, a fonte de atraso de pacotes é: dno = dproc + dfila + dtrans + dprop
+	|-- dproc = atraso de processamento - poucos microssegundos ou menos;
+	|-- dfila = atraso de fila - depende do congestionamento;
+	|-- dtrans = atraso de tramissão - atraso significante para links de baixa velocidade;
+	|-- dprop = atraso de propagação;
+
+
+
+
+
+
+OSI: Camada de Aplicação:
+	Trata de vários protocolos que suportam as diferentes aplicações, como:
+	|-- correio eletrônico;
+	|-- navegação na web;
+	|-- transferência de arquivos;
+	|-- terminal virtual;
+	|-- gerência de redes;
+
+
+
+
+
+
+Modelo TCP/IP (Internet)
+	O modelo ISO/OSI é o modelo que abstratamente se parece com uma classe, possuindo todas as camadas mostradas anteriormente. Já o modelo TCP/IP, seria um objeto do modelo/classe ISO/OSI. Ele possui apenas as camadas: camada de aplicação, camada de transporte, camada de rede, camada de acesso ao meio.
+	Nesse modelo, apesar de ter menos camadas que o ISO/OSI, ele irá incorporar as camadas que faltam:
+	|-- camada de aplicação: suporta as aplicações de rede - FTP, SMTP, HTTP. Ela irá incorporar o funcionamento das camadas: aplicação, apresentação e sessão;
+	|-- camada de transporte: transferência de dados processo a processo - TCP e UDP. 
+	|-- camada de rede: roteamento de datagramas da origem ao destino - IP, protocolos de roteamento. Ela irá incorporar o funcionamento das camadas: de rede e enlace.
+	|-- camada de enlace: transferência de dados entre elementos vizinhos - Wi-fi, Ethernet, IEEE 802.15.4. Ela irá incorporar o funcionamento das camadas: enlace e física.
+
+
+
+
+
+
+Escrever programas que:
+	|-- Executam em (diferentes) sistemas finais
+	|-- Se comunicam através da rede
+	|-- p.ex., navegador se comunica com um servidor Web
+	Obs: Esses programas não estão relacionados ao núcleo da rede
+	|-- Dispositivos do núcleo da rede não executam aplicações dos usuários
+	|-- Aplicações nos sistemas finais permite rápido desenvolvimento e disseminação
+
+
+
+
+
+
+Arquiteturas de aplicação:
+	|-- Cliente-servidor:
+		|-- Servidor: Possui endereço IP permanente, ele é executado em um hospedeiro;
+		|-- Cliente: Pode ser móvel com IP dinâmico, ele inicia a sessão com o servidor;
+	|-- Peer-to-peer (P2P): Nem sempre no servidor, hospedeiros se comunicam entre eles, todos oferecendo serviçõscom auto escalabilidade. Possui endereços IP intermitentes e dinâmicos. O gerenciamento desse tipo de serviço é complexo. Ex.: BitTorrent, Skype, etc.
+	|-- Híbrida de cliente-servidor e P2P: arquiteturas de instant messaging (bate-papo entre dois usuário é P2P). Utiliza detecção/localização centralizada de presença, o usuário registra seu endereço IP com o servidor central quando fica on-line, o usuário contata o servidor central para encontrar endereços IP dos vizinhos.
+	|-- Arquitetura da aplicação é diferente de arquitetura de rede!
+
+
+
+
+
+
+Sockets:
+	São as portas de comunicação. Os socket são mecanismos de comunicação entre processos onde cada um dos processos existe um número. Para enviar uma mensagem, o processo empurra a mensagem para fora da porta, o confiando na infraestrutura de transporte no outro lado porta. Ex.: servidor HTTP é porta 80, servidor de correio SMTP é porta 25.
+	|-- um processo envia/recebe mensagens para/de seu socket (análogo a uma porta)
+	|-- processo que transmite envia a mensagem pela porta
+	|-- do lado do receptor, a infra-estrutura da camada de transporte distribui a mensagem para o socket do processo receptor correto
+
+
+
+
+
+
+Protocolos de Camada de Aplicação:
+	O protocolo é uma parte da aplicação. Ele pode ser de dois tipos:
+	|-- Domínio público: definidos nas RFCs (Request for comments). São recomendados para interoperabilidade: HTTP e SMTP;
+	|-- Proprietários: Skype;
+	
+Quais serviços uma aplicação precisa?
+	Transferência confiável de dados: Tolera perdas?
+	|-- sim: áudio e vídeo (ao vivo);
+	|-- não: transferência de arquivos, conteúdo em geral;
+	Temporização: Aplicações exigem baixos atrasos?
+	|-- Quanto maior largura de banda melhor (FTP). São necessárias em telefonia via Internet e jogos interativos. 
+
+
+
+
+
+
+Serviços providos por protocolos de transporte da Internet:
+	|-- Serviço TCP:
+		|-- orientado a conexão
+		|-- estabelecimento de conexão necessário entre cliente e servidor
+		|-- transporte confiável entre processos remetente e receptor
+		|-- controle de fluxo: remetente não vai “afogar” receptor de dados
+		|-- controle de congestionamento: limitar a taxa de transmissão do remetente quando a rede estiver carregada 
+		|-- não provê: garantias temporais, vazão mínima e segurança
+	|-- Serviço UDP:
+		|-- transferência de dados não confiável entre processos remetente e receptor
+		|-- não existe estabelecimento de conexão, confiabilidade, controle de fluxo, controle de congestionamento, garantias temporais ou de vazão mínima, segurança
+		|-- P: Qual é o interesse em ter um
+UDP? Velocidade!!!
+	Como o TCP não fornece criptografia, existe o protocolo SSL que fornece criptografia para o protocolo TCP, provendo também integridade de dados e autenticação.
+
+
+
+
+
+
+Web: algumas definições:
+	Página Web são “objetos” (que podem ser um arquivo html, imagem jpeg, aplicativo Java, arquivo de áudio, vídeo, etc), endereçada por uma URL. Quase todas as págs Web consistem de uma página base HTML que inclui vários objetos referenciados.
+
+O protocolo http:
+	É um protocolo da camada de aplicação para Web de modelo cliente/servidor. Cliente: navegador que pede, recebe (usando o http) e “visualiza” objetos; Servidor: servidor Web envia (usando o http) objetos em resposta a pedidos.
+	Protocolo http usa o serviço de transporte TCP. O cliente inicia conexão TCP p/ servidor, porta 80. O servidor aceita pedido de conexão TCP do cliente. É trocado mensagens http entre browser e servidor Web. A conexão TCP é encerrada.
+
+http: conexões TCP persistentes e não persistentes:
+	|-- Não persistente:
+		|-- O servidor analisa pedido, responde e encerra conexão TCP. Máx. 1 obj enviado pela conexão TCP antes desta ser fechada. Download de múltiplos objetos requer múltiplas conexões TCP.
+		|-- transferência de cada objeto
+sofre de “partida lenta” 
+	|-- Persistente:
+		|-- Na mesma conexão TCP o servidor analisa  pedido, responde, analisa novo pedido. Assim, múltiplos objetos são enviados na mesma conexão TCP.
+		|-- Cliente envia pedidos para todos objetos referenciados assim que recebe o HTML base.
+
+HTTP/2:
+	O objetivo principal é diminuir a latência do carregamento de páginas com objetos de tipos e tamanhos diferentes. Realiza carregamento de elementos da página em paralelo através de uma única conexão TCP, reduzindo o número de conexões paralelas do HTPP 1.1.
+Exemplo:
+	Cliente pede 1 objeto grande (O1) e 3 objetos menores (O2, O3 e O4)
+	|-- HTTP 1.1: Objetos entregues na ordem solicitada: O2, O3, O4 esperam a vez atrás do objeto O1
+	|-- HTTP/2: Objetos são divididos em quadros e a transmissão destes é realizada de forma intercalada. Objetos O2, O3, O4 são entregues rapidamente, enquanto O1 é  ligeiramente atrasado.
+	Outros objetivos:
+	|-- Permitir a priorização de solicitações cliente especifica um peso para cada mensagem enviada ao servidor, que utiliza essa prioridade para enviar primeiro os quadros de respostas a solicitações que tenham maior prioridade.
+	|-- Push: servidor pode enviar objetos adicionais, baseado na página html base, sem que o cliente tenha  solicitado, eliminando uma latência adicional de espera pelas solicitações.
+	|-- Oferecer compressão mais eficiente dos campos de cabeçalho.
+	|-- Mecanismos de negociação para permitir a clientes e servidores escolher o HTTP 1.1, HTTP/2 ou outros protocolos.
+	|-- Manutenção de compatibilidade de alto nível como HTTP 1.1.
+	|-- Mantém a maior parte da sintaxe de alto nível do HTTP 1.1 tais como: métodos, códigos de status, campos de cabeçalhos e URLs.
+
+HTTP/3:
+	|-- Adiciona segurança, controle de congestionamento sobre UDP e mais paralelismo.
+
+
+
+
+
+
+RTT (definição): intervalo de tempo entre a ida e a volta de um
+pacote entre um cliente e um servidor.
+
+
+
+
+
+
+Cookies:
+	Artefatos que os servidores implementam quando eles não possuem informação de estado. O uso de cookeis permite que o usuário seja monitorado, incluindo: autorização, cartão de compra, recomendação, manutenção de sessão, etc.
+	Cookies possuem problemas com segurança do usuário. CSRF attack* roubo de sessão *
+
+
+
+
+
+
+Caches Web:
+	São providos através de um servidor proxy, eles servem para ficar entre o servidor local e o servidor global, servindo para fazer interface com o servidor origem. Ele basicamente salva informações muito usadas para que possam ser utilizadas recorrentemente sem ter que ir buscar sempre na fonte principal. Esses objetos salvos, serão objetos que não são modificados com frequência.
+
+
+
+
+
+
+GET condicional:
+	Não enviar objeto se cliente já tem no cache a versão atual.
+	|-- Cliente: especifica data da versão armazenada no pedido HTTP: if-modified-since: <date>
+	|-- Servidor: resposta não contém objeto se a cópia é atualizada: HTTP/1.0 304 Not Modified
+
+
+
+
+
+
+Correio eletrônico na Internet: Componentes:
+	|-- Agentes de usuário: software de usuário para fazer a interface do email.
+	|-- Servidores: servidores que armazenam o conteúdo dos emails.
+	|-- Protocolos SMTP, POP, IMAP e HTTP: servem para acessar os emails que chegam no servidor de email.
+
+O protocolo SMTP:
+	Protocolo de transfêrencia de mensagem, utiliza o protocolo TCP (conexão garantida na qual todos os pacotes enviados serão entregues). Utiliza a porta 25. Utiliza conexão persistente (conexão aberta onde os objetos são transferidos em uma única vez). Transferência direta: servidor que envia para o servidor que recebe. Agentes de usuário usam o SMTP para enviar mensagens para o seu servidor.
+	O SMTP envia mensagens de servidores de correio remetentes para servidores de correio destinatários. Alice envia uma mensagem a BOB:
+	Agente de alice -> Servidor de correio de Alice -> Fila de mensagem (dentro do servidor de correio de Alice) -> SMTP -> Servidor de correio de Bob -> Fila de mensagem (dentro do servidor de correio de Bob) -> Agente de Bob
+
+
+
+
+
+
+DNS: Diretório da Internet:
+	É o responsável por transformar o endereço do site (www.xxxx.xx) para um endereço IP.
+	O DNS é um banco de dados distribuído executado em uma hierarquia de servidores de DNS, e um protocolo de camada de aplicação que permite que hospedeiros consultem o banco de dados distribuído.
+	Além disso, o DNS provê outros serviços, como:
+	|-- Apelidos de hospedeiro (aliasing);
+	|-- Apelidos de servidor de correio;
+	|-- Distribuição de carga;
+
+Hierarquia de Servidores DNS:
+	Nenhum servidor DNS isolado tem todos os mapeamentos para todos os hospedeiros da Internet. Ao invês disso, os mapeamentos são distribuídos pelos servidores DNS.
+
+DNS: Diretório da Internet:
+	Servidores DNS raiz em 2012 (nome, organização, localização).
+	O acesso pode ser realizado de duas formas:
+	|-- Forma interativa: uma mensagem vai primeiro ao servidor do DNS local, depois pro servidor de DNS raiz, retorna a mensagem para o servidor de DNS local, vai para o servidor de DNS TLD e também retorna a mensagem para o servidor de DNS local, e por último vai para o servidor DNS autoritativo e retorna por fim o endereço do site buscado para o servidor DNS local e depois para o computador requisitante.
+	|-- Forma recursiva: A consulta é recursiva, um servidor envia a consulta ao próximo que saiba, o que sabe o mapeamento para o endereço deseja retorna a resposta para o que perguntou.
+
+Registros e mensagens DNS:
+	Um registro de recurso é uma tupla de quatro elementos que contém os seguintes campos:
+	|-- nome: www.xxx.com
+	|-- valor: endereço ip
+	|-- tipo: ex.: servidor
+	|-- TTL (time to leave): tempo na qual esse registro estará disponível
+
+Questão da Lista:
+	R = O DNS é um banco de dados distribuído executado em uma hierarquia de servidores de DNS, e um protocolo de camada de aplicação que permite que hospedeiros consultem o banco de dados distribuído. 	Os servidores DNS são máquinas UNIX que executam o software BIND (Berkeley Internet Name Domain). O protocolo DNS utiliza UDP e usa a porta 53.
+	O DNS costuma ser empregado por outras entidades da camada de aplicação — inclusive HTTP, SMTP e FTP — para traduzir nomes de hospedeiros fornecidos por usuários para endereços IP
+	Serviços oferecidos: 
+	|-- Apelidos (aliasing) de hospedeiro: Um hospedeiro com nome complicado pode ter um ou mais apelidos. Um nome como relay1.west-coast.enterprise.com pode ter, por exemplo, dois apelidos, como enterprise.com e www.enterprise.com. Apelidos são mais fáceis de lembrar do que o nome principal. O DNS pode ser chamado por uma aplicação para obter o nome principal correspondente a um apelido fornecido, bem como para obter o endereço IP do hospedeiro.
+	|-- Apelidos de servidor de correio: O nome de hospedeiro do servidor do Hotmail é mais complicado e muito mais difícil de lembrar do que apenas hotmail.com. O DNS pode ser chamado por uma aplicação de correio para obter o nome principal a partir de um apelido fornecido, bem como o endereço IP do hospedeiro.
+	|-- Distribuição de carga: Sites movimentados, como cnn.com, são replicados em vários servidores, com cada um rodando em um sistema final e com um endereço IP diferentes. Assim, no caso de servidores Web replicados, um conjunto de endereços IP fica associado a um único nome principal e contido no banco de dados do DNS. Quando clientes consultam um nome mapeado para um conjunto de endereços, o DNS responde com o conjunto inteiro de endereços IP, mas faz um rodízio da ordem deles dentro de cada resposta. Como um cliente em geral envia sua mensagem de requisição HTTP ao endereço IP que ocupa o primeiro lugar no conjunto, o rodízio de DNS distribui o tráfego entre os servidores replicados.
+	Características: !!!!!Não sei o que colocar aqui!!!!!
+	Tipos de servidores: 
+	|-- Servidores DNS raiz: Os servidores DNS raiz são um conglomerado de servidores replicados, para fins de segurança e confiabilidade. Ele será responsável por encontrar os servidores de DNS TLD.
+	|-- Servidores DNS de Domínio de Alto Nível (TLD): Esses servidores são responsáveis por domínios de alto nível como com, org, net, edu e gov, e por todos os domínios de alto nível de países, tais como uk, fr, ca e jp.
+	|-- Servidores DNS autoritativos: Toda organização que tiver hospedeiros que possam ser acessados publicamente na Internet deve fornecer registros DNS também acessíveis publicamente que mapeiem os nomes desses hospedeiros para endereços IP. Um servidor DNS autoritativo de uma organização abriga esses registros.
+	Modos de consulta:
+	|-- Forma interativa: uma mensagem vai primeiro ao servidor do DNS local, depois pro servidor de DNS raiz, retorna a mensagem para o servidor de DNS local, vai para o servidor de DNS TLD e também retorna a mensagem para o servidor de DNS local, e por último vai para o servidor DNS autoritativo e retorna por fim o endereço do site buscado para o servidor DNS local e depois para o computador requisitante.
+	|-- Forma recursiva: A consulta é recursiva, um servidor envia a consulta ao próximo que saiba, o que sabe o mapeamento para o endereço deseja retorna a resposta para o que perguntou.
+	Tipo de mensagem: !!!!!Não sei o que colocar aqui!!!!!mensagens de consulta e de resposta
+
+DNS Caio:
+	Fornece apelidos para hosts com nomes complicados; apelido para serviços de e-mail; promove a distribuição de carga.
+	O DNS é distribuído para que, se um ponto falhar, não falte o serviço; também para que não haja um tráfego exacerbado em um único ponto; e, por fim, para ficar mais próximo dos hosts, uma tentativa de diminuir o atraso.
+	O DNS é hierárquico; ele busca sempre num servidor de nível mais baixo, subindo na hierarquia até que encontre o domínio desejado. Quanto mais alto, maior o tempo gasto no alcance. 
+	Quando um servidor aprende um mapeamento, ele o coloca no cache local. Futuras consultas costumam, então, ser feitas a partir deste cache.
+
+
+
+
+
+
+
+Aplicações P2P:
+	Distribuição de arquivos P2P:
+	|-- Cada par pode servir como cliente,  podendo redistribuir qualquer parte do arquivo, auciliando o servidor no processo de distribuição. O BitTorrent é um protocolo P2P popular para distribuição de arquivos.
+	|-- Esse tipo de aplicação diminui o tempo em escala exponencial para distribuição de arquivos.
+	O arquivo é dividido em chunks de 256kb. Os pares recebem e enviam esses chunks. Um tracker mantém o registro dos pares participando do torrent, ou seja, da troca de chunks. Os pares fazem download e upload de chunks entre si. Um par pode sempre mudar de pares, e pode entrar e sair a qualquer momento. Geralmente, há um subconjunto de até 50 pares para realização do torrent.
+	Os chunks mais raros costumam ser pegos e transferidos primeiro. Os chunks costumam ser enviados ao chamado top 4. O top 4 é composto pelos 4 pares que, antes, tenham enviado chunks mais rapidamente para o  enviador de chunks atual. Este top 4 é reavaliado a cada 10s. A cada 30s, um novo par é aleatoriamente escolhido e começa-se a lhe enviar chunks.
+
+
+
+
+
+
+Streaming: HTTP e DASH:
+	|-- HTTP:
+		|-- O vídeo é armazenado num servidor http usual como um arquivo com uma URL. Conforme bytes chegam e são armazenados em um buffer. Quando nº bytes excedem um determinado valor a aplicação inicia a exibição do vídeo obtendo quadros do buffer do cliente, descomprimindo-os e exibindo-os no monitor. Ex: Youtube
+		|-- Desvantagem/limitação: todos os usuários recebem a mesma codificação do vídeo, independentemente da banda disponível de cada um.
+	|-- DASH (Dynamic, Adaptive Streaming over HTTP):
+		|-- Servidor: O vídeo é dividido em múltiplos trechos, sendo cada trecho codificado e armazenado em diferentes taxas. Cada uma dessas versões é armazenada com uma URL diferente no servidor HTTP. Ele armazena o arquivo manifest, que contém URLs diferentes para cada versão de cada trecho do arquivo de vídeo.
+		|-- Cliente: Solicita o arquivo manifest, seleciona um trecho do vídeo por vez, especificando a URL e a quantidade de bytes no pedido HTTP GET. Periodicamente mede a largura de banda entre Cliente Servidor para selecionar qual pedaço se adequa melhor à banda disponível. Pode alterar a URL durante o download do video, conforme a banda disponível. Obs.: O DASH é interessante para usuários móveis, cuja banda flutua demais.
+
+
+
+
+
+
+Redes de Distribuição de Conteúdo (CDN):
+	Como distribuir conteúdo para centenas de milhares de  usuários simultâneos garantindo continuidade na reprodução e alta interatividade?
+	|-- Opção1: único e enorme “mega-servidor”
+		|-- Ponto único de falha.
+		|-- Ponto único de congestionamento.
+		|-- Longo caminho para clientes distantes (muitos enlaces, com bandas diferentes e diferentes ISPs), enlace de gargalo limita a vazão fima-fim ⇒ “congelamento” do vídeo reproduzido.
+		|-- Múltiplas cópias do mesmo vídeo enviadas sobre o enlace de saída do servidor ⇒ desperdício de largura de banda e $$$ ao ISP. É uma solução não escalável.
+	|-- Opção 2: Armazenar e distribuir várias cópias de vídeos em vários sites distribuídos geograficamente (CDN).
+		|-- requisição do usuário é direcionada ao servidor que provê o melhor serviço.
+		|-- Privado: Google distribui os vídeos do Youtube.
+		|-- Terceirizado: Akamai, Limelight, Level-3: empresas que distribuem o conteúdo de muitos provedores.
+
+	Existem duas abordagens/arquiteturas para posicionar os
+conteúdos:
+	|-- Enter Deep: Colocar os servidores CDN dentro das redes de acesso dos ISPs (Internet Service Provider).
+		|-- ISPs próximos dos usuários.
+		|-- Diminui o nº de enlaces (menor atraso).
+		|-- Usado pela Akamai: 240.000 servidores distribuídos em mais de 120 países (2015).
+		|-- Desvantagem: Grande manutenção e gerenciamento.
+	|-- Bring Home: número menor de clusters maiores em pontos de troca de tráfego próximos às redes de acesso.
+		|-- Usado pela Limelight
+		|-- Simplifica a manutenção e o gerenciamento, ao custo de possível aumento do atraso e diminuição da vazão.
+
+
+
+
+
+
+Estudo de caso: Netflix:
+	Desde 2020 é o maior provedor residencial de filmes e séries de TV online da América do Norte. Utiliza dois componentes: Nuvem de servidores da Amazon; Infraestrutura própria de CDN privada.
+	Servidores da Amazon:
+	|-- Web Site para registro, login, cobrança, catálogo de filmes e recomendações.
+	|-- Upload dos filmes provenientes dos estúdios.
+	|-- Criação das diferentes versões e formatos, cada uma delas apropriada para diferentes tipos de dispositivos, permitindo fluxo adaptativo – DASH.
+	|-- Upload dos filmes processados na infraestrutura de CDNs da Netflix.
+	Características:
+	|-- Rack de servidores podem se localizar em ISPs residenciais ou em IXPs.
+	|-- Usa o Sistema de PUSH, distribuindo os vídeos durante os horários de menor demanda. Locais sem a biblioteca completa recebem apenas os vídeos mais populares.
+	Distribuição – interação entre clientes e servidores:
+	|-- Web pages para escolher os vídeos estão na nuvem da Amazon.
+	|-- Qdo o usuário seleciona um filme para reprodução:
+		|-- SW da Netflix rodando nos servidores da Amazon determina quais servidores CDN possuem cópias do filme e qual deles é o “melhor” para atender à demanda.
+		|-- Se cliente usa um ISP que contém um rack Netflix instalado (e se este tem o filme desejado) é selecionado um servidor neste rack, caso contrário é selecionado um servidor do IXP mais próximo.
+		|-- Endereço IP do servidor é enviado ao cliente, assim cmo o arquivo manifest, que possui as URLs das diferentes versões do filme.
+		|-- Cliente se conecta ao servidor CDN e interage usando DASH.
+	Netflix não necessita empregar redirecionamento DNS porque ela só trabalha com vídeos e não com páginas Web. O SW da Netflix rodando nos servidores da Amazon já determinam a qual servidor o cliente deve se conectar.
+
+
+
+
+
+
+Serviços e protocolos de transporte:
+	Provê comunicação lógica entre processos de aplicação
+executando em hosts diferentes. Os protocolos de transporte são executados em sistemas finais
+(end systems)
+	|-- Lado transportador: quebra msgs da camada de aplic. em segmentos, passando-os para a camada de rede.
+	|-– Lado Rx: remonta os segmentos em msgs, passando-as para a camada de aplicação
+	Dois protocolos de transporte disponíveis para as aplicações da Internet: UDP e TCP.
+	|-- TCP (Transmission Control Protocol):
+		|-- Entrega confiável, ordenada, ponto a ponto.
+		|-- Controle de congestionamento.
+		|-- Controle de fluxo.
+		|-- Orientado a conexões.
+	|-- UDP (User Datagram Protocol):
+		|-- Entrega não confiável, não seqüencial.
+		|-- Extensão do serviço de “melhor esforço” do IP.
+
+
+
+
+
+
+Multiplexação/demultiplexação:
+	|-- Multiplexação (transmissor): reúne dados de muitos sockets, adiciona o cabeçalho de transporte (usado posteriormente para a demultiplexação).
+	|-- Demultiplexação (receptor): Usa info do cabeçalho para entregar os segmentos recebidos aos sockets corretos.
+
+Multiplexação:
+	Processo para reunir dados de diferentes sockets. Encapsula cada parte de dados (payload) com informações de cabeçalho para criar segmentos. Esses segmentos serão passados para a camada de rede. Se trata de um mecanismo de vários-para-um processos, pois existem vários protocolos, que vão diminuindo até ser transmitido para o servidor.
+
+Demultiplexação:
+	Segue o processo inverso da Multiplexação, sendo um mecanismo de um-para-vários processos. Onde o servidor envia uma informação que vai sendo dividida em vários protocolos.
+	Este processo irá envolver (na parte do receptor): recebimento de datagramas da camada de rede, ler o número da porta do pacote, entregar os dados para os respectivos sockets, e por fim, parar o processo que pertence ao determinado socket (entregando a informação na porta correta).
+
+Multiplexação e Demultiplexação:
+	Possui campos de número de porta de origem e de destino em um segmento de camada de transporte
+	|-- UDP: demultiplexação usando somente nº da porta de
+destino.
+	|-- TCP: demultiplexação usando endereços IP da origem e do destino e nº das portas.
+
+
+
+
+
+
+Transferência Confiável:
+	|-- rdt1.0: Transferência confiável sobre um canal perfeitamente confiável:
+		|-- Canal de transmissão perfeitamente confiável, não há erros de bits e não há perdas de pacotes.
+		|-- FSMs separadas para transmissor e receptor. O transmissor envia dados para o canal subjacente, o receptor lê os dados do canal subjacente. Não há ACKs e velocidades do receptor e do transmissor são consideradas iguais.
+	|-- rdt2.0: Canal com erros de bit:
+		|-- Canal pode trocar valores dos bits em um pacote, porém continuam a ser recebidos em ordem.
+		|-- O rdt2.0 utiliza: ACKs (reconhecimento), receptor avisa ao transmissor que o pacote foi recebido corretamente. NAKs (reconhecimento negativo): receptor avisa ao transmissor que o pacote tem erros (atráves da conferência do checksum).
+		|-- Além da utilização de erros, o rdt 2.0 utiilza também as mensagens de controle ACK e NAK do receptor para o transmissor.
+	|-- rdt3.0: canal c/ erro de bit e perda de pct:
+		|-- Canal de transmissão pode também perder pacotes (de dados ou ACKs).
+		|-- Checksum, números de seqüência, ACKs, retransmissões
+serão de ajuda, mas não o bastante
+		|-- Para tratar perdas, o transmissor espera um tempo (timeout) até que certos dados ou ACKs sejam perdidos, então o retransmite. Se o pacote (ou ACK) estiver apenas atrasado, a retransmissão será duplicata, mas os números de seqüência já tratam com isso, o receptor deve especificar o número de seqüência do pacote sendo reconhecido. O rdt 3.0 irá utilizar um temporizador para retransmitir o pacote após um intervalo de tempo “razoável” .
+
+
+
+
+
+
+Protocolos de transferência confiável de dados com paralelismo:
+	No coração do problema do desempenho do rdt3.0  está o fato de ele ser um protocolo do tipo pare e espere  (Stop and Wait). Ele envia um pacote e espera receber a resposta. Isso ocorre por ele não utilizar paralelismo, um protocolo que utiliza paralelismo, envia diversos pacotes dentro de uma janela e espera receber os ACKs dos pacotes enviados.
+	Existem duas formas genéricas de protocolos com paralelismo: Go-Back-N (GBN) e selective repeat (SR).
+	|-- GBN: o receptor não envia ACK se existir um gap. O transmissor tem timer para o pacote mais antigo não  reconhecido. Quando o timer expira, retransmite todos os  pacotes a partir deste.
+	|-- SR: o receptor envia ACK individual para cada  pacote. O transmissor mantém um timer para cada pacote não reconhecido. Quando o timer expira, transmite somente o  pacote não reconhecido.
+
+
+
+
+
+
+Princípios de controle de congestionamento:
+	Informalmente pode ser definido como: “muitas fontes enviando dados a uma taxa alta, acima da capacidade da rede de tratá-los”, isso pode ocorrer por conta de diferentes controles de fluxo. Isso pode levar a perda de pacotes (saturação de buffer nos roteadores) e grandes atrasos (filas nos buffers dos roteadores).
+
+Controle de congestionamento no TCP:
+	TCP obriga cada remetente a limitar a taxa à qual enviam tráfego para sua conexão como uma função do congestionamento da rede percebido.
+	Se um remetente TCP perceber que há pouco  congestionamento no caminho entre ele e o destinatário, aumentará sua taxa de transmissão.
+	Se perceber que há congestionamento, reduzirá sua taxa de transmissão.
+	O TCP irá utilizar uma taxa de transmissão limitada pelo tamanho da janela de congestionamento (CongWin).
+	O CongWin é ajustada dinamicamente em resposta ao congestionamento observado.
+	taxa permitida = (Congwin / RTT) Bytes/seg
+
+
+
+
+
+
+TCP AIMD:
+	Aumento aditivo: aumenta o CongWin com 1 MSS a cada RTT na ausência de eventos de perda.
+	Redução multiplicativa: diminui o CongWin pela metade após o evento de perda.
+	Assim o gráfico fica semelhante ao desenho a baixo
+	    /|    /|    /|    /|    /|    /|    /|
+	   / |   / |   / |   / |   / |   / |   / |
+	  /  |  /  |  /  |  /  |  /  |  /  |  /  |
+	 /   | /   | /   | /   | /   | /   | /   |
+	/    |/    |/    |/    |/    |/    |/    |
+	O controle de congestionamento AIMD faz surgir o
+comportamento semelhante a “dentes de serra”:
+	O AIMD tem redução multiplicativa, ou seja, a taxa de transmissão é diminuída pela metade quando detectada uma perda por 3 ACKs duplicados, ou então, a taxa de transmissão é  diminuída para 1 MSS quando a perda é detectada por timeout.
+
+TCP CUBIC:
+	O TCP CUBIC é uma forma de tentar melhorar o TCP AMID, ele possui um formato de arco que melhora a vazão nas variações na janela de controle de congestionamento.
+
+
+
+
+
+Porque o TCP é justo?
+	R = Isso acontece por conta da redução multiplicativa, pois ele diminui a vazão proporcionalmente da janela de forma que todos os RTTs tenha a mesma largura de banda.
+
+
+
+
+
+
+QUIC
+	Utiliza transferência confiável de dados e controle de congestionamento, adotando técnicas semelhantes às utilizadas no TCP (algoritmos de controle de congestionamento similares aos do TCP).
+	Realiza estabelecimento de conexão, gerando confiabilidade, controle de congestionamento, autenticação, criptografia, estado estabelecido em um RTT.
+	Múltiplos fluxos de aplicações diferentes são multiplexados sobre uma única conexão QUIC, assim, gera transferência confiável de dados separadas, segurança separada
+e controle de congestionamento comum.
+	Enquanto o TCP leva 2 apresentações, utilizando o handshake TCP (confiabilidade, controle de congestionamento) e o handshake TLS (autenticação, criptografia) para depois enviar a informação, o QUIC faz isso tudo em um única apresentação para depois enviar a informação.

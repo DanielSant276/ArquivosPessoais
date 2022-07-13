@@ -1,0 +1,129 @@
+1) Com relação ao protocolo SR, explique porque as janelas do transmissor e do recepetor são diferentes, ou seja, o início da janela de cada um não necessariamente aponta para o mesmo pacote.
+	(Página 191 pdf kurose 6ª ed - figura 3.27)
+	R = A janela do transmissor só irá mudar quando ela recebe um ACK para o primeiro pacote da janela. Já a janela do receptor modifica quando ele envia um ACK referente ao primeiro pacote da janela. Assim, as janelas de cada um serão diferentes, pois a do destinatário sempre modifica antes da janela do remetente.
+
+
+
+2) Suponha que usemos a partida lenta (protocolo TCP) em uma linha com RTT de 20 ms e sem congestionamento. A janela de recepção está fixa em 40 KB e o tamanho máximo do segmento (MSS) é 3 KB. Quanto tempo (em ms) é necessário para que a primeira janela completa possa ser enviada até que o controle de fluxo entre em ação? Justifique sua resposta.
+	(Dedução)
+	R = RTT = 20 ms => 0.02 s
+	    MSS = 3 KB
+	    Janela = 40 KB
+	    Quantidade de RTTs => Janela/MSS => 40 / 3 => 14 (aproximadamente)
+	    Tempo Total => 14 * 0.02 => 0.28 s ou 280 ms
+	Como o RTT leva 0.02 segundos e cada MSS é de tamanho fixo de 3 KB, para enviar os 40 KB será necessário realizar 14 RTTs, e como cada RTT leva 0.02 segundos, a janela inteira será enviada em 0.28 segundos.
+
+
+
+3) No protocolo GBN, por que o destinatário não precisa armazenar pacotes que chegam fora de ordem? Por que o protocolo SR tem que armazená-los?
+	(Página 187-188 pdf kurose 6ª ed - imagem 3.22 e tópico 3.4.4)
+	R = Pois no GBN os pacotes fora de ordem irão precisar ser enviados novamente pois eles serão descartados, o GBN envia um ACK para o último pacote da ordem recebido. Já no SR, é guardado todos os pacotes que forem recebidos fora de ordem, mas envia um ACK para cada pacote recebido. Quando o pacote que falta é recebido, todos os pacotes que estavam no buffer são entregues em sequência.
+	R2 = O protocolo GBN acaba sofrendo com muitas perdas caso a largura de banda e o atraso sejam muito grandes. Assim, acaba sendo necessário reenviar várias vezes o mesmo pacote quando acontece erros. Já com o o repetição seletiva, ele implementa a funcionalidade de buffer para que não seja necessário reenviar os pacotes já recebidos, apenas enviando os que ainda restam.
+
+
+
+4) Como funciona o controle de fluxo no protocolo TCP?
+	(Página 207 pdf kurose 6ª ed)
+	R = Para que o remetente não ultrapasse o buffer do destinatário, é utilizado o controle de fluxo. Ele é um serviço que  compatibiliza a taxa na qual o remetente está enviando com a taxa na qual a aplicação receptora está lendo.
+
+
+
+5) Diz-se que o TCP é um protocolo justo porque divide equitativamente a banda entre as conexões, caso as mesmas tenham o mesmo MSS e RTT. Por que isso acontece?
+	(Página 229 pdf kurose 6ª ed - parágrafo 4)
+	R =  O objetivo do protocolo TCP é que as vazões alcançadas fiquem sejam aproximadamente de igual compartilhamento da largura de banda e de igual utilização total da largura de banda.
+	R = Isso acontece por conta da redução multiplicativa, pois ele diminui a vazão proporcionalmente da janela de forma que todos os RTTs tenha a mesma largura de banda.
+
+
+
+6) Suponha que durante a fase inicial do controle de congestionamente do protocolo TCP (slow Start) o tamanho da janela de congestionamento seja igual a 1 MSS (tamanho máximo do segmento), que o MSS seja igual a 500 bytes e que o RTT seja igual a 200 ms. Nesse contexto, qual será a taxa de transfmissão inicial em kbits/s? Justifique sua resposta.
+	(Página 223 pdf kurose 6ª ed)
+	R = MSS = 500 bytes => 500 * 8 => 4000 bits
+	    RTT = 200ms = 0.2s
+	    Taxa de transmissão = 4000/0.2 => 20000 bits/s => 20kbits/s
+	Como o RTT leva 0.2 segundos para ser realizado e a cada MSS são enviados 4000 bits. Basta apenas dividir o MSS pelo RTT para saber a taxa de transmissão, que será de 20kbits/s.
+
+
+
+7) Quais as características ou requisitos típicos de aplicações que se comportam melhor quando construídas sobre protocolos de transporte não confiáveis? Explique porque se comportam melhor sobre esses protocolos.
+	(REDES RESUMO - Aula 6 - anotações)
+	R = As aplicações que são construídas sobre protocolos não-confiáveis (UDP por exemplo), não se importam muito com perdas de pacotes (desde que ocorra com baixa frequência). O protocolo UDP não verifica se o destinatário pode ou não receber o pacote, os enviando diretamente. Aplicações tolerantes a perdas não se importam se uma vez ou outra será perdido uma informação, dessa forma, o controle de conexão é melhor.
+
+
+
+
+8) O que significa dizer que o protocolo TCP trabalha com "ACKs cumulativos"?
+	(Página 196 pdf kurose 6ª ed - 3º parágrafo)
+	R = Sempre que o TCP recebe um pacote, ele envia um ACK relacionado a esse segmento do pacote e espera o próximo, caso algum seja perdido, ele enviará sempre um ACK relacionado ao último pacote recebido, assim, quando o último segmentos for recebido, quer dizer que todos os pacotes daquela cadeia foram recebidos, pois caso algum falte, ele continuara enviando o ACK do último pacote recebido até conseguir o próximo da cadeia.
+
+
+
+
+9) Por que se diz que os cookies mantém o "estado" da conexão? De que forma o http 2.0 diminui a latência do carregamento de páginas com objetos de tipos e tamanhos diferentes? Por que a técnica denominada DASH é interessante para usuário móveis?
+	(Página 43 - aula_03_2022_aplicao_p1)
+	R = Quando um usuário se conecta a uma aplicação que utiliza cookies, ele cria um cookie para esse usuário que fica salvo no browser utilizado e salva no banco de dados da aplicação diversas informações referentes a esse usuário. Ao utilizar novamente essa mesma aplicação tempos depois, o usuário além do pedido HTTP, envia também seu valor de cookie, assim, o servidor da aplicação já verifica no banco de dados a informação do usuário referente aquele cookie e devolve a mensagem de resposta já com as informações do usuário.
+	(Página 090 foto kurose 8ª ed)
+	O HTTP/2 utiliza a multiplexação de solicitações e respostas em uma única conexão TCP, oferencendo também  compressão dos campos de cabeçalho. Os arquivos de uma aplicação serão todos pedidos de uma única vez e serão apresentados quando estiverem prontos.
+	(Página 466 pdf kurose 6ª ed)
+	Pelo DASH, o vídeo é codificado em diferentes versões com diferentes taxas de bits e diferentes níveis de qualidade. No caso dos dispositivos móveis onde as conexões 3G podem ser lentas, é necessário que o cliente receba uma versão com baixa taxa de bits. O DASH permite também que o vídeo se adapte caso a largura de banda mude durante a sessão, trocando a qualidade do arquivo entregue.
+
+
+
+
+10) Falso ou verdadeiro? Quando for falso justifique porque.
+A) Duas páginas WEB distintas (por exemplo, www.mit.edu/research.html e www.mit.edu/students.html) podem ser enviadas pela mesma conexão persistente.
+B) Com conexões não persistentes entre o browser e o servidor de origem, é possível que um único segmento TCP transporte duas mensagens distintas de requisição HTTP.
+C) Suponha que o host A envie um segmento com o número de sequência 38 e 4 bytes de dados sobre uma conexão TCP para o host B. Neste mesmo segmento, o número do ACK é necessariamente 42.
+D) No protocolo Selective Repeat (SR) é possível que o transmissor receba um ACK para um pacote que esteja fora da sua janela corrente.
+	(Claudia)
+	R-A) = Sim.
+	(Claudia)
+	R-B) = Não. Um único segmento TCP é responsável por uma única mensagem por um objeto.
+	(Fiz baseado nos meus conhecimentos)
+	R-C) = !!!!!Fiquei com dúvida nessa!!!!!Não necessáriamente. O segmento recebido conterá os bytes 38, 39, 40 e 41, assim o ACK será 42 (o próximo byte a ser recebido), para que o host A envie o próximo segmento. Caso esteja faltando algum segmento anterior, o ACK será o primeiro byte do segmento ainda não obtido corretamente.
+	(Página 188 pdf kurose 6ª ed)
+	R-D) = Não, pois nesse protocolo, todo segmento recebido é enviado um ACK, não se importando com a ordem recebido. E o transmissor, só avança a sua janela caso receba um ACK referente ao primeiro pacote da sua janela. 
+
+
+
+
+11) Descreva uma maneira na qual o cache é usado no DNS. Descreva duas maneiras nas quais pode-se usar cache para acesso na Web.
+	(Página 124-125 pdf kurose 6ª ed)
+	R (Daniel) = Em uma cadeia de consultas, quando um servidor DNS recebe uma resposta DNS ele tem a possibilidade de fazer cache das informações em sua memória local. Assim, caso um par estiver no cache de um servidor e uma consulta chegar nesse servidor, ele poderá fornecer o endereço IP diretamente. Essas informações devem ser descartadas depois de alguns dias pois mapeamentos entre hospedeiros e endereços IP não são permanentes.
+	(Página 104-105 pdf kurose 6ª ed)
+	O cache Web tem seu próprio disco de armazenagem e mantém, dentro dele, cópias de objetos recentemente requisitados. O cache na Web pode reduzir o tempo de resposta para a requisição de um cliente se a largura de banda entre o cliente e o servidor for muito menor do que entre o cliente e o cache. O cache também pode reduzir de modo o tráfego no enlace de acesso, com essa redução do tráfego, uma instituição não precisa ampliar sua largura de banda tão rapidamente, diminuindo custos.
+
+
+
+12) Os três componentes principais de um correio eletrônico são o agente de usuário o servidor de correio e o protocolo SMTP. Caso o protocolo HTTP seja utilizao, qual a sua função neste contexto? No protocolo SMTP, quem é o cliente e quem é o servidor?
+	(Página 114 pdf kurose 6ª ed)
+	R = O HTTP transfere arquivos de um servidor para um cliente Web, já o SMTP, transfere arquivos de um servidor de correio para outro. o HTTP é, um protocolo de recuperação de informações — alguém carrega informações em um servidor Web e os usuários utilizam o HTTP para recuperá-las quando quiserem, a conexão TCP é ativada pela máquina que quer receber o arquivo. Já o SMTP é um protocolo de envio de informações o servidor de correio remetente envia o arquivo para o servidor de correio destinatário com a conexão TCP sendo ativada pela máquina que quer enviar o arquivo. Já quanto a imagem o HTTP encapsula cada objeto em sua própria mensagem HTTP. O SMTP coloca todos os objetos de mensagem em uma única mensagem.
+	(Página 110-111 pdf kurose 6ª ed)
+	O SMTP tem dois lados: um lado que funciona no servidor de correio do remetente, e um lado que funciona no servidor de correio do destinatário. Quando um servidor de correio envia correspondência para outros, age como um cliente SMTP. Quando o servidor de correio recebe correspondência de outros, age como um servidor SMTP.
+
+
+
+13) Quais as características ou requisitos típicos de aplicações que se comportam melhor quando construídas sobre protocolos de transporte não-confiáveis? Explique.
+	(REDES RESUMO - Aula 6 - anotações)
+	R = As aplicações que são construídas sobre protocolos não-confiáveis (UDP por exemplo), não se importam muito com perdas de pacotes (desde que ocorra com baixa frequência). O protocolo UDP não verifica se o destinatário pode ou não receber o pacote, os enviando diretamente. Aplicações tolerantes a perdas não se importam se uma vez ou outra será perdido uma informação, dessa forma, o controle de conexão é melhor.
+
+
+
+14) Descreva o funcionamento do DNS: serviços oferecidos, características, tipos de servidores, modos de consulta, tipo de mensagem, etc.
+	(Página 119-127 pdf kurose 6ª ed)
+	R = O DNS é um banco de dados distribuído executado em uma hierarquia de servidores de DNS, e um protocolo de camada de aplicação que permite que hospedeiros consultem o banco de dados distribuído. 	Os servidores DNS são máquinas UNIX que executam o software BIND (Berkeley Internet Name Domain). O protocolo DNS utiliza UDP e usa a porta 53.
+	O DNS costuma ser empregado por outras entidades da camada de aplicação — inclusive HTTP, SMTP e FTP — para traduzir nomes de hospedeiros fornecidos por usuários para endereços IP
+	Serviços oferecidos: 
+	|-- Apelidos (aliasing) de hospedeiro: Um hospedeiro com nome complicado pode ter um ou mais apelidos. Um nome como relay1.west-coast.enterprise.com pode ter, por exemplo, dois apelidos, como enterprise.com e www.enterprise.com. Apelidos são mais fáceis de lembrar do que o nome principal. O DNS pode ser chamado por uma aplicação para obter o nome principal correspondente a um apelido fornecido, bem como para obter o endereço IP do hospedeiro.
+	|-- Apelidos de servidor de correio: O nome de hospedeiro do servidor do Hotmail é mais complicado e muito mais difícil de lembrar do que apenas hotmail.com. O DNS pode ser chamado por uma aplicação de correio para obter o nome principal a partir de um apelido fornecido, bem como o endereço IP do hospedeiro.
+	|-- Distribuição de carga: Sites movimentados, como cnn.com, são replicados em vários servidores, com cada um rodando em um sistema final e com um endereço IP diferentes. Assim, no caso de servidores Web replicados, um conjunto de endereços IP fica associado a um único nome principal e contido no banco de dados do DNS. Quando clientes consultam um nome mapeado para um conjunto de endereços, o DNS responde com o conjunto inteiro de endereços IP, mas faz um rodízio da ordem deles dentro de cada resposta. Como um cliente em geral envia sua mensagem de requisição HTTP ao endereço IP que ocupa o primeiro lugar no conjunto, o rodízio de DNS distribui o tráfego entre os servidores replicados.
+	Características: Tradução de URL para IP.
+	Tipos de servidores: 
+	|-- Servidores DNS raiz: Os servidores DNS raiz são um conglomerado de servidores replicados, para fins de segurança e confiabilidade. Ele será responsável por encontrar os servidores de DNS TLD.
+	|-- Servidores DNS de Domínio de Alto Nível (TLD): Esses servidores são responsáveis por domínios de alto nível como com, org, net, edu e gov, e por todos os domínios de alto nível de países, tais como uk, fr, ca e jp.
+	|-- Servidores DNS autoritativos: Toda organização que tiver hospedeiros que possam ser acessados publicamente na Internet deve fornecer registros DNS também acessíveis publicamente que mapeiem os nomes desses hospedeiros para endereços IP. Um servidor DNS autoritativo de uma organização abriga esses registros.
+	Modos de consulta:
+	|-- Forma interativa: uma mensagem vai primeiro ao servidor do DNS local, depois pro servidor de DNS raiz, retorna a mensagem para o servidor de DNS local, vai para o servidor de DNS TLD e também retorna a mensagem para o servidor de DNS local, e por último vai para o servidor DNS autoritativo e retorna por fim o endereço do site buscado para o servidor DNS local e depois para o computador requisitante.
+	|-- Forma recursiva: A consulta é recursiva, um servidor envia a consulta ao próximo que saiba, o que sabe o mapeamento para o endereço deseja retorna a resposta para o que perguntou.
+	Tipo de mensagem: !!!!!Não sei o que colocar aqui!!!!!mensagens de consulta e de resposta
+
+

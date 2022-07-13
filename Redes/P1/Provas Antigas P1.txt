@@ -1,0 +1,178 @@
+Prova antiga (Caio)
+
+1) Suponha que durante a fase inicial do controle de congestionamento do protocolo TCP (slow start), o tamanho da janela de congestionamento seja igual a 1MSS (tamanho máximo de segmento), que o MSS seja igual a 500 bytes e que o RTT seja igual a 200ms. Nesse contexto, qual será a taxa de transmissão inicial em kbits/s? Justifique.
+	
+	R (Caio)   = Dá 20kbits/s, pois 500 bytes = 500 * 8 bits = 4000; 200ms = 0,2s. Assim, 4000/0.2 = 20kbits/s.
+
+	(Página 223 pdf kurose 6ª ed)
+	R (Daniel) = MSS = 500 bytes = 4000 bits (500 * 8).
+		     RTT = 200ms = 0.2s.
+		     Taxa de transmissão = 4000/0.2 => 20000 bits/s => 20kbits/s
+
+
+
+2) Quais as características ou requisitos típicos de aplicações que se comportam melhor quando construídas sobre protocolos de transporte não-confiáveis? Explique por que se comportam melhor sobre estes protocolos.
+	
+	R (Caio)   = São aplicações tolerantes à perda de pacotes, e que necessitam de agilidade no transporte. Estes protocolos costumam ser mais simples que os confiáveis: não há estabelecimento de conexão; esta mesma conexão não tem estados; o excesso de cabeçalho do pacote é menor; há um controle melhor, por parte da aplicação, sobre quais dados serão transmitidos e quando. Perde-se, claro, na confiança, mas, uma vez que as aplicações sejam tolerantes à perda, o não-confiável se justifica.
+
+	(REDES RESUMO - Aula 6 - anotações)
+	R (Daniel) = As aplicações que são construídas sobre protocolos não-confiáveis (UDP por exemplo), não se importam muito com perdas de pacotes (desde que ocorra com baixa frequência). O protocolo UDP não verifica se o destinatário pode ou não receber o pacote, os enviando diretamente. Aplicações tolerantes a perdas não se importam se uma vez ou outra será perdido uma informação, dessa forma, o controle de conexão é melhor.
+
+
+
+3) O que significa dizer que o TCP trabalha com ACKs cumulativos?
+	
+	R (Caio)   = Significa dizer que o TCP reconhece como recebidos os bytes até o primeiro byte que estiver faltando na cadeia dos que foram transmitidos.
+
+	(Página 196 pdf kurose 6ª ed - 3º parágrafo)
+	R (Daniel) = Sempre que o TCP recebe um pacote, ele envia um ACK relacionado a esse segmento do pacote e espera o próximo, caso algum seja perdido, ele enviará sempre um ACK relacionado ao último pacote recebido, assim, quando o último segmentos for recebido, quer dizer que todos os pacotes daquela cadeia foram recebidos, pois caso algum falte, ele continuara enviando o ACK do último segmento do pacote recebido até conseguir o próximo da cadeia.
+
+
+
+4) Verdadeiro ou falso, justifique.
+	A) Suponha que o host A envie um segmento com número de sequência 38 e 4 bytes de dados sobre uma conexão TCP para o host B. Neste mesmo segmento, o número do ACK é necessariamente 42.
+	B) No protocolo Selective Repeat (SR), é possível que o transmissor receba um ACK para um pacote que esteja fora da sua janela corrente.
+	
+	R (Caio)   = A) Verdadeiro, pois 38 + 4 = 42.
+	   	     B) Verdadeiro, pode receber pacotes cujo número de sequência esteja abaixo da atual base da janela, por exemplo.
+
+	(Fiz baseado nos meus conhecimentos)
+	R (Daniel) = A) !!!!!Fiquei com dúvida nessa!!!!!Não necessáriamente. O segmento recebido conterá os bytes 38, 39, 40 e 41, assim o ACK será 42 (o próximo byte a ser recebido), para que o host A envie o próximo segmento. Caso esteja faltando algum segmento anterior, o ACK será o primeiro byte do segmento ainda não obtido corretamente.
+	(Página 188 pdf kurose 6ª ed)
+		     B) Sim, pois nesse protocolo, todo segmento recebido é enviado um ACK, não se importando com a ordem recebido. Já o destinatário, possui uma janela de segmentos a ser enviado. Caso um dos segmentos que foi enviado não tenha ainda sido recebido um ACK, ele será reenviado.
+
+
+
+5) Por que, na arquitetura Cliente-Servidor, o tempo de distribuição de arquivos cresce linearmente, enquanto na P2P não? Explique o comportamento do tempo em cada situação.
+	
+	R (Caio)   = O CS é linear porque apenas o servidor realiza a distribuição para todos os clientes. Destarte, maior o número de clientes, maior o tempo gasto, proporcionalmente.
+	   No P2P, quando um cliente baixa as partes de seu arquivo, ele começa a distribuí-las entre os outros clientes os quais, por sua vez, também distribuem entre si e assim sucessivamente. Com isto, o tempo é menor pois conforme o tempo passa, aumenta o número de fontes de distribuição disponíveis.
+	
+	(Página 129-132 pdf kurose 6ª ed)
+	R (Daniel) = Na arquitetura CS nenhum dos pares auxilia na distribuição de arquivos, assim, o tempo de distribuição vai ser um valor entre: razão entre tamanho do arquivo dividido por taxa de upload do servidor vezes o número de pares (NF/us) e razão entre tamanho do arquivo dividido por menor taxa de download (F/dmin). Dessa forma, o tempo só cresce muito dependendo da quantidade de pares presente na distribuição.
+	Na arquitetura P2P cada par pode auxiliar o servidor na distribuição de um arquivo Assim, aplicações com
+a arquitetura P2P podem ter autoescalabilidade por conta dos próprios pares redistribuindo o que receberam.
+
+
+
+6) Descreva uma maneira na qual o cache é usado no DNS. Descreva duas maneiras nas quais pode-se usar cache para acesso na Web.
+	
+	R (Caio)   = Em uma cadeia de consultas, quando um servidor DNS recebe uma resposta do tipo DNS, fazse o cache das informações da resposta, guardando-o em sua memória local. O cache pode ser utilizado para retornar imediatamente um endereço IP, sem ter de consultar outros DNS. Também pode fazer caches de endereços IP de servidores TLD.
+
+	(Página 124-125 pdf kurose 6ª ed)
+	R (Daniel) = Em uma cadeia de consultas, quando um servidor DNS recebe uma resposta DNS ele tem a possibilidade de fazer cache das informações em sua memória local. Assim, caso um par estiver no cache de um servidor e uma consulta chegar nesse servidor, ele poderá fornecer o endereço IP diretamente. Essas informações devem ser descartadas depois de alguns dias pois mapeamentos entre hospedeiros e endereços IP não são permanentes.
+
+
+
+7) Por que se diz que o FTP envia informações de controle fora da banda?
+	
+	R (Caio)   = Porque ele usa uma conexão de controle separada, em outra porta.
+
+	(Página 108 pdf kurose 6ª ed)
+	R (Daniel) = Pois é possível utilizar esse protocolo sem depender da internet, podendo utilizar outra porta sem ser a padrão do FTP.
+
+
+
+8) Descreva a função dos três principais componentes de um correio eletrônico: o agente de usuário, o servidor de correio e o protocolo SMTP. Caso o HTTP seja utilizado, qual sua função neste contexto? No SMTP, quem é o cliente e quem é o servidor?
+	
+	R (Caio)   = Agentes de usuário:   permitem ler, responder, encaminhar e compôr mensagens.
+	   Servidores de correio: são o núcleo da infraestrutura do e-mail. Neles está a caixa postal. Também é responsável por autenticar os utilizadores. Cuida, igualmente, de falhas por parte de outros servidores de correio, como quando a mensagem não é recebida.
+	   SMTP: usa o transporte TCP para transferir mensagens de servidores de e-mail remetentes para destinatários.
+	   Se usar o HTTP, ele substitui o SMTP como protocolo de envio, bem como substitui outros protocolos que façam acesso (IMAP, POP3 etc.)
+	   No SMTP, o remetente é quem ativa o TCP, funcionando como cliente. Assim, é o destinatário o servidor. Isto ocorre porque o SMTP, ao contrário do HTTP, é um push protocol.
+
+	(Página 110-111 pdf kurose 6ª ed)
+	R (Daniel) = Agente de usuário:  permitem que usuários leiam, respondam, encaminhem, salvem mensagens;
+	   Servidor de correio: Servidores de correio formam o núcleo da infraestrutura do e-mail. Cada destinatário, tem uma caixa postal localizada em um desses servidores, que administra e guarda as mensagens que foram enviadas a ele.
+	   Protocolo SMTP: é o principal protocolo de camada de aplicação do correio eletrônico da Internet, usando o serviço TCP para transferir mensagens do servidor de correio do remetente para o do destinatário. o SMTP tem dois lados: um lado que funciona no servidor de correio do remetente, e um lado que funciona no servidor de correio do destinatário. Quando um servidor de correio envia correspondência para outros, age como um cliente SMTP. Quando o servidor de correio recebe correspondência de outros, age como um servidor SMTP.
+	(Página 114 pdf kurose 6ª ed)
+	O HTTP transfere arquivos de um servidor para um cliente Web, já o SMTP, transfere arquivos de um servidor de correio para outro. o HTTP é, um protocolo de recuperação de informações — alguém carrega informações em um servidor Web e os usuários utilizam o HTTP para recuperá-las quando quiserem, a conexão TCP é ativada pela máquina que quer receber o arquivo. Já o SMTP é um protocolo de envio de informações o servidor de correio remetente envia o arquivo para o servidor de correio destinatário com a conexão TCP sendo ativada pela máquina que quer enviar o arquivo. Já quanto a imagem o HTTP encapsula cada objeto em sua própria mensagem HTTP. O SMTP coloca todos os objetos de mensagem em uma única mensagem.
+
+
+
+
+
+
+
+
+
+Prova antiga (Thalles e Bezerra)
+
+1) (2,0 pt) Vimos que o tempo (denominado d, de delay) para enviar um pacote de tamanho L bits sobre um enlace de R bps (bps = bits/seg) é dado por d = L/R seg e que o tempo para enviar um pacote de L bits entre dois computadores separados por N enlaces de taxa R bps (passando N-1 roteadores iguais) é dado por D = N.(L/R) seg, desprezando-se os tempos de processamento no roteador, de propagação de um bit no enlace e de enfileiramento. Qual o tempo necessário para enviar P pacotes entre os mesmos dois computadores separados por N enlaces? Observe que quando o transmissor acaba de enviar um pacote ele já envia o próximo.
+	
+	R (Bezerra 2,0) = Cada pacote levará o tempo de N*(L/R)s. Porém, aplicando o pipeline pode-se enviar um outro pacote enquanto o primeiro pacote está no segundo enlace, otimizando o tempo que seria necessário. Logo o tempo total pode ser calculado no: tempo total que o pacote leva para ser enviado mais o tempo de enlace de cada
+pacote T = (N *(L/R)) + (P - 1) * L/R
+	
+	R (Thalles 2,0) = Desprezando o tempo de propagação, processamento e enfileiramento, deve-se levar
+em consideração apenas o tempo de envio dos P pacotes. O tempo de transmissão de um pacote se dá por d = N(L/R). No entanto, considerando que cada roteador utilizaria o princípio de armazenamento e reenvio, o tempo não será dado apenas por P * N(L/R), uma vez que, durante a transmissão, o pacote seguinte ao anterior já começa a ser
+recebido a partir do momento em que aquele começa a ser enviado, em cada um dos N enlaces - o conceito de pipelining. Assim, podemos entender que para P pacotes, o tempo de envio se dará pelo tempo de envio fim-a-fim de um pacote somado ao tempo de envio de todos os pacotes remanescentes, enviados em sequência. Logo: Dp = (N + P - 1) * L/R) Ao que, por exemplo, considerando, por exemplo d = 200ms, P = 36000 e N = 9, teríamos: Dp = (9 + 36000 - 1) * 200 = 7201,6 segundos
+
+	(Dedução)
+	R (Daniel)      = Visto que os tempos são despresíveis de processamento no roteador, de propagação e de enfileiramento, apenas será utilizado o tempo de envio de um pacote. Como está utilizando pipeline, a transmissão não irá esperar o envio por completo de um pacote, podendo enviar o próximo assim que ele estiver no segundo enlace. Assim o tempo total será o tempo total para o envio de um pacote mais o tempo de envio de todos os pacotes remanescentes. Assim: Tempo total = (N + (P - 1)) * (L/R)
+
+
+
+2) (2,0 pt) Por que se diz que os cookies mantém o “estado” da conexão? De que forma o http 2.0 diminui a latência do carregamento de páginas com objetos de tipos e tamanhos diferentes? Por que a técnica denominada DASH é interessante para usuários móveis?
+	
+	R (Bezerra 1,4) = O HTTP não possui estado, então como solução para isso foram criado os cookies, os cookies são adicionados ao fluxo do HTTP, permitindo que a criação de sessão em cada requisição. Quando um usuário faz uma requisição ao servidor, o servidor cria um número de identificação exclusivo e uma entrada no seu banco de dados relacionado ao número de identificação do usuário. Quando o usuário acessar novamente o mesmo site, o navegador irá passar um cabeçalho de cookie ao servidor durante todas as visitas subsequentes ao site, identificando o usuário e seus dados. 
+	No HTTP/2 abre-se uma única conexão para baixar múltiplos arquivos, as requisições e respostas são paralelas e assíncronas, logo o navegador pede vários arquivos ao mesmo tempo e recebe-os assim que eles estiverem prontos. Outro ponto é que no HTTP/2, os cabeçalhos são comprimidos, com a compressão dos cabeçalhos, o uso de dados será menor e as páginas carregam mais rapidamente. 
+	Pois o DASH permite com que clientes que possuem diferentes larguras de bandas disponíveis possam continuar tendo uma navegação fluída na internet, por exemplo, clientes com conexões lentas recebem um versão do conteúdo com baixa taxa de bits (e baixa qualidade), enquanto clientes com melhores conexões recebem versões de alta qualidade. Então o DASH permite com que um cliente com uma largura de banda que frequentemente ocorra alterações (como os usuários móveis) possam continuar tendo uma conexão satisfatória, essas alterações podem ocorrer pois os mesmo usuários se movimentam de uma estação para outra acaba fazendo assim com que ocorra essa alteração da largura de banda.
+
+	R (Thalles 1,4) = Apesar de HTTP ser um protocolo sem estado, um cookie pode ser criado durante uma
+sessão inicial, armazenando dados arbitrários. Em conexões subsequentes, um identificador único (do cookie) pode ser incluído no cabeçalho, identificando uma sessão anterior, e assim recuperando um estado (por exemplo, um login em um site de streaming).
+	O HTTP/2 introduziu a possibilidade de haver múltiplas requisições e respostas dentro da mesma conexão TCP persistente, de modo que não é necessário esperar todo o conteúdo de uma página ser carregado através de uma única via (sendo outro exemplo de ganho de desempenho através de paralelismo). 
+	DASH é uma abordagem que permite que um mesmo conteúdo seja codificado em diferentes taxas de bits. Para clientes móveis, que frequentemente possuem limitações de sinal (que reduz a confiabilidade ou banda) ou mesmo de consumo de dados, o DASH permite que versões com menor taxa de bits (e, logo, tamanho total) sejam retornadas, permitindo visualização mais contínua (com menos buffering) e com menos consumo.
+
+	(Conhecimento próprio)
+	R (Daniel)      = Quando um usuário se conecta a uma aplicação que utiliza cookies, ele cria um cookie para esse usuário que fica salvo no browser utilizado e salva no banco de dados da aplicação diversas informações referentes a esse usuário. Ao utilizar novamente essa mesma aplicação tempos depois, o usuário além do pedido HTTP, envia também seu valor de cookie, assim, o servidor da aplicação já verifica no banco de dados a informação do usuário referente aquele cookie e devolve a mensagem de resposta já com as informações do usuário.
+	(Página 090 foto kurose 8ª ed)
+	O HTTP/2 utiliza a multiplexação de solicitações e respostas em uma única conexão TCP, oferencendo também  compressão dos campos de cabeçalho. Os arquivos de uma aplicação serão todos pedidos de uma única vez e serão apresentados quando estiverem prontos.
+	(Página 466 pdf kurose 6ª ed)
+	Pelo DASH, o vídeo é codificado em diferentes versões com diferentes taxas de bits e diferentes níveis de qualidade. No caso dos dispositivos móveis onde as conexões 3G podem ser lentas, é necessário que o cliente receba uma versão com baixa taxa de bits. O DASH permite também que o vídeo se adapte caso a largura de banda mude durante a sessão, trocando a qualidade do arquivo entregue.
+
+
+
+3) (1,0 pt) Se um par entrar no BitTorrent mas não fizer upload de nenhum dado para qualquer outro par, ele conseguirá receber uma cópia completa do arquivo compartilhado pelo grupo? Justifique sua resposta.
+	
+	R (Thalles 0,7) = Sim. Ao entrar em um torrent e registrar-se com um rastreador, o usuário começará a
+receber pedaços do torrent de acordo com as políticas do protocolo, efetivamente começando a receber o conteúdo sem fazer, ao menos inicialmente, nenhum upload. Muito embora o BitTorrent tenha medidas que tornam a transferência igualitária e justa, em um caso remoto onde um usuário entra em um torrent (com seeders ativos) e seja o único sem o conteúdo completo, receberia o conteúdo sem ter contribuído com o torrent enviando qualquer dado. No entanto, como dito, esse é um caso remoto e, em geral, usuários contribuem com o torrent enviando dados, ainda que deixem a conexão assim que adquirir o conteúdo completo.
+
+	(Página xxx pdf kurose 6ª ed)
+	R (Daniel)      = Sim. Ao iniciar a recepção de um arquivo torrent, é necessário que o usuário realize o download de alguns pedaços do arquivo de outros pares para poder começar a transferi-los. Ao receber completamente todo os pedaços do arquivo, ou ele sai do torrent, ou então ele permanece apenas enviando pedaços para outros pares. É também possível, que um usuário saia a qualquer momento de um torrente e retorne posteriormente recebendo os pedaços que ainda não tem (caso o que já foi recebido não tenha sido excluido).
+
+
+
+4) (1,0 pt) Com relação ao protocolo SR, explique porque as janelas do transmissor e do receptor são diferentes, ou seja, o início da janela de cada um não necessariamente aponta para o mesmo pacote.
+	
+	R (Bezerra 0,8) = O transmissor mantém uma janela de transmissão dos pacotes enviados mas, ainda, não confirmados. Assim, é possível ao transmissor enviar um número maior de pacotes enquanto aguarda a confirmação do receptor, essa técnica é utilizada para diminuir o tempo das confirmações. Assim que o receptor recebe os pacotes, o mesmo envia para o transmissor a confirmação de cada pacote que recebeu corretamente. Com essas informações recebidas do receptor, o transmissor desloca a janela de envio dos pacotes já confirmados e transmite novos pacotes. Porém, o transmissor possui um controle de timeout para cada pacote transmitido, o timeout é quem define o limite de tempo em que a confirmação deve chegar do transmissor. Se a confirmação não chegar dentro desse tempo, o transmissor assume que o pacote não foi enviado ou não chegou ao seu destino, tendo que assim enviar o pacote novamente. Nesse caso é onde ocorre a diferença entre janelas, pois o transmissor está reenviado um pacote em uma nova janela apontando para antiga janela do receptor que era responsável pelos dados daquele pedaço do pacote.
+
+	R (Thalles 0,8) =  No protocolo SR, a janela do receptor pode ficar adiantada em relação à janela da
+origem, de modo que o receptor envia ACKs para pacotes mesmo que algum pacote anterior não tenha sido recebido, evitando a necessidade de reenvio de pacotes que já foram enviados. A janela da origem é movida para a frente em função dos ACKs recebidos (que em alguns casos podem ser recebidos duas vezes). O uso da janela otimiza o uso da rede, evitando longas esperas por pacotes perdidos, e ao mesmo tempo evita que grandes números de pacotes tenham que ser manuseados (enviados, recebidos e reconhecidos) simultaneamente.
+
+	(Página xxx pdf kurose 6ª ed)
+	R (Daniel)      = 
+
+
+
+5) (2,0 pt) Suponha que usemos a partida lenta (protocolo TCP) em uma linha com RTT de 20 ms e sem congestionamento. A janela de recepção está fixa em 40 KB e o tamanho máximo do segmento (MSS) é 3 KB. Quanto tempo (em ms) é necessário para que a primeira janela completa possa ser enviada até que o controle de fluxo entre em ação? Justifique sua resposta.
+	
+	R (Thalles e Bezerra) = Os dois zeraram
+
+	(Página xxx pdf kurose 6ª ed)
+	R (Daniel)      = RTT = 200 ms
+			  MSS = 3 KB
+			  Janela = 40 KB
+			  Tempo para cada envio = 3000 / 200 => 15 B/ms 
+			  Tempo Total => 40000 / 15 => 2666 ms
+
+
+
+6) (2,0 pt) Suponha que a janela de congestionamento do TCP (Congwin) esteja em 36 KB e que ocorra um timeout. Qual será o tamanho da janela e do threshold (ambos em KB) se as próximas quatro transmissões forem bem-sucedidas? Suponha que o MSS é de 1,5 KB. Justifique sua resposta.
+	
+	R (Thalles 1,0) = Na ocasião de um timeout, o threshold será definido como metade da janela de congestão (cwnd) no momento da detecção da congestão, que por sua vez é determinada como 1 MSS, e o slow start volta a ter efeito. Após as quatro transmissões bemsucedidas, cwnd será dado por MSS * n+1, onde n é o número de transmissões bemsucedidas, logo: cwnd = MSS * (4+1) -> 1,5 KB * 5 = 7,5 KB threshold = 18 KB
+
+	(Página xxx pdf kurose 6ª ed)
+	R (Daniel)      = Congwin = 36 KB
+			  MSS = 1,5 KB
+			  RTT = 5
+			  Threshold = ?

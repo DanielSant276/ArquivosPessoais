@@ -1,4 +1,4 @@
-Gráfico de barras (pag. 47):
+Gráfico de barras (pág. 47):
   - É utilizado para mostrar como quantidades variam em um conjunto de itens. Pode ser também uma boa opção para mostrar
   um histograma de valores agrupados e representar distribuição de valores.
   - plt.bar(x, y, z) -> plota as barras com coordenadas x e tamanho y e largura z.
@@ -6,5 +6,16 @@ Gráfico de barras (pag. 47):
   - plt.title(x) -> adiciona um título x.
   - plt.xticks(x, y) -> rotula as coordenadas x com os nomes da lista y, se y estiver vazio ele coloca os valores numéricos.
   - plt.ylabel(x) -> rotula o eixo y.
+  - plt.legend(loc=x) -> insere um legenda no gráfico, x varia de 0 a 10 para posições diferentes no gráfico.
   - plt.show() -> mostra o gráfico.
 
+Gráfico de linhas (pág.: 50):
+  - Utilizado geralmente para mostrar tendências
+  - plt.plot(x, y, z, label='w') -> plota em formato de linha, com coordenadas x e y e o tipo de linha é determinado em
+  z, o label é para quando criar uma legenda, inserir esse valor w na legenda.
+
+Gráfico de dispersão (pág.: 51):
+  - Utilizado para mostrar pares de conjuntos de dados.
+  - plt.scatter(x, y) -> define cada ponto no gráfico de dispersão nas coordenadas x e y.
+  - plt.annotate() -> cria anotações para cada ponto, é necessário ver o exemplo do livro ou então na documentação do
+  matplotlib.

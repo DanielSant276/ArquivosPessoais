@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+</head>
+<body>
+    <h1>Caso o usuário seja válido a verifição irá retornar os dados em 3 segundos</h1>
+    <h3>Por enquanto apenas um usuário cadastrado. username: gabriel</h3>
+        <input placeholder="Digite o usuário" type="text" id="username">
+        <br>
+        <button style="margin-top: 2%;" type="submit" onclick="checkUser()">Enviar</button>
+        <div id="change">
+            <h3>Nome: </h3>  <p id="name"></p> <br>
+            <hr>
+            <h3>CPF: </h3>   <p id="cpf"></p>  <br>
+            <hr>
+            <h3>Matricula: </h3>   <p id="matricula"></p>  <br>
+            <hr>
+        </div>
+    <script>
+        var xhr = new XMLHttpRequest();
+        var change = document.getElementById("change");
+        var user = document.getElementById("username");
+
+
+        function checkUser() {
+            xhr.onreadystatechange = () => {
+                if(xhr.readyState == 4 && xhr.status == 200) {
+                    var res = JSON.parse(xhr.response);
+                    console.log(res.name);
+                    if(user.value == res.name) {
+                        setTimeout(()=>{
+                            document.getElementById("name").innerHTML = res.name;
+                            document.getElementById("cpf").innerHTML = res.cpf;
+                            document.getElementById("matricula").innerHTML = res.matricula;
+                        },3000);
+                   
+                    }
+                    else {
+                        alert("Usuário invalido");
+                    }
+                }   
+            }
+            xhr.open("GET", "http://localhost:3000/user");
+            xhr.send();
+        }
+
+    </script>
+</body>
+</html>

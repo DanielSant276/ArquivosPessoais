@@ -1,0 +1,23 @@
+Algebra Linear (pág. 55):
+  - É a parte da matemática que calcula espaços vetoriais.
+
+Vetores (pág. 55):
+  - São objetos que podem ser somados ou multiplicados por escalares para formar outros vetores. A soma ou de dois
+  vetores ocorre por componente, ou seja, se os vetores x e y tiverem o mesmo tamanho, a adição ocorrerá da seguinte 
+  forma: [x[0] + y[0], x[1] + y[1], ..., x[n] + y[n]]. A subtração também ocorre da mesma forma que a adição.
+  - (x_i * y_i for x_i, y_i in zip(x, y)) -> Realiza o produto escalar entre dois vetores. Ex.: 
+      def dot(x, y):
+        return sum(x_i * y_i for x_i, y_i in zip(x, y))
+      dot([1, 2, 3], [4, 5, 6]) == 32 #(1 * 4) + (2 * 5) + (3 * 6) = 32
+  - Utilizando isso é possível calcular a magnitude (comprimento) de um vetor. Ex.: math.sqrt(dot(x, y))
+  - Para achar a distância de dois vetores podemos fazer da seguinte forma:
+      def sum_of_squares(x):
+        return dot(x, x)
+      def squared_distance(x, y):
+        return sum_of_squares(subtract(x, y))
+      def magnitude(x):
+        return math.sqrt(sum_of_squares(x))
+
+Matriz (pág. 60):
+  - Nada novo sobre o sol, tem até algumas coisas legais sobre como criar automaticamente algumas matrizes, mas nada que
+  eu achei relevante colocar aqui.
