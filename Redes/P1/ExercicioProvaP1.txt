@@ -110,7 +110,8 @@ D) No protocolo Selective Repeat (SR) é possível que o transmissor receba um A
 
 14) Descreva o funcionamento do DNS: serviços oferecidos, características, tipos de servidores, modos de consulta, tipo de mensagem, etc.
 	(Página 119-127 pdf kurose 6ª ed)
-	R = O DNS é um banco de dados distribuído executado em uma hierarquia de servidores de DNS, e um protocolo de camada de aplicação que permite que hospedeiros consultem o banco de dados distribuído. 	Os servidores DNS são máquinas UNIX que executam o software BIND (Berkeley Internet Name Domain). O protocolo DNS utiliza UDP e usa a porta 53.
+	R = O DNS é um banco de dados distribuído executado em uma hierarquia de servidores de DNS, e um protocolo de camada de aplicação que permite que hospedeiros consultem o banco de dados distribuído. 
+	Os servidores DNS são máquinas UNIX que executam o software BIND (Berkeley Internet Name Domain). O protocolo DNS utiliza UDP e usa a porta 53.
 	O DNS costuma ser empregado por outras entidades da camada de aplicação — inclusive HTTP, SMTP e FTP — para traduzir nomes de hospedeiros fornecidos por usuários para endereços IP
 	Serviços oferecidos: 
 	|-- Apelidos (aliasing) de hospedeiro: Um hospedeiro com nome complicado pode ter um ou mais apelidos. Um nome como relay1.west-coast.enterprise.com pode ter, por exemplo, dois apelidos, como enterprise.com e www.enterprise.com. Apelidos são mais fáceis de lembrar do que o nome principal. O DNS pode ser chamado por uma aplicação para obter o nome principal correspondente a um apelido fornecido, bem como para obter o endereço IP do hospedeiro.
@@ -125,5 +126,3 @@ D) No protocolo Selective Repeat (SR) é possível que o transmissor receba um A
 	|-- Forma interativa: uma mensagem vai primeiro ao servidor do DNS local, depois pro servidor de DNS raiz, retorna a mensagem para o servidor de DNS local, vai para o servidor de DNS TLD e também retorna a mensagem para o servidor de DNS local, e por último vai para o servidor DNS autoritativo e retorna por fim o endereço do site buscado para o servidor DNS local e depois para o computador requisitante.
 	|-- Forma recursiva: A consulta é recursiva, um servidor envia a consulta ao próximo que saiba, o que sabe o mapeamento para o endereço deseja retorna a resposta para o que perguntou.
 	Tipo de mensagem: !!!!!Não sei o que colocar aqui!!!!!mensagens de consulta e de resposta
-
-
