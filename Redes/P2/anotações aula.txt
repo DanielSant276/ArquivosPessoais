@@ -1,0 +1,35 @@
+algoritmos de roteamento servem para gerar o menor custo de anvio através da rede, da fonte ao destino.
+
+tipos:
+	global (link state): os roteadores tem informações completas da topologia da rede e os custos dos enlaces.
+	descentralizado (vetor de distância): os roteadores só conhecem informação dos vizinhos e os elaces para eles.
+
+	estático: já tem pre-definido o caminho a ser seguido
+	dinamicos: as rotas são calculadas dinamicamente, sempre baseado nas condições atuais da rede. Qualquer mudança na rede modifica o deslocamento.
+	
+algoritmo de dijkstra:
+	É um algoritmo global, computa caminho de menor custo de um nó para os outros. Após k interações conhece-se o caminho de menor custo para  k destinos (convergência).
+	Notação:
+	C(i, j): custo do caminho de i para j.
+	D(v): valor atual do caminho para o destino v.
+	P(v): nó predecessor ao longo do caminha da fonte ao nó v.
+	N: subconjunto de nós para o caminho de menor custo é definitivamente conhecido.
+
+algoritmo vetor de distância:
+	É um algoritmo descentralizado. Continua até aque os nós não troquem mais informações. É assíncrono, os nós não precisam trocar informações simultaneamente. Cada nó se comunica com os seus vizinhos diretamente. Cada nó terá sua própria tabela, com as distâncias/custos para os vizinhos.
+	Ideia principal: de tempos em tempos, cada nó envia sua própria tabela para os vizinhos.
+
+comparação de algoritmos ls e vd:
+	complexidade:
+	--
+	velocidade de convergência:
+	--
+	robustez:
+	-- ls: roteadores podem informar custos incorretos para os enlaces, com cada roteador calculando somente sua própria tabela de roteamento.
+	-- dv: nó pode informar caminhos com custos incorretos e assim propagar o erro pela rede.
+
+Tornando o roteamento escalável:
+	roteadores não são idênticos, as redes possuem diferentes topologias e algoritmos de roteamentoo.
+	escala
+	-- bilhões de destinos: não é possível armarzenar todos os destinos numa única <!-- verificar isso aqui--!>tabela<!---!> de rotas.
+
