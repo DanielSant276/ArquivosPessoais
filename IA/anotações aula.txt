@@ -47,3 +47,20 @@ busca em largura: procura por nível. ao invés de olhar um ramo da árvore até
 
 busca informada: busca gulosa ou busca A*. existe algum tipo de conhecimento do problema e é criado uma estratégia (heuristica de estimativa) para achar a solução.
 
+Lógica Fuzzy:
+	1º Define as variáveis do problema;
+	2º Utiliza o uso dos conjuntos nebulosos. Ela quantifica as relações em valores numéricos;
+	3º Modelar um sistema nebuloso;
+	4º Entender as características do domínio fuzzy;
+	5º Compreender o funcionamento dos operadores lógicos.
+
+	O objetivo da lógica fuzzy sai do parâmetro 0 e 1 e começa a trabalhar com valores entre esses dois. Dependendo dos valores iniciais e das regras de pertinência, ao invês de retornar uma saída em verdadeiro ou falso, ela retorna um grau de pertinência que varia entre 0 e 1.
+
+	As regras de pertinência combinam variáveis linguísticas, quantificadores, operadores lógicos e de implicação.
+
+	Na lógica fuzzy, é possível que um valor se classifique em mais de uma classe.
+
+	Função de fusão, pode ser triângular, trapezóide, gausiana e sinoidal.
+
+Inferência Fuzzy:
+	É uma relação lógica que obedece a tabela verdade lógica proposicional.

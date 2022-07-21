@@ -1,0 +1,203 @@
+		Parte 0 - Introdução
+
+	Em IA, existem duas abordagens principais: IA simbólica e IA conexionista, ou ainda, Paradigma Simbolista e Paradigma conexionista.
+
+	No Paradigma Simbolista, os mecanismos efetuam transformações utilizando símbolos, letras, números ou palavras. Simulam, portanto, o raciocínio lógico por trás das linguagens com as quais os seres humanos se comunicam uns com os outros.
+
+	O Paradigma conexionista se inspira no funcionamento de nossos neurônios, simulando portanto, os mecanismos do cérebro humano.
+
+		Parte 1 - Paradigma Simbolista
+
+O Paradigma Simbolista:
+	Utiliza sistemas baseados em conhecimento (SBC), que funcionam baseados em algoritmos de buscas (buscas em tabelas, árvores de decisão, busca heurística, sistemas baseados em regras, etc.). Lidam com conhecimento explícito representado simbolicamente. Reproduzem o processo de decisão de um especialista através da transferência de expertise do homem para o computador, dentro de algum domínio específico. 
+	Os operadores transformam símbolos sucessivamente, até que a solução seja atingida:
+	gero um símbolo => aplico um operador => gero um símbolo => aplico um operador => ...
+
+Métodos de Busca:
+	De maneira geral, um problema de busca pode ser formalizado através da definição dos seguintes elementos:
+	|-- Um conjunto de descrições chamado espaço de estados,onde cada elemento descreve uma situação possível do problema.
+	|-- Um estado inicial que descreve a situação inicial do problema.
+	|-- Um ou mais estados finais, isto é, as situações que se deseja alcançar.
+	|-- Um conjunto de operadores, isto é, procedimentos que, dada a descrição de um estado, determinam todos os estados que podem ser alcançados a partir do estado dado.
+	!!!!!!Para resolver probleas de Busca, são utilizados arvores ou grafos.!!!!!!
+	Um algoritmo de busca constrói uma Árvore de Busca:
+	|-- A raiz é o estado inicial;
+	|-- Os nós filhos são obtidos pela aplicação dos operadores.
+
+	Sistema de controle:
+	1. Inicializar a base de dados.
+	2. Inicializar a condição de término.
+	3. Até que a base de dados satisfaça a condição de término, faça:
+	  3.1. (É no selecionar das regras que está a sua “inteligência”, segundo os simbolistas)
+	      3.1.1 Selecione a regra aplicável existente.
+	      3.1.2. Aplique a regra.
+	  3.2. Fim.
+
+	Na execução dos algoritmos de busca, alguns caminhos são melhores do que outros.
+	Assim, cada caminho será definido pela ordem de escolha das regras.
+	Para que o sistema de controle possa decidir pela melhor regra a cada instante, ele deve fazer uso das heurísticas. !!!!!!A inteligência do sistema está de fato nas heurísticas!!!!!!, que são conselhos sobre que regras aplicar em cada situação.
+
+	Algoritmos de busca:
+	|-– Não Informados:
+	   |-– usam somente definição do problema.
+	   |-– não fornece informações adicionais sobre o problema, exceto sua especificação.
+	|-– Informados:
+	   |-- usam conhecimento sobre o domínio para encontrar as etapas para a solução.
+	   |-- conhecimento na forma de heurísticas.
+
+	Busca não Informada:
+	|-- Características:
+	   |-– busca cega;
+	   |-– utiliza somente informação contida no problema;
+	   |-– definidos pela ordem em que os nós são expandidos;
+	   |-– necessário eliminar ciclos (organizar soluções em uma árvore);
+	   |-– detectar estados redundantes;
+	   |-– complexidade mais baixa;
+	Exemplos de Busca Não Informada:
+	|-- Busca em Profundidade:
+	   |--> Quando procuramos apenas um caminho qualquer entre dois nós, uma boa idéia é escolher uma alternativa em cada nó e trabalhar para frente.
+	   |--> Outras alternativas no mesmo nível são ignoradas, enquanto houver esperança de que se possa alcançar o destino seguindo o caminho corrente.
+	   |--> Trabalharmos sempre da direita para a esquerda ou da esquerda para a direita;
+	   |--> Nesse algoritmo, pontos de retorno (backtraking) são marcados e, caso se conclua que uma regra foi mal aplicada, retorna-se a um desses pontos e aplica-se outra regra.
+	   |--> Agindo desta forma, o algoritmo garante que, caso haja alguma solução, ela será encontrada, já que todos os caminhos são investigados.
+	|-- Busca em Largura;
+	   |--> A busca em largura, ou amplitude, procura pelo nó destino entre todos os nós do mesmo nível antes de usar os filhos desses nós para prosseguir.
+	   |--> Neste método, investigamos todos os operadores que podem ser aplicados ao nó, gerando todos os filhos.
+	   |--> Essa busca não é adequada no caso em que todos os caminhos que levam ao nó destino possuírem mais ou menos a mesma profundidade.(completa)
+	   |--> Ela sempre encontra a solução, caso ela exista. Como expande um nível de cada vez, o método também encontra o caminho mais curto. (Ótima)
+	   |--> Entretanto, a quantidade de possibilidades avaliadas é muito grande, o que torna o método computacionalmente intenso. (mantém todos os nós na memória)
+
+	Busca Informada:
+	|-- Características:
+	   |-- conhecimento domínio + problema;
+	   |-- função avaliação f(n);
+	   |-- conhecimento na forma de heurísticas;
+	   |-- expande o nó com melhor avaliação;
+	   |-- estratégia de busca depende da função;
+	|-- Para verificar o custo da expansão da solução de um problema em uma arvore, implementando uma estratégia de busca informada, os n nós mais promissores são inseridos na função heurística h(n).
+	|-- Em seguida, a função retorna um número real não negativo, que é um custo de caminho aproximado calculado do nó n para o nó de destino.
+	|-- Existe um consumo de tempo para que o algoritmo escolha a melhor heurística no momento e outro tempo para escolher a melhor regra, segundo essa heurística.
+	|-- O tempo total, soma dos dois anteriores, é chamado de “custo de seleção”.
+	Exemplos de Busca Informada:
+	|-- Busca Gulosa (greedy);
+	   |--> Busca Best-First:
+	   |--> O nó é selecionado para expansão baseado em uma função de avaliação f(n)=h(n) (heurística) = estimativa de custo de n até o objetivo.
+	   |--> Busca gulosa pela melhor escolha expande o nó que parece mais próximo ao objetivo de acordo com a função heurística;
+	   |--> Boas heurísticas devem ter a forma f(n) que calcule ou avalie com certa precisão o custo da melhor trajetória do nó inicial s ao final t, obrigada a passar por n.
+	   |--> A função f(n) é a soma de duas estimativas: g(n): o custo da trajetória de "s" a "n". h(n): o custo da trajetória de "n" a "t".
+	   |--> Então, o custo real será f(n) = g(n) + h(n).
+	   |--> Uma boa tentativa para g(n) é tomar, a cada instante, o custo da menor trajetória de "s" a "n" gerada até aquele instante.
+	   |--> Já aproximar h(n) é mais complexo.
+	|-- Busca A*;
+	   |--> Na Busca A*, a função de custo para avaliar a qualidade de um nó N possui a seguinte forma:
+	      |--> f(N) = g(N) + h(N) onde:
+	      |--> g(N) = custo do caminho até N
+	      |--> h(N) = estimativa do custo do caminho de N até um nó terminal
+	   |--> A função h(N) é uma heurística sobre o menor caminho do nó N até o nó final e a qualidade da solução depende desta estimativa.
+	   |--> Se soubermos como calcular h(N), ou seja, se tivermos uma boa estimativa do custo de caminho de N até nosso objetivo, podemos orientar a busca por esta estimativa.
+
+Os Sistemas Especialistas:
+	Utilizam regras de produção como uma outra forma de representar o conhecimento: SE <condição> ENTÃO <ação>
+	As regras são uma forma de representação do conhecimento bastante próxima da forma humana de expressá-lo. 
+
+
+
+		Parte 2 - Paradigma Conexionista
+
+O Paradigma Conexionista:
+	Suas características são: capacidade de generalização, paralelismo, memória distribuída e aprendizado autônomo.
+	São capazes de aprender através de treinamento e generalizar o conhecimento adquirido. Porém, não justificam suas decisões, tornando sua aplicação inaceitável em algumas áreas.
+
+Redes Neurais Artificiais (RNA):
+	RNA é um sistema de processamento de informação inspirado na estrutura neural de organismos inteligentes e que adquirem conhecimento através da experiência;
+	Utiliza um sistema que possui circuitos que simulam o cérebro humano, inclusive seu comportamento, ou seja, aprendendo, errando e fazendo descobertas; 
+Os modelos neurais artificiais oferecem um paradigma atrativo, pois “aprendem” a resolver problemas através de exemplos;
+	Aplicações:
+	|-- Reconhecimento de padrões: fala, sinais de radar e sonar, imagens, ICR, etc.
+	|-- Previsões: índices do mercado financeiro, previsão de séries temporais, meteorologia, etc.
+	|-- Classificação: diagnóstico médico, classificação de amostras.
+
+Algoritmos Genéticos:
+	Consistem de um método de solução de problemas através da aplicação de princípios da teoria da evolução genética.
+	Mantém uma população de estruturas do conhecimento, que representam candidatos à solução, evoluindo no tempo através de competição e variações
+controladas, são baseados nos mecanismos da seleção natural e da genética.
+	Exploram informações históricas para encontrar novos pontos de busca, onde são esperados melhores desempenhos, através de processos iterativos, onde cada iteração é chamada de geração.
+
+	|-- Termos Utilizados:
+	   |--> Indivı́duo - Solução para um problema;
+	   |--> População - Conjunto de soluções;
+	   |--> Cromossomo - Codificação de uma solução;
+	   |--> Aptidão/Fitness - Qualidade da solução;
+	   |--> Alelo/Gene – Cada elemento que forma a solução, ou seja, um cromossomo é um conjunto de Genes;
+
+	|-- Características:
+	   |--> Eles operam sobre a representação codificada de soluções, equivalente ao material genético dos indivíduos na natureza.
+	   |--> O AG de Holland codifica as soluções em cadeias de bits, onde cada solução é associada a uma medida de qualidade ou fitness.
+	   |--> A medida de fitness reflete a qualidade de um individuo em relação aos demais. Quanto maior a medida de fitness de um individuo, maiores as suas chances de se reproduzir e sobreviver à próxima geração. 
+	   |--> Inicialmente é gerada uma população formada por um conjunto aleatório de indivíduos que podem ser vistos como possíveis soluções do problema.
+	   |--> Durante o processo evolutivo, esta população é avaliada: para cada indivíduo é dada uma nota, refletindo sua habilidade de adaptação a determinado ambiente.
+	   |--> Uma porcentagem dos mais adaptados é mantida, enquanto os  outros são descartados. 
+	   |--> Os membros mantidos pela seleção podem sofrer modificações em suas características fundamentais através de mutações e cruzamentos, gerando descendentes para a próxima geração.
+	   |--> A recombinação de material genético é simulada através de um mecanismo de crossover que troca pedaços entre as cadeias de bits dos pais.
+	   |--> Outra operação, chamada de mutação, provoca alterações esporádicas e randômicas nas cadeias de bits.
+
+	|-- Um projeto de AG contem os seguintes componente:
+	   |--> Uma representação na forma de cromossomos das soluções potenciais do problema.
+	   |--> Uma forma de criar uma população inicial de soluções válidas.
+	   |--> O projeto de uma função de avaliação que classifique os indivíduos em função de sua aptidão.
+	   |--> Operadores genéticos que alterem a composição dos filhos (crossover e mutação).
+	   |--> A atribuição de valores aos diversos parâmetros usados pelos AG’s (tamanho da população, probabilidade da aplicação dos operadores genéticos, critério de parada, etc.).
+
+
+	Passos:
+	|-- Durante a geração t, o algoritmo mantém uma população de soluções potenciais (cromossomos);
+	|-- Cada solução vi é avaliada para fornecer a medida de sua qualidade ou aptidão;
+	|-- Uma nova população P(t+1) é então formada, selecionando-se,  robabilisticamente, os cromossomos mais aptos de P(t);
+	|-- Alguns dos membros desta nova geração sofrem transformações por meio de operações de crossover e mutação, de acordo com uma probabilidade pré-definida. As operações genéticas escolhidas são:
+	   |--> Reprodução de um indivíduo através da inserção de outra cópia sua na população.
+	   |--> Recombinação de dois indivíduos existentes, usando a operação de crossover, para formar dois outros novos indivíduos.
+	   |--> Mutação aleatória de um gene, localizado em uma posição escolhida também aleatoriamente, criando um novo indivíduo.
+	|-- A cada nova geração:
+	   |--> Mantenha a população P com n elementos;
+	   |--> Use probabilidade para escolher alguns elementos (e.g. método da roleta);
+	   |--> Utilize cruzamento e mutação para gerar novos indivíduos;
+	   |--> Remova da população os indivı́duos menos adaptados;
+	|-- Seleção
+	   |--> Baseada no princípio da sobrevivência do mais adaptado, um indivíduo é selecionado probabilisticamente, baseando-se no seu grau de adaptação.
+	   |--> O interessante é que mesmo os pouco ou nada adaptados possuem alguma chance de se reproduzirem.
+	   |--> Seleção baseada na aptidão/fitness.
+	   |--> Selecione de maneira aleatória.
+	   |--> Seleção para Cruzamento/Crossover ou Mutação.
+	       |--> Cruzamento: os 2 pais produzem 2 filhos com as características dos pais alternadas (ou selecionadas aleatórias).
+	       |--> Mutação: Modifica a população, geralmente de forma aleatória. Essa mutação geralmente é feita por pequenas alterações no indivíduo original. Ess operador de mutação atua ao nível de bit, usando
+uma probabilidade de troca de Pm. Por exemplo, se Pm=10%, quando escolher um cromossomo para cada bit desta, gera-se um número aleatório entre [1,100]. Caso, o número gerado aleatórioamente for de 1 a 10, o bit é invertido, se não, ele é mantido.
+	   |--> Um mesmo indivı́duo pode estar em vários cruzamentos ou várias mutações.
+	   |--> Combinados, os processos de seleção e recombinação realizam uma espécie de busca local nas proximidades dos melhores indivíduos da população.
+	   |--> Sem mutação, os algoritmos genéticos fariam a busca usando somente a informação contida na população e não teriam como repor material genético perdido com a seleção e o crossover.
+
+	O algoritmo genético envolve passos probabilísticos em três pontos:
+	|-- Na criação da população inicial.
+	|-- Na seleção dos indivíduos que sofrerão as operações genéticas.
+	|-- Na escolha do ponto de mutação (na mutação) ou de corte (no crossover).
+
+
+	Iniciar população
+		|
+	       \|/       não
+	     seleção <-----------------	
+		|		     |
+	       \|/		critério de  sim
+	    corssover		   parada   ------> algoritmo finalizado
+		|		 alcançado
+	       \|/		    /|\
+	     mutação------------------
+
+
+Lógica Nebulosa (Fuzzy):
+	Possuem a capacidade de processar dados inexatos ou parcialmente corretos.
+	A Lógica Nebulosa é uma forma elegante e altamente eficaz de solucionar problemas, pois sistemas construídos com base neste paradigma são mais compactos e baratos que aqueles que utilizam soluções convencionais.
+	Forma de processamento:
+	|-- Nebulização das variáveis de entrada;
+	|-- Processo de inferência;
+	|-- Desnebulização das variáveis de saída;
+

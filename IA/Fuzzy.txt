@@ -1,0 +1,78 @@
+Para realizar a lógica fuzzy, temos uma linha a seguir:
+
+		   |-------------- base das regras
+		   |			 |
+		   |			 |
+		   |			 |
+		  \|/			\|/
+entrada ---> fuzzyficação ---> avaliação das regras ---> defuzzificação ---> saída
+		  /|\			 			|
+		   |			 			|
+		   |			 			|
+		   |			 			|
+		   |---------- sistema de controle <------------|
+
+
+Fuzificação: definição das variáveis linguisticas (VL): variável cujo os argumentos são números fuzzy e geralmente palavras modeladas por conjuntos fuzzy.
+	Argumentos da VL exemplo: idade, podendo ser criança, adolescente, jovem, adulto e idoso. Esses argumentos são chamados de termmos linguísticos (TL). Cada um TL será modelado através de uma função de pertinência (FP), os FP podem ser triangular, trapezoidal, gaussiana, sigmoidal, bell e outras.
+
+Exemplo: Lava Roupas
+	Objetivo: Automatizar o funcionamento de uma máquina de lavar roupas de modo a economizar água, eletricidade, detergente, etc.
+	Formulação e Variáveis do Problema: Conhecido o peso aproximado das roupas e quão sujas elas estão, determinaremos a quantidade de detergente a ser aplicada.
+	|--Variáveis independentes (fuzzyficação): Peso e sujeira.
+	|--Variável dependente (defuzzificação): Quantidade de detergente.
+
+VLs:
+	|-- peso = {Muito Leve (ML), Leve (LE), Pesado (PE) e Muito Pesado (MP)}
+	|-- sujeira = {Quase Limpo (QL), Sujo (SU), Muito Sujo(MS) e Extra Sujo (ES)}
+	|-- quantidade de detergente = {Muito Pouco (QMP), Pouco (QPO), Moderado (QMO), Exagerado (QEX), Máximo (QMA)}
+
+TLs das VLs:
+	|-- peso q(min, max) = [0, 12]
+	    |--ML = trapézio(q; 0, 1, 1.6, 2)
+	    |--LE = triangulo(q; 1.4, 4, 4)
+	    |--PE = triangulo(q; 3, 7, 8)
+	    |--MP = trapézio(q; 6, 8, 11, 12)
+	|-- sujeira q(min, max) = [0, 120]
+	    |--QL = triangulo (q; 0, 10, 20)
+	    |--SU = triangulo (q; 10, 30, 50)
+	    |--MS = triangulo (q; 40, 70, 100)
+	    |--ES = triangulo (q; 80, 100, 120)
+	|-- quantidade de detergente q(min, max) = [0, 120]
+	    |--QMP = triangulo (q; 0, 10, 20)
+	    |--QPO = triangulo (q; 20, 30, 40)
+	    |--QMO = triangulo (q; 40, 50, 60)
+	    |--QEX = triangulo (q; 60, 70, 80)
+	    |--QMA = trapezio (q; 80, 90, 100, 120)
+
+Método de Inferência:
+	Para o peso p e o nível de sujeira s. Determine o quanto de detergente será usado, seguindo a fórmula:
+	|---> Ri = ∅Pj(p) ^ ∅Sk(s), ∀i = 1, ..., 16, i=j=k=1,...,4 (ANTECEDENTE)
+	onde:
+	|--->triangulo(x; a, b, c) = max(min(((x-a)/(b-a)), ((c-x)/(c-b))), 0)
+	|--->trapezio(x; a, b, c, d) = max(min(((x-a)/(b-a)), 1, ((d-x)/(d-c))), 0)
+	assim:
+	|---> ∅ML(x) = trapezio (x; a, b, c, d)
+	|---> ∅ML(10) = trapezio (10; -20, -10, 0, 20)
+	|---> V1 = max(min(((10 - (-20)/((-10) - (-20))), 1, ((20 - 10)/(20 - 0))), 0)
+	|---> V1 = max(min(((30/10), 1, (10/20)), 0)
+	|---> V1 = max(min(3, 1, 0.5), 0)
+	|---> V1 = max(0.5, 0)
+	|---> V1 = 0.5
+
+	Definir os valores de R1 a 16, onde sempre é selecionado o menor
+	|---> Ri = ∅Pj(p) ^ ∅Sk(s)
+
+	O conjunto fuzzy da quantidade de detergente (QD) é determinado através da união dos conjuntos fuzzy obtidos tomando o mínimo entre o antecedente da regra Ri e a função de pertinência do consequente da regra:
+	            16
+	|---> ∅QD = U (Wi^∅Qi)
+		   i=1
+
+	Onde, Qi pertence a {QMP, QPO, QMO, QEX, QMA}.
+
+	Regra 1: antecedente = ML(10) ^ QL(15) = 0.5 ^ 0.25 = 0.25
+	|---> ∅QD = (0.25 ^ ∅QMP) U (0.25 ^ ∅QPO)
+
+Defuzzificação:
+	Finalmente, transformamos o conjunto fuzzy que representa a quantidade de detergente em um valor real. Esse processo é chamado defuzzificação. O conjunto fuzzy ∅QD pode ser transformado em um número real usando o centro de área, também chamado centroide. No caso discreto é dado por:
+	|---> q = (σ j=1 qj ∅QD (qj)) / (σ j=1 ∅QD (qj))
