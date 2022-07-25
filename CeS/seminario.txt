@@ -1,0 +1,60 @@
+Introdução - pág 4 até pág 29 - (lulu gadioli)
+Ícones - pág 29 até pág 52 - Daniel
+A escrita e a História - pág 53 até pág 76 - let
+A medida de todas as coisas - pág 76 até pág 101 -
+A modularidade da mente - pág 101 até pág 121 -
+
+
+	A ENGENHARIA DA COLETIVIDADE
+
+	Douglas Engelbart foi do diretor da Augmentation Research Center. Esses groupwares são tratados em diversas etapas.
+	O desenvolvimento que ele desejava era na criação de interfaces, na qual existia um padrão nas representações e nos comandos utilizados, assim, ao utilizar um novo programa, os conceitos de funcionamento eram semelhantes. Dessa forma, quanto mais se aprendesse a utilizar um sistema, mais isso te facilitava a aprender outros. Com isso, o usuário se sentia familiriazado mesmo ao utilizar algo pela primeira vez.
+
+
+	OS EQUIPAMENTOS COLETIVOS DA INTELIGÉNCIA
+
+	Douglas Engelbart também afirmava que as novas tecnologias  determinam como a sociedade cresce intelectualmente e socialmente. E que é necessário uma evolução  equalitária entre as ferramentas e os seres humanos.
+	Atualmente, a maior porte dos programas reorganizam a forma com a qual os usuários veem o mundo e modificam seus reflexos mentais.
+	!!!!É bom falar aqui da velocidade de consumo de informação, vídeos em 2x, como a utilização por mídias mais rápidas!!!!
+	As grandes inovação tecnológicas abriram a possibilidade de novas relações entre homens e computadores: códigos de programação cada vez mais. intuitivos, comunicação em tempo real, redes, micro, novos princípios de interfaces... É porque dizem respeito aos humanos que estas viradas na história dos artefatos informáticos nos importam. 
+
+
+	SOBRE O USO
+
+	Desde o começo dos anos sessenta, engenheiros como Douglas Engelbart conduziam pesquisas na direção de uma informática da comunicação, do trabalho cooperativo e da interação amigável. 
+	Em 1979, quando lançaram a primeira planilha, o Visicalc, ela era um software do Apple 2. Isso permitiu que os empresários fizessem previsões contábeis e financeiras sem que precisassem programar. Com isso, foi impulsionado a venda de Apples apenas por ter aberto a porta da microinformática ás empresas. 
+	É perceptível, que a criação é o mesmo utilizar de maneira original elementos que já existem. 
+	Criação e uso são duas faces de uma mesma operação, onde geralmente, apenas se reconstroi novos significados.
+
+
+	O GROUPWARE
+	
+	Os hipertextos auxiliaram ao trabalho em equipe na ajuda ao raciocínio, na discussão, na criação, na organização, e no planejamento. Os usuário destes programas param de ser um indivíduo e se tornam um coletivo.
+	A elaboração de tecnologias não pode ser dissociada do trabalho em equipe. Se conhece muito pouco a forma na qual são realmente trocadas informações nos grupos, porque ideias de pessoas diferentes podem combinar-se de maneira eficaz e criativa ou então bloquearem-se mutuamente. 
+	Assim, os groupware visam auxiliar a comunicação nos grupos. A primeira preocupação é a de coordenar a ação, tudo o que transita na rede é rotulado: isso é uma pergunta, um assentimento, a anulação de uma promessa, uma contraproposta? O programa verifica o estado do que  está em andamento e alerta os participantes quanto a datas, atrasos e eventuais rupturas de promessas. Em caso de litígio, o histórico da conversa está sempre disponível. 
+	Durante uma conversa não dispomos de recursos para armazenar e organizar as representações verbais e gráficas. Durante uma simples troca verbal, é difícil compreender e mais ainda produzir uma argumentação organizada em defesa de nossas idéias. Contestamos discursos com mais facilidade do que dialogamos. Usamos processos retóricos mais do que raciocínio passo a passo. Reafirmamos nossos argumentos em vez de avaliar em conjunto as provas e justificativas de cada inferência.
+	Os groupwares ajudam cada participante a se situar dentro da discussão em andamento. Eles permitem também o link de cada argumento com os documentos aos quais ele se referem. Este contexto, ao contrário do que ocorre durante uma discussão oral, encontra-se agora totalmente explicitado e organizado. 
+	Os hipertextos de auxílio à inteligência cooperativa ampliam a rede de questões, posições e argumentos, ao invés de valorizar os discursos das pessoas tomados como um todo. Com os groupwares, o debate se dirige para a construção progressiva de uma rede de argumentação e documentação que está sempre presente aos olhos da comunidade, podendo ser modificada a qualquer momento. Não é mais "cada um na sua vez" ou "um depois do outro", mas sim uma escrita coletiva, que crescesse por conta própria por linhas paralelas, e está sempre disponível sobre a tela. O groupware talvez tenha inaugurado uma nova geometria da comunicação.
+	O papel dos groupwares é exatamente o de reunir, não apenas os textos, mas também as redes de associações, anotações e comentários ás quais eles são vinculados pelas pessoas. Ao mesmo tempo, a construção do senso comum encontra-se exposta e como que materializada: a elaboração coletiva de um hipertexto.
+	
+
+
+
+
+	OS TRÊS TEMPOS DO ESPÍRITO: A ORALIDADE PRIMARIA, A ESCRITA E A INFORMÁTICA 
+
+	Se a humanidade construiu mais rápidos que as plantas e animais, pois ela dispõe do instrumento de memória e de propagação das representações que é a linguagem. Ela também foi capaz de organizar informações nas coisas e em suas relações.
+	A partir do momento em que uma relação é inscrita na matéria resistente de uma ferramenta, de uma arma, de um edifício ou de uma estrada, se torna permanente.
+
+
+	ORALIDADE PRIMARIA
+
+	Na oralidade primária, a palavra tem como função a gestão da memória social, e não apenas a livre expressão. O mundo da oralidade primária situa-se antes de qualquer distinção escrito/falado. 
+	Nas sociedades sem escrita, o tempo está é baseada na memória humana associada ao manejo da linguagem.
+	O oralista primário está totalmente encarnada em cantos, danças, nos gestos de inúmeras habilidades técnicas. Nada é transmitido sem que seja observado, escutado, repetido, imitado, atuado pelos participantes da comunidade. 
+
+
+	A MEMÓRIA HUMANA: CONTRIBUIÇÕES DA PSICOLOGIA COGNITIVA 
+
+	A memória de curta prazo mobiliza a atenção. Ela é usada, por exemplo, quando lemos um número de telefone e o anotamos mentalmente até que o tenhamos discado no aparelho. A repetição parece ser a melhor estratégia pára reter a informação a curto prazo.
+	A memória de longa prazo, por outro lado, é usada a cada vez, que lembramos de nosso número de telefone no momento oportuno. Assim, a memória de longa prazo é armazenada em uma rede associativa, onde os elementos se conectam somente quanto o seu conteúdo se conecta. 
