@@ -1,0 +1,29 @@
+<html>
+
+<head>
+  <title>Angular JS Modules</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="./mainApp.js"></script>
+  <script src="./questao4.js"></script>
+</head>
+
+<body>
+  <h2>Teste de nome</h2>
+  <div ng-app="myApp" ng-controller="myController">
+    <div>
+      Nome: <input type="text" ng-model="arr.nome">
+    </div>
+
+    <div>
+      Sobrenome: <input type="text" ng-model="arr.sobrenome">
+    </div>
+
+    <div>
+      Meu nome é: {{arr.nome + ' ' + arr.sobrenome}}
+    </div>
+
+    <button onclick="teste()">click</button>
+  </div>
+</body>
+
+</html>

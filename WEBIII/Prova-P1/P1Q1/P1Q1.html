@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html ng-app="">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Questão 1</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+	<h2 id="estados_ajax_post"></h2>
+	<h3 id="valor_recebido"></h3> 
+	<p id="hora_servidor" ng-model="hora"></p>
+	<p>Digite sua idade:</p>
+	<input type="text" name="idade" />
+	
+	<div>
+		 <h1 id="nova_hora">{{hora}}</h1>
+	</div>
+	
+	<button onclick="loadXMLDoc()">Enviar</button> 
+	
+	<div>
+		<h1 id="nova_hora" ng-bind-html="hora"></h1>
+	</div>	
+	
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	
+	<div>
+		Nome: <input type="text" ng-model="Nome">
+		<p>Meu nome é <h3 id="bind-angular-q3">{{Nome}}</h3></p>
+	</div>
+	
+	<script>
+		"use strict";
+
+		var app=angular.module('myApp',[]);
+	
+		function loadXMLDoc() {
+			loadXMLDocGet();
+			
+			var idade = document.getElementsByName("idade")[0].value;
+			
+			var ajax = new XMLHttpRequest();
+			ajax.open("POST", "daniel.do");
+			ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			ajax.onreadystatechange = function() {
+				document.getElementById("estados_ajax_post").innerHTML = ajax.readyState;
+				console.log(ajax.readyState);
+				
+				if (ajax.readyState === XMLHttpRequest.DONE) {
+					var idade = ajax.response;
+					
+					if (primoVerifica(idade)) {
+						$("#valor_recebido").html(idade);
+						$("#valor_recebido").css("background-color","#808080");
+					}
+					else {
+						$("#valor_recebido").html(idade);
+						$("#valor_recebido").css("background-color","#ffffff");
+					}
+				}
+			}
+			ajax.send(`idade=${idade}`);
+			
+			document.getElementById("estados_ajax_post").innerHTML = ajax.readyState;
+			console.log(ajax.readyState);
+		}
+		
+		function primoVerifica(num) {
+			for (let i = 2; i < num; i++) {
+				if (num % i == 0) {
+			    	return false;
+			    }
+			}
+			return num > 1;
+		}
+		
+		function loadXMLDocGet() {
+			var idade = document.getElementsByName("idade")[0].value;
+			
+			var ajax = new XMLHttpRequest();
+			ajax.open("GET", "daniel.do");
+			ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			ajax.onreadystatechange = function() {
+				if (ajax.readyState === XMLHttpRequest.DONE) {
+					let horaFormat = ajax.response;
+					
+					document.getElementById("hora_servidor").innerHTML = horaFormat;
+					
+					angularChange(horaFormat);
+				}
+			}
+			ajax.send();
+		}
+		
+		function angularChange(hora) {
+			//document.getElementById('nova_hora').innerHTML = "<div ng-controller='tempo'>{{tempo}}</div>";
+			//$compile( document.getElementById('someStuff') )($scope);
+			
+			//var text_element = angular.element($document[0].querySelector('#nova_hora'));
+    		//text_element.html(hora);
+		}
+	</script>
+</body>
+</html>

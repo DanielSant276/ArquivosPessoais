@@ -1,0 +1,9 @@
+2. No AngularJS, qual o papel do:
+a) ng-app (e qual a diferença para o data-ng-app?)
+	R = O ngApp designa o elemento raiz da aplicação, geralmente sendo inserida no elemento raiz da página. ng-app e data-ng-app são equivalentes, a diferença é que no data-ng-app é mais específica para ser utilizada no HTML5, pois ela valida o html.
+
+b) ng-model
+	R = ngModel vincula uma tag de formulário com uma outra propriedade utilizada na página.
+
+c) ng-bind
+	R = ngBind é usado para substituir o conteúdo de texto do HTML por um outro valor, e atualizar esse conteúdo sempre que o valor for alterado.
