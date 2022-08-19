@@ -1,0 +1,8 @@
+Princípios de criptografia
+	A criptografia é aplicada à confidencialidade, as técnicas criptográficas estão entrelaçadas com a autenticação, a integridade de mensagens, o não repúdio e outras.
+	A criptografia permite que um remetente disfarce os dados de modo que um intruso não consiga obter informação caso os dados sejam interceptados. O destinatário deve ser capaz de recuperar os dados originais a partir dos dados disfarçados. Porém, a maior parte dos sistemas criptográficos modernos, incluindo os usados na Internet, a técnica de codificação é conhecida e disponível para qualquer um poder acessar. Assim, se todos conhecem o método para codificar os dados, então é necessário que haja uma forma de impedir que um intruso decifre os dados transmitidos. Essa forma é a utilização de chaves.
+	Um remetente deve enviar uma chave (Ka) para que um algoritmo de criptografia possa criptografar a mensagem (m) a ser enviada. Já o destinatário terá uma outra chave (Kb) que será utilizada para descriptografar a mensagem (m) recebida. Aqui, essas chaves irão se dividir em dois sistemas, sistema de chaves simétricas, onde Ka e Kb são idênticas e secretas, e sistemas de chaves públicas, onde se utilizam duas chaves, uma disponível publicamente e outra apenas conhecida pelo remetente ou pelo destinatário, mas não por ambos.
+
+Criptografia de chave pública
+	 Desde o início da utilização de mensagens secretas a dificuldade dessa abordagem é que as duas partes precisam, de alguma forma, compartilhada a chave entre si, mas, para isso é preciso uma comunicação entre os dois. No universo de redes o mais provável é que as partes comunicantes nunca possam se encontrar e jamais consigam conversar a não ser pela rede.
+	

@@ -1,0 +1,48 @@
+Métricas de desempenho
+	VP - Verdadeiros Positivos
+	VN - Verdadeiros Negativos
+	
+	FP - Falsos Positivos
+	FN - Falsos Negativos
+	Total - VP + VN + FP + FN
+
+	-- Acurácia: desempenho total do modelo (VP + VN)/(Total)
+	-- Precisão: quantos dos classificados são realmente verdadeiros (VP)/(VP + FP)
+	-- Recall: dos verdadeiros, quais são realmente verdadeiros (VP)/(VP + FN)
+	-- Medida F: média harmônica entre precisão e recall (2 * precisão * recall)/(precisão + recall)
+
+	O aprendizado de máquina pode ser dividido em duas partes classificação e regressão
+	-- Classificação determina se os dados inseridos fazem parte de um grupo ou de outro
+	-- Regressão tenta prever o valor dos dados inseridos
+
+Redes Neurais Artificiais
+
+	Os modelos neurais artificiais oferecem um paradigma
+atrativo, pois “aprendem” a resolver problemas através de
+exemplos.
+	Modelo matemático: Simplificações da realidade com o
+propósito de representar aspectos relevantes de um
+sistema em estudo, sendo que detalhes de menor
+significância são descartados para viabilizar a modelagem;
+	O processamento da informação ocorre em vários
+elementos chamados neurônios artificiais:
+	Cada neurônio possui várias entradas, com cada entrada possuindo pesos das conexões, essas entradas são multiplicados com seus pesos pesos, então é realizado uma soma ponderada (junção somadora) entre essas entradas e são enviados para uma função de ativação que gera uma saída.
+
+	O treinamento de RNA's pode ser dividido em:
+	-- Supervisionado: necessita de um “professor” durante a fase de aprendizagem, que antecede a utilização (execução) da rede;
+	-- Não-supervisionado: direcionado por correlações
+existentes nos dados de entrada e, portanto, não necessita
+de um “professor”;
+
+
+
+Técnicas de classificação:
+
+	Árvore de decisão: Tem o objetivo de tentar diminuir a incerteza da classificação, em cada nó é realizado um teste em algum atributo, escolhendo quanto cada feature organiza melhor os dados (a que possui menos incerteza).
+	Entropia: Medida da aleatoridade ou da incerteza, quanto menos, melhor a decisão e maior o ganho de informação.
+
+
+
+Técnicas de Regressão:
+
+	Regressão Linear: Estuda a relação entrea variável dependente e indenpendente. A relação entre as duas é um modelo matemático, uma variável independente utiliza modelo de regressão linear simples (mrls), várias variáveis independentes utiliza modelo de regressão linear múltipla (mrlm). A correlação representa a força ou o grau da relação entre essas variáveis
