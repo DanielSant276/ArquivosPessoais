@@ -1,0 +1,4 @@
+rsa -> criptografia
+
+pki -> 
+https://www.fortinet.com/resources/cyberglossary/public-key-infrastructure

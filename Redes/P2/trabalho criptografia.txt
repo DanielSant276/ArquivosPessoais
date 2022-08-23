@@ -4,5 +4,42 @@ Princípios de criptografia
 	Um remetente deve enviar uma chave (Ka) para que um algoritmo de criptografia possa criptografar a mensagem (m) a ser enviada. Já o destinatário terá uma outra chave (Kb) que será utilizada para descriptografar a mensagem (m) recebida. Aqui, essas chaves irão se dividir em dois sistemas, sistema de chaves simétricas, onde Ka e Kb são idênticas e secretas, e sistemas de chaves públicas, onde se utilizam duas chaves, uma disponível publicamente e outra apenas conhecida pelo remetente ou pelo destinatário, mas não por ambos.
 
 Criptografia de chave pública
-	 Desde o início da utilização de mensagens secretas a dificuldade dessa abordagem é que as duas partes precisam, de alguma forma, compartilhada a chave entre si, mas, para isso é preciso uma comunicação entre os dois. No universo de redes o mais provável é que as partes comunicantes nunca possam se encontrar e jamais consigam conversar a não ser pela rede.
-	
+	Desde o início da utilização de mensagens secretas a dificuldade dessa abordagem é que as duas partes precisam, de alguma forma, compartilhada a chave entre si, mas, para isso é preciso uma comunicação entre os dois. No universo de redes o mais provável é que as partes comunicantes nunca possam se encontrar e jamais consigam conversar a não ser pela rede.
+	O remetente utiliza uma chave pública para criptografar os dados e o destinatário utilizará uma chave privada para decodificar a mensagem. A chave pública é de conhecimento geral para qualquer um. Já a chave privada é de conhecimento único de uma pessoa.
+	Exemplo:
+	O remetente ao enviar uma mensagem para um destinário, ele pede a chave pública do destinátario e criptografa a mensagem (não é possível descriptografar a mensagem utilizando a chave pública). O destinatário ao receber a informação, ele consegui descriptografar através da sua chave privada (chave na qual só ele conhece). Mesmo que haja uma pessoa no meio do caminho e receba a informação, ele não será capaz de obter a mensagem original, visto que apenas a chave privada, que está em posse do destinatário, é capaz de descriptografar a mensagem original.
+
+PKI (Public Key Infrastructure)
+	É um framework utilizado para fornecer autenticidade e confidencialidade em suas transmissões de dados.
+	É uma estrutura para garantir de forma segura a confidencialidade de documentos eletrônicos e garantir a autenticidade desses documentos.
+
+	Conceitos:
+	-- Criptografia de chave assimétrica;
+	-- Autoridade Certificadora;
+	-- Autoridade Registradora;
+	-- Certificado Digital;
+	-- Assinatura Digital;
+
+Criptografia de chave assimétrica : Já feito acima
+
+Autoridade Certificadora:
+	Entidade responsável por emitir, expedir, distribuir, revogar e gerenciar certificados digitais, no Brasil quem toma conta disso é o ICP - Brasil. Existem outras autoridades certificadoras, porém a ICP que permite a elas certificar.
+
+Autoridade Registradora:
+	Valida a documentação para certificar a pessoa física ou jurídica. Necessitando enviar seus documentos pessoalmente para que seja autenticado e registrado oficialmente.
+
+Certificado Digital:
+	Associa uma chave pública para uma pessoa física ou jurídica. Um certificado irá possuir: versão, serial, algoritmoId, validade, chave pública e outras informações referentes a certificação.
+	Principais certificados: (não sei se é importante entrarmos a fundo nisso, talvez seja bom só listar)
+	-- E-CNPJ;
+	-- E-CPF;
+	-- NF-E;
+
+Com funciona essa infraestrutura:
+	Ao se conectar a um serviço, é necessário se comunicar com a autoridade certificadora para solicitar o certificado do serviço a ser acessado. Com o certificado, é possível acessar a chave pública e criptografar a mensagem a ser passada para o serviço. Já o serviço utiliza a sua chave privada para descriptografar e obter a informação que foi submetida a ele.
+
+Asssinatura Digital (ver com a claudia se isso aqui vai entrar também):
+	É utilizado para validar a integridade de um documento enviado de uma parte para a outra. 
+	A mensagem original é assinada, ou seja, introduzir um hash no final da mensagem através da chave privada do remetente. Essa assinatura garante a integridade e autenticidade do documento pois a assinatura contém um resumo do documento. Caso ele seja alterado com a assinatura, a assinatura não será mais válida.
+	Qualquer indivíduo/serviço que quiser verificar a autenticidade do documento, pode solicitar a chave pública para a autoridade certificadora e verificar a integridade do documento recebido.
+	Obs.: A assinatura não garante a confidencialidade pois qualquer um pode acessar o documento e verificar sua integridade através do acesso da chave pública, para se ter um nível de segurança é necessário utilizar certificados SSL ou TLS para transmissão segura de dados.

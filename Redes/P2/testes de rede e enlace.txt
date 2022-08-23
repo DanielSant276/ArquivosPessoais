@@ -1,0 +1,113 @@
+1) Suponha que um roteador tenha n portas de entrada com velocidades de linha idênticas; n portas de saída com velocidades de linha idênticas, e que a velocidade de linha de uma porta de saída seja, no mínimo, n vezes a velocidade da porta de entrada. Suponha ainda que a velocidade do elemento de comutação é, no mínimo, n vezes maior do que a velocidade de uma porta de entrada. Quando essas condições acontecem não existe formação de fila nem na porta de entrada e nem na porta de saída. Explique o porquê em cada um dos casos, dando um exemplo dos piores casos que podem acontecer (tanto na porta de entrada quanto na porta de saída) e mostrando que, mesmo nestes casos, não tem formação de fila.
+	R = O pior caso para entrada seria se chegasse um pacote para cada uma das portas de entrada ao mesmo tempo. Mas o comutador tem velocidade n vezes maior do que a de uma porta de entrada, então ele conseguirá tratar todos os pacotes que chegaram antes que cheguem outros, não formando fila. O pior caso para a saída seria se o comutador mandasse todos os pacotes para a mesma porta de saída ao mesmo tempo. Como a velocidade da porta de saída é n vezes maior que a de entrada, o comutador sempre conseguirá transmitir pacote na linha de saída antes que cheguem outros, sem fila.
+
+
+
+2) O que acontece em cada um dos algoritmos link-state (estado do enlace) e distance-vector (vetor de distâncias) quando muda o custo de um enlace ligado a um determinado nó?
+	R = Link-state: a mudança no custo é notificada para todos os nós da rede, com broadcast. Então, quando um nó executar o algoritmo, o novo valor vai ser conhecido e suas tabelas serão alteradas. 
+	Distance-vector: o nó detecta que o custo do enlace local mudou, e então atualiza sua tabela de distâncias. Quando é o menor custo do caminho, ele avisará a seus vizinhos.
+
+
+
+3) Um grande número de endereços IP consecutivos está disponível a partir de 198.16.0.0. Suponha que quatro organizações, A, B, C, B, solicitem 4.000, 2.000, 4.000 e 8.000 endereços, respectivamente, e nessa ordem. Para cada uma delas, forneça o primeiro endereço IP atribuído, o último endereço IP atribuído e a máscara na notação w.x.y.z/s.
+	R=
+2^12 = 4096 -> 2^32 - 2^12 = 2^20
+A =
+	    198.16.0.0/20
+Primeiro -> 198.16.0.0
+	    198.16.0000|0000.00000000
+	    198.16.0000|1111.11111111
+Último   -> 198.16.15.255
+Máscara de sub-rede -> 198.16.16.0/20
+
+
+2^11 = 2048 -> 2^32 - 2^11 = 2^21
+B =
+	    198.16.16.0/21
+Primeiro -> 198.16.16.0
+	    198.16.00010|000.00000000
+	    198.16.00010|111.11111111
+Último   -> 198.16.23.255
+Máscara de sub-rede -> 198.16.24.0/21
+
+
+2^12 = 4096 -> 2^32 - 2^12 = 2^20
+C =
+	    198.16.24.0/20
+Primeiro -> 198.16.24.0 porém não pode ser 24, tem que ser ou 128 ou 64 ou 32 ou 16 ou 0, sendo assim, 24 é trocado para 32
+Primeiro -> 198.16.32.0
+	    198.16.0010|0000.00000000
+	    198.16.0010|1111.11111111
+Último   -> 198.16.47.255
+Máscara de sub-rede -> 198.16.48.0/20
+
+
+2^13 = 8192 -> 2^32 - 2^13 = 2^19
+B =
+	    198.16.48.0/19
+Primeiro -> 198.16.48.0 mesma coisa do anterior, não pode ser 48, tem que ser ou 128 ou 64 ou 32 ou 0, sendo assim, 48 é trocado para 64.
+Primeiro -> 198.16.64.0
+	    198.16.010|00000.00000000
+	    198.16.010|11111.11111111
+Último   -> 198.16.95.255
+Máscara de sub-rede -> 198.16.96.0/19
+
+
+
+4) Um roteador tem as seguintes entradas em sua tabela de roteamento:
+
+Endereço/Máscara 	Hop
+135.46.56.0/22 		i0
+135.46.60.9/22 		i1
+192.53.40.0/23 		r1
+Padrão 			r2
+
+Para cada um dos endereços IP a seguir, o que o roteador fará se chegar um pacote com esse endereço?
+a) 135.46.63.10 
+b) 135.46.57.14 
+c) 135.46.52.2
+d) 192.53.40.7
+e) 192.53.56.7
+
+	R= 
+	135.46.56.0/22
+	135.46.001110|00.0, como a máscara é de 22 bits, ela pega os primeiros 16 bits (135.46) e mais 6 bits adicionais para ver quais bits precisarão estar ativos para 56.
+	O resto dos bits é necessário colocar 1 em todos os campos que não sejam máscara, ficando:
+	135.46.001110|11.11111111, sendo assim, 135.46.59.255.
+	Assim qualquer endereço entre 135.46.56.0 e 135.46.59.255 irá para a interface 0.
+
+	Usando a mesma lógica para 135.46.60.9/22 -> 135.46.001111|00.00001001 será 135.46.001111|11.11111111 -> 135.46.63.255, então qualquer valor entre 135.46.60.9 a 135.46.63.255 irá para a interface 1.
+
+	Assim sendo, 192.53.40.0/23 -> 192.53.0010100|0.00000000 -> 192.53.0010100|1.11111111 -> 192.53.41.255, então qualquer valor entre 192.53.40.0 a 192.53.41.255  irá para o roteador 1 e o resto irá para o roteador 2.
+
+	135.46.56.0/22 é a mesma coisa que dizer que:
+	135.46.001110|00.0, pois a máscara é de 22 bits, logo, ela pega os 16 primeiros bits (do 135.46) e mais 6 adicionais para chegar a 22. Desses 6 adicionais, deve-se ver quais bits precisarão estar ativos (=1) para dar 56.
+	Agora, para saber o resto, basta colocar 1 em todos os demais campos que não a máscara:
+	135.46.001110|11.255, que é 135.46.59.255.
+	Portanto, qualquer endereço entre 135.46.56.0 a 135.46.59.255 irá para a Interface 0.
+	Pela mesma lógica, qualquer endereço entre 135.46.60.9 a 135.46.63.255 irá para a Interface 1.
+	E, igualmente, entre 192.53.40.0 a 192.53.41.255 irá para o Roteador 1; demais irão ao Roteador 2.
+
+	Com isso:
+
+a) Interface 1
+b) Interface 0 
+c) Roteador  2
+d) Roteador  1
+e) Roteador  2
+
+IMPORTANTE: Se estiver podendo ir para dois lugares diferentes, deve-se escrever o endereço de forma binária e ver qual tem mais bits da máscara batendo. Ele será encaminhado àquele lugar que tiver mais bits parecidos.
+
+
+
+5) O IPv6 utiliza endereços de 16 bytes (128 bits). Se um bloco de um milhão de endereços for alocado a cada picossegundo (10^(-12) seg.), qual será a duração desses endereços?
+	R = 
+	Endereços: 2^128 -> 3,4 * 10^38
+	Um milhão de endereços por segundo: 10^6/10^(-12) -> 10^18
+
+	(3,4 * 10^38) / (10^18) -> 3,4 * 10^20 segundos para esgotar todos os endereços IPV6.
+
+
+
+6) A máscara da sub-rede de uma rede na Internet é 255.255.248.0. Qual é o número máximo de hosts que ela pode manipular?
+	R = O número de bits da máscara é 255.255.248.0 -> 2^8.2^8.(2^8-2^4) -> 8 + 8 + (8-4) -> que é 20. Como o IPV4 tem, no máximo 32 bits, fica 32 - 20 = 12 bits para o host. Dessa forma o número máximo de hosts que ela pode manipular é de 2^12 (4096).

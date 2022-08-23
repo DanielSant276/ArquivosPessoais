@@ -1,0 +1,1 @@
+Utilizaremos o banco de dados KDD99 para criar uma inteligência artifical capaz de treinar uma rede neural para ser capaz de identificar com uma alta precisão de uma conexão é ou não um ataque.

@@ -1,0 +1,216 @@
+		Camada de Redes - Aula 09
+
+A camada de redes provê a comunicação entre dois hospedeiros.
+
+Introdução:
+	A camada de rede é implementada nos hospedeiros finais e nos roteadores. Apresentando maior complexidade nos hospedeiros finais por conta da quantidade de camadas na borda da rede. No núcleo da rede existe uma menor quantidade.
+	Papel da camada de redes: transportar pacotes do remetente para o destinatário.
+	Os roteadores possuem duas funções:
+	-- Repasse: Passa o pacote do enlace de entrada para o elance de saída.
+	-- Roteamento: Determina a rota a ser encaminhanda.
+
+Algoritmo de roteamento:
+	Determinam os valores nas tabelas de repasse.
+
+Modelos de serviço de rede:
+	Define os serviços de envio entre uma borda da rede e a outra.
+	Serviços que podem ser oferecidos:
+	-- Entrega garantida;
+	-- Entrega garantida com atraso limitado;
+	-- Entrega de pacotes na ordem;
+	-- Largura de banda mínima garantida;
+	-- Jitter (variação de atraso) máximo garantido;
+	-- Serviços de segurança;
+	
+	Exemplos de serviços para algumas redes:
+	-- Internet: utiliza o modelo de melhor esforço para entregar o pacote, não tem garantida de largura de banda, não tem garantia contra perda, envia os pacotes em qualquer ordem possível, não mantem temporização e não indica congestionamento.
+	-- ATM: pode ser CBR (Constant Bit Rate / bom para aplicações multimídias) ou ABR (Available Bit Rate)
+	   |-- CBR: garante taxa constante da largura de banda, possui garantia contra perda, envia os pacotes na ordem, matém a temporização, não ocorre congestionamento;
+	   |-- ABR: garantia de largura mínima de banda, não possui garantia contra perda, envia os pacotes na ordem, não mantém a temporização e indica caso haja congestionamento;
+
+Redes de circuitos virtuais (serviço com conexão (onde há primeiro a verificação se é possível atender a conexão)):
+	Um circuito virtual (CV) consiste em:
+	-- Um caminho: uma série de elaces e roteadores entre hospedeiros de origem e de destino;
+	-- Números de CVs: um número par acada enlace ao longo do caminho;
+	-- Registros na tabela de repasse: um registro para cada roteador ao longo do caminho;
+
+	Esses CVs possuem 3 fases para estabelecer um circuito virtual:
+	1-- Estabelecimento de CV;
+	2-- Transferência de dados;
+	3-- Encerramento do CV;
+
+Redes de datagramas (serviço sem conexão):
+	Em uma rede de datagramas, o processo é diferente, pois não há a conexão, possuindo apenas 2 fases:
+	1-- Informa o endereço de destino;
+	2-- Envia para dentro da rede os dados;
+
+	Nas redes de datagramas, os pacotes atravessam vários roteadores:
+	-- Usa o endereço de destino do pacote para repassá-lo;
+	-- Roteador transmite o pacote para aquela saída;
+	-- Sem controle no núcleo da rede;
+
+	Nos CVS, há o controle antes que uma conexão é criada, possuindo um controle formal no núcleo da rede, evitando assim o congestionamento.
+
+Roteador:
+	Um roteador é basicamente um computador que possui 3 elementos:
+	-- As portas de entrada;
+	-- O elemento de comutação;
+	-- As portas de saída;
+
+Processamento de entrada:
+	Começa pela terminação de linha (entrada de pacotes), seguindo para o processamento do pacote (onde é realizado o desencapsulamento, ou seja, tirar um pacote de dentro de um pacote), a consulta e repasse para a porta apropriada e a passagem para o elemento de comutação.
+
+Elemento de comutação:
+	Comuta de uma porta de entrada para um porta de saída, a comutação pode ser realizada de 3 formas:
+	-- Comutação por memória (utilizado pelos primeiros roteadores, do tipo computador normal):  Utilizava a memória RAM para realizar o repasse, primeiro copiava o pacote na memória e depois passava para o elemento de saída;
+	-- Comutação por um barramento: Forma mais moderna onde se utiliza um barramento para realizar a comutação, porém essa forma gera uma condição de corrida;
+	-- Comutação por uma rede de interconexão: Utiliza uma malha, realizado uma comutação de maior velocidade por não gerar condição de corrida;
+
+Processamento de saída:
+	Gerenciamnto de fila e encapsulamento. Começa recebendo do elemento de comutação, gerencia o buffer, realiza o processamento de enlace (onde é feito o encapsulamento) e por último passa para o destinatário.
+
+Formação de fila:
+	As filas de pacotes podem ocorrer em diversas partes dependendo de alguns fatores. Elas pode se formar tanto nas portas de entrada como nas de saída.
+	As filas irão depender de: carga de tráfego, velocidade relativa do elemento de comutação e taxa da linha.
+	Quando as portas de entrada direcionam o pacote para a mesma porta de saída, as filas são geradas na porta de entrada. A fila é gerada na porta de saída quando muitos pacotes chegam na mesma porta de sáida.
+
+
+
+
+		Camada de Redes - Aula 10
+
+Camada de Rede na Internet:
+	Essa camada é composta principalmente de 3 partes:
+	-- Protocolo de Roteamento: criação de rotas e detalhamento do fluxo das rotas;
+	-- Protocolo IP: contendo as convenções de endereçamento (possui hoje em dia os IPV4 e IPV6), formato de datagrama, e convenções de manuseio de pacotes;
+	-- Protocolo ICMP: comunicação de erro e sinalização de roteamento;
+
+Fragmentação do datagrama IP:
+	Fragmentação e cosntrução de datagramas IP, é realizado pelo roteador. É o processo de quebrar um pacote em fragmentos diferentes de forma a atender a capacidade máxima de bits (geralmente 1500 bytes) que pode ser trafegada em um enlace;
+	Esse processo de fragmentação não ocorre no IPV6.
+
+Endereçamento IPv4:
+	Um endereço IP está associado com uma interface. Cada endereço IP tem 32 bits (4B), tendo um total de 2^32 endereços IPs possíveis.
+	
+Exemplo de obtenção de um bloco de endereço IP:
+	Para se obter um bloco de endereços, primeiro se conecta no ISP, que forcene os endereços de um bloco de endereços que já estão alocados a eles. Depois o ISP divide seu bloco de endereços em blocos.
+
+Protocolo DHCP:
+	Prototocolo que permite que um hospedeiro obtenha um endereço IP dinamicamente, de maneira automática.
+	Possui quatro etapas:
+	1-- Descoberta do servidor DHCP;
+	2-- Oferta(s) dos servidores DHCP;
+	3-- Solicitação DHCP;
+	4-- DHCP ACK;
+
+Rede NAT:
+	Geração de endereços IPS extras;
+
+Protocolo de Mensagens de COntrole da Internet (ICMP):
+	O ICMP é usado por hospedeiros e roteadores para comunicar informações de camada de rede entre si.
+	Seu uso mais comum é na comunicação de erros. As mensagens ICMP possuem um campo de tipo e um campo de código.
+
+IPV6: 
+	Para atender à necessidade de maior espaço de endereçamento IP. O IPV6 possui 128bits de endereços de origem e de destino.
+	O formato do seu datagrama é mais simples e possui menos overhead. Possui provisão de QoS. É voltado para aplicações multimídia e não possui fragmentação.
+
+Segurança IP:
+	O IPsec foi desenvolvido para ser compatível com o IPV4 e o IPV6. Possui um acordo criptográfico. Ela mantém também as mensagens confidenciais por conta da criptografia. Também não permite que haja alteração, mantendo a integridade.
+	
+
+
+
+		Protocolo de Roteamento - Aula 11
+
+	Se tratando de roteamento, existem algoritmos que econtram o caminho de menor custo de um roteador até outro.
+	Existem 2 formas de se achar esse menor custo:
+	-- Global: Sabe a informação completa do custo de enlace, é utilizado pelos algortimos de "estado do enlace", onde cada roteador irá realizar esse cálculo.
+	-- Descentralizada: Roteador conhece vizinhos adjacentes, confiando assim nas informações dos vizinhos. Cálculo iterativo com vizinhos, utilizando algortimos de "vetor de distância".
+	
+	Porém além dessas 2 formas, os roteadores podem ser estático ou dinâmico:
+	-- Estático: Rotas mudam lentamente com o tempo.
+	-- Dinâmico: Rotas mudam mais rapidamente, com atualizações periódicas do custo do enlace.
+
+Algoritmo de roteamento de estado do enlace (algoritmo de Dijkstra):
+	Notação:
+	-- c(x, y): custo do enlace do nó x até y (∞ se não forem vizinhos diretos);
+	-- D(v): valor atual do custo do caminho da origem ao destino v;
+	-- p(v): nó predecessor ao longo do caminho da origem até v;
+	-- N': conjunto de nós cujo caminho de menor custo é definitivamente conhecido.
+	Para ver como funciona exatamente, ver em -13:00.
+
+Algoritmo de vetor de distância:
+	O cálculo é interativo (pergunta ao vizinho e vai calculando com ele) e assíncrono, onde cada iteração será causada pela mudança de custo do enlace local.
+	E distribuuído, onde cada nó notifica os vizinhos apenas quando seu DV muda.
+	Cada nó espera (mudança no custo do enlace local ou mensagem do vizinho) ---> Recalcula estimativas ---> Se a distância a qualquer destino tiver mudado, ela notifica os vizinhos.
+
+Comparação dos algoritmos:
+	Distance vector:
+	-- Cada roteador envia a tablea para o seu vizinho, pois eles não conhecem a topologia da rede.
+	-- Envia updates periódicos a cada 30 a 90 segundos, envia apenas para os seus vizinhos o custo do enlace baseado no # de hops. Pode acabar carregando informações erradas por confiar nas informações dos vizinhos.
+	Link state:
+	-- Roteadores trocam informações dentro de uma rede e constrói a topologia, cada nó possui conhecimento da topologia de rede.
+	-- Updates são enviados para toda a rede (broadcast).
+
+Roteamento hierárquico:
+	Uma rede não está isolada, é uma conexão de pequenas redes em grandes redes.
+	Em cada uma das redes existe uma autonomia adminsitratica, onde cada administrador de rede pode estar controlando o roteamento da sua própria rede.
+	Todos os roteadores dentro do mesmo AS (sistemas autônomos) rodam o mesmo algoritmo de roteamento, sendo assim, denominado intrassistema.
+
+
+
+
+		Protocolos de Roteamento na Internet - Aula 12
+
+RIP (Routing Information Protocol):
+	-- Algoritmo de vetor de distância;
+	-- Métrica de distância: # de saltos (máx = 15 saltos);
+	-- Tabelas são intercambiadas tipicamente a cada 30 segundos;
+	As mensagens ICMP de anúncio são trocados entre vizinhos por meio de mensagem de resposta.
+	Se não ocorrer nenhum anúncio após 180s o vizinho é considerado um vizinho morto, invalidando essa rota.
+	
+	Processamento de tabela RIP:
+	-- Tabelas de roteamento RIP controladas por processo em nível de aplicação chamado routed (daemon).
+	-- Anúncions enviados em pacotes UDP, repetidos preiodicamente.
+
+OPFS (Open Shortest Path First):
+	Usa algoritmo Link State, com a disseminação de pacote LS por broadcast a toda a rede, com mapa de topologia em cada nó.
+	Utiliza algoritmo de Dijkstra para cálculo de rota. Transportam nas mensagens OSPF diretamente por IP (ao invés de TCP ou UDP).
+
+	Recursos avançados do OSPF:
+	-- Todas as mensagens são autenticadas para impedir intrusão maliciosa.
+	-- Múltiplos caminhos de mesmo custo permitidos (diferente de apenas um caminho no RIP).
+	-- Para cada enlace, múltiplas métricas de (tempo-real).
+	-- Suporte integrado para uni e multicast.
+
+Roteamento inter-AS da internet: BGP
+	BGP oferece a cada AS um, meio de:
+	-- prover informações de acessibilidade para as outras redes a partir de ASs vizinhos (inter-AS);
+	-- propagar informação de acessibilidade a todos os roteadores internos ao AS (intra-AS);
+	-- determinar rotas "boas" para sub-redes com base na informaçõ e política de acessibilidade (inter-AS);
+	Permite que a sub-rede anuncie sua existência ao resto da Internet: "estou aqui".
+
+Fundamentos do BGP:
+	Pares de roteadores trocam informações de roteamento nas conexões TCP.
+	Quando AS2 anuncia um prefixo para AS1, AS2 promete que repassará datagramas para esse prefixo.
+
+Tipos de tráfego:
+	-- Unicast: pacote enviado a um único destino;
+	-- Broadcast: pacote enviado a todos endereços;
+	-- Multicast: pacote enviado a um grupo de endereços;
+
+Broadcast:
+	Repasse pelo caminho inverso, possui uma difusão controlada, de forma a evitar uma tempestade de broadcast, onde um pacote fica pulando de roteador para roteador podendo um roteador receber várias vezes o mesmo pacote.
+	
+Difusão por Spanning Tree:
+	Os nós da rede montam uma spanning tree (caminho de envio) e depois realizam a difusão. A abordagem de nó central da construção de uma spanning tree é definido um nó central.
+
+Aplicação Multicast:
+	Trasnferência de grandes volumes de dados: atualização de software. Possui taxa constante de áudio, vídeo e texto.
+	Funcionamento:
+	-- Endereçamento usam um endereço multicas (classe D), com um único identificador é utilizado para o grupo de destinatários (endereço indireto).
+	-- Uma cópia do pacote é endereçado ao grupo, onde todos os elementos de um mesmo grupo possuem mesmo endereço IP.
+	-- Cada elemento do grupo possui um endereço IP unicast e um enderço IP multicast que indetifica o grupo.
+
+Serviço par aum grupo (multicast):
+	Os dois componentes de grupo da camada de rede: IGMP e protocolos de roteamento para um grupo.
