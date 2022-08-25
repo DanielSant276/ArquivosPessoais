@@ -214,3 +214,58 @@ Aplicação Multicast:
 
 Serviço par aum grupo (multicast):
 	Os dois componentes de grupo da camada de rede: IGMP e protocolos de roteamento para um grupo.
+
+
+
+
+		Aula 13 - Camada de Enlace
+
+Serviços da camada de enlace:
+	-- Enquadramento de dados (pacotes), os pacotes são chamados de quadros nessa camada.
+	-- Acesso ao enlace.
+	-- Entrega confiável.
+	-- Detecção e correção de erros.
+
+	A camada de enlace é implementada na placa de rede (NIC - Network Interface Card). Essa placa realiza detecção e correção de erros.
+
+Técnicas de detecção e correção de erros:
+	Cenário de detecção e correção de erros.
+	O datagrama vem da camada de rede, forma um pacote de dados e os bits de correção de erros. Essa informação é enviada por um canal sujeito a erros e chega no destinatário onde é conferido se possui erro ou não.
+
+Verificações de paridade:
+	A maneira mais simples de detectar erros seja utilizar um único bit de paridade. Se esse bit alterar é por que houve geração de erro.
+
+Métodos de soma de verificação:
+	Também utiliza checksum para verificar erros.
+
+Protocolos de acesso múltiplo:
+	1 - Um enlace ponto a ponto consiste em um único remetente e um único receptor na outra extremidade.
+	2 - O de difusão, pode ter vários remetentes e receptores, todos trasmitindo em um único e compartilhado meio. Protocolos de acesso múltiplo regulam a transmissão pelos canais de difusão compartilhados.
+
+Formas de Acesso Múltiplo:
+	1 - Divisão de canal: Divide o canal em compartimentos (tempo, frequência). Aloca um "pedaço" para uso de cada nó.
+	2 - Acesso aleatório: Canal não dividido, permite colisões. "Recuperação" das colisões.
+	3 - Passagem de revezamento: Seleção (polling): nó coordenador. Passage de permissão (token).
+
+Protocolos de divisão de canal:
+	O protocolo TDM divide o tempo em quadros temporais, os quais depois divide em N compartimentos de tempo.
+	O protocolo FDM divide o canal de R bits/s em frequências diferentes e permite o uso por dois nós.
+	O protocolo de acesso múltiplo por divisão de código (CDMA) atribui um código diferente a cada nó.
+
+Protocolo de Acesso Aleatório: Slotted Aloha:
+	Todos os quadros de mesmo tamanho, o tempo é dividido em slots de mesmo tamanho, onde o tempo para transmitir é de 1 quadro.
+	Nós transmitem quadros apenas no início dos slots, os nós são sincronizados, se 2 ou mais nós transmitem no slot, todos os nós detectam a colisão.
+
+Aloha puro (unslotted):
+	Operação mais simples, não há sincronização. Quando um pacote precisa de transmissão é enviado sem esperar pelo início de um compartimento. A probabilidade de colisão aumenta (pacote enviado em t0 colide com outros pacotes enviados em t0 - 1, t0 + 1).
+
+CSMA (acesso múltiplo com detecção de portadora):
+	Tem como base duas regras: ouça antes de falar e se alguém começar a falar ao mesmo tempo que você, pare de falar.
+	Protocolos com detecção de portadora (CSMA) e CSMA com detecção de colisão (CSMA/CD).
+
+Protocolos MAX de Revezamento:
+	Quando existir apenas um nó ativo: vazão de R Bps.
+	Quando existirem n nos ativos: vazo de R/n (desejável).
+	Dois protocolos para maximizar a vazão, conhecidos como protocolos de revezamento: Protocolo de polling e protocolo de passagem de permissão (token).
+	-- Seleção (polling): Nó-mestre convida a transmitirem um de cada vez. Problemas: latência; ponto único de falha.
+	-- Passagem de token (permissão): Controla um token passado de um nó a outro. Problemas: latência; ponto único de falhar (token).

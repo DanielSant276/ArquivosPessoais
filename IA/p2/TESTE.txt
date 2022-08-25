@@ -1,0 +1,363 @@
+2)
+|  x   |  y   |
+|  25  |  74  |
+| 27.3 | 80.9 |
+| 28.2 | 83.6 |
+|  18  |  ?   |
+|  20  |  ?   | 
+
+Sx=raiz((somatorio((xi - /X)^2))/n)
+Sy=raiz((somatorio((yi - /Y)^2))/n)
+r = (1/n)*somatorio(((xi - /X)/Sx) * (yi - /Y)/Sy))
+m = r*(Sy/Sx)
+
+
+/X = 26.8
+Sx = 1.34
+
+/Y = 79.5
+Sy = 2.36
+
+r = 2.36
+
+y = mx + b, onde b para ser achado utiliza o ponto (/X, /Y)
+m = 4.5
+79.5 = 26.8 * 4.5 + b
+b = -41.1
+
+y = 4.5*x - 41.1
+
+para 18
+y = 4.5*18 - 41.1
+y = 39.9
+
+para 20
+y = 4.5*20 - 41.1
+y = 48.9
+
+
+3)
+Desenhar gráfico na mão
+As relações ficam: 
+x1 = A, B, C, D, E, F, G
+x2 = H, I, J, K
+a)
+x0 = 1
+w0 = 0.2
+
+x1 = 1
+w1 = 0.3
+
+x2 = 0.7
+w2 = 0.1
+
+F = 1 * 0.2 + 1 * 0.3 + 0.7 + 0.1
+F = 0.2 + 0.3 + 0.07
+F = 0.57
+
+
+
+b)
+f(u) = 1 se u >= 0
+f(u) = 0 se u < 0
+
+          |  x  |  y  | classe | grau |
+Amostra 1 |  1  | 1.2 |  bom   |  +1  |
+Amostra 2 | 1.5 | 0.7 |  bom   |  +1  |
+Amostra 3 | 1.7 | 0.5 |  bom   |  +1  |
+Amostra 4 | 1.5 | 0.8 |  bom   |  +1  |
+Amostra 5 | 0.5 | 0.5 |  ruim  |  -1  |
+Amostra 6 | 0.7 | 0.8 |  ruim  |  -1  |
+Amostra 7 |  1  | 0.5 |  ruim  |  -1  |
+Amostra 8 | 1.5 | 0.2 |  ruim  |  -1  |
+
+
+// valores aleatorios
+ n   = 0.1
+ W1  = 0.1 // /\w1 + w1
+ W2  = 0.2 // /\w2 + w2
+bias = 0.1
+/\w1 = n * (valor esperado - saida) * x
+/\w2 = n * (valor esperado - saida) * y
+
+// Época 1
+
+// Amostra 1
+pesos = 0.1; 0.2;
+u = 1 * 0.1 + 1.2 * 0.2 + 0.1 = 0.44
+esperado = 1 e saida = 1
+
+// Amostra 2
+pesos = 0.1; 0.2;
+u = 1.5 * 0.1 + 0.7 * 0.2 + 0.1 = 0.39
+esperado = 1 e saida = 1
+
+// Amostra 3
+pesos = 0.1; 0.2;
+u = 1.7 * 0.1 + 0.5 * 0.2 + 0.1 = 0.37
+esperado = 1 e saida = 1
+
+// Amostra 4 
+pesos = 0.1; 0.2;
+u = 1.5 * 0.1 + 0.8 * 0.2 + 0.1 = 0.41
+entrada = 1 e saida = 1
+
+// Amostra 5
+pesos = 0.1; 0.2;
+u = 0.5 * 0.1 + 0.5 * 0.2 + 0.1 = 0.25
+esperado = 0 e saida = 1
+
+Para isso é preciso alterar os valores de pesos através de /\w1 e /\w2
+
+/\w1 e /\w2 = -0.05
+pesos = 0,05; 0,15;
+u = 0.5 * 0,05 + 0.5 * 0,15 + 0.1 = 0.2
+esperado = 0 e saida = 1
+
+/\w1 e /\w2 = -0.05
+pesos = 0; 0,1;
+u = 0.5 * 0 + 0.5 * 0.1 + 0.1 = 0.15
+esperado = 0 e saida = 1
+
+/\w1 e /\w2 = -0.5
+pesos = -0.05; 0.05;
+u = 0.5 * -0.05 + 0.5 * 0.05 + 0.1 = 0.1
+esperado = 0 e saida = 1
+
+/\w1 e /\w2 = -0.5
+pesos = -0.1; 0;
+u = 0.5 * -0.1 + 0.5 * 0 + 0.1 = 0.05
+esperado = 0 e saida = 1
+
+/\w1 e /\w2 = -0.5
+pesos = -0.15; -0.05;
+u = 0.5 * -0.15 + 0.5 * -0.05 + 0.1 = 0
+esperado = 0 e saida = 1
+
+/\w1 e /\w2 = -0.5
+pesos = -0.2; -0.15;
+u = 0.5 * -0.2 + 0.5 * -0.15 + 0.1 = -0,075
+esperado = 0 e saida = 0
+
+// Amostra 6
+pesos = -0.2; -0.15;
+u = -0.16
+esperado = 0 e saida = 0
+
+// Amostra 7
+pesos = -0.2; -0.15;
+u = -0.175
+esperado = 0 e saida = 0
+
+// Amostra 8
+pesos = -0.2; -0.15;
+u = -0.23
+esperado = 0 e saida = 0
+
+---------------------------------
+
+// Época 2
+
+// Amostra 1
+pesos = -0.2; -0.15;
+u = 0.44
+esperado = 1 e saida = 0
+
+/\w1 e /\w2 = 0.1 e 0.12
+pesos = -0,1; -0,03;
+u = -0,036
+esperado = 1 e saida = 0
+
+/\w1 e /\w2 = 0.1 e 0.12
+pesos = 0; 0,09;
+u = 0.208
+esperado = 1 e saida = 1
+
+// Amostra 2
+pesos = 0; 0,09;
+u = 0.163
+esperado = 1 e saida = 1
+
+// Amostra 3
+pesos = 0; 0,09;
+u = 0.145
+esperado = 1 e saida = 1
+
+// Amostra 4
+pesos = 0; 0,09;
+u = 0.172
+esperado = 1 e saida = 1
+
+// Amostra 5
+pesos = 0; 0,09;
+u = 0.172
+esperado = 0 e saida = 1
+
+/\w1 e /\w2 = -0.05
+pesos = -0.05; 0,04;
+u = 0.095
+esperado = 0 e saida = 1
+
+/\w1 e /\w2 = -0.05
+pesos = -0.1; -0.01;
+u = 0.045
+esperado = 0 e saida = 1
+
+/\w1 e /\w2 = -0.05
+pesos = -0.15; -0.06;
+u = -0.005
+esperado = 0 e saida = 0
+
+// Amostra 6
+pesos = -0.15; -0.06;
+u = -0.053
+esperado = 0 e saida = 0
+
+// Amostra 7
+pesos = -0.15; -0.06;
+u = -0.08
+esperado = 0 e saida = 0
+
+// Amostra 8
+pesos = -0.15; -0.06;
+u = -0.137
+esperado = 0 e saida = 0
+
+---------------------------------
+
+// Época 3
+
+// Amostra 1
+pesos = -0.15; -0.06;
+u = -0.122
+esperado = 1 e saida = 0
+
+/\w1 e /\w2 = 0.1 e 0.12
+pesos = 0; 0,06;
+u = 0,172
+esperado = 1 e saida = 1
+
+// Amostra 2
+pesos = 0; 0,06;
+u = 0.142
+esperado = 1 e saida = 1
+
+// Amostra 3
+pesos = 0; 0,06;
+u = 0.13
+esperado = 1 e saida = 1
+
+// Amostra 4
+pesos = 0; 0,06;
+u = 0.148
+esperado = 1 e saida = 1
+
+// Amostra 5
+pesos = 0; 0,06;
+u = 0,13
+esperado = 0 e saida = 1
+
+/\w1 e /\w2 = -0.05
+pesos = -0.05; 0,01;
+u = 0.08
+esperado = 0 e saida = 1
+
+/\w1 e /\w2 = -0.05
+pesos = -0.1; -0.04;
+u = 0.03
+esperado = 0 e saida = 1
+
+/\w1 e /\w2 = -0.05
+pesos = -0.15; -0.09;
+u = -0.02
+esperado = 0 e saida = 0
+
+// Amostra 6
+pesos = -0.15; -0.09;
+u = -0.077
+esperado = 0 e saida = 0
+
+// Amostra 7
+pesos = -0.15; -0.09;
+u = -0.095
+esperado = 0 e saida = 0
+
+// Amostra 8
+pesos = -0.15; -0.09;
+u = -0.143
+esperado = 0 e saida = 0
+
+---------------------------------
+
+// Época 4
+
+// Amostra 1
+pesos = -0.15; -0.09;
+u = -0.158
+esperado = 1 e saida = 0
+
+/\w1 e /\w2 = 0.1 e 0.12
+pesos = 0; 0,06;
+u = 0,172
+esperado = 1 e saida = 1
+
+// Amostra 2
+pesos = 0; 0,06;
+u = 0.142
+esperado = 1 e saida = 1
+
+// Amostra 3
+pesos = 0; 0,06;
+u = 0.13
+esperado = 1 e saida = 1
+
+// Amostra 4
+pesos = 0; 0,06;
+u = 0.148
+esperado = 1 e saida = 1
+
+// Amostra 5
+pesos = 0; 0,06;
+u = 0,13
+esperado = 0 e saida = 1
+
+/\w1 e /\w2 = -0.05
+pesos = -0.05; 0,01;
+u = 0.08
+esperado = 0 e saida = 1
+
+/\w1 e /\w2 = -0.05
+pesos = -0.1; -0.04;
+u = 0.03
+esperado = 0 e saida = 1
+
+/\w1 e /\w2 = -0.05
+pesos = -0.15; -0.09;
+u = -0.02
+esperado = 0 e saida = 0
+
+// Amostra 6
+pesos = -0.15; -0.06;
+u = -0.077
+esperado = 0 e saida = 0
+
+// Amostra 7
+pesos = -0.15; -0.06;
+u = -0.095
+esperado = 0 e saida = 0
+
+// Amostra 8
+pesos = -0.15; -0.06;
+u = -0.143
+esperado = 0 e saida = 0
+
+
+NÃO CONSIGO RESOLVER DE FORMA ALGUMAAAAAAAA
+
+https://www.youtube.com/watch?v=uXCOjyuyKIU&t=428s
+
+0,075 + 0,025 + 1
+incio:  0,1 ;  0,2 ;  0,3
+delta: -0,12; -0,18; -0,16
+final: -0,02;  0,02;  0,14
+final2:-0,14; -0,16; -0,02
