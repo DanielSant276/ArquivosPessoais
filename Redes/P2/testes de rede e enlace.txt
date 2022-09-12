@@ -1,3 +1,5 @@
+Camada de Rede
+
 1) Suponha que um roteador tenha n portas de entrada com velocidades de linha idênticas; n portas de saída com velocidades de linha idênticas, e que a velocidade de linha de uma porta de saída seja, no mínimo, n vezes a velocidade da porta de entrada. Suponha ainda que a velocidade do elemento de comutação é, no mínimo, n vezes maior do que a velocidade de uma porta de entrada. Quando essas condições acontecem não existe formação de fila nem na porta de entrada e nem na porta de saída. Explique o porquê em cada um dos casos, dando um exemplo dos piores casos que podem acontecer (tanto na porta de entrada quanto na porta de saída) e mostrando que, mesmo nestes casos, não tem formação de fila.
 	R = O pior caso para entrada seria se chegasse um pacote para cada uma das portas de entrada ao mesmo tempo. Mas o comutador tem velocidade n vezes maior do que a de uma porta de entrada, então ele conseguirá tratar todos os pacotes que chegaram antes que cheguem outros, não formando fila. O pior caso para a saída seria se o comutador mandasse todos os pacotes para a mesma porta de saída ao mesmo tempo. Como a velocidade da porta de saída é n vezes maior que a de entrada, o comutador sempre conseguirá transmitir pacote na linha de saída antes que cheguem outros, sem fila.
 
@@ -13,44 +15,38 @@
 	R=
 2^12 = 4096 -> 2^32 - 2^12 = 2^20
 A =
-	    198.16.0.0/20
+Máscara  -> 198.16.0.0/20
 Primeiro -> 198.16.0.0
 	    198.16.0000|0000.00000000
 	    198.16.0000|1111.11111111
 Último   -> 198.16.15.255
-Máscara de sub-rede -> 198.16.16.0/20
 
 
 2^11 = 2048 -> 2^32 - 2^11 = 2^21
 B =
-	    198.16.16.0/21
+Máscara  -> 198.16.16.0/21
 Primeiro -> 198.16.16.0
 	    198.16.00010|000.00000000
 	    198.16.00010|111.11111111
 Último   -> 198.16.23.255
-Máscara de sub-rede -> 198.16.24.0/21
 
 
 2^12 = 4096 -> 2^32 - 2^12 = 2^20
 C =
-	    198.16.24.0/20
-Primeiro -> 198.16.24.0 porém não pode ser 24, tem que ser ou 128 ou 64 ou 32 ou 16 ou 0, sendo assim, 24 é trocado para 32
-Primeiro -> 198.16.32.0
-	    198.16.0010|0000.00000000
-	    198.16.0010|1111.11111111
-Último   -> 198.16.47.255
-Máscara de sub-rede -> 198.16.48.0/20
+Máscara  -> 198.16.24.0/20
+Primeiro -> 198.16.24.0 
+	    198.16.0001|1000.00000000
+	    198.16.0001|1111.11111111
+Último   -> 198.16.31.255
 
 
 2^13 = 8192 -> 2^32 - 2^13 = 2^19
 B =
-	    198.16.48.0/19
-Primeiro -> 198.16.48.0 mesma coisa do anterior, não pode ser 48, tem que ser ou 128 ou 64 ou 32 ou 0, sendo assim, 48 é trocado para 64.
-Primeiro -> 198.16.64.0
-	    198.16.010|00000.00000000
-	    198.16.010|11111.11111111
-Último   -> 198.16.95.255
-Máscara de sub-rede -> 198.16.96.0/19
+Máscara  -> 198.16.32.0/19
+Primeiro -> 198.16.32.0 
+	    198.16.001|00000.00000000
+	    198.16.001|11111.11111111
+Último   -> 198.16.63.255
 
 
 
@@ -63,11 +59,11 @@ Endereço/Máscara 	Hop
 Padrão 			r2
 
 Para cada um dos endereços IP a seguir, o que o roteador fará se chegar um pacote com esse endereço?
-a) 135.46.63.10 
-b) 135.46.57.14 
-c) 135.46.52.2
-d) 192.53.40.7
-e) 192.53.56.7
+a) 135.46.63.10 -> i1
+b) 135.46.57.14 -> i0
+c) 135.46.52.2  -> r2
+d) 192.53.40.7  -> r1
+e) 192.53.56.7  -> r2
 
 	R= 
 	135.46.56.0/22
@@ -111,3 +107,72 @@ IMPORTANTE: Se estiver podendo ir para dois lugares diferentes, deve-se escrever
 
 6) A máscara da sub-rede de uma rede na Internet é 255.255.248.0. Qual é o número máximo de hosts que ela pode manipular?
 	R = O número de bits da máscara é 255.255.248.0 -> 2^8.2^8.(2^8-2^4) -> 8 + 8 + (8-4) -> que é 20. Como o IPV4 tem, no máximo 32 bits, fica 32 - 20 = 12 bits para o host. Dessa forma o número máximo de hosts que ela pode manipular é de 2^12 (4096).
+
+
+
+Camada de Enlace
+
+1) Qual a finalidade do protocolo ARP? Por que uma requisição ARP é enviada dentro de um quadro de broadcast e a resposta é enviada com um endereço d edestino MAC específico?
+	R = o protocolo ARP traduz os endereços IP em endereços MAC. Se utiliza o broadcast pois não se sabe para quem irá ser enviado a solicitação específica, enviando assim para todos. Aquele que possuir o IP desejado, retorna o MAC para o ARP.
+
+
+
+2) No protocoloc CSMA/CD em redes locais Ethernet, explique porque é necessário estabelecer uma distância máxima entre duas estações, bem como um tamanho mínimo de quadros. Ilustre sua resposta calculando a distância máxima entre duas estações em uma rede Ethernet 10Mbps, com quadros mínimos de 64 bytes (512 bits) e velocidade de propagação do sinal igual a 2,3 x 10^8 m/s
+	R = O tempo de transmissão pode ser calculado como L/R, onde L é o tamanho do quadro e R é a taxa de transmissão. Dessa forma, o tempo de transmissão é 512bits.s/10^7bits, ou seja, 512s/10^7. Esse valor será o /\T da fórmula.
+	A fórmula para se calcular a distância é /\S = V . /\T. Porém, o /\S é a distância de ida e volta, assim é preciso dobrá-lo, ficando /\S = (V . /\T) / 2
+	Substituindo temos:
+	/\S = 2,3*10^8 m / s *  512 s / 10^7
+	/\S = 2,3*10 m * 512 => /\S = 5888m
+
+
+
+3) Se todos os enlaces da Internet proverem confiabilidade, o serviço de transmissão confiável do TCP seria redundante? Por que ou por que não?
+	R = Não, pois a camada de enlace se preocupa em corrigir erros de forma local e não de fim a fim. Pacotes que cheguem fora de ordem podem ser descartados caso não haja confiabilidade na camada de transporte.
+
+
+
+4) Suponha que dois nós comecem a transmitir, ao mesmo tempo, um pacote de comprimento L bits sobre um canal que permita múltiplos acessos. Seja a taxa de transmissão deste enlace igual a R. Denote por dprop o atraso de propagação entre os dois nós. Se dprop < L/R vai existir colisão detectável? Por que ou por que não?
+	R = Como há uma transmissão simultânea, será detectado uma colisão, pois os bits chegam antes do outro começar a transmitir. Se ambos não transmitirem no mesmo tempo, será necessário utilizar 2 vezes a distância de propagação.
+
+
+
+5) Na seção de protocolos de múltiplo acesso foram listadas quatro características desejáveis para um canal broadcast. Quais dessas características o protocolo Slotted Aloha possui? Quais delas o protocolo de passagem de ficha (token passing) possui?
+	R = Slotted ALOHA: o único nó ativo envia à taxa total; é descentralizado; é simples.
+	R = Token Passing: único nó ativo envia à taxa total; é descentralizado; M nós ativos têm vazão próxima à R; é simples
+
+
+
+6) São consideradas características das redes com fios LAN, MAN e WAN respectivamente:
+	R = velocidades tipicas entre 10Mbps e 1Gbps; abrangem tipicamente a área de uma cidade; roteadores, normalmente, conectam diferentes tipos de tecnologia de rede.
+
+
+
+7) Indique verdadeiro ou falso. A respeito da camada de enlace é correto afirmar:
+	R=
+	(F) Um datagrama pode ser manipulado por apenas um protocolo de enlace no caminho da fonte até o destino. ------> Pode ser manipulado por vários protocolos. 
+	(V) É responsabilidade de um protocolo da camada de enlace, entre outras ações, realizar o controle de fluxo e o acesso aleatório.
+	(F) No protocolo ALOHA as estações transmitem quadros sempre que existem dados e depois de monitorar o estado do meio de transmissão. ------> Ele não monitora o estado do meio da transmissão.
+
+
+
+8) Em relação ao protocolo ARP é correto afirmar que:
+	R = o ARP mapeia endereços IP em endereços MAC apenas para hospedeiros na mesma sub-rede.
+
+
+
+
+
+Outras informações:
+	Tabela de Repasse:
+		Roteadores possuem uma tabela de repasse, essa tabela é calculada pelo processador de roteamento e uma cópia dela é armazenada na porrta de entrada dos roteadores e é atualizada pelo processador de roteamento quando preciso. Essa estratégia permite que decisões sejam tomadas localmente e evitam gargalo de processamento de repasse.
+		Um pacote sai da porta de entrada e é repassado ao elemento de comutação. Às vezes, este pode estar ocupado, então o pacote sai da porta de entrada e é colocado em uma fila do elemento de comutação.
+		Na comutação por barramento, o pacote é transferido diretamente da porta de entrada à de saída por meio do barramento. A única limitação de velocidade é a velocidade do próprio barramento, mas que costuma ser alta o suficiente para LANs e redes corporativas. Se o barramento estiver ocupado, o pacote é colocado na fila da porta de entrada.	
+		Se as filas nas portas de entrada ou de saída se tornarem muito grandes, o espaço de buffer do roteador se acaba e ocorre perda de pacote.
+
+	Algoritmos de roteamento:
+		A finalidade do algoritmo de roteamento é descobrir um bom caminho do roteador fonte ao destino; geralmente medido pelo menor custo. O algoritmo pode ser global, assim o cálculo de menor custo é feito utilizando-se conhecimento completo e global sobre a rede. O ponto principal é que ele tem informações completas sobre conectividade e custo de enlaces.
+		O algoritmo também pode ser descentralizado, assim, o cálculo é realizado de forma interativa e distribuída. Um nó apenas sabe os custos dos enlaces ligados a ele. Para saber o custo para um roteador longe dele, é necessário trocar informações com os vizinhos.
+		Esses algoritmos podem ser estáticos (mudam ao longo do tempo de forma bem lenta) ou dinâmicos (mudam os caminhos à medidade que muda a carga de tráfego ou topologia da rede).
+		Estado de enlace (link-state): Algoritmo de roteamento global. As informações da topologia da rede são conseguidas por meio de uma transmissão broadcast de estado de enlace. Dessa forma, todos os nós possuem uma visão idêntica e completa da rede. Ele é iterativo e após a k-ésima iteraçõ, conhece todos os caminhos de menor custo para k nós de destino.
+		Vetor de distâncias (distance-vector): é iterativo, assíncrono e distribuído. Cada nó recebe informação de seus vizinhos diretamente ligados. Cada nó envia regularmente uma cópia do seu vetor de distâncias a cada um dos vizinhos. Quando um nó recebe um novo vetor de distâncias, ele armazena este vetor e então usa a equação de Bellman-Ford para atualizar seu próprio vetor de distâncias.
+		

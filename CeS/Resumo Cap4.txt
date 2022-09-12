@@ -1,0 +1,10 @@
+	O texto inicia falando sobre a ética deturpada de alguns profissionais na área da informática que muitas vezes enganam seus clientes, manchando a imagem dos profissionais de modo geral. Ele da como exemplo os que cobram preços absurdos por serviços que valem bem menos, aqueles que trocam peças novas por peças velhas, que criam programas ilegais, que atuam na internet com má fé, que ensinam conhecimentos que podem ser apenas utilizado para o mal e entre outros. 
+	Após isso o texto começa explicitando sobre o código de ética na computação, que contemplam seis aspectos básicos:
+	- Sociedade: preocupação com o bem estar das pessoas;
+	- Empregadores: proteção dos interesses do empregador, com base na realação de confiança;
+	- Clientes: reserva o cumprimento dos contratos;
+	- Organização: construção de objetivos para a busca de interesses.
+	- Colegas: respeito da comunidade de computação e colaboração com a mesma;
+	- Profissão: comportamento ético que devem ser evitados para não denegrir a profissão em si;
+	E quanto a relação da ética existem basicamente duas correntes de autores: a dos que favorecem uma disciplina de ética profissional como  algo obrigatório do currículo dos cursos de graduação em computação e a dos que dizem que a ética deve ser introduzida aos alunos na forma de palestras. 
+	Nos dias de hoje a ética tomou uma importância muito grande no meio, principalmente educacional, fazendo refletir os próprios conceitos e da nossa sociedade
