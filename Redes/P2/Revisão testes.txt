@@ -1,0 +1,78 @@
+1 - Suponha que um roteador tenha n portas de entrada com velocidades de linha idênticas; n portas de saída com velocidades de linha idênticas, e que a velocidade de linha de uma porta de saída seja, no mínimo, n vezes maior do que a velocidade da porta de entrada. Quando essas condições acontecem existe formação de fila em alguma das portas (de entrada ou de saída)? Por que? Dê um exemplo dos piores casos que podem acontecer (tanto na porta de entrada quanto na porta de saída).
+	R = É muito difícil ocorrer fila nos casos apresentados, a não ser que os piores casos aconteçam. O pior caso para a porta de entrada, é caso todos as portas de entradas recebam pacotes ao mesmo tempo, porém, o elemento comutador é mais rápido do que a porta de entrada no caso apresentado, assim, mesmo que isso ocorra, ele será capaz de encaminhar os pacotes sem gerar fila. O pior caso para a porta de saída, é caso o comutador mande todos os pacotes para a mesma porta de saída, e caso a chegada de pacotes seja muito mais rápida do que a camada de enlace é capaz de movimentar, assim, os pacotes podem acabar tendo que esperar um tempo para serem enviados, gerando fila na porta de saída.
+
+
+
+2 - Suponha que você queira aumentar a velocidade do seu cabo Ethernet. Como isso vai afetar o tamanho mínimo necessário dos pacotes? Por que? Se você não puder alterar o tamanho do pacote, o que você pode fazer para manter a correta operação da rede? Por que?
+	R = Para aumentar a velocidade no cabo é necessário aumentar o tamanho mínimo dos pacotes para compensar o RTT. Quando o pacote não pode aumentar o tamanho e o tempo necessário para transmitir um bit diminui é necessário diminuir um RTT para que a operação da rede se mantenha.
+
+
+
+3 - Se todos os enlaces da Internet proverem confiabilidade, ou seja, se garantirmos que 100% dos pacotes transmitidos em um enlace chegarão sem erros à outra ponta do enlace, o serviço de transmissão confiável do TCP seria redundante? Por que ou por que não?
+	R = Não. O serviço de transmissão confiável do protocolo TCP gera confiabilidade a nível fim a fim, enquanto a camada de enlace gera confiabilidade a nível local. Pacotes que cheguem fora de ordem podem ser descartados caso não haja confiabilidade na camada de transporte.
+
+
+
+4 - O que acontece em cada um dos algoritmos de roteamento, link-state (estado do enlace) e distance-vector (vetor de distâncias) quando muda o custo de um enlace ligado a um determinado nó, ou seja, qual a providência que os dois nós ligados àquele enlace devem tomar?
+	R = 
+	No link-state, ao mudar o custo de um enlace, é necessário recalcular toda a tabela de repasse para que os valores sejam atualizados. Visto que o link-state se trata de um algoritmo global onde as distâncias já foram calculadas e estão disponíveis para todos os nós em uma tabela.
+	No distance-vector, a tabela de repasse é particular a cada um dos nós, só sendo acessada por outras caso um vizinho peça. Sendo assim, quando um custo de um enlace muda, apenas os nós que estão em suas extremidade irão modificar sua tabela, não sendo necessário recalcular todas as tabelas de repasses.
+
+
+
+5 - Qual a finalidade do protocolo ARP? Por que uma requisição ARP é enviada dentro de um quadro de broadcast e a resposta é enviada com um endereço de destino MAC específico?
+	R = O protocolo ARP tem como finalidade em traduzir endereços IP em endereços MAC. Ela é enviada em um quadro de broadcast pois não se tem noção para quem será enviado, necessitando enviar para todos. O que possuir o IP desejado retorna o MAC para o ARP.
+
+
+
+6 - No protocoloc CSMA/CD em redes locais Ethernet, explique porque é necessário estabelecer uma distância máxima entre duas estações, bem como um tamanho mínimo de quadros. Ilustre sua resposta calculando a distância máxima entre duas estações em uma rede Ethernet 10Mbps, com quadros mínimos de 64 bytes (512 bits) e velocidade de propagação do sinal igual a 2,3 x 10^8 m/s.
+	R = 
+	L -> 512bits
+	R -> 10Mb/s -> 10^7bits/s
+	/\T -> L/R -> 512s/10^7
+	V -> 2,3*10^8m/s
+
+	/\S é ida e volta, logo d é 2*/\S
+	2*/\S = v * /\T
+	/\S = (2.3*10^8m/s * 512s/10^7) / 2
+	/\S = (2.3*10m * 512)/2
+	/\S = 23 * 256 m
+	/\S = 5888m
+
+
+7 - Como funciona cada um dos protocolos de acesso aleatório?
+	R = 
+	Slotted ALOHA: Quando um nó obtém um novo quadro, le transmite no próximo slot. Se ocorrer colisão, os nós retransmitem o quadro com uma probabilidade p. Se não ocorre colisão, o nó pode enviar o quadro no próximo slot.
+	ALOHA: Estações transmitem quadros sempre que houver dados para serem enviados. Colisões nesse protocolo são frequentes, caso os quadros sejam perdidos, o transmissor detecta a colisão e retransmite o quadro após um intervalo aleatório de tempo para tentar evitar colisão.
+	CSMA: Ela escuta o canal antes de transmitir, se ele estiver livre, ela transmite o quadro. Se o canal estiver ocupado, ela adia a transmissão. Pode ocorrer colisão caso exista atraso na transmissão.
+	CSMA/CD: Igual ao CSMA mas com detecção de colisão. Caso haja uma colisão, a transmissão é abortada e se espera um tempo para retransmitir. Esse tempo aumenta caso os ocorram muitas colisões.
+	Passagem de Permissão: controla a permissão de um nó para o próximo de forma sequencial.
+
+
+
+8 - Na seção de protocolos de múltiplo acesso foram listadas quatro características desejáveis para um canal broadcast. Quais dessas características o protocolo Slotted Aloha possui? Quais delas o protocolo de passagem de ficha (token passing) possui?
+	R = Slotted ALOHA: o único nó ativo envia à taxa total; é descentralizado; é simples.
+	R = Token Passing: único nó ativo envia à taxa total; é descentralizado; M nós ativos têm vazão próxima à R; é simples.
+
+
+
+9 - São consideradas características das redes com fios LAN, MAN e WAN respectivamente:
+	R = 
+	LAN - distância curta, utilizada por pequenas empresas, taxa de transferência entre 10Mbps e 1Gbps.
+	MAN - distâncias medianas, geralmente uma universidade ou uma cidade.
+	WAN - distâncias altas, geralmente utilizado para conectar uma lan em outras. É utilizado por filiais de empresas espalhadas por todo o país/mundo.
+
+
+
+10 - Indique verdadeiro ou falso. A respeito da camada de enlace é correto afirmar:
+	R = 
+	(F) Um datagrama pode ser manipulado por apenas um protocolo de enlace no caminho da fonte até o destino. ------> Pode ser manipulado por vários protocolos. 
+	(V) É responsabilidade de um protocolo da camada de enlace, entre outras ações, realizar o controle de fluxo e o acesso aleatório.
+	(V) Os quadros de controle CTS e RTS são usados pelo protocolo IEE 802.11.
+	(F) O protocolo de acesso aleatório usado nas redes ethernet é o CSMA/CA. ------> O protocolo de acesso aleatório das redes ethernet é o CSMA/CD.
+	(F) No protocolo ALOHA as estações transmitem quadros sempre que existem dados e depois de monitorar o estado do meio de transmissão. ------> Ele não monitora o estado do meio da transmissão.
+
+
+
+11 - Em relação ao protocolo ARP é correto afirmar que:
+	R = o ARP mapeia endereços IP em endereços MAC apenas para hospedeiros na mesma sub-rede.

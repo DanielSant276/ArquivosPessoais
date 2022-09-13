@@ -68,6 +68,7 @@ e) 192.53.56.7  -> r2
 	R= 
 	135.46.56.0/22
 	135.46.001110|00.0, como a máscara é de 22 bits, ela pega os primeiros 16 bits (135.46) e mais 6 bits adicionais para ver quais bits precisarão estar ativos para 56.
+
 	O resto dos bits é necessário colocar 1 em todos os campos que não sejam máscara, ficando:
 	135.46.001110|11.11111111, sendo assim, 135.46.59.255.
 	Assim qualquer endereço entre 135.46.56.0 e 135.46.59.255 irá para a interface 0.
