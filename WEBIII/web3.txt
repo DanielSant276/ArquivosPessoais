@@ -1,0 +1,18 @@
+GraphQL
+
+    Parece promissor. Vou apontar os ponteiros que tenho percorrido.
+    As referências são basicamente de GraphQL. Será necessário aprofundar melhor nos "contra" do GraphQL, pois esses links deixam a desejar.
+
+    Referências Básicas:
+     - https://graphql.org/
+     - Introducao Ao Graphql - Editora Novatec, 1ª edição de 2018. Para interessados, quando vi o livro, ele estava custando R$ 30,00 no pontofrio.
+
+    Fundamentação básica
+    O que é? https://www.youtube.com/watch?v=xbLpIhCsIdg
+
+    Rest vs GraphQL
+    REST ainda é mais utilizado, mas se diz que o GraphQL traz mais benefícios. Vamos aos comparativos.
+
+    Leitura: encurtador.com.br/nxO38
+
+    Para fazer um curso, veja a lista que tem este vídeo: https://youtu.be/RyqLvFhPNy8

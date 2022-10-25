@@ -1,0 +1,9 @@
+GraphQL -> desenvolvimento de APIs
+Ela serve para facilitar a entrega de dados, facilita a entrega de informações no lado do cliente. Permite que uma API possa retonar mais dados.
+
+1 - A diferença entre QraphQL e REST é que a URL do REST é mais complexa pela quantidade de Nesting, se recebe mais informações do que é necessário e o REST realiza mais requisições HTTP quando a estrutura de dados é mais complexa.
+
+2 - A estrutura do graphQL é parecida com orientação a objeto, ela utiliza um conceito de herança usando interfaces. Onde cada tipo pode implementar uma interface para criar uma relação entre os tipos, processo semelhante ao utilizado em orientação a objetos.
+
+
+3 - O graphQL utiliza mutations para modificar os dados via server-side.

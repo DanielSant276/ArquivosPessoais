@@ -1,0 +1,66 @@
+		SOAP - https://www.youtube.com/watch?v=1W16wN8lIl8
+
+	O protocolo SOAP utiliza o XML através o HTTP para levar e trazer a requisição entre o web server e o client.
+	SOAP é usado para troca de informações estruturadas. Ela é baseada em XML, que é estruturado. Os documentos XML aderem a uma especificação da W3C para padronização da www.
+	Características: A base XML consiste em 3 partes:
+	-- envelope;
+	-- cabeçalho (header);
+	-- corpo (body);
+
+	SOAP utiliza um conceito de envelope, onde a requisição é colocada dentro de um envolope e envia, o servidor recebe essa informação, a verifica e coloca em um envelope novamente para enviar de volta ao cliente.
+
+	O envelope define o que está na mensagem e como processá-la. Dentro do envelope ele tem um header e um body.
+	O cabeçalho é um conjunto de regras com especificações de instância e tipos de dados.
+	O corpo traz a chamada dos procedimentos, requisições e respostas. Dentro do corpo existe um elemento opcional chamado "fault" com informações de status e erros.
+
+	O SOAP utiliza o método de requisição POST. O POST foi projetado para solicitar que o servidor web aceite os dados anexados no corpo da mensagem de requisição para armazenamento (XML).
+
+
+
+
+		REST - https://www.youtube.com/watch?v=cRHF4trs318
+
+	REST é um modelo de arquitetura que foi adotado como um modelo a ser utilizado na evolução da arquitetura do protocolo HTTP.
+	Um recurso dentro de um modelo REST permite mapear qualquer coisa do mundo real como um elemento para acesso via web.
+	
+	Métodos do modelo REST:
+	-- GET: Obtém um recurso;
+	-- POST: Cria um recurso;
+	-- PUT: Atualiza um recurso;
+	-- DELETE: Remove um recurso;
+
+	O REST juntamente com o HTTP, fornece um conjunto de respostas para que os clientes possam saber, de forma adequada como agir a uma determinada resposta. 
+
+	Cada requisição que chega a um servidor deve processar uma resposta em um código de estado HTTP. (aqui são os tipos de respostas de servidor como 404 e afins).
+
+
+
+
+		REST X SOAP - https://www.youtube.com/watch?v=YWPT2UOxbUg
+
+	Serviços web são software que disponibilizam comunicação na internet. 
+
+	SOAP é um protocolo (conjunto de regras) padronizado para comunicação entre usuário e servidor, que utiliza o XML para mandar e receber mensagens. Ele tem um envelope na qual a mensagem é envelopada por um conjunto de símbolos, e essa mensagem é enviada através do método POST. Ele é independente da linguagem, plataforma e protocolo de comunicação (não é obrigatório utilizar o HTTP). O envelope pode gerar um overhead para cada mensagem por conta dessas obrigatoriedades nas regras.
+
+	REST é um estilo arquitetural onde possui regras mais simples do que a do SOAP. Uma API que respeita esse estilo arquitetural é conhecida como Restfull.
+	Estilo arquitetural do REST:
+	-- estrutura cliente-servidor;
+	-- não tem estado;
+	-- pode ser utilizado cache;
+	-- sistemas em camadas;
+	-- interface uniforme;
+
+	A interface uniforme é um conjunto de quatro princípios:
+	-- o recurso é identificado na requisição;
+	-- pode ser manipulado através de representações;
+	-- mensagens auto-descritivas;
+	-- permite definir o estado da aplicação;
+
+	O REST é mais focado em utilizar os métodos padrões do HTTP (GET, POST, UPDATE, DELETE), diferente do SOAP que só utiliza o POST. Isso permite o REST ser mais flexível do que o SOAP. E o overhead do REST é menor do que o SOAP, gastando menos recursos para enviar uma requisição REST do que uma requisição SOAP.
+	Abstração: SOAP seria um envelope do correio e REST seria um cartão-postal.
+
+
+
+
+	Ver depois - https://www.youtube.com/watch?v=RlB5wcuFvcc
+	
