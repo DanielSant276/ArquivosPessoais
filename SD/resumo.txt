@@ -1,0 +1,57 @@
+		Aula 01
+
+Sistemas distribuidos: conjunto de computadores independentes que funcionam em conjunto (sistema único e coerente (cada uma das partes é ligada ao todo sem que ocorram contradições)).
+
+Middleware: Ele auxilia a melhorar a visão de um sistema único que um sistema distribuido deve ter. É uma cada lógica acima dos sistemas operacionais e abaixo dos usuários e das aplicações. Seu objetivo é facilitar o acesso e o compartilhamento de recursos de maneira controlada e eficiente.
+
+Acesso a Recursos: É necessário uma boa segurança, de forma que seja evitado o acesso indevido e rastreamento de comunicações para a criação de perfis de usuários.
+
+Transparência:
+	- Acesso: oculta diferenças entre as arquiteturas de máquinas, precisando sempre representar com conformidade os dados e e o acesso a um recurso;
+	- Localização: oculta o lugar em que um recurso está localizado, não permitindo o usuário saber a localização física do recurso do sistema;
+	- Migração: oculta que um recurso pode ser movido para outra localização, não afetando a utilização do sistema caso ele não se encontre no local de costume;
+	- Relocação: oculta que um recurso pode ser movido para uma outra localização enquanto em uso, não afetando como eles estão sendo usados;
+	- Replicação: oculta que um recurso é possui diversas copias, colocando o mesmo nome em todas as copias. Normalmente sistemas que suportam transparência de replicação possuem também transparência de localização;
+	- Concorrência: oculta que um recurso pode ser compartilhado por diversos usuário concorrentes, de forma que um usuário não é capaz de saber que outro está usando o mesmo recurso. É utilizado travas de acesso, permitindo acesso exclusivo a um recurso desejado por vez;
+	- Falha: oculta a falha e a recuperação de um recurso, mascarando que um recurso deixou de funcionar ou que um sistema se recuperou de uma falha;
+
+4. Explique o que se entende por transparência (de distribuição), e dê exemplos de diferentes tipos de transparência?
+	R = Transparência de distribuição é um nível na qual o usuário é capaz de utilisar um sistema distribuído como se fosse um único sistema.
+	As transparências de um sistema distribuído podem ser: acesso,  localização, migração, relocação, replicação, concorrência, falha.
+
+5. Por que às vezes é tão difícil esconder a ocorrência e recuperação de falhas em um sistema distribuído?
+	R = Pois é dificil distinguir se um recurso está faltando ou se ele está apenas lendo.
+
+6. Por que não é sempre uma boa ideia procurar implementar o mais alto grau de transparência possível?
+	R = Um alto grau de transparência pode gerar perda de desempenho, o que atrapalha a utilização do serviço pelos usuários.
+
+Abertura: É um sistema que oferece serviços de acordo com regras padronizadas que descrevem a sintaxe e a semântica desses serviços. (Não entendi)
+	- Sintaxe: nomes de funções, tipos de parâmetros, valores de retorno e excessões que podem surgir;
+	- Semântica: utiliza linguagem natural;
+	As especificações pode ser:
+	- Completas: indica tudo o que é necessário para uma implmentação;
+	- Neutras: as especificações não indicam como deve ser a aparência da implementação;
+	Completude e neutralidade são importantes para:
+	- Interoperabilidade: até quanto duas implementações devem coexistir/trabalhar em conjunto.
+	- Portabilidade: até que ponto uma aplicação desenvolvida para A pode ser executada sem modificações em B.
+	- Extensível: ser fácil de adicionar ou substituir partes sem afetar as que continuam no mesmo lugar.
+
+7. O que é um sistema distribuído aberto e quais os benefícios que a abertura proporciona?
+	R = É um sistema baseado na distribuição de serviços que seguem regras pré-definidas. Ele é capaz de se comunicar com outros sistemas abertos com mais facilidade e também permite o porte entre diferentes implementações em um mesmo sistema.
+
+3. Muitos sistemas em rede são organizados em termos de uma retaguarda e uma vanguarda. Como as organizações se ajustam a visão coerente que exigimos para um sistema distribuído?
+	R = 
+
+Escalabilidade.	Podem ser de três tipos:
+	- Tamanho: Consegue adicionar mais usuário e recusros ao sistema;
+	- Geográficos: Usuário e recursos podem estar em localizações diferentes;
+	- Administrativos: É fácil gerenciar o sistema mesmo que ele faça parte de muitas organizações administrativas diferentes;
+
+8. Descreva com precisão o que se entende por um sistema escalável:
+	R = É um sistema que pode modificar seu tamanho ou pode estar em localizações geográficas diferentes ou fazer parte de organizações adminstrativas diferentes. Caso possa crescer em uma ou mais dessas dimensões sem perda de desempenho, ele é considerável escalável.
+
+Problemas de escalabilidade:
+	- Tamanho: Conforme aumenta o número de usuários e recursos, começa a ficar limitado os serviços, dados e algoritmos centralizados.
+		-- Serviços centralizados: a medida que cresce o número de usuários e aplicações o armazenamento e o processamento diminui. Porém vários servidores diminuem a segurança pois é mais difícil de gerenciar.
+		-- Dados centralizados: um único banco de dados para armazenar muitos valores saturam as linhas de comunicação de acesso ao servidor.
+		-- Algoritmos centralizados: 
