@@ -15,16 +15,6 @@ Transparência:
 	- Concorrência: oculta que um recurso pode ser compartilhado por diversos usuário concorrentes, de forma que um usuário não é capaz de saber que outro está usando o mesmo recurso. É utilizado travas de acesso, permitindo acesso exclusivo a um recurso desejado por vez;
 	- Falha: oculta a falha e a recuperação de um recurso, mascarando que um recurso deixou de funcionar ou que um sistema se recuperou de uma falha;
 
-4. Explique o que se entende por transparência (de distribuição), e dê exemplos de diferentes tipos de transparência?
-	R = Transparência de distribuição é um nível na qual o usuário é capaz de utilisar um sistema distribuído como se fosse um único sistema.
-	As transparências de um sistema distribuído podem ser: acesso,  localização, migração, relocação, replicação, concorrência, falha.
-
-5. Por que às vezes é tão difícil esconder a ocorrência e recuperação de falhas em um sistema distribuído?
-	R = Pois é dificil distinguir se um recurso está faltando ou se ele está apenas lendo.
-
-6. Por que não é sempre uma boa ideia procurar implementar o mais alto grau de transparência possível?
-	R = Um alto grau de transparência pode gerar perda de desempenho, o que atrapalha a utilização do serviço pelos usuários.
-
 Abertura: É um sistema que oferece serviços de acordo com regras padronizadas que descrevem a sintaxe e a semântica desses serviços. (Não entendi)
 	- Sintaxe: nomes de funções, tipos de parâmetros, valores de retorno e excessões que podem surgir;
 	- Semântica: utiliza linguagem natural;
@@ -36,22 +26,27 @@ Abertura: É um sistema que oferece serviços de acordo com regras padronizadas 
 	- Portabilidade: até que ponto uma aplicação desenvolvida para A pode ser executada sem modificações em B.
 	- Extensível: ser fácil de adicionar ou substituir partes sem afetar as que continuam no mesmo lugar.
 
-7. O que é um sistema distribuído aberto e quais os benefícios que a abertura proporciona?
-	R = É um sistema baseado na distribuição de serviços que seguem regras pré-definidas. Ele é capaz de se comunicar com outros sistemas abertos com mais facilidade e também permite o porte entre diferentes implementações em um mesmo sistema.
-
-3. Muitos sistemas em rede são organizados em termos de uma retaguarda e uma vanguarda. Como as organizações se ajustam a visão coerente que exigimos para um sistema distribuído?
-	R = 
-
 Escalabilidade.	Podem ser de três tipos:
 	- Tamanho: Consegue adicionar mais usuário e recusros ao sistema;
 	- Geográficos: Usuário e recursos podem estar em localizações diferentes;
 	- Administrativos: É fácil gerenciar o sistema mesmo que ele faça parte de muitas organizações administrativas diferentes;
 
-8. Descreva com precisão o que se entende por um sistema escalável:
-	R = É um sistema que pode modificar seu tamanho ou pode estar em localizações geográficas diferentes ou fazer parte de organizações adminstrativas diferentes. Caso possa crescer em uma ou mais dessas dimensões sem perda de desempenho, ele é considerável escalável.
-
 Problemas de escalabilidade:
 	- Tamanho: Conforme aumenta o número de usuários e recursos, começa a ficar limitado os serviços, dados e algoritmos centralizados.
 		-- Serviços centralizados: a medida que cresce o número de usuários e aplicações o armazenamento e o processamento diminui. Porém vários servidores diminuem a segurança pois é mais difícil de gerenciar.
 		-- Dados centralizados: um único banco de dados para armazenar muitos valores saturam as linhas de comunicação de acesso ao servidor.
-		-- Algoritmos centralizados: 
+		-- Algoritmos centralizados: as maquinas não tem todas as informações do estado do sistema, tomando decisões apenas com as informações locais. Assim, a falha de uma máquina não da problema no algoritmo. 
+	- Geográfica: É difícil uma comunicação síncrona para grandes distâncias. A comunicação em redes de longa distância não é confiável. A centralização atrapalha a escalabilidade de tamanho.
+	- Administrativa: É difícil estabelecer políticas de uso e pagamento de: recursos, gerenciamento e segurança.
+
+Técnicas de escalabilidade:
+	Podem ser de 3 tipos:
+	- Latências de comunicação: evita esperar por respostas a requisições remotas;
+	- Distribuição: divide um componente em partes menores e espalha esses componente pelo sistema;
+	- Replicação: maior disponibilidade, divide a carga e diminui a latência por ter cópias por perto;
+
+Tipos de sistemas distribuídos:
+	- Cluster: Conjunto de estações de trabalho semelhantes, conectados por rede local de alta velocidade. Usado para computação paralela em que um programa é executado em várias máquinas, de forma homogênea.
+
+Sistemas distribuidos pervasivos:
+	São sistemas que utilizam computação móvel e embutida, onde o funcionamento é instável. Eles geralmente são: pequenos, utilizam baterias móveis e usam comunicação sem fio. Eles não possuem um controle humano, podendo assim mudar o seu comportamento a todo tempo. 

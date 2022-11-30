@@ -1,0 +1,38 @@
+		Aula 1
+
+2. Qual o papel do middleware num sistema distribuído?
+	R = Aumentar a transparência de distribuição em sistemas operando em rede. O middleware melhora a visão de um sistema único que um sistema distribuído deve ter.
+
+4. Explique o que se entende por transparência (de distribuição), e dê exemplos de diferentes tipos de transparência?
+	R = Transparência de distribuição é um nível na qual o usuário é capaz de utilisar um sistema distribuído como se fosse um único sistema.
+	As transparências de um sistema distribuído podem ser: acesso,  localização, migração, relocação, replicação, concorrência, falha.
+
+5. Por que às vezes é tão difícil esconder a ocorrência e recuperação de falhas em um sistema distribuído?
+	R = Pois é dificil distinguir se um recurso está faltando ou se ele está apenas lendo.
+
+6. Por que não é sempre uma boa ideia procurar implementar o mais alto grau de transparência possível?
+	R = Um alto grau de transparência pode gerar perda de desempenho, o que atrapalha a utilização do serviço pelos usuários.
+
+7. O que é um sistema distribuído aberto e quais os benefícios que a abertura proporciona?
+	R = É um sistema baseado na distribuição de serviços que seguem regras pré-definidas. Ele é capaz de se comunicar com outros sistemas abertos com mais facilidade e também permite o porte entre diferentes implementações em um mesmo sistema.
+
+8. Descreva com precisão o que se entende por um sistema escalável:
+	R = É um sistema que pode modificar seu tamanho ou pode estar em localizações geográficas diferentes ou fazer parte de organizações adminstrativas diferentes. Caso possa crescer em uma ou mais dessas dimensões sem perda de desempenho, ele é considerável escalável.
+
+9. A escalabilidade pode ser alcançada através da aplicação de técnicas diferentes. Quais são estas técnicas?
+	R = Comunicação assíncrona, distribuição e replicação/cache.
+
+10. Explique o que se entende por uma organização virtual e dê uma sugestão sobre como tais organizações poderiam ser implementadas.
+	R = É definida por um grupo de usuários/aplicações que possuem acesso a um grupo de recursos específicos, podendo ser distribuídos em muitos computadores diferentes. Em uma organização virtual é necessário que os recursos devem possuir uma conta de usuários externos em conjunto, para verificar os direitos de acesso.
+
+11. Dissemos que, quando uma transação é abortada, o mundo é restaurado ao seu estado anterior, como se a transação nunca tinha acontecido. Mentimos. Dê um exemplo, onde a redefinição do mundo é impossível.
+	R = Utilização de compoentes de entrada e saída (E/S) não pode ser desfeito, por exemplo, não é possível reverter um impressão que já foi realizada.
+
+12. Executar transações aninhadas requer alguma forma de coordenação. Explique o que um coordenador deve realmente fazer.
+	R = Precisa assegurar que se uma transação aninhada for abortada, todas as outras devem ser abortadas também. Ele também tem que ser capaz de realizar o commit quando cada um deles poder. Uma transação aninhada deve esperar para realizar commit quando cada uma das transações puder. Assim, a transação aninhada deve esperar para realizar o commit até que o coordenador conceda isso.
+
+13. Argumentamos que a transparência de distribuição pode não estar presente para sistemas pervasivos. Esta afirmação não é verdade para todos os tipos de transparências. Dê um exemplo.
+	R = Em relação a transparência de migração, é necessário que os componentes móveis restabeleçam conexões quando se deslocarem de um ponto de acesso para outro.
+
+14. Já demos alguns exemplos de sistemas distribuídos pervasivos: sistemas domésticos, sistemas eletrônicos para tratamento de saúde e redes de sensores. Estenda esta lista com mais exemplos.
+	R = Sistemas de monitoramento, sistemas de esportes, sistemas de escritório
