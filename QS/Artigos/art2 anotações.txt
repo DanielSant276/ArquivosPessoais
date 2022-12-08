@@ -1,0 +1,21 @@
+Sistemas de administração de cursos são sistemas interativos designados para auxiliar pessoas com pouco ou nenhum conhecimento tecnológico a criar e distribuir conteúdo em forma de plataformas online, como também mensurar os resultados obtidos.
+
+A ISO 9126 tem como objetivo usar características e sub-características para mensurar a qualidade dos produtos de software. Essa ISO sugere um alto nível de qualidade externa é um indicador de grande "quality in use".
+
+"Quality in use", é o efeito combinado das seis categorias de qualidade de software quando o produto está sendo utilizado. A ISO 9126 define "quality in use" como "a capacidade de um produto de software permitir que usuários específicos atinjam objetivos específicos com eficiência, produtividade, segurança e satisfação no contexto avaliado".
+
+Dessa forma, "quality in use" é uma visão do usuário sobre a qualidade do software em execução. Utilizar a satisfação do usuário como medida de qualidade de software é uma forma de verificar o sucesso do software.
+
+Qualidade é se sentir confortável e satisfeito com o produto. É a chave para determinar o sucesso do produto desenvolvido. Qualidade é conceitual enquanto a medição é operacional. Ele pode ser medido internamente (por medidas estáticas do código) ou externamente (medindo o comporttamento do código quando executado).
+
+A ISO 9126  define qualidade como: "a totalidade de características que uma entidade que afetam sua capacidade de satisfazer necessidades implícitas". Nenhuma das características propostas podem ser medidas diretamente, e sim, precisam ser alcançadas em forma de sub-características.
+
+E importante lembrar que a ISO 9126 não indica requerimentos para se atingir uma qualidade de software, e sim, descrever um modelo de qualidade para ser aplicado a qualquer software, através da utilização de um framework específico para o software abaliado.
+
+Por útlimo, o artigo define os critérios de qualidade relacionados aos sistemas de e-Learning. Para esse tipo de sistema, foi proposto um modelo com 4 características (funcionalidade, confiabilidade, usabilidade, eficiência) e x sub-características. O objetivo é auxiliar a avaliação dos usuário em relação a qualidade dos sistemas de e-Learning. Esses critérios foram utilizados para obter feedback dos educadores usando questionários e entrevistas em um estudo futuro para validar a eficiência da ISO 9126. Os dominios especificados e a independência de cada critério será utilizado para desenvolver um formulário que será usado como instrumento de medida da satisfação de usuário para cada uma das sub-características. Esse formulário será utilizado na segunda fase do estudo.
+
+Esse framework pode ser usado para testar a proposição teórica que uma alta qualidade externa implica em uma alta "quality in use" para sistemas de e-learning. Critérios de qualidade correspondentes a caracteristicas e sub-características de qualidade externa podem ser usadas para testar as características que influenciam a satisfação do usuário nesse tipo de sistema.
+
+Medir qualidade externa para examinar os efeitos na "quality in use" pode ajudar designer de sistemas a fazer adições necessárias e/ou revisões para melhorar a visão de qualidade do usuário.
+
+A  limitação desse artigo é que ele é focado apenas na "quality in use" (exeperiência do usuário). É necessário uma pesquisa para entender como subcaracteristicas influenciam a "quality in use" em relação a produtividade, eficácia e características de segurança.

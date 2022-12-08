@@ -1,0 +1,52 @@
+SD: conjunto de computadores independetes que funcionam como se fosse um sistema único. Geralmente em uma organização, a diferença entre computadores, suas sedes e suas comunicações, estão ocultas dos usuários. Um sistema distribuido precisa permitir que usuários e aplicações interajam com ele de forma consistente e uniforme.
+
+Metas de um Sistema distribuído: acesso a recursos, transparência da distribuição, abertura, escalabilidade.
+
+Middleware: Seu objetivo é facilitar o acesso e o compartilhamento de recursos de maneira controlada e eficiente. Ele funciona como uma camada lógica acima dos SOs e abaixo dos usuários e aplicações.
+
+Acesso a Recursos: É preciso uma boa segurança, de forma que evite o acesso indevido e o rastreamento de comunicações para a criação de perfis de usuários.
+
+Transparência da Distribuição: é o nível na qual o sistema distribuído consegue se apresentar a usuários e aplicações como um único sistema. Nem sempre é recomendado um alto nível de transparência, isso pode gastar mais recursos, não sendo viável. Existem 7 tipos de transparência:
+	- Acesso: oculta as diferenças entre as arquiteturas de máquinas, representando os dados com conformidade e o acesso a um recurso;
+	- Localização: os usuários não podem ser capaz de localizar fisicamente um recurso no sistema, utilizando nomes lógicos ao invez de nomes que indiquem sua localização. A URL é um exemplo de nome lógico;
+	- Migração: a movimentação de recursos não afeta o modo de acesso a eles, necessitando da transparência de localização para que isso funcione;
+	- Relocação: oculta que um recurso pode ser movido para uma outra localização enquanto em uso, não afetando como eles estão sendo usados;
+	- Replicação: capacidade de ocultar diversas copias de um mesmo recurso, sendo necessário que cada copia possua o mesmo nome e que eles sejam lógicos;
+	- Concorrência: um usuário não ser capaz de perceber que outro está usando o mesmo recurso. Para isso é utilizado travas de edição ou transações;
+	- Falhas: ocultar a ocorrência de uma falha quando um recurso deixa de funcionar ou que o sistema se recuperou de um problema. É a mais difícil de se implementar pois é difícil distinguir uma lentidão no sistema de um arquivo morto.
+
+Abertura: A abertura de um sistema distribuído está relacionado ao oferecimento de interfaces, serviços com padrões que possuam uma sintaxe e uma semântica comum.
+	- Sintaxe: nomes de funções, tipos de parâmetros, valores de retorno e excessões que podem surgir;
+	- Semântica: utilizar linguagem natural;
+	Um sistema aberto pode ter algumas especificações, como:
+	- Completos: indica tudo o que é necessário para uma implmentação;
+	- Neutras: as especificações não indicam como deve ser a aparência da implementação;
+	Completude e neutralidade são importantes para:
+	- Interoperabilidade: quando duas implementações devem trabalhar em conjunto;
+	- Portabilidade: o quanto uma aplicação desenvolvida por A pode ser modificada por B;
+	- Extensível: conseguir adicionar ou substituir partes que são executadas em SOs diferentes;
+
+Escalabilidade:
+	- Tamanho: É possível adicionar mais usuários e recursos ao sistema;
+	- Geográfica: Usuário e recursos podem estar em locais diferentes, como muito kms de distância;
+	- Administrativa: Quando não é difícil gerenciar um sistema que faça parte de muitas organizações diferentes;
+	Obs.: Quanto mais escalável o SD, mais desempenho é perdido. Deixar com que o cliente execute parte da computação, ao invés de colocar todo o peso em cima do servidor, auxilia na performance. A divisão e distribuição de um componente, com a utilização da cache como forma de replicação, auxilia na melhora de performance da escalabilidade, por deixar próximo a usuários distantes, uma cópia dos recursos utilizados.
+
+Sistemas distribuidos pervasivos:
+	São sistemas que utilizam computação móvel e embutida, onde o funcionamento é instável. Eles geralmente são: pequenos, utilizam baterias móveis e usam comunicação sem fio. Eles não possuem um controle humano, podendo assim mudar o seu comportamento a todo tempo.
+
+Redes de sensores: os sensores são utilizados para processar informações. Eficácia é o objetivo principal por conta das limitações técnicas. Em SDs, funcionam como BDs distribuídos.
+
+Clusters: consiste em um conjunto de computadores semelhantes conectados por rede local de alta velocidade. É utilizado principalmente em computação paralela onde um único programa é executado em várias maquinas.
+
+Grade: diferente do cluster ele não são homogêneos, podendo haver diferenças de hardware, SO e rede. Esses sistemas focam em uma arquitetura que prove acessos a recursos de diferentes domínios administrativos. São populares por serem orientadas a serviço. Ela se divide em 5 camadas:
+	- Base: interface para recursos locais em sites específicos;
+	- Conectividade: protocolos de comunicação e de segurança para autenticar usuários e recursos;
+	- Recursos: gerencia um recurso apenas e é responsável pelo controle de acesso;
+	- Coletiva: manipula o acesso a vários recursos, descobrindo, alocando e escalonando eles;
+	- Aplicação: possui as aplicações que funcionam em uma organização virtual;
+
+Sistemas de processamento de transações: usa conceito de transações ACID, para fornecer serviços a clientes. É utilizado subtransações que podem ser executadas uma em cada um lugar diferente para um maior desempenho.
+
+Integração de aplicações empresariais: aplicações cliente e servidor usam middleware para comunicação ou RPC (aplicação) ou RMI (objetos). Um componente da aplicação ou do objeto envia uma requisição a outro componente executando uma chamada de procedimento local, resultando no empacotamento da requisição e seu envio a quem chamou. O resultado é enviado de volta e devolvido à aplicação como resultado da chamada de procedimento. A desvantagem é que ambos precisam estar em funcionamento e precisam saber como se referir um ao outro quando começa a comunicação.
+
