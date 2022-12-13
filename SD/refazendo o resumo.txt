@@ -1,10 +1,18 @@
+Capítulo I - Introdução
+
 SD: conjunto de computadores independetes que funcionam como se fosse um sistema único. Geralmente em uma organização, a diferença entre computadores, suas sedes e suas comunicações, estão ocultas dos usuários. Um sistema distribuido precisa permitir que usuários e aplicações interajam com ele de forma consistente e uniforme.
 
 Metas de um Sistema distribuído: acesso a recursos, transparência da distribuição, abertura, escalabilidade.
 
-Middleware: Seu objetivo é facilitar o acesso e o compartilhamento de recursos de maneira controlada e eficiente. Ele funciona como uma camada lógica acima dos SOs e abaixo dos usuários e aplicações.
+Middleware: Seu objetivo é facilitar o acesso e o compartilhamento de recursos de maneira controlada e eficiente. Ele funciona como uma camada lógica acima da camada dos SOs e abaixo da camada dos usuários e aplicações.
 
-Acesso a Recursos: É preciso uma boa segurança, de forma que evite o acesso indevido e o rastreamento de comunicações para a criação de perfis de usuários.
+As 4 metas de um SD:
+	- Fácil acesso a recursos;
+	- Ocultar o fato dos recursos são distribuidos em uma rede (Transparência da distribuição);
+	- Ser aberto;
+	- Poder ser expandido (escalabilidade);
+
+Acesso a Recursos:  Ele deve ser capaz de facilitar o acesso a recursos remotos e seu compartilhamento de maneira controlada e eficiente. É preciso uma boa segurança, de forma que evite o acesso indevido e o rastreamento de comunicações para a criação de perfis de usuários.
 
 Transparência da Distribuição: é o nível na qual o sistema distribuído consegue se apresentar a usuários e aplicações como um único sistema. Nem sempre é recomendado um alto nível de transparência, isso pode gastar mais recursos, não sendo viável. Existem 7 tipos de transparência:
 	- Acesso: oculta as diferenças entre as arquiteturas de máquinas, representando os dados com conformidade e o acesso a um recurso;
@@ -34,8 +42,7 @@ Escalabilidade:
 
 Sistemas distribuidos pervasivos:
 	São sistemas que utilizam computação móvel e embutida, onde o funcionamento é instável. Eles geralmente são: pequenos, utilizam baterias móveis e usam comunicação sem fio. Eles não possuem um controle humano, podendo assim mudar o seu comportamento a todo tempo.
-
-Redes de sensores: os sensores são utilizados para processar informações. Eficácia é o objetivo principal por conta das limitações técnicas. Em SDs, funcionam como BDs distribuídos.
+	Redes de sensores: os sensores são utilizados para processar informações. Eficácia é o objetivo principal por conta das limitações técnicas. Em SDs, funcionam como BDs distribuídos.
 
 Clusters: consiste em um conjunto de computadores semelhantes conectados por rede local de alta velocidade. É utilizado principalmente em computação paralela onde um único programa é executado em várias maquinas.
 
@@ -50,3 +57,101 @@ Sistemas de processamento de transações: usa conceito de transações ACID, pa
 
 Integração de aplicações empresariais: aplicações cliente e servidor usam middleware para comunicação ou RPC (aplicação) ou RMI (objetos). Um componente da aplicação ou do objeto envia uma requisição a outro componente executando uma chamada de procedimento local, resultando no empacotamento da requisição e seu envio a quem chamou. O resultado é enviado de volta e devolvido à aplicação como resultado da chamada de procedimento. A desvantagem é que ambos precisam estar em funcionamento e precisam saber como se referir um ao outro quando começa a comunicação.
 
+
+
+Capítulo II – Arquitetura
+
+Estilos Arquitetônicos:
+	- Camadas: os componentes mais acima na hierarquia podem fazer requisições aos mais a baixo, porém não ocorre ao contrário.
+	- Baseada em objetos: os componente são um objeto, que são conectados a outros por meio de procedimento remoto. Usado em sistemas de grande porte paramodelo cliente-servidor.
+	- Centrada em dados: processos se comunicam por meio de um repositório passivo ou ativo. SDs baseados na Web também usam essa arquitetura, porque processos se comunicam por meio da utilização de serviços baseados na Web.
+	- Baseada em eventos: processos se comunicam por eventos que podem transportar dados. 
+	- Espaços compartilhados de dados: combinação da arquitetura de eventos com a arquitetura de dados. 
+
+Arquiteturas de Sistemas:
+	- Centralizado: usa modelo cliente-servidor. O servidor implementa um serviço específico. O cliente é um processo que requisita serviços e espera por uma resposta. É utilizado o protocolo TCP para conexões a longa distância.
+	- Peer-to-peer: distribuição horizontal, em que os clientes e servidores podem ser subdivididos em partes logicamente equivalentes. Cada parte opera seu conjunto de dados completo. A rede de sobreposição pode ser estruturada, onde são disponibilizados esquemas determinísticos para rotear mensagens entre processos. Em redes não estruturadas, a lista de pares pode ser aleatória, sendo preciso ter algoritmos de busca para localizar dados ou processos, o chord seria um desses algoritmos.
+	- Tabela hash distribuída: Construção de estrutura da rede de sobreposição. O chord organiza os nós em forma de anel, ao consultar um item dado, o endereço de rede do nó responsável por aquele item é retornado.s
+
+
+
+Capítulo III - Processos
+
+Threads: Por processos, múltiplas threads de controle proporcionam uma granularidade fina, o que facilita a contrução de aplicações distribuídas, além de ter melhor desempenho. Atrasos de ida e vinda podem ser compensados com threads, como as requisições web. Um documento e seus elementos são buscados paralelamente e exibidos conforme as partes vão sendo recebidas.
+
+Virtualização: Estende ou substitui uma interface existente, de forma que imite um outro sistema. Surgiu com o propósito de herdar softwares herdados. Ele é útil em SDs por permitir que se diminua a diversidade de plataformas e máquinas. Dessa firnam se ganha portabilidade e flexibilidade.
+
+Arquiteturas de Máquinas Virtuais: A virtualização pode ser realizada de quatro formas:
+	- instruções de máquina evocadas por programas;
+	- intruções de máquina evocadas apenas por programas privilegiados, como os SOs;
+	- chamadas de sistema;
+	- interface de chamadas de bibliotecas;
+
+Maquina Virtual de Processo: construção de um sistema que forneça instruções abstratas, utilizadas para execução de aplicações. As instruções podem ser interpretadas (Java) ou emuladas (Wine).
+
+Monitor de Máquina Virtual (VMM): possui uma camada que protege o hardware, para acessá-lo é oferecido um conjunto de intruções do hardware. Assim, é possível ter vários SOs diferente executando de forma independete e concorrente. O isolamento faz com que as falhas ou ataques à segurança não afetem a máquina. É possível também mover ambientes de um máquina a outra.
+
+Servidores:
+	- Iterativo: os servidores manipulam requisições e retornam uma resposta ao cliente requisitante.
+	- Concorrente: as requisições são passadas por uma thread separada ou por um processo. 
+	- Servidor sem estado: não mantém informação sobre os stados dos clientes. Servidores WEB.
+	- Servidor com estado: persiste informações dos clientes. Servidores FTP.
+	- Cookie: porção de dados dos clientes. É uma forma de lidar com a ausência de estado. Podem ser considerado um falha de segurança por ficarem na máquina do cliente.
+
+cluster de servidores: Conjunto de máquinas conectadas por uma rede, onde cada máquina executa um ou mais servidores. Dividido em 3 camadas:
+	- Comutador: camada lógica onde são roteadas as requisições de clientes;
+	- Servidores de aplicação: dedicados a processamento da aplicação;
+	- Servidores de dados: dedicados a processamento de dados;
+
+Migração de Código: é comum movimentar códigos por conta de performance, de forma que rode um processo em uma máquinha menos carregada, aumentando a eficiência. A migração também pode ser útil para 4 finalidades:
+	- Balanceamento de carga;
+	- Paralelismo;
+	- Flexibilidade;
+	- Configurar sistemas distribuídos;
+
+Modelos para migração de código:
+	- Estruturas:
+	|---- segmento de código: migra uma parte do conjunto de instruções do programa em execução;
+	|---- segmento de recursos: contém referências a recursos externos que o processo necessita;
+	|---- segmento de execução: armazena o estado de execução de um processo;
+	- Mobilidade fraca: transfere apenas uma parte do código. É mais simples pois apenas realiza portabilidade de código;
+	- Mobilidade forte: o segmento de execução também pode ser transferido. Um processo em execução pode ser parado e movido para outro lugar, continuando a execução no ponto em que ela foi parada;
+
+A migração pode ser inicia por:
+	- remetente: iniciado pela máquina em que o código está em execução no momento;
+	- destinatário: é a máquina que deseja receber o processo que inicia a migração;
+
+Migração de recursos locais:
+	- Forma de vincular processos e recursos:
+	|---- identificador: requer exatamente o recurso referenciado;
+	|---- valor: só o valor de um recurso é necessário;
+	|---- tipo: precisa somente de um recurso de um tipo específico;
+	- Forma de ser referenciados como:
+	|---- não-ligados: pode ser movido com facilidade entre máquinas diferentes;
+	|---- amarrados: pode ser movido ou copiado, mas com custo relativamente alto;
+	|---- fixos: intimamente vinculado a uma máquina ou ambiente específico, não podendo ser movido;
+
+___________________________________________________________________
+|		      |   não ligado   |    amarrado    |   fixo   |
+|_____________________|________________|________________|__________|
+|  por identificador  |    MV ou RG    |    RG ou MV    |    RG    |
+|_____________________|________________|________________|__________|
+|      por valor      | CP ou MV ou RG |    RG ou CP    |    RG    |
+|_____________________|________________|________________|__________|
+|      por tipo       | VR ou MV ou CP | VR ou RG ou CP | VR ou RG |
+|_____________________|________________|________________|__________|
+
+MV: Move o recurso junto ao processo.
+RG: Faze uma referência global ao recurso.
+CP: Copiar o valor do recurso.
+VR: Vincula o processo a um recurso disponível no local.
+
+
+
+			GSLB
+
+	É a prática de distribuir tráfego da internet por um grande número de servidores conectados e espalhados pelo mundo. Ele garante maior confiabilidade e redução de latência.
+	Balanceamento de carga: é a prática de distribuir o tráfego entre dois ou mais servidores. Algumas técnicas de balanceamento de carga utilizam uma estratégia ruim, baseada na randomização da distribuição do tráfego. o DNS round-robin, é uma técnica de balanceamento de carga DNS randomizada que envia cada solicitação para um servidor diferente do último. Já o roteamento Anycast escolhe um servidor baseado no tempo de viagem mais rápido entre o cliente e o servidor.
+	Antes que um servidor de origem fique sobrecarregado e deixe de atender às solicitações, grandes quantidades de tráfego para aquele servidor ainda podem causar problemas de latência significativos. Um sistema GSLB pode distribuir esse tráfego por vários locais diferentes, garantindo que nenhum único local gerencie tantas solicitações a ponto de causar atrasos.
+	O GSLB pode também reduzir o tempo de viagem das solicitações e respostas entre usuários e servidores. Se um usuário estiver em Los Angeles e estiver usando um serviço web com um servidor de origem baseado em Paris, então tanto as solicitações quanto as respostas terão que percorrer uma distância muito longa, dividida em trechos de viagem menores chamados "saltos". Isso pode causar atrasos significativos no tempo de carregamento.
+	Usar o GSLB garante que cada usuário possa se conectar a um servidor que esteja geograficamente próximo a eles, minimizando os "saltos" e o tempo de viagem. No exemplo acima, se a empresa sediada em Paris estivesse utilizando o GSLB, o usuário de Los Angeles poderia conectar-se a um servidor a 160 km de sua localização, resultando em uma experiência do usuário muito mais rápida.
