@@ -1,0 +1,17 @@
+	Esse artigo propõe uma forma de avaliar a qualidade de softwares voltados a educação por dois aspectos, um da própria computação e o outro da psicopedagogia. Esse artigo também envolveu uma avaliação de qualidade por cada uma das pessoas selecionadas (ficou esquisito essa parte).
+	A psicopedagogia surge no estudo mais aprofundado das diferentes formas de aprender e ensinar, dificuldades de aprendizado e métodos utilizados na sala de aula para formar os indivíduos. A psicopedagogia faz um elo entre a educação e a psicologia, tendo como objeto de estudo os problemas de aprendizagem. O computador aliado a psicopedagogia, se trata de um instrumento fundamental no contexto de transformar uma aula em algo mais interativo e dinâmico.
+	O computador para uma criança, auxilia no processo de aprendizagem, onde a criança não fica com medo de errar pelas possibilidades rápidas e simples de concertar os erros, incentivando a exploração de ideias.
+	Avaliar o desempenho, qualidade e capacidade de um aluno, tem o objetivo de detectar problemas para que eles sirvam de parâmetro para obter a qualidade desejada. Avaliar um software também possui o mesmo propósito. Quando se trata de um software educacional, utilizar concepções pedagógicas e computacionais, identifica se a qualidade desejada foi alcançada com sucesso.
+	
+	O primeiro passo para avaliar um software educacional é classificar o mesmo em diferentes tipos: instrução programada, tutorial, programação, aplicativos, exercícios e práticas, demonstração, simulação,jogo educativo e internet.
+	O segundo passo consiste em avaliá-lo. classificação, avaliação, manutenibilidade, portabilidade, funcionalibidade, confiabilidade, usabilidade, eficiência, afetividade, layout favorável, efeitos sonoros agradáveis, clareza de conteúdo, público alvo, motivação, favorecimento da aprendizagem, didática e adequabilidade psicopedagógica. Para esse processo de avaliação, é recomendado que utilize para cada um desses critérios, uma atribuição de 0 a 10 (indo de péssimo a excelente a classificação).
+	Explicação detalhada de cada um dos pontos anteriores.
+	O objetivo desse trabalho foi criar um método para avaliar a qualidade de softwares educacionais em diversos meios, utilizando os pontos anteriores, onde a maior parte deles segue o modelo de características e sub-características do modelo 9126.
+
+	Análise das informações: os níveis de 0 a 10 foram baseados nas experiências do autor e orientador com pesquisas na área. As características e sub-características escolhiadas foram baseadas nos critérios da ISO 9126.
+	
+	Discussão dos dados: É determinado que caso um software receba uma nota de 1 a 4, isso indica que o software não é recomendado a ser utilizado, necessitando de aperfeiçoamentos nas áreas que possuiram baixa pontuação. Após as correções, é necessário que o software passe novamente por essa avaliação.
+	O próximo passo para esse trabalho é a criação de fichas avaliativas com informações gerais do software para facilitar o trabalho do avaliador.
+
+	Considerações finais: Esse artigo se baseou na utilização da visão psicopedagógica para avaliar a qualidade de softwares educativos, com base no modelo da ISO 9126.
+	O estudo gera um instrumento que auxilia os gestores e professores a escolher um software que será utilizado em sala de aula, auxiliando no processo de aprendizagem.
