@@ -1,0 +1,53 @@
+Processo: atividades que envolve pessoas, ferramentas, procedimentos e informações, que quando executadas, transformam entradas em saídas. Com a análise das saídas que verifica a eficácia do que foi executado.
+
+Entradas: insumos para executar o processo.
+
+Saídas: o que se obtem após a execução do processo.
+
+Ferramentas e técnicas: recursos para transformar as entradas nas saídas esperadas.
+
+Processos de gerenciamento de projeto: envolve as etapas necessárias a gerência do projeto, como: iniciação, planejamento e execução.
+
+Processos orientados a produto: envolve a parte específica do produto, como: engenharia de requisitos, arquitetura de software e implementação.
+
+Projeto: esforço para criar produto, serviço ou resultado único. Elementos repetitivos podem estar em entregas e atividades. Projetos são realizados para cumprir objetivos por meio da produção de entregas.
+
+Entrega: qualquer produto, resultado ou capacidade única, que deve ser produzida para concluir um processo, fase ou projeto.
+	Todo projeto é temporário, precisando de um início e término bem definidos. O término pode ser concluído de acordo com algum dos fatores: objetivo alcançado; objetivos não podem mais ser alcançados; recursos estão esgotados ou indisponíveis para alocação ao projeto; a necessidade do projeto não existe mais; recursos humanos e físicos não estão mais disponíveis; o projeto é finalizado por motivo legal ou conveniência.
+
+A conclusão bem sucedida de um projeto resulta na passagem da organização para um espaço futuro, indicando que tal objetivo específico foi concluido.
+
+Valor de negócio: benefício obetido com um empreendimento de negócio, como um projeto. Os benefícios podem ser tangíveis (ativos monetários, capital acionário, instalações) ou intangíveis (reconhecimento da marca, reputação, boa-fé.)
+
+Gerenciamento de projetos: aplicação de conhecimentos, habilidades, ferramentas e técnicas às atividades do projeto, a fim de cumprir seus requisitos. Permite que as organizações executem seus projetos de forma efetiva. É realizado a partir da aplicação e integração dos processos de gerenciamento de projetos identificados para o projeto. 
+	Projetos podem ser gerenciados como autônomos (fora de portfólios ou programas), ou dentro de um programa, ou dentro de um portfólio. Nos dois últimos casos, o gerente de projeto interage com um gerente de programa ou gerente de portfólio.
+	Portfólios, programas, projetos e operações costumam ter as mesmas partes interessadas, necessitando dos mesmos recursos, o que gera conflito, ampliando a necessidade de coordenação mediante o uso da gerência.
+
+Programa: grupo de projetos, programas subsidiarios e atividades.
+
+Gerência de Programa: aplicação de conhecimentos, habilidades e princípios a um programa, com o enfoque de obter benefícios e controle que não seriam possíveis apenas com a gerência individual do programa. Ações relacionadas incluem: solução de restrições e conflitos dos projetos envolvidos; alocação de orçamento; gerenciamento das interdependências entre os componentes.
+
+Portfólio: projetos, programas e operações genrenciadas em um grupo para alcançar um objetivo estratégico.
+
+Gerenciamento de porfólio: gerenciamento de um ou mais portfólios para alcançar objetivos estratégicos.Ações relacionadas: orientar ações de investimento organizacional; fornecer transparência na tomada de decisão; priorizar alocação de equipe e recursos físicos; aumentar a probabilidade de alcançar o retorno desejado sobre o investimento.
+
+Gerenciamento Estratégico Organizacional (GPO) e Estratégias: estrutura onde o gerenciamento de protfólios, programas e projetos são integrados com os habilitadores organizacionais para alcançar objetivos estratégicos. Serve para garantir que a organização assuma projetos certos e aloque recusos críticos de forma apropriada. Assim, ajuda a garantir que todos os níveis da organização entendam a visão estratégica, as iniciativas que apoiem a visão, os objetivos e as entregas.
+
+Ciclo de vida do projeto e do desenvolvimento: fases nas quais um projeto passa, do início até a conclusão. As fases podem ser sequenciais, iterativas ou sobrepostas.
+
+Ciclos de vida do projeto: uma ou mais fases associadas com o desenvolvimento do produto, serviço ou resultado. Podendo ser preditivos, iterativos, incrementais, adaptativos ou híbrido.
+
+Preditivo/cascata: o escopo, prazo e custo do projeto são determinados nas fases iniciais do ciclo de vida. Alterações de escopo são gerenciadas com cuidado para não interferir no resto.
+
+Iterativo: o escopo é determinado no início do ciclo de vida do projeto, mas estimativas de prazo e custos são modificados enquanto a equipe do projeto compreende melhor o produto. As iterações desenvolvem o produto por meio de uma série de ciclos repetidos, enquanto os incrementos acrescentam funcionalidade ao produto, de forma sucessiva.
+
+Incremental: a entrega é produzida por meio de uma série de iterações que adicionam funcionalidades em um prazo determinado. A entrega contém a capacidade necessária para ser considerada completa somente após a iteração final.
+
+Ciclo de vida adaptativo/ágeis/orientados a mudança: são ágeis, iterativos ou incrementais. O escopo detalhado é definido e aprovado antes do início de uma iteração.
+
+Ciclo de vida híbrido: combinação do adaptativo com o preditivo. Os elementos conhecidos do projeto, ou que tenham requisitos estabelecidos, seguem um ciclo preditivo de desenvolvimento. Os que ainda estiverem em evolução seguem um ciclo de vida de desenvolvimento adaptativo.
+
+Fase do projeto: atividades ralacionadas que termina na conclusão de uma ou mais entregas. As fases podem ser determinadas por diversos fatores, como: necessidade de gerenciamento, natureza do projeto, características únicas das organização/setor/tecnologia. Utilizar diversas fases permite uma visão melhor para o gerencimanto do projeto e também de tomar medidas corretivas ou preventivas necessárias nas fases seguintes. É importante apontar, que muitas fases aumentam o esforço gerencial, assim, o importante é tentar achar um equilíbrio entre o número de fases.
+
+Revisão de fase: realizada no final de uma fase. O desempenho obtido é comparado ao documento do projeto e de negócio. O resultado dessa comparação gera uma decisão que pode ser: prosseguir à fase seguinte; prosseguir à fase seguinte com alterações; terminar o projeto; continuar na fase; repetir a fase ou elementos desta.
+

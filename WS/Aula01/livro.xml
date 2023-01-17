@@ -1,0 +1,15 @@
+<bibliography>
+  <book>    <title> Foundations of Databases </title>
+                  <author> Abiteboul </author>
+                  <author> Hull </author>
+                  <author> Vianu </author>
+                  <publisher> Addison Wesley </publisher>
+                  <year> 1995 </year>
+  </book>
+  <book>    <title> Data on the Web </title>
+                  <author> Abiteboul </author>
+                  <author> Buneman </author>
+                  <author> Suciu </author>
+                  <publisher> Morgan Kaufmann </publisher>
+  </book>
+</bibliography>

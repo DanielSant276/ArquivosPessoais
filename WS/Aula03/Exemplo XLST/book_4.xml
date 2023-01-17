@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="book_4.xsl"?>
+<booklist>
+	<book id="BOX00">
+		<author>Box, D. and Skonnard, A. and Lam, J.</author>
+		<editor>Series</editor>
+		<title>Essential XML - Beyond Markup</title>
+		<publisher>Addison-Wesley</publisher>
+		<year>2000</year>
+		<key/>
+		<volume/>
+		<number/>
+		<series/>
+		<address/>
+		<edition/>
+		<month>July</month>
+		<note/>
+		<annote/>
+		<url>http://www.develop.com/books/essentialxml</url>
+	</book>
+	<book id="MAR99">
+		<author>Maruyama, H. and Tamura, K. and Uramoto, N.</author>
+		<title>XML and Java: Developing of Web Applications</title>
+		<publisher>Addison-Wesley</publisher>
+		<year>1999</year>
+		<address>MA</address>
+		<month>August</month>
+	</book>
+	<book id="BRA00">
+		<author>Bradley, N.</author>
+		<title>The XML Companion</title>
+		<publisher>Addison-Wesley</publisher>
+		<year>2000</year>
+		<address>Great Britain</address>
+		<edition>2</edition>
+		<month>August</month>
+	</book>
+</booklist>
