@@ -1,12 +1,9 @@
 business case
 	- Falar sobre o produto e dizer o pq ele vai ser bem sucedido;
-	- Tirar cronograma e colocar um tempo determinado para cada área de produção. Comprometimento em termo de tempo para cada area e não de data;
+
 
 situação atual e justificativa:
 	- falar sobre premissas para a realização do termo de abertura;
 	- colocar uma descrição da equipe;
-	- diminuir o tamanho de importância das partes interessadas no projeto;
-	- principais requisitos, detalhar a parte que iremos focar;
 	- adicionar os marcos, com os tempos de produção esperado para cada etapa;
-	- premissas: detalher informação de tecnologia, disponibilidade de mão de obra na area (premissas); Colocar também sobre a comunicação com diversas áreas responsáveis pelo projeto;
-	- riscos: falar mais de problemas que podem ocorrer de forma específica. O risco são todas as atividades que podem ser problemáticas durante a realização do projeto;
+	- premissas: detalher informação de tecnologia, disponibilidade de mão de obra na area (premissas);

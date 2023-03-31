@@ -1,0 +1,203 @@
+			Capítulo 6
+		
+Relógios Físicos:
+ -- Um temporizador de um computador é um cristal de quartzo lapidado com precisão. Isso, pois quando são mantidos sob tensão, os cirstais de quartzo oscilam a uma frequência bem definida.
+ -- Os computadores, geralmente, possuiem uma RAM CMOS para manter a data e hora sempre salvas,  não precisando inserí-la toda vez que se inicia o computador.
+ -- A hora não certa ou errada não faz tanta diferença quando se utiliza uma única CPU. Porém, isso muda quando se trata de múltiplas CPUS, com cada uma tendo seu próprio relógio.
+ -- A diferença nesse múltiplos relógios das diferentes CPUS se chama defasagem de relógio. Por conta disso, programas que dependem de horários associados a arquivos, podem falhar.
+ 
+Algoritmos de sincronização de relógios:
+ -- Para que um cliente ajuste seu horário, este pode consultar um servidor de tempo. Para isso, os atrasos de transmissão de mensagens devem ser levados em consideração, através de estimativas.
+ -- No caso do NTP, o protocolo é ajustado entre pares de servidores, ou seja, B também consultará A para saber qual é a sua hora.
+ -- Oito pares de valor (θ, δ) são armazenados em buffer, com a adoção do valor mínimo encontrado para δ como a melhor estimativa para atraso entre dois servidores e o valor associado θ como a estimativa mais confiável do deslocamento. Os ajustes de relógio só ocorrem quando o nível de estrato for mais alto entre um servidor A e B.
+
+Algoritmo de Berkley:
+ -- Neste modelo, o servidor de tempo é ativo e consulta todas as máquinas de tempos em tempos para perguntar a hora marcada em cada uma. Com base nas respostas, é calculado um horário médio usado para indicar se as máquinas devem atrasar ou adiantar seus relógios.
+ 
+Sincronização de relógios em redes sem fio:
+ -- A sincronização em broadcast de referência (RBS) é um protocolo de sincronização usado em REDES DE SENSORES que busca sincronizar os nós em âmbito interno (semelhante ao Berkley). Neste protocolo, somente os receptores são sincronizados, onde um remetente transmite uma mensagem via broadcast e seus receptores irão ajustar seus relógios.
+ 
+Relógios Lógicos:
+ -- Antes de executar um evento, o processo executa, seu tempo = seu tempo + 1. E envia esse tempo juntamente da mensagem.
+ -- Quando o proxímo processo recebe essa mensagem ele verifica se o tempo recebido é maior ou menor do que o seu tempo atual, ajustando ou não seu relógio para o maior entre eles.
+ 
+Multicast Totalmente Ordenado:
+ -- Uma operação multicast pela qual todas as mensagens são entregues na mesma ordem a cada receptor. Cada mensagem deve ter sua marca de tempo correspondente ao tempo lógico de seu remetente.
+ -- Quando um processo recebe uma mensagem, ela é colocada em uma fila de cache local, ordenada conforme sua marca de tempo. O receptor envia mensagens multicast de reconhecimento aos outros processos. Em um certo momento, todos os processos terão a mesma cópia da fila local. Assim, um processo entrega a mensagem enfileirada à aplicação que ele estiver executando e a remove da fila.
+ 
+Relógios Vetoriais:
+ -- Multicast ordenado por causalidade: se duas mensagens segue uma ordem lógica, a ordem em que elas são enviadas é anotado. Assim, caso um processo a receba em uma ordem diferente, ele a atrasa até que possa executá-la.
+
+Exclusão Mútua:
+ -- Quando dois ou mais processos concorrem pelos mesmos recursos simultaneamente. Neste caso, é necessário usar algum algoritmo que garanta o acesso mutuamente exclusivo pelos processos.
+ 
+Algoritmo Centralizado:
+ -- É selecionado um processo para ser o coordenador. 
+ -- Sempre que um processo quiser acessar um recurso ele envia uma mensagem de requisição ao coordenador declarando o recurso interessado e solicitando permissão. Se o recurso não estiver sendo utilizado, o coordenador devolve uma resposta concedendo a permissão. Quando a resposta chega, o processo requisitante segue adiante.
+ -- Nesse meio tempo, caso outro processo se comunique com o coordenador, ele não envia resposta para esse novo processo, porém adiciona a sua requisição em uma fila.
+ -- Quando o processo que estava utilizando o recurso termina, ele envia uma mensagem ao coordenador para liberar o seu acesso. Assim, O coordenador envia uma mensagem concedendo a permissão para o próximo processo da fila.
+ -- Vantagens:
+    |-- Não há inanição
+    |-- É justo: as permissões são concedidas na ordem que foram recebidas
+    |-- Fácil de implementar: somente três mensagens (requisição, concessão, liberação)
+ -- Desvantagens:
+    |-- Se o coordenador falhar, todo o sistema pode cair
+    |-- Se os processos normalmente bloquearem após uma requisição, não podem distinguir um coordenador inativo de uma permissão negada
+    |-- Em sistemas de grande porte, um único coordenador pode ser tornar um gargalo de desempenho
+	
+Algoritmo Descentralizado:
+ -- Ccada recurso é replicado n vezes. Toda réplica tem seu próprio coordenador para controlar o acesso por processos concorrentes. Sempre que um processo solicitar um recurso, ele precisará obter um voto majoritário de m > n/2. Caso a permissão para acessar o recurso seja negada, o processo desistirá durante um período de tempo aleatório e tentará novamente.
+ -- Vantagens:
+	|-- Se um coordenador falhar, poderá se recuperar rapidamente (com perda de memória dos votos dados anteriormente)
+	|-- Réplicas de recursos
+ -- Desvantagens:
+	|-- Permite inanição
+	|-- Baixa eficiência: se houver muitos nós competindo para obter acesso, nenhum deles obterá votos suficientes e o recurso deixará de ser utilizado.
+	
+Algoritmo Distribuído:
+ -- Um processo envia uma mensagem que contém o nome do recurso, seu número de processo e hora corrente a todos os outros processos. Quando um processo recebe uma mensagem de requisição de outro processo ele pode: 
+    |-- Se não estiver usando e nem pretende usar o recurso, enviar uma mensagem de OK.
+    |-- Se estiver usando o recurso, não responde e coloca a requisição em uma fila.
+    |-- Se pretende usar o recurso (mas não estiver), compara a marca de tempo da mensagem que chegou com a marca de tempo da mensagem que enviou para todos. A mais baixa vence: se for do requisitante, envia uma mensagem de OK, se for dele mesmo, enfileira a requisição e não responde.
+ -- Após enviar requisições de permissão, um processo espera até que todos tenham dado permissão para então, seguir em frente e começar a utilizar o processo. Ao terminar, ele envia mensagens de OK para o processo que estiver na sua fila e a remove.
+ -- Vantagens:
+	|-- Exclusão mútua garantida
+	|-- Não há inanição nem deadlocks
+	|-- Não existe nenhum ponto de falha único
+ -- Desvantagens:
+	|-- Possui n pontos de falha
+	|-- Deve usar multicast ou cada processo deve manter uma lista de associação ao grupo (processos que entram, saem e caem)
+	|-- Lento, complicado, caro e menos robusto que o original centralizado
+
+Algoritmo Token Ring:
+ -- Um anel lógico é construído em software e a cada processo é designada uma posição no anel. A ordenação não é importante e sim o processo saber quem é o próximo após ele.
+ -- Quando o anel inicia, o primeiro processo recebe uma ficha. Se caso ele precisar utilizar um recurso, ele utiliza o recurso, e ao terminar ele passa a ficha para o próximo vizinho. O vizinho recebe a ficha e repete o processo.
+ -- Quando um processo não pretende utilizar um recurso, ele apenas para a ficha para o próximo.
+ -- É importante saber que um processo só utiliza um recurso por vez, caso ele precise utilizar novamente um recurso ele precisa esperar a ficha passar por todos os processos e retornar a ele.
+ -- Vantagens:
+	|-- Não há inanição
+	|-- Garante exclusão mútua: só um processo tem a ficha a qualquer instante, portanto só um processo pode obter o recurso.
+ -- Desvantagens:
+	|-- Se a ficha se perder, precisa ser regenerada (algo difícil)
+	|-- Dificuldade se um processo cair (apesar da recuperação ser mais fácil do que os outros casos)
+
+Algoritmos de Eleição:
+ -- Geralmente, algoritmos de eleição tentam localizar o processo que tenha o número de processo mais alto para torná-lo o próximo coordenador. Isso ocorre sempre que um coordenador não estiver mais disponível.
+
+Algoritmo do Valentão:
+ -- Quando qualquer processo nota que o coordenador não está mais respondendo às requisições, ele inicia uma eleição.
+ -- O processo P envia uma mensagem ELEIÇÃO a todos os processos de números mais altos.
+ -- Se nenhum responde, o processo P vence e se torna coordenador.
+ -- Se um dos processos de número mais alto responder, ele toma o poder e P conclui seu trabalho.
+ -- Se um processo inativo voltar, este convoca uma eleição. Se ele for o processo de número mais alto, ganhará a eleição.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+			Capítulo 7
+		
+Modelos de consistência centrado em dados:
+ -- Cada processo é dotado de uma máquina com disco, e ela atualiza a sua própria cópia local (que corresponde a uma réplica do banco de dados). Toda atualização de uma réplica deve ser alimentada e atualizada nas outras réplicas.
+ -- É dificil determinar a ordem das escritas com precisão, devido a não utilização de um relógio global. Para isso existem soluções que relaxam o conceito de consistência, decidindo o que é tolerável ou não.
+ -- Três eixos independentes para definir inconsistências:
+    |-- Diferenças dos valores numéricos entre réplicas:
+		|-- Dentro de uma faixa de diferença, um réplica pode existir.
+	|-- Diferenças das idades entre réplicas:
+		|-- Um sistema é consistente a partir de n atualizações. Em uma determinada faixa de tempo é permitido que exista uma incosistência. Ex.: O servidor principal atualiza sempre em poucos segundos, porém as réplicas atualizam em tempo mais espaçado.
+	|-- Diferenças em relação a ordenação de operações de atualização:
+		|-- Atualizações são aplicadas a uma cópia local, à espera de um acordo global de todas as réplicas. É possível que algumas atualizações tenham que voltar atrás e serem reaplicadas em uma ordem diferente.
+		|-- Consistência contínua - Conit (Consistency Unit): ele especifica a unidade segundo a qual a consistência deve ser medida. Ela irá representar a quantidade de atualizações que não foram vistos por outra réplica.
+		|-- Consistência contínua - Granuralidade:
+			|-- Grossa: Conit com grande quantidade de dados geram réplicas em estado inconsistente mais rapidamente.
+			|-- Fina: Grande número de conits a serem gerenciados.
+			|-- Ou seja, se você definir um espaço grande de dados, você irá usar apenas um conit para gerenciar todo esse espaço. Caso você defina um espaço pequeno de dados, em uma mesma réplica, você terá que ter diversos conits.
+
+Consistência Sequencial:
+ -- É mais fácil explicar mostrando as imagens. Mas não é exatamente algo definido, e sim uma convenção das operações para analisar se está tendo consistência ou não.
+ 
+Consistência Causal:
+ -- Se antes da escrita de um valor por um processo ele for lido, é capaz de que gere uma relação de causa entre esse valor, auxiliando que não existam inconsistências em operações futuras.
+ 
+Gerenciamento de Réplicas - Problemas:
+ -- Decidir onde, quando e por quem as réplicas devem ser posicionadas.
+ -- Mecanismos para manter as réplicas consistentes.
+ 
+Problemas de Posicionamento:
+ -- Posicionamento do servidor:
+	|-- Achar os melhores locais para disponibilizar um servidor que hospede um deposito de dados. Soluções:
+		|-- Calcular a distância entre clientes e localizações, atráves do número de roteadores que irá existir entre um servidor e um determinado cliente.
+		|-- Verificar a melhor latência.
+		|-- Ignorar a localização dos cliente e considerar os sistemas autônomos (sistemas onde os nós executam o mesmo protocolo de roteamento e que é gerenciado por uma única organização).
+		|-- Identificar uma região para o posicionamento da réplica, é selecionado as regiões mais exigentes, ou seja, com o maior número de nós.
+ -- Posicionamento de conteúdo:
+	|-- Verifica onde cada conteúdo será disponibilizado. Três tipos diferentes de réplicas organizadas logicamente:
+		|-- Réplicas Permanentes: Conjunto inicial de réplicas que constituem um depósito de dados distribuídos. Número de réplicas permanentes é pequeno. Geralmente é feito dentro da própria organização.
+		|-- Réplicas iniciadas por servidor: Cópia de arquivos por iniciativa do proprietário do depósito para melhorar o desempenho. A organização irá colocar um réplica do servidor dela próximo de uma localização na qual existem muitos acessos.
+		|-- Réplicas iniciadas por cliente: São as caches, na qual são cópias de dados guardadas localmente pelo cliente para um acesso mais rápido aos dados.
+ -- Distribuição de conteúdo:
+	|-- A ditribuição pode ocorrer de três formas:
+		|-- Propagar somente um notificação de atualização: Nesse caso, apanas uma notificação (protocolo de invalidação) é enviada contendo quais informações estão desatualizadas, pondendo ser ou o depósito de dados inteiro, ou apenas uma parte dele.
+		|-- Transferir dados modificados entre réplicas: As informações alteradas são enviadas para as outras réplicas.
+		|-- Propagar as operações de atualização: Nessa abordagem, não se envia o conjunto de dados para as réplicas e sim se envia as operações realizadas em cada um dos dados.
+
+
+
+
+
+	
+			P3		
+			
+2)Explique a seguinte afirmativa “protocolos de primário e backup” proporcionam uma implementação direta de consistência seqüencial.
+  R: Um processo que quer realizar uma operação de escrita, envia a operação para o nó responsável pelo servidor primário, esse nó garante que as operações de escrita sigam uma mesma ordem, garantindo uma consistencia sequencial. O servidor primário resolve as operações e depois envia para os servidores de backup. Esses servidores possuem nós secundários que são responsáveis pelos servidores de backup. Caso o nó primário tenha algum problema, um nó secundário assume o papel de primário, continuando a garantir a consistencia sequencial.
+ 
+3) Explique as diferenças entre consistência sequencial e consistência causal no contexto de modelos de consistência centrado em dados.
+  R: Consistencia Sequencial: Um depósito de dados é sequencialmente consistente quando a ordem das operações de leituras são iguais em todos os processos. Tomando como base a figura 7.5(a), temos um depósito de dados sequencialmente consistente, pois, mesmo que as leituras estejam em ordem diferente dos valores escritos, os processos P3 e P4 recebem como resultado da leitura o mesmo valor na mesma ordem, R(x)b e depois R(x)a. Como exemplo de um erro, temos a figura 7.5(b), onde os processo P3 e P4 recebem valores de leitura em ordens diferentes, P3 recebe primeiro R(x)b e depois R(x)a e P4 recebe primeiro R(x)a e depois R(x)b.
+  Consistencia Causal: Um depósito de dados é consistente por casualidade quando uma operação de escrita em um processo está relacionado a operação de escrita em outro processo, ou seja, ele excuta uma operação de leitura antes de executar a sua operação de escrita. Por exemplo, na figura 7.8 existe uma relação de causalidade, pois para P2 escrever W(x)b ele antes lê R(x)a, que foi o processo de escrita realizado em P1 (W(x)a). Assim, gera essa relação de primeiro (x)a e depois (x)b como é demonstrado nas relações de leitura em P3 e P4.
+  
+4) Comente as diferenças entre multicasts confiáveis ordenados em FIFO e multicasts confiáveis com entrega totalmente ordenada.
+  R: Multicast confiável em FIFO:  Na ordem em que as mensagem são enviadas por um processo ela precisa ser lida por outro processo, por exemplo, P1 envia as mensagens 1 e 2, logo P2 precisa ler as mensagens na ordem em que foram enviadas por P1.
+  Multicast confiável com entrega totalmente ordenada: A diferença para a opção descrita acima, é que nesse tipo de multicast, as mensagens em todos os processos também precisam ser lidas na mesma ordem, por exemplo. Em um multicast apenas FIFO onde P1 envia as mensagens 1 e 2, e P2 envia as mensagens 3 e 4, os processos P3 e P4 podem ler as mensagens em qualquer ordem desde que não leia, 2 antes de 1 e 4 antes de 3. No caso do confiável com entrega totalmente ordenada, os processos P3 e P4 precisam executar as leituras na mensagem na exata mesma ordem, exemplo: se P3 leu 3412, P4 não pode ler em uma ordem diferente (3142 seria uma leitura errada), precisa ler também na ordem 3412.
+  
+5) Como funciona a replicação ativa? (pag 191 do pdf)
+  R: A replicação ativa é quando uma replica irá atualizar as suas informações, não através de uma nova copia de dados, e sim através de um conjunto de operações que ela terá que realizar.
+
+6) Discurse sobre consistência contínua e o modelo conit:
+  R: A consistência contínua é uma convenção estipulada para um depósito de dados referente a quão flexível o depósito será em relação as atualizações em cada copia local do depósito. O conit é uma medidade de unidade segundo na qual a consistencia de ordenação de operações de atualização pode ser relevada. Ela irá representar a quantidade de atualizações que não foram vistos por outra réplica.
+  
+  complementação de informação para a questão 6 ----> essa convenção pode ser referente a desvio de valores numéricos, desvio de idade entre réplicas e relação a ordenação das operações.
+  |-- Diferenças dos valores numéricos entre réplicas:
+	  |-- Dentro de uma faixa de diferença, um réplica pode existir.
+  |-- Diferenças das idades entre réplicas:
+	  |-- Um sistema é consistente a partir de n atualizações. Em uma determinada faixa de tempo é permitido que exista uma incosistência. Ex.: O servidor principal atualiza sempre em poucos segundos, porém as réplicas atualizam em tempo mais espaçado.
+  |-- Diferenças em relação a ordenação de operações de atualização:
+	  |-- Atualizações são aplicadas a uma cópia local, à espera de um acordo global de todas as réplicas. É possível que algumas atualizações tenham que voltar atrás e serem reaplicadas em uma ordem diferente.
+  |-- Consistência contínua - Conit (Consistency Unit): ele especifica a unidade segundo a qual a consistência deve ser medida. Ela irá representar a quantidade de atualizações que não foram vistos por outra réplica.
+  
+  
+  
+  
+  
+  
+  
+			OPTATIVA
+		
+3) Em relação a ordenação de mensagens, comente a entrega de mensagens, considerendo-se o modelo multicasts confiáveis ordenados em FIFO. É obrigatório uso de exemplo para sua explicação.
+  R: Resposta igual a questão 4 da P3, sem a parte de Multicast confiável com entrega totalmente ordenada.
+
+4) Como funciona o algoritmo de Berkeley? E em que contexto ele se encaixa?
+  R: Nesse algoritmo teremos um relógio que será o DAEMON de tempo, ele será responsável por enviar o seu tempo para os outros relógios da rede. Por sua vez, os relógios da rede retornarão a diferença entre o seu horário e o do DAEMON. Com esse informação o DAEMON irá calcular a média do tempo entre os relógios e irá informar para cada relógio da rede quanto ele precisa atualizar (positivamente ou negativamente) o seu tempo. Esse algoritmo é utilizado em sistemas na qual nenhuma máquina possua um receptor WWV.
+ 
+6) O que é consistência causal no contexto de modelos de consistência centrado em dados.
+  R: Resposta igual a questão 3 da P3, sem a parte de sequencial.
+ 
+7) Como funcionam os relógios vetoriais?
+  R: Relógios vetorias além de possuir o tempo do processo atual em que são enviadas as mensagens, ele também um vetor de tempo na qual tem uma marcação de quando aquela mensagem foi enviada. Quando um processo recebe uma mensagem, ele verifica o vetor de tempo para decidir se aquela mensagem foi enviada antes ou depois de outra, decidindo se irá lê-la ou atrasá-la.
+  
+10) Faça um exemplo simples que utilize a replicação ativa?
+  R: Ver resposta da questão 5 da P3 e elaborar um exemplo.

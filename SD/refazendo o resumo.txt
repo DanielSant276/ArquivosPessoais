@@ -65,19 +65,19 @@ Estilos Arquitetônicos:
 	- Camadas: os componentes mais acima na hierarquia podem fazer requisições aos mais a baixo, porém não ocorre ao contrário.
 	- Baseada em objetos: os componente são um objeto, que são conectados a outros por meio de procedimento remoto. Usado em sistemas de grande porte paramodelo cliente-servidor.
 	- Centrada em dados: processos se comunicam por meio de um repositório passivo ou ativo. SDs baseados na Web também usam essa arquitetura, porque processos se comunicam por meio da utilização de serviços baseados na Web.
-	- Baseada em eventos: processos se comunicam por eventos que podem transportar dados. 
+	- Baseada em eventos: processos se comunicam por eventos que podem transportar dados.
 	- Espaços compartilhados de dados: combinação da arquitetura de eventos com a arquitetura de dados. 
 
 Arquiteturas de Sistemas:
 	- Centralizado: usa modelo cliente-servidor. O servidor implementa um serviço específico. O cliente é um processo que requisita serviços e espera por uma resposta. É utilizado o protocolo TCP para conexões a longa distância.
 	- Peer-to-peer: distribuição horizontal, em que os clientes e servidores podem ser subdivididos em partes logicamente equivalentes. Cada parte opera seu conjunto de dados completo. A rede de sobreposição pode ser estruturada, onde são disponibilizados esquemas determinísticos para rotear mensagens entre processos. Em redes não estruturadas, a lista de pares pode ser aleatória, sendo preciso ter algoritmos de busca para localizar dados ou processos, o chord seria um desses algoritmos.
-	- Tabela hash distribuída: Construção de estrutura da rede de sobreposição. O chord organiza os nós em forma de anel, ao consultar um item dado, o endereço de rede do nó responsável por aquele item é retornado.s
+	- Tabela hash distribuída: Construção de estrutura da rede de sobreposição. O chord organiza os nós em forma de anel, ao consultar um item dado, o endereço de rede do nó responsável por aquele item é retornado.
 
 
 
 Capítulo III - Processos
 
-Threads: Por processos, múltiplas threads de controle proporcionam uma granularidade fina, o que facilita a contrução de aplicações distribuídas, além de ter melhor desempenho. Atrasos de ida e vinda podem ser compensados com threads, como as requisições web. Um documento e seus elementos são buscados paralelamente e exibidos conforme as partes vão sendo recebidas.
+Threads: Por processos, múltiplas threads de controle proporcionam uma granularidade fina, o que facilita a construção de aplicações distribuídas, além de ter melhor desempenho. Atrasos de ida e vinda podem ser compensados com threads, como as requisições web. Um documento e seus elementos são buscados paralelamente e exibidos conforme as partes vão sendo recebidas.
 
 Virtualização: Estende ou substitui uma interface existente, de forma que imite um outro sistema. Surgiu com o propósito de herdar softwares herdados. Ele é útil em SDs por permitir que se diminua a diversidade de plataformas e máquinas. Dessa firnam se ganha portabilidade e flexibilidade.
 

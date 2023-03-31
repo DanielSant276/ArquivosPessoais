@@ -1,0 +1,18 @@
+Fundada em 2012, a Quinto Andar é uma startup Brasileira do mercado imobiliário que tem como principal serviço a locação, compra e venda de imóveis. Eles se divulgam como a maior imobiliária digital do Brasil. Em 2019 ela se tornou uma empresa unicórnio com um valuation superior a 1 bilhão de dólares.
+
+A Quinto Andar iniciou em Campinas (SP) com o objetivo de auxiliar a transação imobiliária da região. Pelos primeiros 8 anos a startup apenas auxiliava a locação, iniciando os serviços de compra e venda em 2020.
+
+O modelo de negócio da Quinto Andar surjiu com o objetivo de criar um serviço que apenas otimizasse as atividades do setor imobiliário, trazendo eficiência e agilidade nos procedimentos de forma virtual. Em relação a locação, a startup tinha o objetivo de trazer vantagens tanto para o locador quanto para o locatário como: diminuir a burocracia, visitas virtuais aos apartamentos/casas, assinatura digital de contratos e garantia de aluguel.
+
+Assim, por oferecer uma plataforma eficiênciente e de fácil acesso, com uma menor burocracia, focada na UX e diminuindo o custo nos processos, a empresa ao longo dos anos tem ganhado uma boa parte do maket share do setor imobiliário, se tornando uma referência do ramo no Brasil.
+
+Tecnologias de destaque:
+	-- Farejar imóveis (imagem 1): Essa função permite que se visualize os imóveis dentro de uma região demarcada a partir de um filtro determinado de opções e faixa.
+	-- Agendar visita e nova proposta de aluguel/compra (imagem 2): Não é necessário entrar diretamente em contato com o dono do imóvel para modificar a proposta de alguel ou marcar um dia para ir visitar.
+	-- Funções de visualização do imóvel (imagem 3):
+	Capacidade de visualizar o imóvel por fotos, vídeos, comodos em 360, localização no maps, imagem da rua principal.
+	-- Diferenciais (imagem 4).
+	-- Sistemas de recompensa para inclusão de imóveis na plataforma (imagem 5).
+	-- Afiliação de imobiliárias (imagem 6).
+	-- Cadastro rápido, e fotos da locação tirado pela Própria Quinto Andar (imagem 7).
+
